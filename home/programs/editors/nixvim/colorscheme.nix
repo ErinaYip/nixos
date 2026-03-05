@@ -1,9 +1,5 @@
-{ lib, ... }:
-{
-  # colorschemes.base16.enable = true;
-  # extraConfigLua = ''
-  #   require('matugen').setup()
-  # '';
+{ lib, ... }: {
+  colorschemes.catppuccin.enable = false;
 
   extraConfigLua = lib.mkAfter ''
     local ok, noctalia = pcall(require, "noctalia")

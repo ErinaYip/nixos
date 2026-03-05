@@ -20,6 +20,11 @@
     "<C-f>" = [ "scroll_documentation_down" "fallback" ];
   };
 
+  plugins.blink-cmp.settings.appearance = {
+    nerd_font_variant = "mono";
+    use_nvim_cmp_as_default = true;
+  };
+
   plugins.blink-cmp.settings.completion = {
     keyword.range = "full";
     list.selection = {
