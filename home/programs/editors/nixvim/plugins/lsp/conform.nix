@@ -11,6 +11,7 @@
       cpp = [ "clang_format" ];
       python = [ "black" ];
       nix = ["nixfmt"];
+      qml = [ "qmlformat" ];
     };
   };
 }

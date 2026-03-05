@@ -23,6 +23,9 @@
     nixd = {
       enable = true;
     };
+    qmlls = {
+      enable = true;
+    };
   };
 
   plugins.lsp.keymaps = {

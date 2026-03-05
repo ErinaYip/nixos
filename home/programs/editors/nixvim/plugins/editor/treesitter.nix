@@ -31,6 +31,7 @@
       xml # 一些 XML 文件
       yaml # yaml 文件
       diff
+      qmljs # QML
     ];
   };
 }
