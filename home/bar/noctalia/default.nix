@@ -15,6 +15,11 @@ in{
           input_path = template_path + "nvim/theme.lua.template";
           output_path = "~/.config/nvim/lua/noctalia.lua";
         };
+        # vim-base16 = {
+        #   input_path = template_path + "nvim/matugen.lua.template";
+        #   output_path = "~/.config/nvim/lua/matugen.lua";
+        #   post_hook = "pkill -SIGUSR1 nvim";
+        # };
         prismlauncher-json = {
           input_path = template_path + "prismlauncher/theme.json.template";
           output_path = "~/.local/share/PrismLauncher/themes/Noctalia/theme.json";
