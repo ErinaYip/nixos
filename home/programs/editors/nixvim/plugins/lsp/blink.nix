@@ -11,8 +11,8 @@
 
     "<Tab>" = [ "select_next" "fallback" "snippet_forward" ];
     "<S-Tab>" = [ "select_prev" "fallback" "snippet_backward" ];
-    "<Down>" = [ "select_next" "fallback" "snippet_forward" ];
-    "<Up>" = [ "select_prev" "fallback" "snippet_backward" ];
+    # "<Down>" = [ "select_next" "fallback" "snippet_forward" ];
+    # "<Up>" = [ "select_prev" "fallback" "snippet_backward" ];
     "<C-n>" = [ "select_next" "fallback" "snippet_forward" ];
     "<C-p>" = [ "select_prev" "fallback" "snippet_backward" ];
 
