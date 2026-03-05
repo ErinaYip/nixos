@@ -1,6 +1,6 @@
 { config, inputs, ... }:
 let
-  template_path = config.home.homeDirectory + "/nix-config/home/bar/noctalia/templates/";
+  template_path = config.home.homeDirectory + "/nixos/home/bar/noctalia/templates/";
 in{
   imports = [
     inputs.noctalia.homeModules.default
@@ -12,7 +12,7 @@ in{
     user-templates = {
       templates = {
         nvim = {
-          input_path = template_path + "nvim/noctalia.lua.template";
+          input_path = template_path + "nvim/theme.lua.template";
           output_path = "~/.config/nvim/lua/noctalia.lua";
         };
         prismlauncher-json = {
