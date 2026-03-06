@@ -21,18 +21,12 @@
   plugins.lualine.settings.sections = {
     lualine_a = [ { __unkeyed-1 = "mode"; separator.left = ""; } ];
     lualine_b = [ "branch" ];
-    lualine_c = [ "diff" ];
+    lualine_c = [ "diff" "diagnostics" ];
     lualine_x = [
       {
         __raw = ''{
           function() return require("noice").api.status.mode.get() end,
           cond = function() return package.loaded["noice"] and require("noice").api.status.mode.has() end,
-        }'';
-      }
-      {
-        __raw = ''{
-          function() return require("noice").api.status.command.get() end,
-          cond = function() return package.loaded["noice"] and require("noice").api.status.command.has() end,
         }'';
       }
     ];
