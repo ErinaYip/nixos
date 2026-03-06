@@ -7,8 +7,6 @@
   
     history.size = 10000;
     shellAliases = {
-      man = "tldr";
-
       githack = "python /home/era/Documents/python/GitHack-master/GitHack.py";
       pker = "python3.11 /home/era/Documents/python/pker-master/pker.py";
     };

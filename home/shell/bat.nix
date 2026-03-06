@@ -1,7 +1,9 @@
 { pkgs, lib, config, ... }:
 let
   shellAliases = {
-    cat = "bat";
+    cat = "batpipe";
+    less = "bat";
+    man = "batman";
   };
 in {
   programs = {
@@ -9,13 +11,12 @@ in {
       enable = true;
       config = {
         pager = "less -FR";
-        theme = "gruvbox-dark";
       };
       extraPackages = with pkgs.bat-extras; [
         batman
         batpipe
-        # batgrep
-        # batdiff
+        batgrep
+        batdiff
       ];
     };
     zsh.shellAliases = lib.mkIf config.programs.eza.enable shellAliases;
