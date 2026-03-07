@@ -6,6 +6,7 @@ let
 in  {
   imports = [
     ./eza.nix
+    ./zoxide.nix
     ./starship.nix
     ./kitty.nix
     ./zsh
