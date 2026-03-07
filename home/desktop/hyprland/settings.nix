@@ -2,7 +2,7 @@
   wayland.windowManager.hyprland.settings = {
     monitor = [
       "eDP-1, preferred, 1920x0, 1.6, transform, 1"
-      "DP-2, 1920x1080@260.00Hz, 0x50, 1"
+      "DP-2, 1920x1080@260.00Hz, 0x0, 1"
     ];
 
     exec-once = [
