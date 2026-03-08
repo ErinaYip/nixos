@@ -1,4 +1,4 @@
-# bindkey -v
+bindkey -e
 autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey '^e' edit-command-line

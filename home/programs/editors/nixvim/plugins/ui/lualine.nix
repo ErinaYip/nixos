@@ -20,8 +20,8 @@
   };
   plugins.lualine.settings.sections = {
     lualine_a = [ { __unkeyed-1 = "mode"; separator.left = ""; } ];
-    lualine_b = [ "branch" ];
-    lualine_c = [ "diff" "diagnostics" ];
+    lualine_b = [ "branch" "diff" ];
+    lualine_c = [ "diagnostics" ];
     lualine_x = [
       {
         __raw = ''{
