@@ -3,9 +3,9 @@
     ./communication.nix
     ./gaming.nix
     ./media.nix
+    ./editors.nix
     # ./xdg.nix
 
-    ./editors
   ];
 
   home.packages = with pkgs;[
