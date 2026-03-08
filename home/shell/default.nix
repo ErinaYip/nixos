@@ -27,6 +27,7 @@ in  {
     exiftool
     zsteg
     opencode
+    zola
 
     htop
     btop
