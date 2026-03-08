@@ -1,4 +1,0 @@
-{
-  cmd = [ "qmlls" ];
-  filetypes = [ "qml" ];
-}

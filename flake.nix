@@ -23,8 +23,12 @@
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixvim = {
-      url = "github:nix-community/nixvim";
+    # nixvim = {
+    #   url = "github:nix-community/nixvim";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    erina-vim = {
+      url = "path:/home/era/Documents/erina-vim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     opencode-flake = {

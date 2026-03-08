@@ -1,6 +1,6 @@
-{ config, pkgs, ... }: {
+{ inputs, pkgs, ... }: {
   imports = [
-    ./nixvim
+    inputs.erina-vim.homeModules.default
   ];
   home.packages = with pkgs; [
     vscode
