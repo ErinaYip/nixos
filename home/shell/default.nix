@@ -2,6 +2,7 @@
 let
   shellAliases = {
     sns = "sudo nixos-rebuild switch --flake ~/nixos";
+    vim = "nvim";
   };
 in  {
   imports = [

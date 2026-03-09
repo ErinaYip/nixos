@@ -1,11 +1,9 @@
 { inputs, pkgs, ... }: {
-  imports = [
-    inputs.erina-vim.homeModules.default
-  ];
   home.packages = with pkgs; [
     vscode
     obsidian
     onlyoffice-desktopeditors
     libreoffice
+    inputs.erina-vim.packages.${stdenv.hostPlatform.system}.default
   ];
 }
