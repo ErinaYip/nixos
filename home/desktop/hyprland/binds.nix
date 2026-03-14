@@ -31,10 +31,12 @@
       "$mod, Space, togglefloating,"
       "$mod, R, layoutmsg, colresize +conf"
       "$mod SHIFT, R, layoutmsg, colresize -conf"
+      '', Print, exec, grim -g "$(slurp)" - | wl-copy''
+      ''$mod, S, exec, grim -g "$(slurp)" - | wl-copy''
 
       # Terminal
       "$mod, Return, exec, kitty"
-      "$mod, T, exec, kitty --class=float"
+      "$mod, T, exec, kitty --title=float"
 
       # Applications
       "$mod, B, exec, firefox"
@@ -46,7 +48,8 @@
       # Noctalia
       "$mod, A, exec, noctalia-shell ipc call launcher toggle"
       "$mod, V, exec, noctalia-shell ipc call launcher clipboard"
-      "$mod, S, exec, noctalia-shell ipc call sessionMenu toggle"
+      "$mod, m, exec, noctalia-shell ipc call sessionMenu toggle"
+      "$mod, BackSpace, exec, noctalia-shell ipc call lockScreen lock"
 
       # Layout
       "$mod, F1, exec,  hyprctl keyword general:layout scrolling; notify-send -u normal '布局已切换' 'Scrolling'"

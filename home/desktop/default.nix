@@ -11,6 +11,8 @@
     brightnessctl
     wl-clipboard
     cliphist
+    grim
+    slurp
 
     nwg-look
   ];

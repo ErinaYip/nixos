@@ -19,13 +19,21 @@
       layout = "scrolling";
     };
 
+    misc = {
+      disable_hyprland_logo = true;
+      disable_splash_rendering = true;
+    };
+
     scrolling = {
       column_width = 0.5;
       explicit_column_widths = "0.333, 0.5, 0.667, 0.833";
       follow_min_visible = 0;
     };
 
-    xwayland = { force_zero_scaling = true; };
+    xwayland = {
+      enabled = true;
+      force_zero_scaling = true;
+    };
 
     env = [
       # "GTK_IM_MODULE,fcitx"

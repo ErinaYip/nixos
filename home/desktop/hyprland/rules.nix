@@ -5,16 +5,12 @@
       "opacity 0.8, match:focus false"
       # pseudo, class:^(fcitx)$
 
-      "float true, match:class .*float.*"
-      "center true, match:class .*float.*"
-      "size 50% 50%, match:class .*float.*"
+      "float true, match:initial_title .*float.*"
+      "center true, match:initial_title .*float.*"
+      "size 50% 50%, match:initial_title .*float.*"
 
       "no_blur on, match:fullscreen true"
       "opacity 1.0, match:fullscreen true"
-    ];
-
-    workspace = [
-      "10, persistent:true"
     ];
   };
 }
