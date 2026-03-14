@@ -1,6 +1,6 @@
 { config, pkgs, ... }: {
   i18n = {
-    defaultLocale = "zh_CN.UTF-8";
+    defaultLocale = "en_US.UTF-8";
     extraLocaleSettings = {
       LC_ADDRESS = "zh_CN.UTF-8";
       LC_IDENTIFICATION = "zh_CN.UTF-8";
@@ -15,13 +15,13 @@
     supportedLocales = [ "zh_CN.UTF-8/UTF-8" "en_US.UTF-8/UTF-8" ];
   };
 
-  i18n.inputMethod = {
-    enable = true;
-    type = "fcitx5";
-    fcitx5.waylandFrontend = true;
-    fcitx5.addons = with pkgs; [
-      fcitx5-rime
-      fcitx5-gtk
-    ];
-  };
+  # i18n.inputMethod = {
+  #   enable = true;
+  #   type = "fcitx5";
+  #   fcitx5.waylandFrontend = true;
+  #   fcitx5.addons = with pkgs; [
+  #     fcitx5-rime
+  #     fcitx5-gtk
+  #   ];
+  # };
 }

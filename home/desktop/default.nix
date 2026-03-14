@@ -3,6 +3,7 @@
     ./gtk.nix
     ./qt.nix
     ./cursor.nix
+    ./fcitx5.nix
 
     ./hyprland
     ./niri.nix
