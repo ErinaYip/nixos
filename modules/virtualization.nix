@@ -1,18 +1,18 @@
 { config, pkgs, ... }:
 {
-  virtualisation.libvirtd = {
-    enable = true;
-    qemu = {
-      package = pkgs.qemu_kvm;
-      runAsRoot = true;
-      swtpm.enable = true;
-      vhostUserPackages = [ pkgs.virtiofsd ];
-    };
-    onBoot = "ignore";
-    onShutdown = "shutdown";
-  };
-  programs.virt-manager.enable = true;
-  virtualisation.spiceUSBRedirection.enable = true;
+  # virtualisation.libvirtd = {
+  #   enable = true;
+  #   qemu = {
+  #     package = pkgs.qemu_kvm;
+  #     runAsRoot = true;
+  #     swtpm.enable = true;
+  #     vhostUserPackages = [ pkgs.virtiofsd ];
+  #   };
+  #   onBoot = "ignore";
+  #   onShutdown = "shutdown";
+  # };
+  # programs.virt-manager.enable = true;
+  # virtualisation.spiceUSBRedirection.enable = true;
 
   virtualisation.virtualbox = {
     host.enable = true;
