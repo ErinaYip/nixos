@@ -22,3 +22,4 @@ zstyle ':completion:*' cache-path ~/.cache/zsh
 zstyle ':completion:*' verbose true
 
 eval "$(direnv hook zsh)"
+eval "$(zoxide init zsh)"
