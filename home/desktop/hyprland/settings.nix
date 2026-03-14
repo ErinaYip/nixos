@@ -1,4 +1,4 @@
-{ config, lib, ... }: {
+{ ... }: {
   wayland.windowManager.hyprland.settings = {
     monitor = [
       "eDP-1, preferred, 1920x0, 1.6, transform, 1"
@@ -6,7 +6,7 @@
     ];
 
     exec-once = [
-      "fcitx5 --replace -d"
+      "fcitx5-remote -r"
       "noctalia-shell"
     ];
 
@@ -36,13 +36,12 @@
     };
 
     env = [
-      # "GTK_IM_MODULE,fcitx"
       "QT_IM_MODULE,fcitx"
       "XMODIFIERS,@im=fcitx"
       "QT_IM_MODULES,wayland;fcitx"
       "SDL_IM_MODULE,fcitx"
       "GLFW_IM_MODULE,ibus"
-
+      
       "GDK_BACKEND,wayland,x11"
       "QT_QPA_PLATFORM,wayland;xcb"
       "SDL_VIDEODRIVER,wayland"
