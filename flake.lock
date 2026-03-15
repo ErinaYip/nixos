@@ -294,8 +294,8 @@
         ]
       },
       "locked": {
-        "lastModified": 1773563568,
-        "narHash": "sha256-gUC/2Qyntvh2me/b5n/PZfi6aszcFqOmARLkQ+gwi1g=",
+        "lastModified": 1773568929,
+        "narHash": "sha256-blA0Zl9SZFhCek+IJo21KFJDTzKZ1XnrfF1y7w6KABU=",
         "path": "/home/era/Documents/oh-my-rime-nix",
         "type": "path"
       },
