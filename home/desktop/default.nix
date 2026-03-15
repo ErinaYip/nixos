@@ -3,7 +3,8 @@
     ./gtk.nix
     ./qt.nix
     ./cursor.nix
-    ./fcitx5.nix
+    # ./fcitx5.nix
+    ./oh-my-rime.nix
 
     ./hyprland
     ./niri.nix

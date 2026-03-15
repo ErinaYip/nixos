@@ -27,6 +27,10 @@
       url = "path:/home/era/Documents/erina-vim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    oh-my-rime-nix = {
+      url = "path:/home/era/Documents/oh-my-rime-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     opencode-flake = {
       url = "github:aodhanHayter/opencode-flake";
       inputs.nixpkgs.follows = "nixpkgs";

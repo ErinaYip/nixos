@@ -31,8 +31,8 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1773491457,
-        "narHash": "sha256-cSRekfebeyiNNv3z+cAmFjiyWMKVdGX+lUfz6cmd1yo=",
+        "lastModified": 1773491580,
+        "narHash": "sha256-NYNWPNkRZDLSX3o9O0qsp8WtIzJr5a19C87tPoHkWg4=",
         "path": "/home/era/Documents/erina-vim",
         "type": "path"
       },
@@ -139,6 +139,28 @@
         "type": "github"
       }
     },
+    "home-manager_2": {
+      "inputs": {
+        "nixpkgs": [
+          "oh-my-rime-nix",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1773422513,
+        "narHash": "sha256-MPjR48roW7CUMU6lu0+qQGqj92Kuh3paIulMWFZy+NQ=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "ef12a9a2b0f77c8fa3dda1e7e494fca668909056",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "ref": "master",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1770380644,
@@ -187,11 +209,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1773282481,
-        "narHash": "sha256-b/GV2ysM8mKHhinse2wz+uP37epUrSE+sAKXy/xvBY4=",
+        "lastModified": 1773389992,
+        "narHash": "sha256-wvfdLLWJ2I9oEpDd9PfMA8osfIZicoQ5MT1jIwNs9Tk=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "fe416aaedd397cacb33a610b33d60ff2b431b127",
+        "rev": "c06b4ae3d6599a672a6210b7021d699c351eebda",
         "type": "github"
       },
       "original": {
@@ -229,11 +251,11 @@
         "noctalia-qs": "noctalia-qs"
       },
       "locked": {
-        "lastModified": 1773455759,
-        "narHash": "sha256-+kYg/8RbMkKs9hTheqO+4IdOJXpIshNdRFgxqJZdq7M=",
+        "lastModified": 1773545031,
+        "narHash": "sha256-pbMCyf1S0jSiLSvfNQ6VABCCW0CFqqQhvlIU19zh438=",
         "owner": "noctalia-dev",
         "repo": "noctalia-shell",
-        "rev": "c6d0f651f57faa7980f0a3aa4343b8cf9687b1df",
+        "rev": "a3f84fde37f5ef4bcfff3724d549824b4d050692",
         "type": "github"
       },
       "original": {
@@ -264,6 +286,24 @@
         "type": "github"
       }
     },
+    "oh-my-rime-nix": {
+      "inputs": {
+        "home-manager": "home-manager_2",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1773563568,
+        "narHash": "sha256-gUC/2Qyntvh2me/b5n/PZfi6aszcFqOmARLkQ+gwi1g=",
+        "path": "/home/era/Documents/oh-my-rime-nix",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/era/Documents/oh-my-rime-nix",
+        "type": "path"
+      }
+    },
     "opencode-flake": {
       "inputs": {
         "nixpkgs": [
@@ -292,6 +332,7 @@
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2",
         "noctalia": "noctalia",
+        "oh-my-rime-nix": "oh-my-rime-nix",
         "opencode-flake": "opencode-flake",
         "silentSDDM": "silentSDDM"
       }
