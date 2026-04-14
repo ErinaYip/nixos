@@ -6,7 +6,7 @@
 with lib.demo; {
   imports = [./hardware.nix];
 
-  system.stateVersion = "24.11";
+  system.stateVersion = "25.11";
   demo.user.name = "demo";
 
   users.users.${config.demo.user.name} = {
