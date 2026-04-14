@@ -10,8 +10,10 @@ with lib.demo; let
 in {
   options.demo.cli.git = with types; {
     enable = mkBoolOpt false "Whether to enable the git demo module.";
-    userName = mkOpt str "Demo User" "Git user name.";
-    userEmail = mkOpt str "demo@example.com" "Git user email.";
+    settings.user = {
+      name = mkOpt str "Demo User" "Git user name.";
+      email = mkOpt str "demo@example.com" "Git user email.";
+    };
   };
 
   config = mkIf cfg.enable {
@@ -20,8 +22,7 @@ in {
     demo.home.extraOptions = {
       programs.git = {
         enable = true;
-        userName = cfg.userName;
-        userEmail = cfg.userEmail;
+        settings = cfg.settings;
       };
     };
   };

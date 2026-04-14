@@ -16,8 +16,8 @@ with lib.demo; {
 
   demo.presets.development = enabled;
 
-  demo.cli.git = {
-    userName = "Laptop Demo";
-    userEmail = "laptop@example.com";
+  demo.cli.git.settings.user = {
+    name = "Laptop Demo";
+    email = "laptop@example.com";
   };
 }
