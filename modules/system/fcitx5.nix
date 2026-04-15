@@ -9,6 +9,8 @@ lib.erinite.mkModule args {
   category = "system";
   name = "fcitx5";
 
+  imports = [ inputs.oh-my-rime-nix.homeModules.default ];
+
   configFn = { ... }: {
     i18n.inputMethod = {
       enable = true;
@@ -27,7 +29,6 @@ lib.erinite.mkModule args {
         hash = "sha256-VVCFbxHxNxvGfnPBXolG9/lm4WnDjZl6LGneL+FmVZo=";
       };
     in {
-      imports = [ inputs.oh-my-rime-nix.homeModules.default ];
 
       programs.oh-my-rime.enable = true;
 
