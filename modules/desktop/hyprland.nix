@@ -5,14 +5,10 @@
   ...
 }:
 let
-  cfg = config.demo.desktop.hyprland;
+  cfg = config.erinite.desktop.hyprland;
 in {
-  options.demo.desktop.hyprland = {
-    enable = lib.mkOption {
-      type = lib.types.bool;
-      default = false;
-      description = "Enable Hyprland.";
-    };
+  options.erinite.desktop.hyprland = {
+    enable = lib.erinite.mkBoolOpt false "Enable Hyprland.";
   };
 
   config = lib.mkIf cfg.enable {

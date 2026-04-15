@@ -1,32 +1,37 @@
 {
   config,
   lib,
+  hostName,
+  defaults,
   ...
 }:
-{
+let
+  inherit (lib.erinite) enabled;
+in {
   imports = [./hardware.nix];
 
+  networking.hostName = hostName;
   system.stateVersion = "25.11";
 
-  users.users.demo = {
+  users.users.${defaults.username} = {
     isNormalUser = true;
     extraGroups = ["wheel"];
   };
 
-  demo.home = {
-    enable = true;
-    user = "demo";
-  };
+  erinite = {
+    home = {
+      enable = true;
+      username = defaults.username;
+    };
 
-  demo.desktop.hyprland = {
-    enable = true;
-  };
+    desktop.hyprland = enabled;
 
-  demo.cli.git = {
-    enable = true;
-    user = {
-      name = "Laptop Demo";
-      email = "laptop@example.com";
+    cli.git = {
+      enable = true;
+      user = {
+        name = "Laptop Demo";
+        email = "laptop@example.com";
+      };
     };
   };
 }

@@ -1,5 +1,5 @@
 {
-  description = "Minimal modular NixOS flake";
+  description = "Erinite Modular NixOS Architecture";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -9,35 +9,37 @@
     };
   };
 
-  outputs = {nixpkgs, ...} @ inputs: let
+  outputs = {self, nixpkgs, home-manager, ...} @ inputs: let
     system = "x86_64-linux";
     pkgs = import nixpkgs {inherit system;};
 
-    mkLib = lib:
-      let
-        demoLib = import ./lib {inherit lib;};
-      in
-        lib // demoLib // inputs.home-manager.lib;
+    defaults = {
+      inherit system;
+      username = "demo";
+    };
 
-    lib = mkLib nixpkgs.lib;
+    mkLib = pkgs: pkgs.lib.extend (final: prev: {
+      erinite = import ./lib {lib = prev;};
+    });
 
-    addHost = hostName:
-      nixpkgs.lib.nixosSystem {
-        inherit system;
-        modules = [
-          ./modules/home.nix
-          ./modules/desktop.nix
-          ./modules/cli/git.nix
-          ./hosts/${hostName}
-          inputs.home-manager.nixosModules.home-manager
-        ];
-        specialArgs = {inherit lib inputs;};
+    addHost = hostName: nixpkgs.lib.nixosSystem {
+      inherit system;
+      modules = [
+        home-manager.nixosModules.home-manager
+        ./core/home-manager.nix
+        ./modules
+        (./. + "/hosts/${hostName}")
+      ];
+      specialArgs = {
+        lib = mkLib nixpkgs;
+        inherit inputs hostName defaults;
       };
+    };
   in {
     nixosConfigurations.laptop = addHost "laptop";
 
     devShells.${system}.default = pkgs.mkShell {
-      buildInputs = [inputs.home-manager.packages.${system}.default];
+      buildInputs = [home-manager.packages.${system}.default];
     };
   };
 }

@@ -1,26 +1,37 @@
-{lib}:
-with lib; rec {
-  mkOpt = type: def: desc:
-    mkOption {type = type; default = def; description = desc;};
+{lib, ...}:
 
-  mkBoolOpt = def: desc:
-    mkOption {type = types.bool; default = def; description = desc;};
+lib.makeExtensible (final: {
+  mkOpt = type: default: description:
+    lib.mkOption {inherit type default description;};
 
-  mkStrOpt = def: desc:
-    mkOption {type = types.str; default = def; description = desc;};
+  mkBoolOpt = default: description:
+    final.mkOpt lib.types.bool default description;
+
+  mkStrOpt = default: description:
+    final.mkOpt lib.types.str default description;
+
+  enabled = {enable = true;};
+  disabled = {enable = false;};
 
   getDir = dir:
-    mapAttrs
+    let
+      d = toString dir;
+    in
+    lib.mapAttrs
       (file: type:
-        if type == "directory" then getDir "${dir}/${file}" else type
+        if type == "directory" then final.getDir (d + "/" + file) else type
       )
-      (builtins.readDir dir);
+      (builtins.readDir d);
 
   files = dir:
-    collect isString (mapAttrsRecursive (path: _: concatStringsSep "/" path) (getDir dir));
+    let
+      d = toString dir;
+      allFiles = lib.collect lib.isString (
+        lib.mapAttrsRecursive (path: _: lib.concatStringsSep "/" path) (final.getDir dir)
+      );
+    in
+    map (f: d + "/" + f)
+      (lib.filter (f: lib.hasSuffix ".nix" f && f != "default.nix") allFiles);
 
-  collectModules = dir:
-    filter
-      (file: hasSuffix ".nix" file && file != "default.nix")
-      (files dir);
-}
+  modules = dir: final.files dir;
+})

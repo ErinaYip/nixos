@@ -1,4 +1,4 @@
 {lib, ...}:
 {
-  imports = lib.demo.collectModules ./.;
+  imports = lib.erinite.modules ./.;
 }
