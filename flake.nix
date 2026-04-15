@@ -16,6 +16,7 @@
     defaults = {
       inherit system;
       username = "demo";
+      stateVersion = "26.05";
     };
 
     mkLib = pkgs: pkgs.lib.extend (final: prev: {
@@ -25,7 +26,6 @@
     addHost = hostName: nixpkgs.lib.nixosSystem {
       inherit system;
       modules = [
-        home-manager.nixosModules.home-manager
         ./modules/home.nix
         ./modules
         (./. + "/hosts/${hostName}")
