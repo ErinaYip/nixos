@@ -44,7 +44,7 @@
 
     default = {
       inherit system;
-      username = "demo";
+      username = "era";
     };
 
     mkLib = pkgs: pkgs.lib.extend (final: prev: {
