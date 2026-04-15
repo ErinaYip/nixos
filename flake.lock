@@ -5,3 +5,4 @@
 # - Create desktop.nix module for hyprland configuration
 # - Add demo.desktop.hyprland option to enable wayland desktop
 # - Include hyprland in dev shell
+# refactor: remove hyprland and simplify modules

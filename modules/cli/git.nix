@@ -8,3 +8,4 @@
 # - Update all modules to use zenyte.* options
 # - Add devShell to flake.nix
 # refactor: rename zenyte to demo for clarity
+# refactor: remove hyprland and simplify modules

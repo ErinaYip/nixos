@@ -15,3 +15,4 @@
 # - Include hyprland in dev shell
 # feat: add program dispatcher and types module
 # feat: add eza module and refactor cli configuration
+# refactor: remove hyprland and simplify modules

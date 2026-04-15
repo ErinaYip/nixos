@@ -9,3 +9,4 @@
 # - Add demo.home.extraOptions to pass config to home-manager
 # - desktop.nix injects wayland.windowManager.hyprland via extraOptions
 # - Aligns with root nixos architecture
+# refactor: remove hyprland and simplify modules

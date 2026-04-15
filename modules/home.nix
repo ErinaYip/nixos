@@ -13,3 +13,4 @@
 # - desktop.nix injects wayland.windowManager.hyprland via extraOptions
 # - Aligns with root nixos architecture
 # feat: add eza module and refactor cli configuration
+# refactor: remove hyprland and simplify modules
