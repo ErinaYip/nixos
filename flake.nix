@@ -16,20 +16,19 @@
     system = "x86_64-linux";
     pkgs = import nixpkgs {inherit system;};
 
+    demoTypes = {
+      homeOnly = [
+        "starship" "bat" "zsh" "fish" "alacritty" "kitty" "fzf" "exa" "delta" "direnv" "eza"
+      ];
+      nixosOnly = [
+        "docker" "bluetooth" "virtualisation" "podman" "flatpak"
+      ];
+      both = [
+        "git" "vim" "tmux" "neovim"
+      ];
+    };
+
     mkLib = nixpkgs:
-      let
-        demoTypes = {
-          homeOnly = [
-            "starship" "bat" "zsh" "fish" "alacritty" "kitty" "fzf" "exa" "delta" "direnv"
-          ];
-          nixosOnly = [
-            "docker" "bluetooth" "virtualisation" "podman" "flatpak"
-          ];
-          both = [
-            "git" "vim" "tmux" "neovim"
-          ];
-        };
-      in
       nixpkgs.lib.extend (self: super: {
         demo = import ./lib {
           lib = self;
@@ -46,6 +45,7 @@
           ./modules/home.nix
           ./modules/desktop.nix
           ./modules/programs.nix
+          ./modules/cli.nix
           ./modules/cli/git.nix
           (./. + "/hosts/${hostName}")
           inputs.hyprland.nixosModules.default

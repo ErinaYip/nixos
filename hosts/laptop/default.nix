@@ -29,4 +29,6 @@ with lib.demo; {
       email = "laptop@example.com";
     };
   };
+
+  demo.cli.eza = true;
 }

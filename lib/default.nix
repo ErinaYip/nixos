@@ -35,6 +35,8 @@ with lib; rec {
       (file: hasSuffix ".nix" file && file != "default.nix")
       (files dir));
 
+  inherit types;
+
   dispatcher = import ./dispatcher.nix {
     inherit lib types;
   };

@@ -32,13 +32,15 @@ in {
   config = lib.mkIf cfg.enable {
     home-manager.useGlobalPkgs = true;
 
-    home-manager.users.${cfg.user} = {
-      home.username = cfg.user;
-      home.homeDirectory = "/home/${cfg.user}";
-      home.stateVersion = config.system.stateVersion;
-
-      xdg.enable = true;
-    } // cfg.extraOptions;
+    home-manager.users.${cfg.user} = lib.mkMerge [
+      {
+        home.username = cfg.user;
+        home.homeDirectory = "/home/${cfg.user}";
+        home.stateVersion = config.system.stateVersion;
+        xdg.enable = true;
+      }
+      cfg.extraOptions
+    ];
 
     environment.systemPackages = [pkgs.home-manager];
   };
