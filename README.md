@@ -108,12 +108,24 @@ lib.makeExtensible (final: {
   disabled = { enable = false; };
 
   # 3. 自动化目录扫描（用于 modules/default.nix）
+  # 目录中包含 default.nix 时优先导入 default.nix，避免深度递归
   modules = dir:
     let
       d = toString dir;
+      getDir = dir':
+        lib.mapAttrs
+          (file: type:
+            if type == "directory" then
+              if builtins.pathExists (d + "/" + file + "/default.nix") then
+                { "default.nix" = "regular"; }
+              else
+                final.getDir (d + "/" + file)
+            else type
+          )
+          (builtins.readDir d);
       allFiles = lib.collect lib.isString (
         lib.mapAttrsRecursive (path: _: lib.concatStringsSep "/" path)
-          (final.getDir dir)
+          (getDir dir)
       );
     in
     map (f: d + "/" + f)
@@ -204,6 +216,8 @@ lib.erinite.mkModule args {
   category = "system";
   name = "fcitx5";
 
+  imports = [ inputs.oh-my-rime-nix.homeModules.default ];
+
   configFn = { ... }: {
     i18n.inputMethod = {
       enable = true;
@@ -218,7 +232,6 @@ lib.erinite.mkModule args {
     erinite.home.config = let
       wanxiang = "wanxiang-lts-zh-hans";
     in {
-      imports = [ inputs.oh-my-rime-nix.homeModules.default ];
       programs.oh-my-rime.enable = true;
       # ... 其他 Home Manager 配置
     };
