@@ -43,3 +43,4 @@
 # feat: add hyprland, mango, and theme inputs
 # feat: add mechrevo host configuration
 # fix: rename defaults to default in flake
+# fix: update default username in flake
