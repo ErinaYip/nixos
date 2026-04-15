@@ -5,3 +5,4 @@
 # feat: enable appimage in nix module
 # system/nix: migrate ignore cachix substituters
 # system/nix: remove noctalia and hyprland cachix substituters
+# feat: add nix module with flakes and gc
