@@ -7,8 +7,6 @@ with lib; rec {
 
   enabled = {enable = true;};
   disabled = {enable = false;};
-  enableT = {enable = true;};
-  enableF = {enable = false;};
 
   getDir = dir:
     mapAttrs
