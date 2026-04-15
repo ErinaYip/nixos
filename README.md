@@ -204,6 +204,8 @@ lib.erinite.mkModule args {
   category = "system";
   name = "fcitx5";
 
+  imports = [ inputs.oh-my-rime-nix.homeModules.default ];
+
   configFn = { ... }: {
     i18n.inputMethod = {
       enable = true;
@@ -218,7 +220,6 @@ lib.erinite.mkModule args {
     erinite.home.config = let
       wanxiang = "wanxiang-lts-zh-hans";
     in {
-      imports = [ inputs.oh-my-rime-nix.homeModules.default ];
       programs.oh-my-rime.enable = true;
       # ... 其他 Home Manager 配置
     };
