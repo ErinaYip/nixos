@@ -13,15 +13,15 @@ in {
   networking.hostName = hostName;
   system.stateVersion = "25.11";
 
-  users.users.${defaults.username} = {
-    isNormalUser = true;
-    extraGroups = ["wheel"];
-  };
-
   erinite = {
     home = {
       enable = true;
       username = defaults.username;
+    };
+
+    system = {
+      nix = enabled;
+      users = enabled;
     };
 
     desktop.hyprland = enabled;
