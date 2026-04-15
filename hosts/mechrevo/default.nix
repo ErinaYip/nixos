@@ -29,3 +29,4 @@
 # chore: update git user config for mechrevo host
 # feat: configure boot engine and nvidia prime on mechrevo
 # feat: enable nix module on mechrevo
+# refactor: restructure mechrevo host configuration
