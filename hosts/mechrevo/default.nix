@@ -9,22 +9,13 @@ with lib.erinite; {
     ./hardware-configuration.nix
   ];
 
-  networking.hostName = hostName;
-  system.stateVersion = "25.11";
-
-  users.users.${defaults.username} = {
-    isNormalUser = true;
-    extraGroups = ["wheel"];
-  };
-
   erinite = {
-    home = {
-      enable = true;
-      username = defaults.username;
-    };
-
     system = {
       nix = enabled;
+      nix-ld = enabled;
+      users = enabled;
+      fcitx5 = enabled;
+      i18n = enabled;
 
       nvidia = {
         enable = true;
