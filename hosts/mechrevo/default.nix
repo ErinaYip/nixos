@@ -26,3 +26,4 @@
 # system/mechrevo: add home configuration with security packages
 # refactor: use presets for mechrevo config
 # feat: add mechrevo host config with nvidia prime
+# chore: update git user config for mechrevo host
