@@ -23,3 +23,4 @@
 # - modules/: business logic (auto-loaded)
 # - hosts/: host-specific configuration
 # refactor: migrate modules to mkModule helper
+# refactor: move init.defaultBranch to settings
