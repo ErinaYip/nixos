@@ -27,7 +27,8 @@ lib.makeExtensible (final: {
     let
       d = toString dir;
       allFiles = lib.collect lib.isString (
-        lib.mapAttrsRecursive (path: _: lib.concatStringsSep "/" path) (final.getDir dir)
+        lib.mapAttrsRecursive (path: _: lib.concatStringsSep "/" path)
+          (final.getDir dir)
       );
     in
     map (f: d + "/" + f)
