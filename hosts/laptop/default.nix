@@ -3,7 +3,7 @@
   lib,
   ...
 }:
-with lib.demo; {
+{
   imports = [./hardware.nix];
 
   system.stateVersion = "25.11";
@@ -24,11 +24,9 @@ with lib.demo; {
 
   demo.cli.git = {
     enable = true;
-    settings.user = {
+    user = {
       name = "Laptop Demo";
       email = "laptop@example.com";
     };
   };
-
-  demo.cli.eza = true;
 }

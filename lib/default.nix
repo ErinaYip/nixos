@@ -1,43 +1,26 @@
-{lib, types, ...}:
+{lib}:
 with lib; rec {
-  mkOpt = type: default: description:
-    mkOption {inherit type default description;};
+  mkOpt = type: def: desc:
+    mkOption {type = type; default = def; description = desc;};
 
-  mkBoolOpt = default: description:
-    mkOption {type = types.bool; default = default; description = description;};
+  mkBoolOpt = def: desc:
+    mkOption {type = types.bool; default = def; description = desc;};
 
-  mkStrOpt = default: description:
-    mkOption {type = types.str; default = default; description = description;};
-
-  mkAttrOpt = default: description:
-    mkOption {type = types.attrs; default = default; description = description;};
-
-  enabled = {enable = true;};
-  disabled = {enable = false;};
+  mkStrOpt = def: desc:
+    mkOption {type = types.str; default = def; description = desc;};
 
   getDir = dir:
     mapAttrs
-    (
-      file: type:
-        if type == "directory"
-        then getDir "${dir}/${file}"
-        else type
-    )
-    (builtins.readDir dir);
+      (file: type:
+        if type == "directory" then getDir "${dir}/${file}" else type
+      )
+      (builtins.readDir dir);
 
   files = dir:
     collect isString (mapAttrsRecursive (path: _: concatStringsSep "/" path) (getDir dir));
 
-  validFiles = dir:
-    map
-    (file: dir + "/${file}")
-    (filter
+  collectModules = dir:
+    filter
       (file: hasSuffix ".nix" file && file != "default.nix")
-      (files dir));
-
-  inherit types;
-
-  dispatcher = import ./dispatcher.nix {
-    inherit lib types;
-  };
+      (files dir);
 }

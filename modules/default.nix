@@ -1,3 +1,4 @@
-{lib, ...}: {
-  imports = lib.demo.validFiles ./.;
+{lib, ...}:
+{
+  imports = lib.demo.collectModules ./.;
 }

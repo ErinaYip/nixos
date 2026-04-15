@@ -1,47 +1,33 @@
 {
   config,
   lib,
-  inputs,
   pkgs,
-  hostName,
   ...
 }:
-with lib; let
+let
   cfg = config.demo.home;
 in {
-  imports = [inputs.home-manager.nixosModules.home-manager];
-
-  options.demo.home = with types; {
-    enable = mkOption {
-      type = types.bool;
+  options.demo.home = {
+    enable = lib.mkOption {
+      type = lib.types.bool;
       default = false;
-      description = "Enable home-manager integration";
+      description = "Enable home-manager.";
     };
-    user = mkOption {
-      type = types.str;
+    user = lib.mkOption {
+      type = lib.types.str;
       default = "demo";
-      description = "Username";
-    };
-    extraOptions = mkOption {
-      type = types.attrs;
-      default = {};
-      description = "Extra home-manager options";
+      description = "Username.";
     };
   };
 
   config = lib.mkIf cfg.enable {
     home-manager.useGlobalPkgs = true;
-
-    home-manager.users.${cfg.user} = lib.mkMerge [
-      {
-        home.username = cfg.user;
-        home.homeDirectory = "/home/${cfg.user}";
-        home.stateVersion = config.system.stateVersion;
-        xdg.enable = true;
-      }
-      cfg.extraOptions
-    ];
-
+    home-manager.users.${cfg.user} = {
+      home.username = cfg.user;
+      home.homeDirectory = "/home/${cfg.user}";
+      home.stateVersion = config.system.stateVersion;
+      xdg.enable = true;
+    };
     environment.systemPackages = [pkgs.home-manager];
   };
 }

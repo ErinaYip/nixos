@@ -1,11 +1,8 @@
 {
-  description = "Minimal modular NixOS flake demo";
+  description = "Minimal modular NixOS flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    hyprland = {
-      url = "github:hyprwm/Hyprland";
-    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -16,57 +13,31 @@
     system = "x86_64-linux";
     pkgs = import nixpkgs {inherit system;};
 
-    demoTypes = {
-      homeOnly = [
-        "starship" "bat" "zsh" "fish" "alacritty" "kitty" "fzf" "exa" "delta" "direnv" "eza"
-      ];
-      nixosOnly = [
-        "docker" "bluetooth" "virtualisation" "podman" "flatpak"
-      ];
-      both = [
-        "git" "vim" "tmux" "neovim"
-      ];
-    };
+    mkLib = lib:
+      let
+        demoLib = import ./lib {inherit lib;};
+      in
+        lib // demoLib // inputs.home-manager.lib;
 
-    mkLib = nixpkgs:
-      nixpkgs.lib.extend (self: super: {
-        demo = import ./lib {
-          lib = self;
-          types = demoTypes // self.types;
-        };
-      }
-      // inputs.home-manager.lib);
+    lib = mkLib nixpkgs.lib;
 
-    addHost = {hostName}:
+    addHost = hostName:
       nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          ./modules/default.nix
           ./modules/home.nix
           ./modules/desktop.nix
-          ./modules/programs.nix
-          ./modules/cli.nix
           ./modules/cli/git.nix
-          (./. + "/hosts/${hostName}")
-          inputs.hyprland.nixosModules.default
+          ./hosts/${hostName}
+          inputs.home-manager.nixosModules.home-manager
         ];
-        specialArgs = {
-          lib = mkLib nixpkgs;
-          inherit inputs hostName;
-        };
+        specialArgs = {inherit lib inputs;};
       };
   in {
-    nixosConfigurations = {
-      laptop = addHost {
-        hostName = "laptop";
-      };
-    };
+    nixosConfigurations.laptop = addHost "laptop";
 
     devShells.${system}.default = pkgs.mkShell {
-      buildInputs = [
-        inputs.home-manager.packages.${system}.default
-        inputs.hyprland.packages.${system}.default
-      ];
+      buildInputs = [inputs.home-manager.packages.${system}.default];
     };
   };
 }

@@ -4,21 +4,31 @@
   pkgs,
   ...
 }:
-with lib;
-with lib.demo; let
+let
   cfg = config.demo.cli.git;
 in {
-  options.demo.cli.git = with types; {
-    enable = mkBoolOpt false "Whether to enable the git module.";
-    settings.user = {
-      name = mkStrOpt "Demo User" "Git user name.";
-      email = mkStrOpt "demo@example.com" "Git user email.";
+  options.demo.cli.git = {
+    enable = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Enable git.";
+    };
+    user = {
+      name = lib.mkOption {
+        type = lib.types.str;
+        default = "Demo User";
+        description = "Git user name.";
+      };
+      email = lib.mkOption {
+        type = lib.types.str;
+        default = "demo@example.com";
+        description = "Git user email.";
+      };
     };
   };
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     environment.systemPackages = [pkgs.git];
-
     programs.git.enable = true;
   };
 }
