@@ -3,3 +3,4 @@
 # refactor: rename home.config to home
 # refactor: split stateVersion into system and home
 # refactor: restructure home module with imports and options
+# refactor: format home module imports and fix config reference
