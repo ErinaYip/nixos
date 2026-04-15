@@ -16,7 +16,6 @@ lib.erinite.mkModule args {
         zstd
         stdenv.cc.cc.lib
       ];
-      asdasdasd = true;
     };
   };
 }
