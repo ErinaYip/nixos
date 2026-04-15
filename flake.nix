@@ -44,7 +44,7 @@
 
     default = {
       inherit system;
-      username = "demo";
+      username = "era";
       systemStateVersion = "25.11";
       homeStateVersion = "25.11";
     };
