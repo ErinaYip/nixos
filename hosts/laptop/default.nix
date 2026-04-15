@@ -8,3 +8,4 @@
 # - Add home-manager module with zenyte.home options
 # - Update all modules to use zenyte.* options
 # - Add devShell to flake.nix
+# refactor: rename zenyte to demo for clarity
