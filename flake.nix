@@ -14,3 +14,4 @@
 # - Add demo.desktop.hyprland option to enable wayland desktop
 # - Include hyprland in dev shell
 # feat: add program dispatcher and types module
+# feat: add eza module and refactor cli configuration

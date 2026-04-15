@@ -12,3 +12,4 @@
 # - Add demo.home.extraOptions to pass config to home-manager
 # - desktop.nix injects wayland.windowManager.hyprland via extraOptions
 # - Aligns with root nixos architecture
+# feat: add eza module and refactor cli configuration

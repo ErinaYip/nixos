@@ -15,3 +15,4 @@
 # - Create desktop.nix module for hyprland configuration
 # - Add demo.desktop.hyprland option to enable wayland desktop
 # - Include hyprland in dev shell
+# feat: add eza module and refactor cli configuration

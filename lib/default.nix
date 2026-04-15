@@ -9,3 +9,4 @@
 # - Update all modules to use zenyte.* options
 # - Add devShell to flake.nix
 # feat: add program dispatcher and types module
+# feat: add eza module and refactor cli configuration

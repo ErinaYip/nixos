@@ -1,2 +1,1 @@
-# feat: add program dispatcher and types module
 # feat: add eza module and refactor cli configuration
