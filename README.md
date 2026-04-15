@@ -84,6 +84,25 @@ lib.makeExtensible (final: {
   mkAttrOpt = valueType: default: description: 
     final.mkOpt (lib.types.attrsOf valueType) default description;
 
+  # 模块工厂函数
+  mkModule = args: {category, name, opts ? {}, defaultSettings ? {}, configFn}:
+    let
+      cfg = args.config.erinite.${category}.${name};
+      mergedSettings = lib.mkMerge [defaultSettings cfg.settings];
+    in {
+      options.erinite.${category}.${name} = {
+        enable = final.mkBoolOpt false "Whether to enable ${name}.";
+        settings = final.mkOpt lib.types.attrs {} "Configuration settings for ${name}.";
+      } // opts;
+
+      config = lib.mkIf cfg.enable (
+        configFn {
+          inherit cfg;
+          settings = mergedSettings;
+        }
+      );
+    };
+
   # 2. 语义化常量
   enabled = { enable = true; };
   disabled = { enable = false; };

@@ -26,3 +26,4 @@
 # - hosts/: host-specific configuration
 # docs: update README with Erinite architecture spec
 # feat: add list and attrs option helpers
+# feat: add mkModule helper for module creation
