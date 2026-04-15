@@ -9,9 +9,12 @@ lib.erinite.mkModule args {
   category = "system";
   name = "fcitx5";
 
-  imports = [ inputs.oh-my-rime-nix.homeModules.default ];
 
   configFn = { ... }: {
+    home-manager.sharedModules = [ 
+      inputs.oh-my-rime-nix.homeModules.default 
+    ];
+
     i18n.inputMethod = {
       enable = true;
       type = "fcitx5";
@@ -29,7 +32,6 @@ lib.erinite.mkModule args {
         hash = "sha256-VVCFbxHxNxvGfnPBXolG9/lm4WnDjZl6LGneL+FmVZo=";
       };
     in {
-
       programs.oh-my-rime.enable = true;
 
       wayland.windowManager.hyprland.settings.exec-once = [ 
