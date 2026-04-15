@@ -2,19 +2,29 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }:
-{
-  options.demo.desktop.hyprland = with lib; {
-    enable = lib.mkOption {
-      type = lib.types.bool;
+with lib; let
+  cfg = config.demo.desktop.hyprland;
+in {
+  options.demo.desktop.hyprland = with types; {
+    enable = mkOption {
+      type = types.bool;
       default = false;
       description = "Whether to enable Hyprland.";
     };
   };
 
-  config = lib.mkIf config.demo.desktop.hyprland.enable {
-    programs.hyprland.enable = true;
+  config = lib.mkIf cfg.enable {
+    # Inject home-manager config via extraOptions
+    demo.home.extraOptions.wayland = {
+      windowManager = {
+        hyprland = {
+          enable = true;
+        };
+      };
+    };
 
     environment.sessionVariables = {
       NIXOS_OZONE_WL = "1";
