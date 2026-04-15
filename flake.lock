@@ -6,3 +6,4 @@
 # - Add demo.desktop.hyprland option to enable wayland desktop
 # - Include hyprland in dev shell
 # refactor: remove hyprland and simplify modules
+# feat: add hyprland and related inputs
