@@ -34,3 +34,4 @@
 # refactor: rename defaults to default
 # refactor: split stateVersion into system and home
 # feat: add hyprland, mango, and theme inputs
+# feat: add mechrevo host configuration
