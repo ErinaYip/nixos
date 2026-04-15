@@ -45,6 +45,7 @@
     default = {
       inherit system;
       username = "era";
+      stateVersion = "26.05";
     };
 
     mkLib = pkgs: pkgs.lib.extend (final: prev: {
