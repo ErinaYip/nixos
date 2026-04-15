@@ -1,3 +1,3 @@
 {lib, ...}: {
-  imports = lib.demo.validFiles ./.;
+  imports = lib.zenyte.validFiles ./.;
 }

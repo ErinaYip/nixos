@@ -3,21 +3,28 @@
   lib,
   ...
 }:
-with lib.demo; {
+with lib.zenyte; {
   imports = [./hardware.nix];
 
   system.stateVersion = "25.11";
-  demo.user.name = "demo";
 
-  users.users.${config.demo.user.name} = {
+  users.users.demo = {
     isNormalUser = true;
     extraGroups = ["wheel"];
   };
 
-  demo.presets.development = enabled;
+  zenyte.home = {
+    enable = true;
+    user = "demo";
+  };
 
-  demo.cli.git.settings.user = {
-    name = "Laptop Demo";
-    email = "laptop@example.com";
+  zenyte.presets.development = enabled;
+
+  zenyte.cli.git = {
+    enable = true;
+    settings.user = {
+      name = "Laptop Demo";
+      email = "laptop@example.com";
+    };
   };
 }

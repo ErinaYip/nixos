@@ -3,7 +3,14 @@ with lib; rec {
   mkOpt = type: default: description:
     mkOption {inherit type default description;};
 
-  mkBoolOpt = mkOpt types.bool;
+  mkBoolOpt = default: description:
+    mkOption {type = types.bool; default = default; description = description;};
+
+  mkStrOpt = default: description:
+    mkOption {type = types.str; default = default; description = description;};
+
+  mkAttrOpt = default: description:
+    mkOption {type = types.attrs; default = default; description = description;};
 
   enabled = {enable = true;};
   disabled = {enable = false;};

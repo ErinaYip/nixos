@@ -5,25 +5,20 @@
   ...
 }:
 with lib;
-with lib.demo; let
-  cfg = config.demo.cli.git;
+with lib.zenyte; let
+  cfg = config.zenyte.cli.git;
 in {
-  options.demo.cli.git = with types; {
-    enable = mkBoolOpt false "Whether to enable the git demo module.";
+  options.zenyte.cli.git = with types; {
+    enable = mkBoolOpt false "Whether to enable the git module.";
     settings.user = {
-      name = mkOpt str "Demo User" "Git user name.";
-      email = mkOpt str "demo@example.com" "Git user email.";
+      name = mkStrOpt "Demo User" "Git user name.";
+      email = mkStrOpt "demo@example.com" "Git user email.";
     };
   };
 
   config = mkIf cfg.enable {
     environment.systemPackages = [pkgs.git];
 
-    demo.home.extraOptions = {
-      programs.git = {
-        enable = true;
-        settings = cfg.settings;
-      };
-    };
+    programs.git.enable = true;
   };
 }

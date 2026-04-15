@@ -11,11 +11,13 @@
 
   outputs = {nixpkgs, ...} @ inputs: let
     system = "x86_64-linux";
+    pkgs = import nixpkgs {inherit system;};
 
     mkLib = nixpkgs:
       nixpkgs.lib.extend (self: super: {
-        demo = import ./lib {lib = self;};
-      });
+        zenyte = import ./lib {lib = self;};
+      }
+      // inputs.home-manager.lib);
 
     addHost = {hostName}:
       nixpkgs.lib.nixosSystem {
@@ -34,6 +36,12 @@
       laptop = addHost {
         hostName = "laptop";
       };
+    };
+
+    devShells.${system}.default = pkgs.mkShell {
+      buildInputs = [
+        inputs.home-manager.packages.${system}.default
+      ];
     };
   };
 }

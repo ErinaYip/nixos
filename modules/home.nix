@@ -2,33 +2,32 @@
   config,
   lib,
   inputs,
+  pkgs,
+  hostName,
   ...
 }:
-with lib; {
+with lib;
+with lib.zenyte; let
+  cfg = config.zenyte.home;
+in {
   imports = [inputs.home-manager.nixosModules.home-manager];
 
-  options.demo = with types; {
-    user.name = mkOption {
-      type = str;
-      default = "demo";
-      description = "Primary user name for this host.";
-    };
-
-    home.extraOptions = mkOption {
-      type = attrs;
-      default = {};
-      description = "Additional Home Manager options.";
-    };
+  options.zenyte.home = with types; {
+    enable = mkBoolOpt false "Enable home-manager integration";
+    user = mkStrOpt "demo" "Username";
   };
 
-  config = {
+  config = lib.mkIf cfg.enable {
     home-manager.useGlobalPkgs = true;
 
-    home-manager.users.${config.demo.user.name} = {
-      home.username = config.demo.user.name;
-      home.homeDirectory = "/home/${config.demo.user.name}";
+    home-manager.users.${cfg.user} = {
+      home.username = cfg.user;
+      home.homeDirectory = "/home/${cfg.user}";
       home.stateVersion = config.system.stateVersion;
-      programs.home-manager.enable = true;
-    } // config.demo.home.extraOptions;
+
+      xdg.enable = true;
+    };
+
+    environment.systemPackages = [pkgs.home-manager];
   };
 }
