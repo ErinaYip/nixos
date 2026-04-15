@@ -67,7 +67,6 @@
     };
   in {
     nixosConfigurations = {
-      laptop = addHost "laptop";
       mechrevo = addHost "mechrevo";
     };
 
