@@ -68,6 +68,7 @@
   in {
     nixosConfigurations = {
       laptop = addHost "laptop";
+      mechrevo = addHost "mechrevo";
     };
 
     devShells.${system}.default = pkgs.mkShell {
