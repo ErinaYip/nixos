@@ -54,19 +54,17 @@
     addHost = hostName: nixpkgs.lib.nixosSystem {
       inherit system;
       modules = [
-        home-manager.nixosModules.home-manager
         ./modules/home.nix
         ./modules
         (./. + "/hosts/${hostName}")
       ];
       specialArgs = {
         lib = mkLib nixpkgs;
-        inherit inputs hostName defaults;
+        inherit inputs hostName default;
       };
     };
   in {
     nixosConfigurations = {
-      laptop = addHost "laptop";
       mechrevo = addHost "mechrevo";
     };
 
