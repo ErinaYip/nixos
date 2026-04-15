@@ -16,11 +16,13 @@ lib.makeExtensible (final: {
   mkAttrOpt = valueType: default: description:
     final.mkOpt (lib.types.attrsOf valueType) default description;
 
-  mkModule = args: {category, name, opts ? {}, defaultSettings ? {}, configFn}:
+  mkModule = args: { category, name, imports ? [], opts ? {}, defaultSettings ? {}, configFn }:
     let
       cfg = args.config.erinite.${category}.${name};
-      mergedSettings = args.lib.mkMerge [defaultSettings cfg.settings];
+      mergedSettings = args.lib.mkMerge [ defaultSettings cfg.settings ];
     in {
+      inherit imports;
+
       options.erinite.${category}.${name} = {
         enable = final.mkBoolOpt false "Whether to enable ${name}.";
         settings = final.mkOpt args.lib.types.attrs {} "Configuration settings for ${name}.";
