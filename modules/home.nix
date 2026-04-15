@@ -4,3 +4,4 @@
 # refactor: split stateVersion into system and home
 # refactor: restructure home module with imports and options
 # refactor: format home module imports and fix config reference
+# refactor: remove unused options parameter in home module
