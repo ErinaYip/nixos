@@ -15,7 +15,7 @@
 
     mkLib = nixpkgs:
       nixpkgs.lib.extend (self: super: {
-        zenyte = import ./lib {lib = self;};
+        demo = import ./lib {lib = self;};
       }
       // inputs.home-manager.lib);
 

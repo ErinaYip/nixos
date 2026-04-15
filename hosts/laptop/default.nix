@@ -3,7 +3,7 @@
   lib,
   ...
 }:
-with lib.zenyte; {
+with lib.demo; {
   imports = [./hardware.nix];
 
   system.stateVersion = "25.11";
@@ -13,14 +13,14 @@ with lib.zenyte; {
     extraGroups = ["wheel"];
   };
 
-  zenyte.home = {
+  demo.home = {
     enable = true;
     user = "demo";
   };
 
-  zenyte.presets.development = enabled;
+  demo.presets.development = enabled;
 
-  zenyte.cli.git = {
+  demo.cli.git = {
     enable = true;
     settings.user = {
       name = "Laptop Demo";

@@ -7,12 +7,12 @@
   ...
 }:
 with lib;
-with lib.zenyte; let
-  cfg = config.zenyte.home;
+with lib.demo; let
+  cfg = config.demo.home;
 in {
   imports = [inputs.home-manager.nixosModules.home-manager];
 
-  options.zenyte.home = with types; {
+  options.demo.home = with types; {
     enable = mkBoolOpt false "Enable home-manager integration";
     user = mkStrOpt "demo" "Username";
   };

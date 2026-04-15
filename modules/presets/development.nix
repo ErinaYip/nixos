@@ -4,12 +4,12 @@
   ...
 }:
 with lib;
-with lib.zenyte; let
-  cfg = config.zenyte.presets.development;
+with lib.demo; let
+  cfg = config.demo.presets.development;
 in {
-  options.zenyte.presets.development.enable = mkBoolOpt false "Enable the development preset.";
+  options.demo.presets.development.enable = mkBoolOpt false "Enable the development preset.";
 
   config = mkIf cfg.enable {
-    zenyte.cli.git = enabled;
+    demo.cli.git = enabled;
   };
 }

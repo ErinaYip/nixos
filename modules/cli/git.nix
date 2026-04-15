@@ -5,10 +5,10 @@
   ...
 }:
 with lib;
-with lib.zenyte; let
-  cfg = config.zenyte.cli.git;
+with lib.demo; let
+  cfg = config.demo.cli.git;
 in {
-  options.zenyte.cli.git = with types; {
+  options.demo.cli.git = with types; {
     enable = mkBoolOpt false "Whether to enable the git module.";
     settings.user = {
       name = mkStrOpt "Demo User" "Git user name.";

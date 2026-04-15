@@ -20,5 +20,5 @@ nix develop .
 ## Key patterns
 
 - Use `enabled` / `disabled` instead of `true` / `false`
-- Options use `zenyte.*` prefix (e.g., `zenyte.home`, `zenyte.cli.git`)
+- Options use `demo.*` prefix (e.g., `demo.home`, `demo.cli.git`)
 - Auto-import modules from `modules/` directory
