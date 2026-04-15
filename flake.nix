@@ -45,3 +45,4 @@
 # fix: rename defaults to default in flake
 # fix: update default username in flake
 # refactor: remove laptop host and rename defaults
+# fix: add default stateVersion in flake
