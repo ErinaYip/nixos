@@ -43,7 +43,12 @@ lib.makeExtensible (final: {
     in
     lib.mapAttrs
       (file: type:
-        if type == "directory" then final.getDir (d + "/" + file) else type
+        if type == "directory" then
+          if builtins.pathExists (d + "/" + file + "/default.nix") then
+            { "default.nix" = "regular"; }
+          else
+            final.getDir (d + "/" + file)
+        else type
       )
       (builtins.readDir d);
 
