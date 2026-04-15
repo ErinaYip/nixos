@@ -79,6 +79,10 @@ lib.makeExtensible (final: {
     final.mkOpt lib.types.bool default description;
   mkStrOpt = default: description: 
     final.mkOpt lib.types.str default description;
+  mkListOpt = elemType: default: description: 
+    final.mkOpt (lib.types.listOf elemType) default description;
+  mkAttrOpt = valueType: default: description: 
+    final.mkOpt (lib.types.attrsOf valueType) default description;
 
   # 2. 语义化常量
   enabled = { enable = true; };
