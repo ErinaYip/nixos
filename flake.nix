@@ -40,3 +40,4 @@
 # system/nix: remove mango input
 # chore: add newline at end of file
 # chore: update homeStateVersion to 26.05
+# feat: add hyprland, mango, and theme inputs
