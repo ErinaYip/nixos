@@ -7,7 +7,9 @@
   ...
 }:
 {
-  imports = [ inputs.home-manager.nixosModules.home-manager ];
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+  ];
 
   options.erinite.home.config = lib.mkOption {
     type = lib.types.attrs;
@@ -28,7 +30,7 @@
           xdg.enable = true;
         }
 
-        (lib.mkAliasDefinitions options.erinite.home.config)
+        config.erinite.home.config
       ];
     };
   };
