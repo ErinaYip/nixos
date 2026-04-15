@@ -3,23 +3,32 @@
   lib,
   pkgs,
   ...
-}:
-let
-  cfg = config.erinite.cli.git;
-in {
-  options.erinite.cli.git = {
-    enable = lib.erinite.mkBoolOpt false "Enable git.";
+} @ args:
+
+lib.erinite.mkModule args {
+  category = "cli";
+  name = "git";
+
+  opts = {
     user = {
       name = lib.erinite.mkStrOpt "Demo User" "Git user name.";
       email = lib.erinite.mkStrOpt "demo@example.com" "Git user email.";
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  configFn = { cfg, settings, ... }: {
     environment.systemPackages = [pkgs.git];
 
-    programs.git = {
-      enable = true;
+    erinite.home.config = {
+      programs.git = {
+        enable = true;
+        lfs.enable = true;
+        init.defaultBranch = "main";
+        settings = {
+          user.name = cfg.user.name;
+          user.email = cfg.user.email;
+        } // settings;
+      };
     };
   };
 }

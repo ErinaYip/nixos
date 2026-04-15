@@ -3,15 +3,13 @@
   lib,
   pkgs,
   ...
-}:
-let
-  cfg = config.erinite.desktop.hyprland;
-in {
-  options.erinite.desktop.hyprland = {
-    enable = lib.erinite.mkBoolOpt false "Enable Hyprland.";
-  };
+} @ args:
 
-  config = lib.mkIf cfg.enable {
+lib.erinite.mkModule args {
+  category = "desktop";
+  name = "hyprland";
+
+  configFn = { ... }: {
     environment.sessionVariables = {
       NIXOS_OZONE_WL = "1";
     };
