@@ -14,7 +14,7 @@ with lib.erinite; {
       users = enabled;
       fcitx5 = enabled;
       i18n = enabled;
-      networkmanager = enabled;
+      network = enabled;
 
       nvidia = {
         enable = true;
