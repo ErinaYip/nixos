@@ -35,3 +35,4 @@
 # refactor: split stateVersion into system and home
 # feat: add hyprland, mango, and theme inputs
 # feat: add mechrevo host configuration
+# fix: update default username in flake
