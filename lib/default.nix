@@ -25,3 +25,4 @@
 # - modules/: business logic (auto-loaded)
 # - hosts/: host-specific configuration
 # docs: update README with Erinite architecture spec
+# feat: add list and attrs option helpers
