@@ -23,12 +23,19 @@ with lib.erinite; {
       username = defaults.username;
     };
 
-    system.nvidia = {
-      enable = true;
-      prime = {
+    system = {
+      nvidia = {
         enable = true;
-        nvidiaBusId = "PCI:1:0:0";
-        amdgpuBusId = "PCI:6:0:0";
+        prime = {
+          enable = true;
+          nvidiaBusId = "PCI:1:0:0";
+          amdgpuBusId = "PCI:6:0:0";
+        };
+      };
+
+      boot = {
+        enable = true;
+        engine = "grub";
       };
     };
 
