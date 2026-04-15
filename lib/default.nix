@@ -29,3 +29,4 @@
 # feat: add mkModule helper for module creation
 # refactor: migrate modules to mkModule helper
 # feat: support default.nix priority in modules scan
+# feat: add imports support to mkModule helper
