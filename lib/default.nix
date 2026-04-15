@@ -10,6 +10,12 @@ lib.makeExtensible (final: {
   mkStrOpt = default: description:
     final.mkOpt lib.types.str default description;
 
+  mkListOpt = elemType: default: description:
+    final.mkOpt (lib.types.listOf elemType) default description;
+
+  mkAttrOpt = valueType: default: description:
+    final.mkOpt (lib.types.attrsOf valueType) default description;
+
   enabled = {enable = true;};
   disabled = {enable = false;};
 
