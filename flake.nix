@@ -42,3 +42,4 @@
 # chore: update homeStateVersion to 26.05
 # feat: add hyprland, mango, and theme inputs
 # feat: add mechrevo host configuration
+# fix: rename defaults to default in flake
