@@ -65,7 +65,7 @@ erinite-nixos
 
 在 `lib/default.nix` 中，采用 `lib.makeExtensible` 模式扩展标准库。此模式支持安全的自引用，避免了 `rec` 关键字可能引发的无限递归和覆写失效问题。
 
-该库包含基础选项生成器（`mkOpt` 系列）以及**模块目录自动扫描函数**。
+该库包含基础选项生成器（`mkOpt` 系列）、**模块工厂函数**以及**模块目录自动扫描函数**。
 
 ```nix
 # lib/default.nix
@@ -88,14 +88,14 @@ lib.makeExtensible (final: {
   mkModule = args: {category, name, opts ? {}, defaultSettings ? {}, configFn}:
     let
       cfg = args.config.erinite.${category}.${name};
-      mergedSettings = lib.mkMerge [defaultSettings cfg.settings];
+      mergedSettings = args.lib.mkMerge [defaultSettings cfg.settings];
     in {
       options.erinite.${category}.${name} = {
         enable = final.mkBoolOpt false "Whether to enable ${name}.";
-        settings = final.mkOpt lib.types.attrs {} "Configuration settings for ${name}.";
+        settings = final.mkOpt args.lib.types.attrs {} "Configuration settings for ${name}.";
       } // opts;
 
-      config = lib.mkIf cfg.enable (
+      config = args.lib.mkIf cfg.enable (
         configFn {
           inherit cfg;
           settings = mergedSettings;
@@ -163,7 +163,7 @@ lib.makeExtensible (final: {
 ## 4. 业务层：模块编写标准
 
 ### 4.1 单文件基础模块
-模块的配置被严格限制在 `mkIf cfg.enable` 内，确保未在主机中声明启用的模块不会产生任何副作用。NixOS 系统包与 Home Manager 配置在同一文件内统一定义。
+模块的配置被严格限制在 `mkIf cfg.enable` 内确保未在主机中声明启用的模块不会产生任何副作用。NixOS 系统包与 Home Manager 配置在同一文件内统一定义。
 
 ```nix
 # modules/cli/git.nix
@@ -188,7 +188,55 @@ in {
 }
 ```
 
-### 4.2 模块自动化加载
+### 4.2 模块工厂 (mkModule)
+使用 `lib.erinite.mkModule` 工厂函数可以快速创建规范化的模块，自动处理选项定义和配置合并。适用于需要同时配置 NixOS 系统包和 Home Manager 配置的复杂模块。
+
+```nix
+# modules/system/fcitx5.nix
+{
+  inputs,
+  pkgs,
+  lib,
+  ...
+} @ args:
+
+lib.erinite.mkModule args {
+  category = "system";
+  name = "fcitx5";
+
+  configFn = { ... }: {
+    i18n.inputMethod = {
+      enable = true;
+      type = "fcitx5";
+      fcitx5.addons = with pkgs; [
+        fcitx5-gtk
+        qt6Packages.fcitx5-chinese-addons
+        fcitx5-rime
+      ];
+    };
+
+    erinite.home.config = let
+      wanxiang = "wanxiang-lts-zh-hans";
+    in {
+      imports = [ inputs.oh-my-rime-nix.homeModules.default ];
+      programs.oh-my-rime.enable = true;
+      # ... 其他 Home Manager 配置
+    };
+  };
+}
+```
+
+使用示例：
+```nix
+# hosts/laptop/default.nix
+{
+  erinite = {
+    system.fcitx5 = enabled;
+  };
+}
+```
+
+### 4.3 模块自动化加载
 得益于工具层的 `modules` 函数，`modules/default.nix` 的维护成本降至最低：
 
 ```nix
