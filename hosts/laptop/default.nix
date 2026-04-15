@@ -18,7 +18,9 @@ with lib.demo; {
     user = "demo";
   };
 
-  demo.presets.development = enabled;
+  demo.desktop.hyprland = {
+    enable = true;
+  };
 
   demo.cli.git = {
     enable = true;

@@ -3,6 +3,9 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -23,8 +26,12 @@
       nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          ./modules
+          ./modules/default.nix
+          ./modules/home.nix
+          ./modules/desktop.nix
+          ./modules/cli/git.nix
           (./. + "/hosts/${hostName}")
+          inputs.hyprland.nixosModules.default
         ];
         specialArgs = {
           lib = mkLib nixpkgs;
@@ -41,6 +48,7 @@
     devShells.${system}.default = pkgs.mkShell {
       buildInputs = [
         inputs.home-manager.packages.${system}.default
+        inputs.hyprland.packages.${system}.default
       ];
     };
   };
