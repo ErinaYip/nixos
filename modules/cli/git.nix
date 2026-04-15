@@ -25,3 +25,4 @@
 # refactor: migrate modules to mkModule helper
 # refactor: move init.defaultBranch to settings
 # refactor: simplify git module config
+# refactor: move git init.defaultBranch to settings
