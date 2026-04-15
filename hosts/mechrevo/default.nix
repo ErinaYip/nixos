@@ -24,6 +24,8 @@ with lib.erinite; {
     };
 
     system = {
+      nix = enabled;
+
       nvidia = {
         enable = true;
         prime = {
