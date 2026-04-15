@@ -26,7 +26,7 @@
       inherit system;
       modules = [
         home-manager.nixosModules.home-manager
-        ./core/home-manager.nix
+        ./modules/home.nix
         ./modules
         (./. + "/hosts/${hostName}")
       ];
