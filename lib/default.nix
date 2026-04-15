@@ -28,3 +28,4 @@
 # feat: add list and attrs option helpers
 # feat: add mkModule helper for module creation
 # refactor: migrate modules to mkModule helper
+# feat: support default.nix priority in modules scan
