@@ -1,6 +1,6 @@
 {
   lib,
-  pkgs,
+  default,
   ...
 } @ args:
 
@@ -9,6 +9,8 @@ lib.erinite.mkModule args {
   name = "nix";
 
   configFn = { ... }: {
+    system.stateVersion = default.stateVersion;
+
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
     nixpkgs.config.allowUnfree = true;
     nix.gc = {
