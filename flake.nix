@@ -29,3 +29,4 @@
 # - lib/: custom syntax sugar (makeExtensible)
 # - modules/: business logic (auto-loaded)
 # - hosts/: host-specific configuration
+# refactor: move home-manager.nix to modules

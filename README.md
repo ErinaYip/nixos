@@ -41,15 +41,14 @@ This repository is not a complete copy of the original project. It is intended t
 
 ## 1. 目录结构规范
 
-项目整体按职能划分为四个核心层级：工具层、基建层、业务层与表现层。
+项目整体按职能划分为三个核心层级：工具层、业务层与表现层。
 
 ```text
 erinite-nixos
-├── core               # 基建层：处理底层机制（如 Home Manager 全局桥接）
-│   └── home-manager.nix
 ├── lib                # 工具层：自定义扩展函数库
 │   └── default.nix    
-├── modules            # 业务层：按功能划分的具体模块（如 git, hyprland）
+├── modules            # 业务层：按功能划分的具体模块（如 git, hyprland, home）
+│   ├── home.nix       # Home Manager 配置桥接
 │   ├── cli            
 │   ├── desktop        
 │   └── default.nix    # 自动化扫描并导入所有模块
@@ -101,14 +100,14 @@ lib.makeExtensible (final: {
 
 ---
 
-## 3. 基建层：Home Manager 配置桥接
+## 3. 业务层：Home Manager 配置桥接
 
-为避免在每个业务模块中重复编写深层嵌套的 `home-manager.users.<user>` 路径，我们在 `core/home-manager.nix` 中建立配置桥接。
+为避免在每个业务模块中重复编写深层嵌套的 `home-manager.users.<user>` 路径，我们在 `modules/home.nix` 中建立配置桥接。
 
-通过声明 `erinite.home.config` 选项并结合 `mkAliasDefinitions`，所有写入该选项的配置将被自动转发至指定用户的 Home Manager 环境中。
+通过声明 `erinite.home.config` 选项，所有写入该选项的配置将被自动转发至指定用户的 Home Manager 环境中。
 
 ```nix
-# core/home-manager.nix
+# modules/home.nix
 { config, lib, ... }:
 
 {
@@ -201,7 +200,6 @@ in {
       system = defaults.system;
       modules = [
         home-manager.nixosModules.home-manager
-        ./core/home-manager.nix
         ./modules
         (./. + "/hosts/${hostName}")
       ];
