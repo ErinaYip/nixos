@@ -23,8 +23,8 @@ lib.erinite.mkModule args {
       programs.git = {
         enable = true;
         lfs.enable = true;
-        init.defaultBranch = "main";
         settings = {
+          init.defaultBranch = "main";
           user.name = cfg.user.name;
           user.email = cfg.user.email;
         } // settings;
