@@ -1,7 +1,5 @@
 {
   lib,
-  hostName,
-  defaults,
   ...
 }: 
 with lib.erinite; {
