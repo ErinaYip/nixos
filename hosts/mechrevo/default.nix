@@ -37,8 +37,8 @@ with lib.erinite; {
     cli.git = {
       enable = true;
       user = {
-        name = "Laptop Demo";
-        email = "laptop@example.com";
+        name = "ErinaYip";
+        email = "erinayip@outlook.com";
       };
     };
   };
