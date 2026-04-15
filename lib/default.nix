@@ -24,3 +24,4 @@
 # - lib/: custom syntax sugar (makeExtensible)
 # - modules/: business logic (auto-loaded)
 # - hosts/: host-specific configuration
+# docs: update README with Erinite architecture spec

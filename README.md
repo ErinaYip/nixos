@@ -35,86 +35,234 @@ This repository is not a complete copy of the original project. It is intended t
 <br>
 <br>
 
-# Minimal Modular Flake Demo
+# Erinite 模块化 NixOS 架构设计
 
-这是一个最小可用的 NixOS 模块化 Flake 示范配置。
+本架构旨在解决 NixOS 与 Home Manager 配置在多设备环境下的复用与维护问题。架构设计的核心原则包括：**功能内聚（Feature-centric）**、**命名空间隔离**、**安全的作用域控制（避免使用 `rec`）**以及**配置数据与逻辑的解耦**。
 
-它刻意把业务内容压缩到最低，只保留框架能力：
+## 1. 目录结构规范
 
-- `flake.nix` 作为统一入口
-- `lib/` 提供自定义工具函数
-- `modules/default.nix` 自动导入模块
-- `demo.*` 作为自定义命名空间
-- 一个普通模块样例：`cli/git.nix`
-- 一个 preset 样例：`presets/development.nix`
-- `hosts/laptop` 作为主机实例层
-- `home-manager` 作为用户态配置桥接层
-- `addHost` 只负责主机装配
-
-## 目录
+项目整体按职能划分为四个核心层级：工具层、基建层、业务层与表现层。
 
 ```text
-examples/minimal-framework/
-├── flake.nix
-├── lib/
-│   └── default.nix
-├── modules/
-│   ├── default.nix
-│   ├── home.nix
-│   ├── cli/
-│   │   └── git.nix
-│   └── presets/
-│       └── development.nix
-└── hosts/
-    └── laptop/
-        ├── default.nix
-        └── hardware.nix
+erinite-nixos
+├── core               # 基建层：处理底层机制（如 Home Manager 全局桥接）
+│   └── home-manager.nix
+├── lib                # 工具层：自定义扩展函数库
+│   └── default.nix    
+├── modules            # 业务层：按功能划分的具体模块（如 git, hyprland）
+│   ├── cli            
+│   ├── desktop        
+│   └── default.nix    # 自动化扫描并导入所有模块
+├── hosts              # 表现层：具体主机的配置声明
+│   ├── laptop
+│   └── desktop
+├── flake.nix          # 系统入口，包含主机生成工厂
+└── flake.lock
 ```
 
-## 保留了哪些功能
+---
 
-- 自定义命名空间：`demo.*`
-- 模块自动注册
-- 单模块启用与参数传递
-- preset 组合模块
-- host 层只做选择和覆盖
-- Home Manager 配置桥接
-- 用户名保留为正式 option：`demo.user.name`
-- `stateVersion` 和用户名由 host 显式声明
+## 2. 工具层：自定义函数库 (Lib)
 
-## 现在的组织方式
+在 `lib/default.nix` 中，采用 `lib.makeExtensible` 模式扩展标准库。此模式支持安全的自引用，避免了 `rec` 关键字可能引发的无限递归和覆写失效问题。
 
-- `flake.nix` 里的 `addHost` 只负责装配 `modules/` 和 `hosts/<name>`
-- `system.stateVersion` 在 host 中显式声明
-- `demo.user.name` 也在 host 中显式赋值
-- host 文件同时承担共享值和主机差异声明
-
-## 当前示例
+该库包含基础选项生成器（`mkOpt` 系列）以及**模块目录自动扫描函数**。
 
 ```nix
-laptop = addHost {
-  hostName = "laptop";
-};
+# lib/default.nix
+{ lib, ... }:
+
+lib.makeExtensible (final: {
+  # 1. 选项简化工具
+  mkOpt = type: default: description:
+    lib.mkOption { inherit type default description; };
+  mkBoolOpt = default: description: 
+    final.mkOpt lib.types.bool default description;
+  mkStrOpt = default: description: 
+    final.mkOpt lib.types.str default description;
+
+  # 2. 语义化常量
+  enabled = { enable = true; };
+  disabled = { enable = false; };
+
+  # 3. 自动化目录扫描（用于 modules/default.nix）
+  modules = dir:
+    let
+      d = toString dir;
+      allFiles = lib.collect lib.isString (
+        lib.mapAttrsRecursive (path: _: lib.concatStringsSep "/" path)
+          (final.getDir dir)
+      );
+    in
+    map (f: d + "/" + f)
+      (lib.filter (f: lib.hasSuffix ".nix" f && f != "default.nix") allFiles);
+})
 ```
 
-主机自己的值写在：
+---
+
+## 3. 基建层：Home Manager 配置桥接
+
+为避免在每个业务模块中重复编写深层嵌套的 `home-manager.users.<user>` 路径，我们在 `core/home-manager.nix` 中建立配置桥接。
+
+通过声明 `erinite.home.config` 选项并结合 `mkAliasDefinitions`，所有写入该选项的配置将被自动转发至指定用户的 Home Manager 环境中。
 
 ```nix
-system.stateVersion = "24.11";
-demo.user.name = "demo";
+# core/home-manager.nix
+{ config, lib, ... }:
+
+{
+  options.erinite.home = {
+    enable = lib.mkOption { type = lib.types.bool; default = false; };
+    username = lib.mkOption { type = lib.types.str; default = "demo"; };
+    config = lib.mkOption { type = lib.types.attrs; default = {}; };
+  };
+
+  config = lib.mkIf config.erinite.home.enable {
+    home-manager = {
+      useGlobalPkgs = true;
+      useUserPackages = true;
+      users.${config.erinite.home.username} = _: lib.mkMerge [
+        { 
+          home.username = config.erinite.home.username;
+          home.homeDirectory = "/home/${config.erinite.home.username}";
+          home.stateVersion = config.system.stateVersion;
+          xdg.enable = true;
+        }
+        config.erinite.home.config
+      ];
+    };
+  };
+}
 ```
 
-## 使用方式
+---
 
-进入目录后执行：
+## 4. 业务层：模块编写标准
 
-```sh
-sudo nixos-rebuild switch --flake .#laptop
+### 4.1 单文件基础模块
+模块的配置被严格限制在 `mkIf cfg.enable` 内，确保未在主机中声明启用的模块不会产生任何副作用。NixOS 系统包与 Home Manager 配置在同一文件内统一定义。
+
+```nix
+# modules/cli/git.nix
+{ config, pkgs, lib, ... }:
+let
+  cfg = config.erinite.cli.git;
+in {
+  options.erinite.cli.git = {
+    enable = lib.erinite.mkBoolOpt false "Enable git.";
+    user = {
+      name = lib.erinite.mkStrOpt "Demo User" "Git user name.";
+      email = lib.erinite.mkStrOpt "demo@example.com" "Git user email.";
+    };
+  };
+
+  config = lib.mkIf cfg.enable {
+    environment.systemPackages = [pkgs.git];
+    erinite.home.config = {
+      programs.git = { enable = true; };
+    };
+  };
+}
 ```
 
-如果只是验证求值：
+### 4.2 模块自动化加载
+得益于工具层的 `modules` 函数，`modules/default.nix` 的维护成本降至最低：
 
-```sh
-nix flake show
-nix eval .#nixosConfigurations.laptop.config.demo.cli.git.enable
+```nix
+# modules/default.nix
+{ lib, ... }:
+{
+  imports = lib.erinite.modules ./.;
+}
+```
+
+---
+
+## 5. 入口与表现层：主机装配
+
+### 5.1 Flake 工厂函数
+在 `flake.nix` 中定义 `addHost` 工厂函数，统一管理系统架构、全局变量及依赖注入，降低新增主机的代码重复率。
+
+```nix
+# flake.nix
+{
+  outputs = { self, nixpkgs, home-manager, ... } @ inputs: let
+    defaults = {
+      system = "x86_64-linux";
+      username = "demo";
+    };
+
+    mkLib = pkgs: pkgs.lib.extend (final: prev: {
+      erinite = import ./lib { lib = prev; };
+    });
+
+    addHost = hostName: nixpkgs.lib.nixosSystem {
+      system = defaults.system;
+      modules = [
+        home-manager.nixosModules.home-manager
+        ./core/home-manager.nix
+        ./modules
+        (./. + "/hosts/${hostName}")
+      ];
+      specialArgs = {
+        lib = mkLib nixpkgs;
+        inherit inputs hostName defaults;
+      };
+    };
+  in {
+    nixosConfigurations.laptop = addHost "laptop";
+  };
+}
+```
+
+### 5.2 主机配置声明
+具体主机的配置文件作为表现层，仅负责功能模块的开关和基础参数赋值，保持高度的可读性。
+
+```nix
+# hosts/laptop/default.nix
+{ lib, hostName, defaults, ... }:
+let
+  inherit (lib.erinite) enabled;
+in {
+  imports = [./hardware.nix];
+  networking.hostName = hostName;
+  system.stateVersion = "25.11";
+
+  users.users.${defaults.username} = {
+    isNormalUser = true;
+    extraGroups = ["wheel"];
+  };
+
+  erinite = {
+    home = {
+      enable = true;
+      username = defaults.username;
+    };
+
+    desktop.hyprland = enabled;
+
+    cli.git = {
+      enable = true;
+      user = {
+        name = "Laptop Demo";
+        email = "laptop@example.com";
+      };
+    };
+  };
+}
+```
+
+---
+
+## 快速开始
+
+```bash
+# 构建测试
+nix build .#nixosConfigurations.laptop.config.system.build.toplevel
+
+# 添加新主机
+# 1. 在 hosts/ 下创建新目录
+# 2. 在 flake.nix 中添加 addHost 调用
+# 3. 在主机配置中启用所需模块
 ```
