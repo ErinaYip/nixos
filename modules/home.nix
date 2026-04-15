@@ -3,7 +3,6 @@
   lib,
   default,
   inputs,
-  options,
   ...
 }:
 {
