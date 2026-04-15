@@ -1,4 +1,4 @@
-{lib, ...}:
+{lib, types, ...}:
 with lib; rec {
   mkOpt = type: default: description:
     mkOption {inherit type default description;};
@@ -34,4 +34,8 @@ with lib; rec {
     (filter
       (file: hasSuffix ".nix" file && file != "default.nix")
       (files dir));
+
+  dispatcher = import ./dispatcher.nix {
+    inherit lib types;
+  };
 }

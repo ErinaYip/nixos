@@ -17,8 +17,24 @@
     pkgs = import nixpkgs {inherit system;};
 
     mkLib = nixpkgs:
+      let
+        demoTypes = {
+          homeOnly = [
+            "starship" "bat" "zsh" "fish" "alacritty" "kitty" "fzf" "exa" "delta" "direnv"
+          ];
+          nixosOnly = [
+            "docker" "bluetooth" "virtualisation" "podman" "flatpak"
+          ];
+          both = [
+            "git" "vim" "tmux" "neovim"
+          ];
+        };
+      in
       nixpkgs.lib.extend (self: super: {
-        demo = import ./lib {lib = self;};
+        demo = import ./lib {
+          lib = self;
+          types = demoTypes // self.types;
+        };
       }
       // inputs.home-manager.lib);
 
@@ -29,6 +45,7 @@
           ./modules/default.nix
           ./modules/home.nix
           ./modules/desktop.nix
+          ./modules/programs.nix
           ./modules/cli/git.nix
           (./. + "/hosts/${hostName}")
           inputs.hyprland.nixosModules.default
