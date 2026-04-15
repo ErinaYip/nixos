@@ -7,3 +7,4 @@
 # refactor: restructure hyprland module settings
 # feat: add hyprland cachix substituters
 # feat: add default settings to hyprland module
+# refactor: restructure hyprland module with default.nix
