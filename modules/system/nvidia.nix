@@ -23,7 +23,6 @@ lib.erinite.mkModule args {
       enable32Bit = true;
     };
     services.xserver.videoDrivers = [ "nvidia" ];
-    nixpkgs.config.cudaSupport = true;
 
     hardware.nvidia = {
       modesetting.enable = true;
@@ -44,5 +43,13 @@ lib.erinite.mkModule args {
         intelBusId  = lib.mkIf (cfg.prime.intelBusId != "") cfg.prime.intelBusId;
       };
     };
+
+    nixpkgs.config.cudaSupport = true;
+    nix.settings.substituters = [
+      "https://cache.nixos-cuda.org"
+    ];
+    nix.settings.trusted-public-keys = [
+      "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
+    ];
   };
 }
