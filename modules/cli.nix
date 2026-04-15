@@ -20,13 +20,14 @@ let
     let target = classify name; in target == "home" || target == "both";
 
   excluded = ["git"];
+  homeExcluded = ["eza"];
 
   nixosProgs = lib.filterAttrs (n: v: 
     !lib.elem n excluded && isNixosTarget n && (v == true || (lib.isAttrs v && v.enable or false))
   ) cliAttrs;
 
   homeProgs = lib.filterAttrs (n: v: 
-    !lib.elem n excluded && isHomeTarget n && (v == true || (lib.isAttrs v && v.enable or false))
+    !lib.elem n homeExcluded && isHomeTarget n && (v == true || (lib.isAttrs v && v.enable or false))
   ) cliAttrs;
 in {
   config = lib.mkMerge [

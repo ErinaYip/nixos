@@ -1,4 +1,9 @@
-{config, lib, pkgs, ...}:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 with lib; let
   cfg = config.demo.cli;
 in {
@@ -9,19 +14,6 @@ in {
   };
 
   config = mkIf cfg.eza {
-    home-manager.users.${config.demo.home.user}.programs.eza = {
-      enable = true;
-      enableBashIntegration = config.programs.bash.enable or false;
-      enableZshIntegration = config.programs.zsh.enable or false;
-      enableFishIntegration = config.programs.fish.enable or false;
-      extraOptions = [
-        "--color=always"
-        "--group-directories-first"
-        "--header"
-        "--time-style=long-iso"
-      ];
-      git = true;
-      icons = "always";
-    };
+    environment.systemPackages = [pkgs.eza];
   };
 }
