@@ -15,10 +15,11 @@ lib.erinite.mkModule args {
       "The bootloader engine to use.";
   };
 
+  imports = [ inputs.grub2-themes.nixosModules.default ];
+
   configFn = { cfg, ... }: {
     boot.loader.efi.canTouchEfiVariables = true;
 
-    imports = [ inputs.grub2-themes.nixosModules.default ];
 
     boot.loader.systemd-boot = lib.mkIf (cfg.engine == "systemd-boot") {
       enable = true;
