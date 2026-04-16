@@ -15,21 +15,22 @@ lib.erinite.mkModule args {
       la = "eza -la";
     };
   in {
+    erinite.home.config.programs.eza = {
+      enable = true;
+      enableBashIntegration = true;
+      enableFishIntegration = true;
+      enableZshIntegration = true;
+      extraOptions = [
+        "--color=always"
+        "--group-directories-first"
+        "--header"
+        "--time-style=long-iso"
+      ];
+      git = true;
+      icons = "always";
+    };
+
     programs = {
-      eza = {
-        enable = true;
-        enableBashIntegration = true;
-        enableFishIntegration = true;
-        enableZshIntegration = true;
-        extraOptions = [
-          "--color=always"
-          "--group-directories-first"
-          "--header"
-          "--time-style=long-iso"
-        ];
-        git = true;
-        icons = "always";
-      };
       bash.shellAliases = shellAliases;
       zsh.shellAliases = shellAliases;
       fish.shellAliases = shellAliases;
