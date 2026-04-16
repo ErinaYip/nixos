@@ -19,7 +19,6 @@ lib.erinite.mkModule args {
 
     services.displayManager.sddm = {
       enable = true;
-      wayland.enable = false;
 
       package = pkgs.kdePackages.sddm; 
 
