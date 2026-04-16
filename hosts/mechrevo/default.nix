@@ -64,11 +64,15 @@ with lib.erinite; {
       };
     };
 
-    cli.git = {
-      enable = true;
-      user = {
-        name = "ErinaYip";
-        email = "erinayip@outlook.com";
+    cli = {
+      yazi = enabled;
+
+      git = {
+        enable = true;
+        user = {
+          name = "ErinaYip";
+          email = "erinayip@outlook.com";
+        };
       };
     };
   };
