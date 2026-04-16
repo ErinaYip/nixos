@@ -66,6 +66,7 @@ with lib.erinite; {
 
     cli = {
       yazi = enabled;
+      starship = enabled;
 
       git = {
         enable = true;
