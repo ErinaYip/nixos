@@ -5,3 +5,4 @@
 # refactor: restructure home module with imports and options
 # refactor: format home module imports and fix config reference
 # refactor: remove unused options parameter in home module
+# refactor: update home config path across modules

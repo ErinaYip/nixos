@@ -27,3 +27,4 @@
 # refactor: simplify git module config
 # refactor: move git init.defaultBranch to settings
 # refactor: remove config from git module
+# refactor: update home config path across modules
