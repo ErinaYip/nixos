@@ -18,6 +18,7 @@ with lib.erinite; {
       sound = enabled;
       fonts = enabled;
       keyd = enabled;
+      sddm = enabled;
 
       nvidia = {
         enable = true;
