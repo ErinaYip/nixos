@@ -20,3 +20,4 @@
 # feat: enable starship module in mechrevo config
 # feat: enable bat, eza, fastfetch, kitty, zoxide
 # feat: enable nvim module
+# feat: enable gaming and localsend modules
