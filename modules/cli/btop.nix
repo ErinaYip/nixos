@@ -8,7 +8,7 @@ lib.erinite.mkModule args {
   name = "btop";
 
   configFn = { ... }: {
-    programs.btop = {
+    erinite.home.programs.btop = {
       enable = true;
       settings.theme_background = false;
     };
