@@ -37,3 +37,4 @@
 # feat: enable fonts module for mechrevo
 # feat: add keyd module and enable for mechrevo
 # feat: add sddm module and enable for mechrevo
+# feat: add virtualisation module and enable for mechrevo
