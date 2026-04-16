@@ -6,3 +6,4 @@
 # refactor: update home config path across modules
 # refactor: restructure hyprland module settings
 # feat: add hyprland cachix substituters
+# feat: add default settings to hyprland module
