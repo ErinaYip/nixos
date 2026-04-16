@@ -6,7 +6,7 @@
 
 lib.erinite.mkModule args {
   category = "cli";
-  name = "bat";
+  name = "nvim";
 
   configFn = { settings, ... }: {
     home-manager.sharedmodules = [ inputs.erina-vim.homeModules.default ];
