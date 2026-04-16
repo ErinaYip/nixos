@@ -83,6 +83,11 @@ with lib.erinite; {
       };
     };
 
+    browsers = {
+      firefox = enabled;
+      chromium = enabled;
+    };
+
     programs = {
       gaming = enabled;
       localsend = enabled;
