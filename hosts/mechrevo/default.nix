@@ -49,6 +49,7 @@ with lib.erinite; {
       gtk = enabled;
       qt = enabled;
       dms = enabled;
+      matugen = enabled;
 
       hyprland = {
         enable = true;
