@@ -9,6 +9,12 @@ lib.erinite.mkModule args {
   category = "desktop";
   name = "hyprland";
 
+  defaultSettings = lib.mkMerge [
+    (import ./binds.nix)
+    (import ./rules.nix)
+    (import ./settings.nix)
+  ];
+
   configFn = { settings, ... }: {
     programs.hyprland = {
       enable = true;
@@ -41,12 +47,7 @@ lib.erinite.mkModule args {
       wayland.windowManager.hyprland = {
         enable = true;
         systemd.enable = false;
-        settings = lib.mkMerge [
-          (import ./binds.nix)
-          (import ./rules.nix)
-          (import ./settings.nix)
-          settings
-        ];
+        settings = settings;
       };
 
       xdg.portal = {
