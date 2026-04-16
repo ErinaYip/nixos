@@ -42,7 +42,7 @@
       inherit system;
       username = "era";
       systemStateVersion = "25.11";
-      homeStateVersion = "25.11";
+      homeStateVersion = "26.05";
     };
 
     mkLib = pkgs: pkgs.lib.extend (final: prev: {
