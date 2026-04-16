@@ -8,3 +8,4 @@
 # refactor: replace networkmanager with network module
 # feat: add sound module and enable for mechrevo
 # feat: enable fonts module for mechrevo
+# feat: add keyd module and enable for mechrevo
