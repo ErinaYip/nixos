@@ -2,3 +2,4 @@
 # feat: add hyprland config with binds, rules and settings
 # feat: add hypridle and xdg portal config
 # refactor: remove default from xdg portal config
+# chore: remove blank line in hyprland config
