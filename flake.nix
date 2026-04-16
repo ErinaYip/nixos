@@ -13,7 +13,7 @@
     system = "x86_64-linux";
     pkgs = import nixpkgs {inherit system;};
 
-    defaults = {
+    default = {
       inherit system;
       username = "demo";
       stateVersion = "26.05";
@@ -32,11 +32,13 @@
       ];
       specialArgs = {
         lib = mkLib nixpkgs;
-        inherit inputs hostName defaults;
+        inherit inputs hostName default;
       };
     };
   in {
-    nixosConfigurations.laptop = addHost "laptop";
+    nixosConfigurations = {
+      laptop = addHost "laptop";
+    };
 
     devShells.${system}.default = pkgs.mkShell {
       buildInputs = [home-manager.packages.${system}.default];
