@@ -40,3 +40,4 @@
 # feat: add virtualisation module and enable for mechrevo
 # feat: add proxy config to network module and enable for mechrevo
 # feat: configure hyprland monitors for mechrevo
+# feat: enable gtk and qt modules for mechrevo desktop
