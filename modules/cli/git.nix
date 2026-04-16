@@ -1,5 +1,4 @@
 {
-  config,
   lib,
   pkgs,
   ...
@@ -8,6 +7,10 @@
 lib.erinite.mkModule args {
   category = "cli";
   name = "git";
+
+  defaultSettings = {
+    init.defaultBranch = "main";
+  };
 
   opts = {
     user = {
@@ -19,15 +22,14 @@ lib.erinite.mkModule args {
   configFn = { cfg, settings, ... }: {
     environment.systemPackages = [pkgs.git];
 
-    erinite.home.config = {
+    erinite.home = {
       programs.git = {
         enable = true;
         lfs.enable = true;
-        settings = {
-          init.defaultBranch = "main";
+        settings = settings // {
           user.name = cfg.user.name;
           user.email = cfg.user.email;
-        } // settings;
+        };
       };
     };
   };
