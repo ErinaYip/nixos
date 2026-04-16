@@ -9,7 +9,7 @@ lib.erinite.mkModule args {
   name = "yazy";
 
   configFn = { settings, ... }: {
-    erinit.home = {
+    erinite.home = {
       home.packages = with pkgs; [
         fzf
         fd
