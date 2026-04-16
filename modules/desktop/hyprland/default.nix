@@ -39,7 +39,6 @@ lib.erinite.mkModule args {
           extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
           config = {
             hyprland.preferred = [ "hyprland" "gtk" ];
-            common.default = [ "hyprland" "gtk" ];
           };
         };
 
