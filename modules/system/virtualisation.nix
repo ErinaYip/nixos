@@ -13,27 +13,31 @@ with lib.erinite; mkModule args {
     vbox = mkBoolOpt false "Whether to enable virtual-box";
   };
 
-  configFn = { ... }: {
-    virtualisation.containers.enable = true;
-    virtualisation = {
-      podman = {
-        enable = true;
-        dockerCompat = true;
-        defaultNetwork.settings.dns_enabled = true;
+  configFn = { cfg, ... }: lib.mkMerge [
+    (lib.mkIf cfg.podman {
+      virtualisation.containers.enable = true;
+      virtualisation = {
+        podman = {
+          enable = true;
+          dockerCompat = true;
+          defaultNetwork.settings.dns_enabled = true;
+        };
       };
-    };
-    environment.systemPackages = with pkgs; [
-      dive
-      podman-tui
-      docker-compose
-    ];
+      environment.systemPackages = with pkgs; [
+        dive
+        podman-tui
+        docker-compose
+      ];
+    })
 
-    virtualisation.virtualbox = {
-      host.enable = true;
-    };
-    users.extraGroups.vboxusers.members = [
-      "user-with-access-to-virtualbox"
-      "djw"
-    ];
-  };
+    (lib.mkIf cfg.vbox {
+      virtualisation.virtualbox = {
+        host.enable = true;
+      };
+      users.extraGroups.vboxusers.members = [
+        "user-with-access-to-virtualbox"
+        "djw"
+      ];
+    })
+  ];
 }
