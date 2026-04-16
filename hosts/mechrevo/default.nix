@@ -16,6 +16,7 @@ with lib.erinite; {
       i18n = enabled;
       network = enabled;
       sound = enabled;
+      fonts = enabled;
 
       nvidia = {
         enable = true;
