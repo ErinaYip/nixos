@@ -16,7 +16,8 @@
     default = {
       inherit system;
       username = "demo";
-      stateVersion = "26.05";
+      systemStateVersion = "25.11";
+      homeStateVersion = "25.11";
     };
 
     mkLib = pkgs: pkgs.lib.extend (final: prev: {

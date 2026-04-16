@@ -9,7 +9,7 @@ lib.erinite.mkModule args {
   name = "nix";
 
   configFn = { ... }: {
-    system.stateVersion = default.stateVersion;
+    system.stateVersion = default.systemStateVersion;
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
     nix.settings.substituters = [
