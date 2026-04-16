@@ -67,6 +67,11 @@ with lib.erinite; {
     cli = {
       yazi = enabled;
       starship = enabled;
+      bat = enabled;
+      eza = enabled;
+      fastfetch = enabled;
+      kitty = enabled;
+      zoxide = enabled;
 
       git = {
         enable = true;
