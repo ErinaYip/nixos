@@ -8,7 +8,7 @@ lib.erinite.mkModule args {
   name = "starship";
 
   configFn = { settings, ... }: {
-    programs.starship = {
+    erinite.home.config.programs.starship = {
       enable = true;
       enableBashIntegration = true;
       enableFishIntegration = true;
