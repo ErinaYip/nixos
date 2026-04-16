@@ -5,6 +5,7 @@
 with lib.erinite; {
   imports = [
     ./hardware-configuration.nix
+    ./configuration.nix
   ];
 
   erinite = {
