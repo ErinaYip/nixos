@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   ...
 }: 
 with lib.erinite; {
@@ -7,6 +8,7 @@ with lib.erinite; {
     ./hardware-configuration.nix
     ./configuration.nix
   ];
+  erinite.home = import ./home.nix { inherit lib pkgs; };
 
   erinite = {
     system = {
