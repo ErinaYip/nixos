@@ -16,6 +16,7 @@ lib.erinite.mkModule args {
     networking.hostName = "nixos";
     time.timeZone = "Asia/Shanghai";
 
+    hardware.bluetooth.enable = true;
     networking.networkmanager = {
       enable = true;
       wifi.backend = "iwd";
