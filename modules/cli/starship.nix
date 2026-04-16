@@ -25,4 +25,3 @@ lib.erinite.mkModule args {
     };
   };
 }
-
