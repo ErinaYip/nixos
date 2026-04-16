@@ -9,7 +9,7 @@ lib.erinite.mkModule args {
   name = "gtk";
 
   configFn = { ... }: {
-    erinite.home.config.gtk = {
+    erinite.home.gtk = {
       enable = true;
       theme = {
         name = "adw-gtk3-dark";

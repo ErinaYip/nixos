@@ -14,7 +14,7 @@ lib.erinite.mkModule args {
       inputs.dms.homeModules.dank-material-shell
     ];
 
-    erinite.home.config = lib.mkMerge [
+    erinite.home = lib.mkMerge [
       {
         programs.dank-material-shell = {
           enable = true;

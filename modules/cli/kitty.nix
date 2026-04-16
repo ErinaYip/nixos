@@ -12,7 +12,7 @@ lib.erinite.mkModule args {
       icat = "kitten icat";
     };
   in {
-    erinite.home.config.programs.kitty = {
+    erinite.home.programs.kitty = {
       enable = true;
       settings = {
         shell = "zsh";
