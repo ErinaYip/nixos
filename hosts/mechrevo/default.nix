@@ -14,3 +14,4 @@
 # feat: add proxy config to network module and enable for mechrevo
 # feat: configure hyprland monitors for mechrevo
 # feat: enable gtk and qt modules for mechrevo desktop
+# feat: add dms module with system monitoring and theming
