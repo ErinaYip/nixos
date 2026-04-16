@@ -10,7 +10,7 @@
     inputs.home-manager.nixosModules.home-manager
   ];
 
-  options.erinite.home.config = lib.mkOption {
+  options.erinite.home = lib.mkOption {
     type = lib.types.attrs;
     default = {};
     description = "Home Manager config pass-through.";
@@ -29,7 +29,7 @@
           xdg.enable = true;
         }
 
-        config.erinite.home.config
+        config.erinite.home
       ];
     };
   };
