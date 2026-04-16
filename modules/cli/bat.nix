@@ -18,7 +18,7 @@ lib.erinite.mkModule args {
     programs = {
       bat = {
         enable = true;
-        config = {
+        settings = {
           pager = "less -FR";
         };
         extraPackages = with pkgs.bat-extras; [
