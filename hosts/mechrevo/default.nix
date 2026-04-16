@@ -33,3 +33,4 @@
 # refactor: remove unused parameters in mechrevo host
 # feat: add networkmanager module and enable for mechrevo
 # refactor: replace networkmanager with network module
+# feat: add sound module and enable for mechrevo
