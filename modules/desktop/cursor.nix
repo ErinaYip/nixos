@@ -1,0 +1,20 @@
+{
+  lib,
+  pkgs,
+  ...
+} @ args:
+
+lib.erinite.mkModule args {
+  category = "desktop";
+  name = "cursor";
+
+  configFn = { ... }: {
+    home.pointerCursor = {
+      gtk.enable = true;
+      x11.enable = true;
+      name = "Bibata-Modern-Ice";
+      size = 24;
+      package = pkgs.bibata-cursors;
+    };
+  };
+}
