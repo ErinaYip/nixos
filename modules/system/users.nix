@@ -11,7 +11,11 @@ lib.erinite.mkModule args {
   configFn = { ... }: {
     users.users.${default.username} = {
       isNormalUser = true;
-      extraGroups = [ "wheel" ];
+      extraGroups = [
+        "wheel"
+        "libvirtd"
+        "adbusers"
+      ];
     };
   };
 }
