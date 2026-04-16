@@ -11,26 +11,15 @@ with lib.erinite; {
   erinite.home = import ./home.nix { inherit lib pkgs; };
 
   erinite = {
+    presets = {
+      common = enabled;
+      gaming = enabled;
+    };
+
     system = {
-      nix = enabled;
-      nix-ld = enabled;
-      users = enabled;
-      fcitx5 = enabled;
-      i18n = enabled;
-      sound = enabled;
-      fonts = enabled;
-      keyd = enabled;
-      sddm = enabled;
-
-      network = {
-        enable = true;
-        proxy = true;
-      };
-
-      virtualisation = {
-        enable = true;
-        podman = true;
-      };
+      boot.engine = "grub";
+      network.proxy = true;
+      virtualisation.podman = true;
 
       nvidia = {
         enable = true;
@@ -40,22 +29,10 @@ with lib.erinite; {
           amdgpuBusId = "PCI:6:0:0";
         };
       };
-
-      boot = {
-        enable = true;
-        engine = "grub";
-      };
     };
 
     desktop = {
-      cursor = enabled;
-      gtk = enabled;
-      qt = enabled;
-      dms = enabled;
-      matugen = enabled;
-
       hyprland = {
-        enable = true;
         settings = {
           monitor = [
             "eDP-1, preferred, 1920x0, 1.6, transform, 1"
@@ -68,17 +45,7 @@ with lib.erinite; {
     };
 
     cli = {
-      yazi = enabled;
-      starship = enabled;
-      bat = enabled;
-      eza = enabled;
-      fastfetch = enabled;
-      kitty = enabled;
-      zoxide = enabled;
-      nvim = enabled;
-
       git = {
-        enable = true;
         user = {
           name = "ErinaYip";
           email = "erinayip@outlook.com";
@@ -92,7 +59,6 @@ with lib.erinite; {
     };
 
     programs = {
-      gaming = enabled;
       localsend = enabled;
     };
   };
