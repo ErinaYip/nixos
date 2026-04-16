@@ -30,12 +30,6 @@ lib.erinite.mkModule args {
       "https://mirrors.cernet.edu.cn/nix-channels/store"
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
       "https://cache.nixos.org"
-      "https://noctalia.cachix.org"
-      "https://hyprland.cachix.org"
-    ];
-    nix.settings.trusted-public-keys = [
-      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
     ];
   };
 }
