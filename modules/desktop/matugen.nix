@@ -7,7 +7,7 @@
 
 lib.erinite.mkModule args {
   category = "desktop";
-  name = "qt";
+  name = "matugen";
 
   imports = [ inputs.matugen.nixosModules.default ];
 
