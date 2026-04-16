@@ -15,6 +15,7 @@ with lib.erinite; {
       fcitx5 = enabled;
       i18n = enabled;
       network = enabled;
+      sound = enabled;
 
       nvidia = {
         enable = true;
