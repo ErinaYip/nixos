@@ -11,10 +11,6 @@ lib.erinite.mkModule args {
   name = "hyprland";
 
   configFn = { ... }: {
-    environment.sessionVariables = {
-      NIXOS_OZONE_WL = "1";
-    };
-
     programs.hyprland = {
       enable = true;
       withUWSM = true;
@@ -27,6 +23,24 @@ lib.erinite.mkModule args {
       wl-clipboard
       grim
       slurp
+    ];
+
+    erinite.home.config = lib.mkMerge [
+      {
+        wayland.windowManager.hyprland = {
+          enable = true;
+          systemd.enable = false;
+        };
+
+        xdg.portal = {
+          enable = true;
+          extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
+        };
+      }
+
+      (import ./settings.nix)
+      (import ./binds.nix)
+      (import ./rules.nix)
     ];
   };
 }
