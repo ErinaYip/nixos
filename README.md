@@ -35,4 +35,4 @@ This repository is not a complete copy of the original project. It is intended t
 <br>
 <br>
 
-# EriniteOS
+<h1 align="center"> EriniteOS </h1>
