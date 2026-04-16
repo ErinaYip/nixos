@@ -38,3 +38,4 @@
 # fix: update default username in flake
 # refactor: remove laptop host and rename defaults
 # system/nix: remove mango input
+# chore: add newline at end of file
