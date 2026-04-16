@@ -82,5 +82,10 @@ with lib.erinite; {
         };
       };
     };
+
+    programs = {
+      gaming = enabled;
+      localsend = enabled;
+    };
   };
 }
