@@ -39,3 +39,4 @@
 # feat: add sddm module and enable for mechrevo
 # feat: add virtualisation module and enable for mechrevo
 # feat: add proxy config to network module and enable for mechrevo
+# feat: configure hyprland monitors for mechrevo
