@@ -5,7 +5,7 @@
 
 lib.erinite.mkModule args {
   category = "programs";
-  name = "localshare";
+  name = "localsend";
 
   configFn = { ... }: {
     programs.localsend = {
