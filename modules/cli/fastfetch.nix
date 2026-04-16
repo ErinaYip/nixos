@@ -7,12 +7,7 @@ lib.erinite.mkModule args {
   category = "cli";
   name = "fastfetch";
 
-  configFn = { ... }: let
-    shellAliases = rec {
-      fastfetch = "fastfetch --logo $(find ${../../asstes/fastfetch-icons} -type f | shuf -n 1)";
-      ff = fastfetch;
-    };
-  in {
+  configFn = { ... }: {
     erinite.home.programs.fastfetch = {
       enable = true;
       settings = {
@@ -60,9 +55,9 @@ lib.erinite.mkModule args {
       };
     };
 
-    programs = {
-      zsh.shellAliases = shellAliases;
-      fish.shellAliases = shellAliases;
+    environment.shellAliases = {
+      fastfetch = "fastfetch --logo $(find ${../../asstes/fastfetch-icons} -type f | shuf -n 1)";
+      ff = "fastfetch";
     };
   };
 }
