@@ -8,6 +8,7 @@
     jq
     foremost
     binwalk
+    john
     ffuf
     feroxbuster
     seclists
@@ -16,6 +17,9 @@
     codex
 
     wavemon
+
+    wireshark
+    bottles
   ];
 
   home.sessionVariables = {
