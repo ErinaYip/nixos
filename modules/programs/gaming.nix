@@ -9,6 +9,9 @@ lib.erinite.mkModule args {
   name = "gaming";
 
   configFn = { ... }: {
+    programs.gamescope.enable = true;
+    programs.gamemode.enable = true;
+
     environment.systemPackages = with pkgs; [
       prismlauncher
       hmcl
