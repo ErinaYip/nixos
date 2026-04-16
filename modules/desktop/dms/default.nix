@@ -14,6 +14,10 @@ lib.erinite.mkModule args {
       inputs.dms.homeModules.dank-material-shell
     ];
 
+    environment.systemPackages = with pkgs; [
+      pywalfox-native
+    ];
+
     erinite.home = lib.mkMerge [
       {
         programs.dank-material-shell = {
