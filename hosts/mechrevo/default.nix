@@ -46,6 +46,8 @@ with lib.erinite; {
 
     desktop = {
       cursor = enabled;
+      gtk = enabled;
+      qt = enabled;
 
       hyprland = {
         enable = true;
