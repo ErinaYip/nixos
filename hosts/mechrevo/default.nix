@@ -19,3 +19,4 @@
 # feat: enable yazi module in mechrevo config
 # feat: enable starship module in mechrevo config
 # feat: enable bat, eza, fastfetch, kitty, zoxide
+# feat: enable nvim module
