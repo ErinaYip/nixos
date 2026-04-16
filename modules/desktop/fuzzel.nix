@@ -8,6 +8,6 @@ lib.erinite.mkModule args {
   name = "fuzzel";
 
   configFn = { ... }: {
-    programs.fuzzel.enable = true;
+    erinite.home.programs.fuzzel.enable = true;
   };
 }
