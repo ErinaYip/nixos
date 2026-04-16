@@ -7,3 +7,4 @@
 # system/nix: remove noctalia and hyprland cachix substituters
 # feat: add nix module with flakes and gc
 # fix: update nix module with default stateVersion
+# feat: enable appimage in nix module
