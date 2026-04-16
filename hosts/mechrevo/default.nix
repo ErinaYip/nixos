@@ -23,3 +23,4 @@
 # feat: enable gaming and localsend modules
 # feat: enable firefox and chromium browsers
 # system/mechrevo: add configuration.nix import
+# system/mechrevo: add home configuration with security packages
