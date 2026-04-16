@@ -7,11 +7,7 @@ lib.erinite.mkModule args {
   category = "cli";
   name = "kitty";
 
-  configFn = { settings, ... }: let
-    shellAliases = {
-      icat = "kitten icat";
-    };
-  in {
+  configFn = { settings, ... }: {
     erinite.home.programs.kitty = {
       enable = true;
       settings = {
@@ -39,9 +35,8 @@ lib.erinite.mkModule args {
       } // settings;
     };
 
-    programs = {
-      zsh.shellAliases = shellAliases;
-      fish.shellAliases = shellAliases;
+    environment.shellAliases = {
+      icat = "kitten icat";
     };
   };
 }
