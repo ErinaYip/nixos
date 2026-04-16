@@ -8,6 +8,8 @@ lib.erinite.mkModule args {
   category = "cli";
   name = "yazy";
 
+  defaultSettings = import ./settings.nix;
+
   configFn = { settings, ... }: {
     erinite.home = {
       home.packages = with pkgs; [
@@ -24,7 +26,7 @@ lib.erinite.mkModule args {
           "smart-enter" = pkgs.yaziPlugins.smart-enter;
         };
 
-        settings = import ./settings.nix // settings;
+        settings = settings;
         keymap = import ./keymap.nix;
       };
     };
