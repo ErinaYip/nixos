@@ -1,0 +1,16 @@
+{
+  lib,
+  pkgs,
+  ...
+} @ args:
+
+lib.erinite.mkModule args {
+  category = "browsers";
+  name = "chromium";
+
+  configFn = { ... }: {
+    environment.systemPackages = with pkgs; [
+      chromium
+    ];
+  };
+}
