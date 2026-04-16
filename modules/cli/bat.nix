@@ -1,1 +1,2 @@
 # feat: add bat module with shell aliases
+# refactor: update bat module config path
