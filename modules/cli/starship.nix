@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   ...
 } @ args:
 
@@ -8,20 +9,29 @@ lib.erinite.mkModule args {
   name = "starship";
 
   configFn = { settings, ... }: {
-    erinite.home.programs.starship = {
-      enable = true;
-      enableBashIntegration = true;
-      enableFishIntegration = true;
-      enableZshIntegration = true;
-      settings = {
-        add_newline = true;
-        # command_timeout = 1300;
-        # scan_timeout = 50;
-        character = {
-          success_symbol = "[›](bold green) ";
-          error_symbol = "[›](bold red) ";
+    erinite.home = {
+      programs.starship = {
+        enable = true;
+        enableBashIntegration = true;
+        enableFishIntegration = true;
+        enableZshIntegration = true;
+        settings = {
+          add_newline = true;
+          character = {
+            success_symbol = "[›](bold green) ";
+            error_symbol = "[›](bold red) ";
+          };
+        } // settings;
+      };
+
+      programs.yazi = {
+        plugins = {
+          "starship" = pkgs.yaziPlugins.starship;
         };
-      } // settings;
+        initLua = ''
+          require("starship"):setup()
+        '';
+      };
     };
   };
 }
