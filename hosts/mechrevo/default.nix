@@ -17,3 +17,4 @@
 # feat: add dms module with system monitoring and theming
 # feat: enable matugen module in mechrevo config
 # feat: enable yazi module in mechrevo config
+# feat: enable starship module in mechrevo config
