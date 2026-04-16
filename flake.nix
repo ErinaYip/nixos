@@ -32,3 +32,4 @@
 # refactor: move home-manager.nix to modules
 # refactor: add stateVersion and remove home-manager import
 # refactor: rename defaults to default
+# refactor: split stateVersion into system and home

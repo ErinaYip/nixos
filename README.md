@@ -62,6 +62,7 @@ erinite
 ## Overview
 
 - `flake.nix`: inputs, host factory, `nixosConfigurations.laptop`, and a dev shell.
+- State versions are split: `default.systemStateVersion` for NixOS and `default.homeStateVersion` for Home Manager.
 - `lib/default.nix`: helper option builders, `mkModule`, and module auto-discovery.
 - `modules/default.nix`: auto-imports all module files.
 - `modules/home.nix`: bridges `erinite.home.config` into Home Manager.
