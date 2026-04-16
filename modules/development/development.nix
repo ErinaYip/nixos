@@ -18,6 +18,7 @@ lib.erinite.mkModule args {
       unzip
       nodejs
       pnpm
+      zola
       gcc
       gdb
       openjdk
