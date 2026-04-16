@@ -9,8 +9,8 @@ lib.erinite.mkModule args {
   name = "boot";
 
   opts = {
-    engine = lib.erinite.mkOpt 
-      (lib.types.enum [ "systemd-boot" "grub" ]) 
+    engine = lib.erinite.mkOpt
+      (lib.types.enum [ "systemd-boot" "grub" ])
       "systemd-boot" 
       "The bootloader engine to use.";
   };
@@ -19,7 +19,6 @@ lib.erinite.mkModule args {
 
   configFn = { cfg, ... }: {
     boot.loader.efi.canTouchEfiVariables = true;
-
 
     boot.loader.systemd-boot = lib.mkIf (cfg.engine == "systemd-boot") {
       enable = true;
