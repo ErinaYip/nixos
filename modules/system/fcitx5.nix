@@ -25,7 +25,7 @@ lib.erinite.mkModule args {
       ];
     };
 
-    erinite.home.config = let
+    erinite.home = let
       wanxiang = "wanxiang-lts-zh-hans";
       gram = pkgs.fetchurl {
         url = "https://cnb.cool/Mintimate/rime/oh-my-rime/-/releases/download/latest/${wanxiang}.gram";

@@ -8,7 +8,7 @@ lib.erinite.mkModule args {
   name = "zoxide";
 
   configFn = { ... }: {
-    erinite.home.config.programs.zoxide = {
+    erinite.home.programs.zoxide = {
       enable = true;
       options = [
         "--cmd z"

@@ -8,7 +8,7 @@ lib.erinite.mkModule args {
   name = "zsh";
 
   configFn = { ... }: {
-    erinite.home.config.programs.zsh = {
+    erinite.home.programs.zsh = {
       enable = true;
       autosuggestion.enable = true;
       syntaxHighlighting.enable = true;

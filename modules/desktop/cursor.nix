@@ -9,7 +9,7 @@ lib.erinite.mkModule args {
   name = "cursor";
 
   configFn = { ... }: {
-    erinite.home.config.home.pointerCursor = {
+    erinite.home.home.pointerCursor = {
       gtk.enable = true;
       x11.enable = true;
       name = "Bibata-Modern-Ice";

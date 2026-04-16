@@ -18,7 +18,7 @@ lib.erinite.mkModule args {
   configFn = { cfg, settings, ... }: {
     environment.systemPackages = [pkgs.git];
 
-    erinite.home.config = {
+    erinite.home = {
       programs.git = {
         enable = true;
         lfs.enable = true;

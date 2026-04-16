@@ -13,7 +13,7 @@ lib.erinite.mkModule args {
       ff = fastfetch;
     };
   in {
-    erinite.home.config.programs.fastfetch = {
+    erinite.home.programs.fastfetch = {
       enable = true;
       settings = {
         logo = {

@@ -15,7 +15,7 @@ lib.erinite.mkModule args {
       la = "eza -la";
     };
   in {
-    erinite.home.config.programs.eza = {
+    erinite.home.programs.eza = {
       enable = true;
       enableBashIntegration = true;
       enableFishIntegration = true;

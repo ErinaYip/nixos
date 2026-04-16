@@ -14,7 +14,7 @@ lib.erinite.mkModule args {
   configFn = { ... }: {
     programs.matugen.enable = true;
 
-    erinite.home.config = {
+    erinite.home = {
       xdg.configFile."matugen/config.toml".text = ''
         [config]
 

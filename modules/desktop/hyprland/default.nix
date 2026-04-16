@@ -25,7 +25,7 @@ lib.erinite.mkModule args {
       slurp
     ];
 
-    erinite.home.config = lib.mkMerge [
+    erinite.home = lib.mkMerge [
       {
         wayland.windowManager.hyprland = {
           enable = true;
