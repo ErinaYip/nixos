@@ -8,7 +8,7 @@ lib.erinite.mkModule args {
   name = "qt";
 
   configFn = { ... }: {
-    qt = {
+    erinite.home.config.qt = {
       enable = true;
       platformTheme.name = "gtk";
       style.name = "adwaita-dark";
