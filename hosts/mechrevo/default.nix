@@ -20,6 +20,11 @@ with lib.erinite; {
       keyd = enabled;
       sddm = enabled;
 
+      virtualisation = {
+        enable = true;
+        podman = true;
+      };
+
       nvidia = {
         enable = true;
         prime = {
