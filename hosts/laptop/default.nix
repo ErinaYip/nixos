@@ -31,3 +31,4 @@
 # - modules/: business logic (auto-loaded)
 # - hosts/: host-specific configuration
 # feat: add system module with nix and users
+# refactor: simplify laptop module config
