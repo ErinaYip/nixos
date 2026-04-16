@@ -67,6 +67,57 @@ erinite
 - `modules/home.nix`: bridges `erinite.home.config` into Home Manager.
 - `hosts/laptop`: host-specific wiring and module toggles.
 
+## `mkModule` Quick Guide
+
+`lib.erinite.mkModule` is the standard module factory used in this repo.
+
+- Required fields:
+  - `category`: option namespace segment (for example `system`, `cli`, `desktop`)
+  - `name`: module name under that category
+  - `configFn`: config body, applied only when enabled
+- Optional fields:
+  - `imports`: extra imports for this module
+  - `opts`: extra options merged under `erinite.<category>.<name>`
+  - `defaultSettings`: default values merged with `cfg.settings`
+
+It automatically creates:
+- `erinite.<category>.<name>.enable`
+- `erinite.<category>.<name>.settings`
+
+In `configFn`, you usually use:
+- `cfg`: final module config
+- `settings`: `defaultSettings` merged with user `settings`
+
+## General Module Shape
+
+```nix
+{ lib, pkgs, ... } @ args:
+
+lib.erinite.mkModule args {
+  category = "cli";
+  name = "example";
+
+  opts = {
+    message = lib.erinite.mkStrOpt "hello" "Example option.";
+  };
+
+  defaultSettings = {
+    editor = "vim";
+  };
+
+  configFn = { cfg, settings, ... }: {
+    environment.systemPackages = [ pkgs.git ];
+
+    erinite.home.config = {
+      programs.git = {
+        enable = true;
+        userName = cfg.message;
+      };
+    };
+  };
+}
+```
+
 ## Built-in Modules
 
 - `erinite.system.nix.enable`: Nix settings (flakes, GC, store optimization).
