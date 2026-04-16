@@ -14,11 +14,15 @@ with lib.erinite; {
       users = enabled;
       fcitx5 = enabled;
       i18n = enabled;
-      network = enabled;
       sound = enabled;
       fonts = enabled;
       keyd = enabled;
       sddm = enabled;
+
+      network = {
+        enable = true;
+        proxy = true;
+      };
 
       virtualisation = {
         enable = true;
