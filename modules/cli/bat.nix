@@ -8,13 +8,7 @@ lib.erinite.mkModule args {
   category = "cli";
   name = "bat";
 
-  configFn = { ... }: let
-    shellAliases = {
-      cat = "batpipe";
-      less = "bat";
-      man = "batman";
-    };
-  in {
+  configFn = { ... }: {
     programs = {
       bat = {
         enable = true;
@@ -28,8 +22,12 @@ lib.erinite.mkModule args {
           batdiff
         ];
       };
-      zsh.shellAliases = shellAliases;
-      fish.shellAliases = shellAliases;
+    };
+
+    environment.shellAliases = {
+      cat = "batpipe";
+      less = "bat";
+      man = "batman";
     };
   };
 }
