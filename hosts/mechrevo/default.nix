@@ -72,6 +72,7 @@ with lib.erinite; {
       fastfetch = enabled;
       kitty = enabled;
       zoxide = enabled;
+      nvim = enabled;
 
       git = {
         enable = true;
