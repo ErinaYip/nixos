@@ -3,3 +3,4 @@
 # refactor: split stateVersion into system and home
 # feat: add nix module with flakes and gc
 # feat: enable appimage in nix module
+# system/nix: migrate ignore cachix substituters
