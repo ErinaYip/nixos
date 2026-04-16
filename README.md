@@ -88,6 +88,10 @@ In `configFn`, you usually use:
 - `cfg`: final module config
 - `settings`: `defaultSettings` merged with user `settings`
 
+Note: when an input provides a Home Manager module, wire it through
+`home-manager.sharedModules` (for example in a host module), instead of
+injecting it from `erinite.home.config.imports`.
+
 ## General Module Shape
 
 ```nix
