@@ -39,3 +39,4 @@
 # refactor: remove laptop host and rename defaults
 # system/nix: remove mango input
 # chore: add newline at end of file
+# chore: update homeStateVersion to 26.05
