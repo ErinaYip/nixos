@@ -37,3 +37,4 @@
 # feat: add mechrevo host configuration
 # fix: update default username in flake
 # refactor: remove laptop host and rename defaults
+# system/nix: remove mango input
