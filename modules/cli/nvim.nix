@@ -9,7 +9,7 @@ lib.erinite.mkModule args {
   name = "nvim";
 
   configFn = { settings, ... }: {
-    home-manager.sharedmodules = [ inputs.erina-vim.homeModules.default ];
+    home-manager.sharedModules = [ inputs.erina-vim.homeModules.default ];
 
     erinite.home.programs.erina-vim = {
       enable = true;
