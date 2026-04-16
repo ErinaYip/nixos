@@ -7,14 +7,7 @@ lib.erinite.mkModule args {
   category = "cli";
   name = "eza";
 
-  configFn = { ... }: let
-    shellAliases = {
-      tree = "eza --tree";
-      ls = "eza";
-      ll = "eza -l";
-      la = "eza -la";
-    };
-  in {
+  configFn = { ... }: {
     erinite.home.programs.eza = {
       enable = true;
       enableBashIntegration = true;
@@ -30,10 +23,11 @@ lib.erinite.mkModule args {
       icons = "always";
     };
 
-    programs = {
-      bash.shellAliases = shellAliases;
-      zsh.shellAliases = shellAliases;
-      fish.shellAliases = shellAliases;
+    environment.shellAliases = {
+      tree = "eza --tree";
+      ls = "eza";
+      ll = "eza -l";
+      la = "eza -la";
     };
   };
 }
