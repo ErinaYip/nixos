@@ -11,8 +11,13 @@ lib.erinite.mkModule args {
   configFn = { ... }: {
     system.stateVersion = default.stateVersion;
 
+    programs.appimage.enable = true;
+    programs.appimage.binfmt = true;
+
     nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
     nixpkgs.config.allowUnfree = true;
+
     nix.gc = {
       automatic = true;
       dates = "weekly";
