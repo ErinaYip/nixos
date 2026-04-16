@@ -3,3 +3,4 @@
 # feat: add hypridle and xdg portal config
 # refactor: remove default from xdg portal config
 # chore: remove blank line in hyprland config
+# refactor: update home config path across modules
