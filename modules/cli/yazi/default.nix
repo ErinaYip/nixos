@@ -6,7 +6,7 @@
 
 lib.erinite.mkModule args {
   category = "cli";
-  name = "yazy";
+  name = "yazi";
 
   defaultSettings = import ./settings.nix;
 
