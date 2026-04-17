@@ -46,3 +46,4 @@
 # fix: update default username in flake
 # refactor: remove laptop host and rename defaults
 # fix: add default stateVersion in flake
+# chore: update flake inputs to use github sources

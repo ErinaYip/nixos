@@ -10,3 +10,4 @@
 # system/nix: remove mango and scenefx inputs
 # feat: add hyprland and related inputs
 # refactor: resolve merge conflicts in modules
+# chore: update flake inputs to use github sources
