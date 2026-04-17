@@ -14,8 +14,4 @@ lib.erinite.mkModule args {
       extraGroups = [ "wheel" ];
     };
   };
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> origin/main

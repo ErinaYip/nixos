@@ -9,11 +9,7 @@ lib.erinite.mkModule args {
   name = "nix";
 
   configFn = { ... }: {
-<<<<<<< HEAD
     system.stateVersion = default.systemStateVersion;
-=======
-    system.stateVersion = default.stateVersion;
->>>>>>> origin/main
 
     programs.appimage.enable = true;
     programs.appimage.binfmt = true;
