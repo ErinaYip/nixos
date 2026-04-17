@@ -25,11 +25,7 @@
 
       users.${default.username} = _: lib.mkMerge [
         {
-<<<<<<< HEAD
           home.stateVersion = default.homeStateVersion;
-=======
-          home.stateVersion = config.system.stateVersion;
->>>>>>> origin/main
           xdg.enable = true;
         }
 
