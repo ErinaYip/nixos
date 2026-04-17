@@ -20,6 +20,13 @@
 
     wireshark
     bottles
+
+    qq
+    wechat
+    materialgram
+    vscode
+    obsidian
+    libreoffice
   ];
 
   home.sessionVariables = {
