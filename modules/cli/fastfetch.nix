@@ -56,7 +56,7 @@ lib.erinite.mkModule args {
     };
 
     environment.shellAliases = {
-      fastfetch = "fastfetch --logo $(find ${../../asstes/fastfetch-icons} -type f | shuf -n 1)";
+      # fastfetch = "fastfetch --logo $(find ${../../asstes/fastfetch-icons} -type f | shuf -n 1)";
       ff = "fastfetch";
     };
   };
