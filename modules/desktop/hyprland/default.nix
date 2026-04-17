@@ -9,12 +9,15 @@ lib.erinite.mkModule args {
   category = "desktop";
   name = "hyprland";
 
+<<<<<<< HEAD
   defaultSettings = lib.mkMerge [
     (import ./binds.nix)
     (import ./rules.nix)
     (import ./settings.nix)
   ];
 
+=======
+>>>>>>> origin/main
   configFn = { settings, ... }: {
     programs.hyprland = {
       enable = true;
@@ -36,6 +39,7 @@ lib.erinite.mkModule args {
       "/share/xdg-desktop-portal"
     ];
 
+<<<<<<< HEAD
     nix.settings.substituters = [
       "https://hyprland.cachix.org"
     ];
@@ -43,11 +47,22 @@ lib.erinite.mkModule args {
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
     ];
 
+=======
+>>>>>>> origin/main
     erinite.home = {
       wayland.windowManager.hyprland = {
         enable = true;
         systemd.enable = false;
+<<<<<<< HEAD
         settings = settings;
+=======
+        settings = lib.mkMerge [
+          (import ./binds.nix)
+          (import ./rules.nix)
+          (import ./settings.nix)
+          settings
+        ];
+>>>>>>> origin/main
       };
 
       xdg.portal = {
