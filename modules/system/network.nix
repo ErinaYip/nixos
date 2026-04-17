@@ -2,6 +2,7 @@
   lib,
   pkgs,
   default,
+  hostName,
   ...
 } @ args:
 
@@ -15,7 +16,7 @@ with lib.erinite; mkModule args {
 
   configFn = { cfg, ... }: lib.mkMerge [
     {
-      networking.hostName = "nixos";
+      networking.hostName = hostName;
       time.timeZone = "Asia/Shanghai";
 
       hardware.bluetooth.enable = true;
