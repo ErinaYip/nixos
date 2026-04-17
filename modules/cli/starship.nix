@@ -9,3 +9,4 @@
 # refactor: update starship module config path
 # refactor: update home config path across modules
 # feat: add starship plugin to yazi module
+# refactor: resolve merge conflicts in modules

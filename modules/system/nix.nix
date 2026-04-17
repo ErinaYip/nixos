@@ -8,3 +8,4 @@
 # feat: add nix module with flakes and gc
 # fix: update nix module with default stateVersion
 # feat: enable appimage in nix module
+# refactor: resolve merge conflicts in modules

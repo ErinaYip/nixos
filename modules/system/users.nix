@@ -5,3 +5,4 @@
 # refactor: remove extra groups from default user
 # chore: add newline at end of file
 # feat: add users module
+# refactor: resolve merge conflicts in modules
