@@ -65,14 +65,17 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1774932306,
-        "narHash": "sha256-x9smec1o+JhG1xVQ+Oi/+/VrtPcUfZP/C5G/XUkNbdw=",
-        "path": "/home/era/Documents/erina-vim",
-        "type": "path"
+        "lastModified": 1773909159,
+        "narHash": "sha256-EaReYGUI5u0Yf6qZhAxWLYoP+sDQHfUq65IwFVo60Yc=",
+        "owner": "erinayip",
+        "repo": "erina-vim",
+        "rev": "9592053eefb68fde194eb104dd3154eaba0b7739",
+        "type": "github"
       },
       "original": {
-        "path": "/home/era/Documents/erina-vim",
-        "type": "path"
+        "owner": "erinayip",
+        "repo": "erina-vim",
+        "type": "github"
       }
     },
     "flake-compat": {
@@ -623,14 +626,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1774237911,
-        "narHash": "sha256-K+P9u+OKIGrq1zj8IZ8v6+kVqoOVo1DCRdaNKvgcCyU=",
-        "path": "/home/era/Documents/oh-my-rime-nix",
-        "type": "path"
+        "lastModified": 1774237892,
+        "narHash": "sha256-aD9/XXDnrR4srRHHQEyT7i+AXHfX4kPL2Ta5ojOKAF0=",
+        "owner": "erinayip",
+        "repo": "oh-my-rime-nix",
+        "rev": "008c23de5dbe227dc7735ea954900a3f68fb1e2d",
+        "type": "github"
       },
       "original": {
-        "path": "/home/era/Documents/oh-my-rime-nix",
-        "type": "path"
+        "owner": "erinayip",
+        "repo": "oh-my-rime-nix",
+        "type": "github"
       }
     },
     "pre-commit-hooks": {

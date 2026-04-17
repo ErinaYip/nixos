@@ -25,11 +25,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     erina-vim = {
-      url = "path:/home/era/Documents/erina-vim";
+      url = "github:erinayip/erina-vim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     oh-my-rime-nix = {
-      url = "path:/home/era/Documents/oh-my-rime-nix";
+      url = "github:erinayip/oh-my-rime-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
