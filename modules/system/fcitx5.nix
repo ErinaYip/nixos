@@ -29,7 +29,7 @@ lib.erinite.mkModule args {
       wanxiang = "wanxiang-lts-zh-hans";
       gram = pkgs.fetchurl {
         url = "https://cnb.cool/Mintimate/rime/oh-my-rime/-/releases/download/latest/${wanxiang}.gram";
-        hash = "sha256-VVCFbxHxNxvGfnPBXolG9/lm4WnDjZl6LGneL+FmVZo=";
+        hash = "sha256-FATbJ3db1+LTrC/qCMNcqE9y+tB2fPNEmA9jkQyJjjk=";
       };
     in {
       programs.oh-my-rime.enable = true;
