@@ -11,7 +11,7 @@ with lib.erinite; mkModule args {
   name = "network";
 
   opts = {
-    proxy = mkBoolOpt true "Whether to enable system proxy.";
+    proxy = mkBoolOpt false "Whether to enable system proxy.";
   };
 
   configFn = { cfg, ... }: lib.mkMerge [
