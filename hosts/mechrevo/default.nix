@@ -48,3 +48,4 @@
 # feat: enable bat, eza, fastfetch, kitty, zoxide
 # feat: enable nvim module
 # feat: enable gaming and localsend modules
+# feat: move out hyprland  workspace rules
