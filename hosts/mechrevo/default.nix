@@ -40,6 +40,12 @@ with lib.erinite; {
             # "Virtual-1, disabled"
             "Virtual-1, 1920x1080@60, 9999x9999, 1.25"
           ];
+          workspace = [
+            "1, monitor:DP-2,      default:true"
+            "2, monitor:eDP-1,     default:true"
+            "9, monitor:Virtual-1, default:true"
+            "2, layout:dwindle"
+          ];
         };
       };
     };

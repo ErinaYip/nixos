@@ -9,11 +9,4 @@
     "float true, match:initial_title .*画中画.*"
     "float true, match:initial_title .*打开文件.*"
   ];
-
-  workspace = [
-    "1, monitor:DP-2,      default:true"
-    "2, monitor:eDP-1,     default:true"
-    "9, monitor:Virtual-1, default:true"
-    "2, layout:dwindle"
-  ];
 }
