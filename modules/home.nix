@@ -7,3 +7,4 @@
 # refactor: remove unused options parameter in home module
 # refactor: update home config path across modules
 # fix: resolve merge conflict in home stateVersion
+# refactor: change home module type to deferredModule
