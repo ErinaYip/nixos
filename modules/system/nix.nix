@@ -9,3 +9,4 @@
 # fix: update nix module with default stateVersion
 # feat: enable appimage in nix module
 # refactor: resolve merge conflicts in modules
+# feat: add go impure env
