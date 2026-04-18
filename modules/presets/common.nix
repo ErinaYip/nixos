@@ -23,15 +23,19 @@ with lib.erinite; mkModule args {
     };
 
     erinite.desktop = {
+      hyprland = enabled;
+      fuzzel = enabled;
       cursor = enabled;
       gtk = enabled;
       qt = enabled;
       dms = enabled;
+      nemo = enabled;
       matugen = enabled;
     };
 
     erinite.cli = {
       git = enabled;
+      nvim = enabled;
       zsh = enabled;
       bat = enabled;
       eza = enabled;
