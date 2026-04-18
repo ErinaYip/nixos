@@ -14,7 +14,7 @@ lib.erinite.mkModule args {
     programs.appimage.enable = true;
     programs.appimage.binfmt = true;
 
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+    nix.settings.experimental-features = [ "nix-command" "flakes" "configurable-impure-env" ];
 
     nixpkgs.config.allowUnfree = true;
 
@@ -25,7 +25,9 @@ lib.erinite.mkModule args {
     };
     nix.settings.auto-optimise-store = true;
     nix.settings.max-jobs = 16;
-
+    nix.settings.impure-env = [
+      "GOPROXY=https://goproxy.cn,direct"
+    ];
     nix.settings.substituters = [
       "https://mirrors.cernet.edu.cn/nix-channels/store"
       "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
