@@ -15,3 +15,4 @@
 # refactor: update home config path across modules
 # refactor: restructure hyprland module settings
 # refactor: resolve merge conflicts in modules
+# feat: remove hyprland inputs
