@@ -64,6 +64,7 @@
   in {
     nixosConfigurations = {
       mechrevo = addHost "mechrevo";
+      nec = addHost "nec";
     };
 
     devShells.${system}.default = pkgs.mkShell {
