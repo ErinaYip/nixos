@@ -6,3 +6,4 @@
 # fix: correct nvim module name
 # fix: correct nvim sharedModules spelling
 # refactor: resolve merge conflicts in modules
+# fix: fix nvim
