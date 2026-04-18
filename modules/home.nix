@@ -11,9 +11,9 @@
   ];
 
   options.erinite.home = lib.mkOption {
-    type = lib.types.attrs;
+    type = lib.types.deferredModule;
     default = {};
-    description = "Home Manager config pass-through.";
+    description = "Home Manager module pass-through.";
   };
 
   config = {
@@ -23,14 +23,16 @@
 
       extraSpecialArgs = { inherit inputs default; };
 
-      users.${default.username} = _: lib.mkMerge [
-        {
-          home.stateVersion = default.homeStateVersion;
-          xdg.enable = true;
-        }
+      users.${default.username} = {
+        imports = [
+          {
+            home.stateVersion = default.homeStateVersion;
+            xdg.enable = true;
+          }
 
-        config.erinite.home
-      ];
+          config.erinite.home
+        ];
+      };
     };
   };
 }
