@@ -13,7 +13,6 @@ with lib.erinite; {
   erinite = {
     presets = {
       common = enabled;
-      gaming = enabled;
     };
 
     system = {
@@ -65,7 +64,7 @@ with lib.erinite; {
     };
 
     programs = {
-      localsend = enabled;
+      gaming = enabled;
     };
   };
 }
