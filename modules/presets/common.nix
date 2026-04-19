@@ -13,6 +13,7 @@ with lib.erinite; mkModule args {
       fcitx5 = enabled;
       fonts = enabled;
       i18n = enabled;
+      kernel = enabled;
       keyd = enabled;
       # laptop = enabled;
       network = enabled;
