@@ -30,8 +30,6 @@ with lib.erinite; {
       };
     };
 
-    # development.development = enabled;
-
     cli = {
       fastfetch = lib.mkForce disabled;
       git = {
@@ -45,10 +43,6 @@ with lib.erinite; {
 
     browsers = {
       chromium = enabled;
-    };
-
-    programs = {
-      localsend = enabled;
     };
   };
 }
