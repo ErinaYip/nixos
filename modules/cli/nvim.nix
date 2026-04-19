@@ -7,3 +7,4 @@
 # fix: correct nvim sharedModules spelling
 # refactor: resolve merge conflicts in modules
 # fix: fix nvim
+# feat: add nvim dap settings and merge config
