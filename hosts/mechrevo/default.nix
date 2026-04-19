@@ -49,3 +49,4 @@
 # feat: enable nvim module
 # feat: enable gaming and localsend modules
 # feat: move out hyprland  workspace rules
+# feat: switch localsend to gaming module
