@@ -9,41 +9,52 @@ with lib.erinite; mkModule args {
 
   configFn = { ... }: {
     erinite.system = {
-      nix = enabled;
-      nix-ld = enabled;
-      users = enabled;
-      sound = enabled;
+      boot = enabled;
+      fcitx5 = enabled;
       fonts = enabled;
       i18n = enabled;
-      fcitx5 = enabled;
       keyd = enabled;
-      sddm = enabled;
-      boot = enabled;
+      # laptop = enabled;
       network = enabled;
+      nix-ld = enabled;
+      nix = enabled;
+      # nvidia = enabled;
+      sddm = enabled;
+      sound = enabled;
+      users = enabled;
+      # virtualisation = enabled;
     };
 
     erinite.desktop = {
-      hyprland = enabled;
-      fuzzel = enabled;
-      cursor = enabled;
-      gtk = enabled;
-      qt = enabled;
       dms = enabled;
-      nemo = enabled;
+      hyprland = enabled;
+      cursor = enabled;
+      fuzzel = enabled;
+      gtk = enabled;
       matugen = enabled;
+      nemo = enabled;
+      qt = enabled;
+      # sunshine = enabled;
     };
 
     erinite.cli = {
-      git = enabled;
-      nvim = enabled;
+      yazi = enabled;
       zsh = enabled;
       bat = enabled;
+      btop = enabled;
       eza = enabled;
-      zoxide = enabled;
-      yazi = enabled;
-      starship = enabled;
       fastfetch = enabled;
+      git = enabled;
       kitty = enabled;
+      nix = enabled;
+      nvim = enabled;
+      starship = enabled;
+      zoxide = enabled;
+    };
+
+    erinite.programs = {
+      # gaming = enabled;
+      localsend = enabled;
     };
   };
 }
