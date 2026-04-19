@@ -10,3 +10,4 @@
 # feat: enable appimage in nix module
 # refactor: resolve merge conflicts in modules
 # feat: add go impure env
+# feat: enable direnv in system
