@@ -30,6 +30,8 @@ with lib.erinite; {
     gdb
     python3
     uv
+
+    qq
   ];
   
   programs.direnv.enable = true;
