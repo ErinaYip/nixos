@@ -4,7 +4,7 @@
 
 { config, lib, pkgs, ... }:
 
-{
+with lib.erinite; {
   boot.loader = {
     grub = {
       extraEntries = ''
