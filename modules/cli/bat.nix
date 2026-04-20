@@ -13,9 +13,6 @@ with lib.erinite; mkModule args {
       programs = {
         bat = {
           enable = true;
-          settings = {
-            pager = "less -R";
-          };
           extraPackages = with pkgs.bat-extras; [
             batman
             batpipe
