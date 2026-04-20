@@ -29,3 +29,4 @@
 # refactor: remove config from git module
 # refactor: update home config path across modules
 # fix: fix git user
+# fix: correct user settings assignment in git module
