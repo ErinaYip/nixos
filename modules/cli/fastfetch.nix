@@ -8,3 +8,4 @@
 # refactor: update fastfetch module shell aliases
 # chore: comment out fastfetch random logo alias
 # fix: update shell aliases for bat, eza, fastfetch, kitty, and nvim modules
+# fix: update fastfetch module layout and improve display configuration
