@@ -16,6 +16,20 @@ lib.makeExtensible (final: {
   mkAttrOpt = valueType: default: description:
     final.mkOpt (lib.types.attrsOf valueType) default description;
 
+  mkShellAliases = {
+    aliases,
+    shells ? [],
+    system ? true,
+  }:
+    lib.mkMerge (
+      lib.optional system {
+        environment.shellAliases = aliases;
+      }
+      ++ map (shell:
+        lib.setAttrByPath [ "erinite" "home" "programs" shell "shellAliases" ] aliases
+      ) shells
+    );
+
   mkModule = args: { category, name, imports ? [], opts ? {}, defaultSettings ? {}, configFn }:
     let
       cfg = args.config.erinite.${category}.${name};
