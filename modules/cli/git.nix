@@ -22,8 +22,8 @@ lib.erinite.mkModule args {
       programs.git = {
         enable = true;
         lfs.enable = true;
-        userName = cfg.user.name;
-        userEmail = cfg.user.email;
+        settings.user.name = cfg.user.name;
+        settings.user.email = cfg.user.email;
       };
     };
   };
