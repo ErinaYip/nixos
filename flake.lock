@@ -12,3 +12,4 @@
 # refactor: resolve merge conflicts in modules
 # chore: update flake inputs to use github sources
 # fix: update flake lock
+# fix: update home-manager lock file with new revision and hash
