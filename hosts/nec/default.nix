@@ -31,7 +31,6 @@ with lib.erinite; {
     };
 
     cli = {
-      fastfetch = lib.mkForce disabled;
       git = {
         enable = true;
         user = {
