@@ -8,3 +8,4 @@
 # refactor: update home config path across modules
 # refactor: update kitty module shell aliases
 # refactor: resolve merge conflicts in modules
+# fix: update shell aliases for bat, eza, fastfetch, kitty, and nvim modules

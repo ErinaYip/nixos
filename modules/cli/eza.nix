@@ -6,3 +6,4 @@
 # refactor: update eza module config path
 # refactor: update home config path across modules
 # refactor: update eza module shell aliases
+# fix: update shell aliases for bat, eza, fastfetch, kitty, and nvim modules

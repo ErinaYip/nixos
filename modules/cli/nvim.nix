@@ -9,3 +9,4 @@
 # fix: fix nvim
 # feat: add nvim dap settings and merge config
 # feat: simplify nvim configuration by removing default settings
+# fix: update shell aliases for bat, eza, fastfetch, kitty, and nvim modules
