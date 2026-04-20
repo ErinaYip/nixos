@@ -16,8 +16,8 @@ with lib.erinite; {
 
     system = {
       boot.engine = "grub";
-      network.proxy = false;
-      # fcitx5 = lib.mkForce disabled;
+      network.proxy = true;
+      laptop = enabled;
     };
 
     desktop = {
@@ -43,6 +43,7 @@ with lib.erinite; {
 
     browsers = {
       chromium = enabled;
+      firefox = enabled;
     };
   };
 }
