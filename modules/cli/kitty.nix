@@ -3,7 +3,7 @@
   ...
 } @ args:
 
-lib.erinite.mkModule args {
+with lib.erinite; mkModule args {
   category = "cli";
   name = "kitty";
 
@@ -31,14 +31,19 @@ lib.erinite.mkModule args {
     '';
   };
 
-  configFn = { settings, ... }: {
-    erinite.home.programs.kitty = {
-      enable = true;
-      settings = settings;
-    };
+  configFn = { settings, ... }: lib.mkMerge [
+    {
+      erinite.home.programs.kitty = {
+        enable = true;
+        settings = settings;
+      };
+    }
 
-    environment.shellAliases = {
-      icat = "kitten icat";
-    };
-  };
+    (mkShellAliases {
+      aliases = {
+        icat = "kitten icat";
+      };
+      shells = [ "zsh" ];
+    })
+  ];
 }

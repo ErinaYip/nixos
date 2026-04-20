@@ -4,30 +4,35 @@
   ...
 } @ args:
 
-lib.erinite.mkModule args {
+with lib.erinite; mkModule args {
   category = "cli";
   name = "bat";
 
-  configFn = { ... }: {
-    programs = {
-      bat = {
-        enable = true;
-        settings = {
-          pager = "less -FR";
+  configFn = { ... }: lib.mkMerge [
+    {
+      programs = {
+        bat = {
+          enable = true;
+          settings = {
+            pager = "less -R";
+          };
+          extraPackages = with pkgs.bat-extras; [
+            batman
+            batpipe
+            batgrep
+            batdiff
+          ];
         };
-        extraPackages = with pkgs.bat-extras; [
-          batman
-          batpipe
-          batgrep
-          batdiff
-        ];
       };
-    };
+    }
 
-    environment.shellAliases = {
-      cat = "batpipe";
-      less = "bat";
-      man = "batman";
-    };
-  };
+    (mkShellAliases {
+      aliases = {
+        cat = "batpipe";
+        less = "bat";
+        man = "batman";
+      };
+      shells = [ "zsh" ];
+    })
+  ];
 }

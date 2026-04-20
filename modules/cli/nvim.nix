@@ -8,16 +8,21 @@ with lib.erinite; mkModule args {
   category = "cli";
   name = "nvim";
 
-  configFn = { settings, ... }: {
-    home-manager.sharedModules = [ inputs.erina-vim.homeModules.default ];
+  configFn = { settings, ... }: lib.mkMerge [
+    {
+      home-manager.sharedModules = [ inputs.erina-vim.homeModules.default ];
 
-    erinite.home.programs.erina-vim = {
-      enable = true;
-    };
+      erinite.home.programs.erina-vim = {
+        enable = true;
+      };
+    }
 
-    environment.shellAliases = {
-      vim = "nvim";
-      V = "nvim";
-    };
-  };
+    (mkShellAliases {
+      aliases = {
+        vim = "nvim";
+        V = "nvim";
+      };
+      shells = [ "zsh" ];
+    })
+  ];
 }
