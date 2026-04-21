@@ -30,16 +30,30 @@ lib.makeExtensible (final: {
       ) shells
     );
 
+  mergeSettings = definitions:
+    (lib.evalModules {
+      modules = [
+        {
+          options.settings = lib.mkOption {
+            type = lib.types.attrsOf lib.types.anything;
+            default = {};
+          };
+
+          config.settings = lib.mkMerge definitions;
+        }
+      ];
+    }).config.settings;
+
   mkModule = args: { category, name, imports ? [], opts ? {}, defaultSettings ? {}, configFn }:
     let
       cfg = args.config.erinite.${category}.${name};
-      mergedSettings = args.lib.mkMerge [ defaultSettings cfg.settings ];
+      mergedSettings = final.mergeSettings [ defaultSettings cfg.settings ];
     in {
       inherit imports;
 
       options.erinite.${category}.${name} = {
         enable = final.mkBoolOpt false "Whether to enable ${name}.";
-        settings = final.mkOpt args.lib.types.attrs {} "Configuration settings for ${name}.";
+        settings = final.mkOpt (args.lib.types.attrsOf args.lib.types.anything) {} "Configuration settings for ${name}.";
       } // opts;
 
       config = args.lib.mkIf cfg.enable (
