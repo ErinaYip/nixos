@@ -1,7 +1,7 @@
 {
   windowrule = [
-    "opacity 0.9, match:focus true, fullscreen false"
-    "opacity 0.8, match:focus false, fullscreen false"
+    "opacity 1.0 override 1.0 override, match:fullscreen 1"
+    "opacity 1.0 override 1.0 override, match:class ^(steam_app_.*)$"
 
     "float true, match:initial_title .*float.*"
     "float true, match:initial_title .*图片和视频.*"
