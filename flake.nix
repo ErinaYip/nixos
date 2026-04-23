@@ -25,11 +25,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     erina-vim = {
-      url = "github:erinayip/erina-vim";
+      url = "git+https://codeberg.org/erina/erina-vim.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     oh-my-rime-nix = {
-      url = "github:erinayip/oh-my-rime-nix";
+      url = "git+https://codeberg.org/erina/oh-my-rime-nix.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
