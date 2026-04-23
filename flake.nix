@@ -49,3 +49,4 @@
 # chore: update flake inputs to use github sources
 # feat: remove hyprland inputs
 # feat: add nec host
+# fix: update repository URLs to use Codeberg for erina-vim and oh-my-rime-nix
