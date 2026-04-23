@@ -16,3 +16,4 @@
 # refactor: restructure hyprland module settings
 # refactor: resolve merge conflicts in modules
 # feat: remove hyprland inputs
+# feat(hyprland): update flake.lock and flake.nix for new inputs and settings
