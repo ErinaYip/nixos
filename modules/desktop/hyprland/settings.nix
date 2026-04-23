@@ -59,8 +59,6 @@
     rounding = 12;
     active_opacity = 0.9;
     inactive_opacity = 0.8;
-    ignore_opacity = true;
-    new_optimizations = true;
 
     shadow = {
       enabled = true;
