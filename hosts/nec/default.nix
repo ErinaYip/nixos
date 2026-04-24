@@ -31,6 +31,7 @@ with lib.erinite; {
     };
 
     cli = {
+      codex = enabled;
       git = {
         enable = true;
         user = {
