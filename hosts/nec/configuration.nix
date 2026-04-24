@@ -22,7 +22,6 @@ with lib.erinite; {
     wget
     git
     vscode
-    codex
 
     zip
     unzip
