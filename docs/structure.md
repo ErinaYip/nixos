@@ -36,11 +36,9 @@ Current hosts:
 
 Repository documentation and agent onboarding material.
 
-### `asstes/`
+### `assets/`
 
 Repository assets and templates used by modules.
-
-The directory name is currently spelled `asstes/` in the repository and should be treated as the canonical path unless it is intentionally renamed everywhere.
 
 ## Important Files
 

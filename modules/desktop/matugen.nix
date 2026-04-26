@@ -19,20 +19,20 @@ lib.erinite.mkModule args {
         [config]
 
         [templates.btop]
-        input_path = "${../../asstes/templates/btop.theme}"
+        input_path = "${../../assets/templates/btop.theme}"
         output_path = "~/.config/btop/themes/matugen.theme"
         post_hook = "pkill -USR2 btop || true"
 
         [templates.fuzzel]
-        input_path = "${../../asstes/templates/fuzzel.ini}"
+        input_path = "${../../assets/templates/fuzzel.ini}"
         output_path = "~/.config/fuzzel/themes/matugen"
 
         [templates.yzai]
-        input_path = "${../../asstes/templates/yazi-theme.toml}"
+        input_path = "${../../assets/templates/yazi-theme.toml}"
         output_path = "~/.config/yazi/theme.toml"
 
         [templates.prismlauncher]
-        input_path = "${../../asstes/templates/prismlauncher.json}"
+        input_path = "${../../assets/templates/prismlauncher.json}"
         output_path = "~/.local/share/PrismLauncher/themes/Matugen/theme.json"
       '';
 
