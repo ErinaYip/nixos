@@ -6,7 +6,7 @@
 
 lib.erinite.mkModule args {
   category = "system";
-  name = "meida";
+  name = "media";
 
   configFn = { ... }: {
     environment.systemPackages = with pkgs; [
