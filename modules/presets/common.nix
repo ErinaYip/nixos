@@ -16,6 +16,7 @@ with lib.erinite; mkModule args {
       kernel = enabled;
       keyd = enabled;
       # laptop = enabled;
+      media = enabled;
       network = enabled;
       nix-ld = enabled;
       nix = enabled;
