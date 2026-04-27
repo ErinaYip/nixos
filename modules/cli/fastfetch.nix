@@ -60,7 +60,7 @@ with lib.erinite; mkModule args {
 
     (mkShellAliases {
       aliases = {
-        fastfetch = "fastfetch --logo $(find ${../../assets/fastfetch-icons} -type f | shuf -n 1)";
+        # fastfetch = "fastfetch --logo $(find ${../../assets/fastfetch-icons} -type f | shuf -n 1)";
         ff = "fastfetch";
       };
       shells = [ "zsh" ];
