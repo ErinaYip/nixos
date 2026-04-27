@@ -11,3 +11,4 @@
 # fix: update fastfetch module layout and improve display configuration
 # fix: correct typo in directory name asstes to assets
 # feat: comment out fastfetch logo alias in shell aliases
+# refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors

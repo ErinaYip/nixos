@@ -5,3 +5,4 @@
 # fix: correct module name from qt to matugen
 # refactor: update home config path across modules
 # fix: correct typo in directory name asstes to assets
+# refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors

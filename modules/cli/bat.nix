@@ -6,3 +6,4 @@
 # refactor: update bat module shell aliases
 # fix: update shell aliases for bat, eza, fastfetch, kitty, and nvim modules
 # fix: remove pager settings from bat configuration
+# refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors

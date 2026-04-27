@@ -3,3 +3,4 @@
 # fix: enable network proxy and add firefox to browsers
 # fix: disable fastfetch in CLI configuration
 # feat: add codex cli module and enable codeboy base url
+# refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors

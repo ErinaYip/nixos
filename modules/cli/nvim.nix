@@ -11,3 +11,4 @@
 # feat: simplify nvim configuration by removing default settings
 # fix: update shell aliases for bat, eza, fastfetch, kitty, and nvim modules
 # feat: add environment session variables for nvim editor configuration
+# refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors

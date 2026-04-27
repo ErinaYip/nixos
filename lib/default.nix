@@ -33,3 +33,4 @@
 # feat: add imports support to mkModule
 # fix: add mkShellAliases function to create shell aliases in configuration
 # fix(lib): merge mkModule defaultSettings recursively
+# refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors

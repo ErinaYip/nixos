@@ -51,3 +51,4 @@
 # feat: add nec host
 # fix: update repository URLs to use Codeberg for erina-vim and oh-my-rime-nix
 # feat(hyprland): update flake.lock and flake.nix for new inputs and settings
+# refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors

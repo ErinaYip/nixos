@@ -68,7 +68,7 @@ The project centers on the `erinite.*` option tree. Host files mostly enable or 
 Before changing code, an agent should understand these facts:
 
 - `flake.nix` defines the shared inputs and constructs each host with `addHost`.
-- `lib/default.nix` defines `lib.erinite`, including `mkModule`, which is the common wrapper used by most modules.
+- `lib/default.nix` defines `eriniteLib`, including `mkModule`, which is the common wrapper used by most modules.
 - `modules/default.nix` imports all module files under `modules/`.
 - `modules/home.nix` bridges `erinite.home` into Home Manager through `home-manager.users.<username>.imports`.
 - `hosts/<name>/default.nix` is the main host entry where modules are enabled and per-host overrides are set.

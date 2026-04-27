@@ -6,3 +6,4 @@
 # chore: add newline at end of file
 # feat: add users module
 # refactor: resolve merge conflicts in modules
+# refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors
