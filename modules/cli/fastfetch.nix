@@ -10,3 +10,4 @@
 # fix: update shell aliases for bat, eza, fastfetch, kitty, and nvim modules
 # fix: update fastfetch module layout and improve display configuration
 # fix: correct typo in directory name asstes to assets
+# feat: comment out fastfetch logo alias in shell aliases
