@@ -12,3 +12,4 @@
 # feat: add go impure env
 # feat: enable direnv in system
 # ops(nix): add additional Nix store mirrors
+# feat(nix): add Cachix as a trusted user and public key for Nix settings
