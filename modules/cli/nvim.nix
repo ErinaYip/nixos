@@ -1,10 +1,11 @@
 {
   lib,
   inputs,
+  eriniteLib,
   ...
 } @ args:
 
-with lib.erinite; mkModule args {
+with eriniteLib; mkModule args {
   category = "cli";
   name = "nvim";
 

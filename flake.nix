@@ -7,7 +7,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     hyprland.url = "github:hyprwm/Hyprland";
+    hypr-dynamic-cursors = {
+      url = "github:VirtCode/hypr-dynamic-cursors";
+      inputs.hyprland.follows = "hyprland";
+    };
+
     matugen = {
       url = "github:InioX/matugen";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -45,9 +51,10 @@
       homeStateVersion = "26.05";
     };
 
-    mkLib = pkgs: pkgs.lib.extend (final: prev: {
-      erinite = import ./lib {lib = prev;};
-    });
+    # mkLib = pkgs: pkgs.lib.extend (final: prev: {
+    #   erinite = import ./lib {lib = prev; inputs = inputs; pkgs = pkgs;};
+    # });
+    
 
     addHost = hostName: nixpkgs.lib.nixosSystem {
       inherit system;
@@ -57,8 +64,9 @@
         (./. + "/hosts/${hostName}")
       ];
       specialArgs = {
-        lib = mkLib nixpkgs;
+        # lib = mkLib nixpkgs;
         inherit inputs hostName default;
+        eriniteLib = import ./lib { inherit inputs pkgs; lib=pkgs.lib; };
       };
     };
   in {

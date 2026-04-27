@@ -1,4 +1,4 @@
-{lib, ...}:
+{lib, inputs, pkgs, ...}:
 
 lib.makeExtensible (final: {
   mkOpt = type: default: description:
@@ -29,6 +29,9 @@ lib.makeExtensible (final: {
         lib.setAttrByPath [ "erinite" "home" "programs" shell "shellAliases" ] aliases
       ) shells
     );
+
+  mkInputPkgb = input: pkg: inputs.${input}.packages.${pkgs.stdenv.hostPlatform.system}.${pkg};
+  mkInputPkga = input: final.mkInputPkgb input input;
 
   mergeSettings = definitions:
     (lib.evalModules {

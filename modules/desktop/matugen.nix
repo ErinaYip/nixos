@@ -2,10 +2,11 @@
 {
   lib,
   inputs,
+  eriniteLib,
   ...
 } @ args:
 
-lib.erinite.mkModule args {
+eriniteLib.mkModule args {
   category = "desktop";
   name = "matugen";
 

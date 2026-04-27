@@ -1,15 +1,16 @@
 {
   lib,
   inputs,
+  eriniteLib,
   ...
 } @ args:
 
-lib.erinite.mkModule args {
+eriniteLib.mkModule args {
   category = "system";
   name = "boot";
 
   opts = {
-    engine = lib.erinite.mkOpt
+    engine = eriniteLib.mkOpt
       (lib.types.enum [ "systemd-boot" "grub" ])
       "systemd-boot" 
       "The bootloader engine to use.";

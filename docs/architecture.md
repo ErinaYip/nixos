@@ -11,7 +11,7 @@ The configuration has four main layers:
 1. `flake.nix`
    Builds `nixosConfigurations` and injects shared `specialArgs`.
 2. `lib/`
-   Defines helper functions exposed as `lib.erinite`.
+   Defines helper functions exposed as `eriniteLib`.
 3. `modules/`
    Declares reusable options and translates `erinite.*` options into NixOS or Home Manager config.
 4. `hosts/`
@@ -27,7 +27,7 @@ The high-level flow is:
    - `modules/`
    - `hosts/<hostName>`
 3. `specialArgs` injects:
-   - `lib` extended with `lib.erinite`
+   - `lib` extended with `eriniteLib`
    - `inputs`
    - `hostName`
    - `default`

@@ -2,7 +2,7 @@
 
 ## Core Entry
 
-The shared module helper lives in `lib/default.nix` and is exposed as `lib.erinite`.
+The shared module helper lives in `lib/default.nix` and is exposed as `eriniteLib`.
 
 The most important helper is `mkModule`.
 
@@ -46,7 +46,7 @@ Without recursive merging, host overrides can accidentally replace an entire nes
 
 ## Common Helpers
 
-Useful helpers in `lib.erinite`:
+Useful helpers in `eriniteLib`:
 
 - `mkOpt`, `mkBoolOpt`, `mkStrOpt`, `mkListOpt`, `mkAttrOpt`
 - `mkShellAliases`
@@ -55,9 +55,9 @@ Useful helpers in `lib.erinite`:
 
 ## Module Discovery
 
-`modules/default.nix` imports all modules by calling `lib.erinite.modules ./.`.
+`modules/default.nix` imports all modules by calling `eriniteLib.modules ./.`.
 
-`lib.erinite.modules`:
+`eriniteLib.modules`:
 
 - Recursively scans directories
 - Treats a directory with `default.nix` as a single module root
@@ -70,7 +70,7 @@ This is why most directories under `modules/` do not need a hand-maintained impo
 Recommended process:
 
 1. Pick a category under `modules/`.
-2. Create a module file using `lib.erinite.mkModule`.
+2. Create a module file using `eriniteLib.mkModule`.
 3. Keep defaults in `defaultSettings` when the module has a settings tree.
 4. Put raw implementation in `configFn`.
 5. Enable it from a host or preset through `erinite.<category>.<name>`.
@@ -80,7 +80,7 @@ Minimal shape:
 ```nix
 { lib, ... } @ args:
 
-lib.erinite.mkModule args {
+eriniteLib.mkModule args {
   category = "cli";
   name = "example";
 
