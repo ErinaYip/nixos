@@ -50,3 +50,4 @@
 # feat: enable gaming and localsend modules
 # feat: move out hyprland  workspace rules
 # feat: switch localsend to gaming module
+# feat: update configuration files to remove vscode and bottles, and add python312Packages.dirsearch
