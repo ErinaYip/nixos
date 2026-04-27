@@ -16,11 +16,12 @@
     zsteg
     codex
     zola
+    python312Packages.dirsearch
 
     wavemon
 
     wireshark
-    bottles
+    # bottles
 
     qq
     wechat

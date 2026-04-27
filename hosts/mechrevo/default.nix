@@ -18,7 +18,11 @@ with lib.erinite; {
     system = {
       boot.engine = "grub";
       network.proxy = true;
-      virtualisation.podman = true;
+      virtualisation = {
+        enable = true;
+        podman = true;
+        vbox = true;
+      };
 
       nvidia = {
         enable = true;

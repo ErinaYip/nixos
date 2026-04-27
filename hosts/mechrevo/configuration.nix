@@ -9,7 +9,6 @@
     vim
     wget
     git
-    vscode
 
     zip
     unzip
