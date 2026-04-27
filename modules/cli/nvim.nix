@@ -15,6 +15,12 @@ with lib.erinite; mkModule args {
       erinite.home.programs.erina-vim = {
         enable = true;
       };
+
+      environment.sessionVariables = {
+        EDITOR = lib.mkDefault "nvim";
+        VISUAL = lib.mkDefault "nvim";
+        GIT_EDITOR = lib.mkDefault "nvim";
+      };
     }
 
     (mkShellAliases {
