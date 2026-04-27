@@ -11,3 +11,4 @@
 # refactor: resolve merge conflicts in modules
 # feat: add go impure env
 # feat: enable direnv in system
+# ops(nix): add additional Nix store mirrors
