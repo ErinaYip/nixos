@@ -34,7 +34,5 @@ with lib.erinite; {
 
     qq
   ];
-  
-  programs.direnv.enable = true;
 }
 

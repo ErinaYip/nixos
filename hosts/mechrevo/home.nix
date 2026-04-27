@@ -15,6 +15,7 @@
     exiftool
     zsteg
     codex
+    zola
 
     wavemon
 
