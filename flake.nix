@@ -13,6 +13,10 @@
       url = "github:VirtCode/hypr-dynamic-cursors";
       inputs.hyprland.follows = "hyprland";
     };
+    hyprgrass = {
+      url = "git+file:///home/era/Documents/hyprgrass/";
+      inputs.hyprland.follows = "hyprland";
+    };
 
     matugen = {
       url = "github:InioX/matugen";
