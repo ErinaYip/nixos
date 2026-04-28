@@ -7,3 +7,4 @@
 # style(hyprland): update window opacity rules and decoration settings
 # feat(hyprland): update flake.lock and flake.nix for new inputs and settings
 # fix(hyprland): ensure vfr is set to true in misc settings
+# fix(hyprland): remove vfr setting from misc configuration
