@@ -54,3 +54,4 @@
 # refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors
 # feat(desktop): enable obs-studio
 # fix(kernel): enable sched_ext and update kernelPackages to latest
+# fix(default.nix): remove unused variables and clean up syntax
