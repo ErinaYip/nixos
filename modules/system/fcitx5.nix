@@ -2,10 +2,11 @@
   inputs,
   pkgs,
   lib,
+  eriniteLib,
   ...
 } @ args:
 
-lib.erinite.mkModule args {
+eriniteLib.mkModule args {
   category = "system";
   name = "fcitx5";
 

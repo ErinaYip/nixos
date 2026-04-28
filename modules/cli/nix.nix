@@ -1,10 +1,11 @@
 {
   lib,
   hostName,
+  eriniteLib,
   ...
 } @ args:
 
-with lib.erinite; mkModule args {
+with eriniteLib; mkModule args {
   category = "cli";
   name = "nix";
 

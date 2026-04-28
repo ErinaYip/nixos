@@ -1,9 +1,9 @@
 {
   lib,
   pkgs,
-  ...
+  eriniteLib,
 }: 
-with lib.erinite; {
+with eriniteLib; {
   imports = [
     ./hardware-configuration.nix
     ./configuration.nix

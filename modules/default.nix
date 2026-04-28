@@ -1,4 +1,4 @@
-{lib, ...}:
+{eriniteLib, ...}:
 {
-  imports = lib.erinite.modules ./.;
+  imports = eriniteLib.modules ./.;
 }

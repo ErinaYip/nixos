@@ -1,19 +1,20 @@
 {
   lib,
   config,
+  eriniteLib,
   ...
 } @ args:
 
-lib.erinite.mkModule args {
+eriniteLib.mkModule args {
   category = "system";
   name = "nvidia";
 
   opts = {
     prime = {
-      enable = lib.erinite.mkBoolOpt false "Enable NVIDIA PRIME Offload.";
-      nvidiaBusId = lib.erinite.mkStrOpt "" "Nvidia dGPU Bus ID (e.g., PCI:1:0:0)";
-      amdgpuBusId = lib.erinite.mkStrOpt "" "AMD iGPU Bus ID (e.g., PCI:6:0:0)";
-      intelBusId  = lib.erinite.mkStrOpt "" "Intel iGPU Bus ID (e.g., PCI:0:2:0)";
+      enable = eriniteLib.mkBoolOpt false "Enable NVIDIA PRIME Offload.";
+      nvidiaBusId = eriniteLib.mkStrOpt "" "Nvidia dGPU Bus ID (e.g., PCI:1:0:0)";
+      amdgpuBusId = eriniteLib.mkStrOpt "" "AMD iGPU Bus ID (e.g., PCI:6:0:0)";
+      intelBusId  = eriniteLib.mkStrOpt "" "Intel iGPU Bus ID (e.g., PCI:0:2:0)";
     };
   };
 

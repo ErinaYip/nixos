@@ -1,10 +1,11 @@
 {
   lib,
   pkgs,
+  eriniteLib,
   ...
 } @ args:
 
-with lib.erinite; mkModule args {
+with eriniteLib; mkModule args {
   category = "system";
   name = "virtualisation";
 

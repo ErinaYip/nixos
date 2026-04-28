@@ -1,11 +1,11 @@
 {
-  inputs,
   lib,
   pkgs,
+  eriniteLib,
   ...
 } @ args:
 
-lib.erinite.mkModule args {
+with eriniteLib; mkModule args {
   category = "desktop";
   name = "hyprland";
 
@@ -13,6 +13,7 @@ lib.erinite.mkModule args {
     (import ./binds.nix)
     (import ./rules.nix)
     (import ./settings.nix)
+    (import ./dynamic-cursors.nix)
   ];
 
   configFn = { settings, ... }: {
@@ -20,8 +21,8 @@ lib.erinite.mkModule args {
       enable = true;
       withUWSM = true;
       xwayland.enable = true;
-      package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-      portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+      package = mkInputPkga "hyprland";
+      portalPackage = mkInputPkgb "hyprland" "xdg-desktop-portal-hyprland";
     };
 
     environment.systemPackages = with pkgs; [
@@ -48,11 +49,14 @@ lib.erinite.mkModule args {
         enable = true;
         systemd.enable = false;
         settings = settings;
+        package = mkInputPkga "hyprland";
+        plugins = [
+          (mkInputPkga "hypr-dynamic-cursors")
+        ];
       };
 
       xdg.portal = {
         enable = true;
-        extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
         config = {
           hyprland.preferred = [ "hyprland" "gtk" ];
         };

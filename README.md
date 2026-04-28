@@ -133,7 +133,7 @@ reboot
 Modules are enabled like this:
 
 ```nix
-with lib.erinite; {
+with eriniteLib; {
   erinite.presets.common = enabled;
   erinite.browsers.firefox = enabled;
 }

@@ -8,7 +8,7 @@ Project entry point. Defines inputs, host construction, and the development shel
 
 ### `lib/`
 
-Holds `lib.erinite`, the helper library used by the module layer.
+Holds `eriniteLib`, the helper library used by the module layer.
 
 ### `modules/`
 
