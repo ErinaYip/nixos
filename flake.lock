@@ -288,16 +288,16 @@
       },
       "locked": {
         "lastModified": 1777361955,
-        "narHash": "sha256-OGFGNfgpGvOLLq/+xN9mS/6sJd69Kf3HIfhl6Dnu3To=",
-        "ref": "refs/heads/main",
+        "narHash": "sha256-ri2MItIOSJHfnUFudZxZ7Y2lX0Obl5MgYAFo4K6FoXA=",
+        "owner": "ErinaYip",
+        "repo": "hyprgrass",
         "rev": "f69c39b7fae6ead3c126e352ad41fa7f160e9152",
-        "revCount": 889,
-        "type": "git",
-        "url": "file:///home/era/Documents/hyprgrass/"
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "file:///home/era/Documents/hyprgrass/"
+        "owner": "ErinaYip",
+        "repo": "hyprgrass",
+        "type": "github"
       }
     },
     "hyprland": {
