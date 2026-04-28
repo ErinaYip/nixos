@@ -183,11 +183,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1777295000,
-        "narHash": "sha256-xzWerLYQG2W+VGJfaZ+8/Puswbok1o8Tix6/6hIW1rY=",
+        "lastModified": 1777349711,
+        "narHash": "sha256-PGKgo2dO6fK603QGI+DWXdKmS09pbJjjTxwRHdhkGZA=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "b408d49b845167add697937761a89c41c996ac7a",
+        "rev": "c1140540536d483e2730320100f6835d62c94fdf",
         "type": "github"
       },
       "original": {
@@ -275,6 +275,31 @@
         "type": "github"
       }
     },
+    "hyprgrass": {
+      "inputs": {
+        "hyprland": [
+          "hyprland"
+        ],
+        "nixpkgs": [
+          "hyprgrass",
+          "hyprland",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1777361955,
+        "narHash": "sha256-OGFGNfgpGvOLLq/+xN9mS/6sJd69Kf3HIfhl6Dnu3To=",
+        "ref": "refs/heads/main",
+        "rev": "f69c39b7fae6ead3c126e352ad41fa7f160e9152",
+        "revCount": 889,
+        "type": "git",
+        "url": "file:///home/era/Documents/hyprgrass/"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:///home/era/Documents/hyprgrass/"
+      }
+    },
     "hyprland": {
       "inputs": {
         "aquamarine": "aquamarine",
@@ -292,11 +317,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1777300178,
-        "narHash": "sha256-T/iptpy2nXKpJq9Owp0m7mqE3L4icz+OBW8JVe0r3PM=",
+        "lastModified": 1777330550,
+        "narHash": "sha256-jRRC7Ck+DzH98uWaD9i+ManOquec2qSRcBfyxWvenuA=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "5419ea6a448fcf6aa86bb2c319f94857b55feeaf",
+        "rev": "e1bda229bdf070f1eed01858f862ca975783df71",
         "type": "github"
       },
       "original": {
@@ -728,6 +753,7 @@
         "grub2-themes": "grub2-themes",
         "home-manager": "home-manager",
         "hypr-dynamic-cursors": "hypr-dynamic-cursors",
+        "hyprgrass": "hyprgrass",
         "hyprland": "hyprland",
         "matugen": "matugen",
         "nixpkgs": "nixpkgs_4",

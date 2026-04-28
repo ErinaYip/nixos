@@ -38,8 +38,6 @@ with eriniteLib; mkModule args {
         webui = pkgs.metacubexd;
       };
 
-      environment.systemPackages = with pkgs; [ clash-verge-rev ];
-
       environment.sessionVariables = {
         HTTP_PROXY = "http://127.0.0.1:7890";
         HTTPS_PROXY = "http://127.0.0.1:7890";
