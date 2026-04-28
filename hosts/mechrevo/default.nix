@@ -36,6 +36,7 @@ with eriniteLib; {
     };
 
     desktop = {
+      obs-studio = enabled;
       hyprland = {
         settings = {
           monitor = [
