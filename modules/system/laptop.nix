@@ -27,9 +27,6 @@ eriniteLib.mkModule args {
 
         CPU_BOOST_ON_BAT = 0;
 
-        INTEL_GPU_MIN_FREQ_ON_BAT = 300;
-        INTEL_GPU_MAX_FREQ_ON_BAT = 450;
-
         WIFI_PWR_ON_BAT = "on";
         PCIE_ASPM_ON_BAT = "powersupersave";
 
