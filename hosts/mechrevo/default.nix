@@ -56,3 +56,4 @@
 # fix(kernel): enable sched_ext and update kernelPackages to latest
 # fix(default.nix): remove unused variables and clean up syntax
 # fix(default.nix): enable laptop support and comment out vbox setting
+# refactor(mechrevo): update hyprland monitor configuration
