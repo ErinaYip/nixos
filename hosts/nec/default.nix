@@ -1,8 +1,7 @@
 {
-  lib,
-  pkgs,
   eriniteLib,
-}: 
+  ...
+}:
 with eriniteLib; {
   imports = [
     ./hardware-configuration.nix
