@@ -18,3 +18,4 @@
 # feat: update flake.lock with new versions and hashes for dependencies
 # refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors
 # build(hyprland): update Hyprland and configure dynamic-cursors
+# fix(flake): add hyprgrass input and update hyprland configuration
