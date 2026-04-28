@@ -53,3 +53,4 @@
 # feat(hyprland): update flake.lock and flake.nix for new inputs and settings
 # refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors
 # fix(flake): add hyprgrass input and update hyprland configuration
+# fix(flake): update hyprgrass URL to use GitHub
