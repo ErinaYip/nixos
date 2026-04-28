@@ -20,10 +20,11 @@ with eriniteLib; {
       boot.engine = "grub";
       kernel.sched_ext = true;
       network.proxy = true;
+      laptop = enabled;
       virtualisation = {
         enable = true;
         podman = true;
-        vbox = true;
+        # vbox = true;
       };
 
       nvidia = {
