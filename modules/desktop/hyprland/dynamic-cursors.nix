@@ -1,6 +1,12 @@
 {
   plugin.dynamic-cursors = {
     enabled = true;
-    mode = "tilt";
+    mode = "rotate";
+
+    shake = {
+      enabled = true;
+      nearest = false;
+      effects = true;
+    };
   };
 }
