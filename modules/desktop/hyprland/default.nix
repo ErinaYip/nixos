@@ -9,14 +9,19 @@ with eriniteLib; mkModule args {
   category = "desktop";
   name = "hyprland";
 
+  opts = {
+    grass = mkBoolOpt false "Whether to enable hyprgrass";
+  };
+
   defaultSettings = lib.mkMerge [
     (import ./binds.nix)
     (import ./rules.nix)
     (import ./settings.nix)
     (import ./dynamic-cursors.nix)
+    (import ./grass.nix)
   ];
 
-  configFn = { settings, ... }: {
+  configFn = { settings, cfg, ... }: {
     programs.hyprland = {
       enable = true;
       withUWSM = true;
@@ -52,6 +57,7 @@ with eriniteLib; mkModule args {
         package = mkInputPkga "hyprland";
         plugins = [
           (mkInputPkga "hypr-dynamic-cursors")
+          (lib.mkIf cfg.grass (mkInputPkga "hyprgrass"))
         ];
       };
 

@@ -4,6 +4,7 @@
     gaps_out = 12;
     border_size = 2;
     layout = "master";
+    resize_on_border = true;
   };
 
   misc = {
