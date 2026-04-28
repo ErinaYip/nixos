@@ -53,3 +53,4 @@
 # feat: update configuration files to remove vscode and bottles, and add python312Packages.dirsearch
 # refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors
 # feat(desktop): enable obs-studio
+# fix(kernel): enable sched_ext and update kernelPackages to latest
