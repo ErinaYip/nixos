@@ -8,3 +8,4 @@
 # fix: disable system proxy by default
 # feat: add clash-verge-rev to system packages
 # refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors
+# fix(network): remove clash-verge-rev from systemPackages
