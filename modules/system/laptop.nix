@@ -1,5 +1,4 @@
 {
-  lib,
   eriniteLib,
   ...
 } @ args:
@@ -12,12 +11,6 @@ eriniteLib.mkModule args {
     services.upower.enable = true;
     services.tuned.enable = false;
     services.power-profiles-daemon.enable = false;
-
-    # services.auto-cpufreq.enable = true;
-    # services.auto-cpufreq.settings = {
-    #   battery = { governor = "powersave"; turbo = "auto"; };
-    #   charger = { governor = "performance"; turbo = "auto"; };
-    # };
 
     services.tlp = {
       enable = true;
