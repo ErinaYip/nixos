@@ -18,6 +18,7 @@ with eriniteLib; {
 
     system = {
       boot.engine = "grub";
+      kernel.sched_ext = true;
       network.proxy = true;
       virtualisation = {
         enable = true;

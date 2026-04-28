@@ -1,20 +1,24 @@
 {
-  lib,
   pkgs,
+  lib,
   eriniteLib,
   ...
 } @ args:
 
-eriniteLib.mkModule args {
+with eriniteLib; mkModule args {
   category = "system";
   name = "kernel";
 
-  configFn = { ... }: {
-    boot.kernelPackages = pkgs.linuxPackages;
+  opts = {
+    sched_ext = mkBoolOpt false "Whether to enable sched_ext";
+  };
 
-    services.scx = {
+  configFn = { cfg, ... }: {
+    boot.kernelPackages = pkgs.linuxPackages_latest;
+
+    services.scx = lib.mkIf cfg.sched_ext {
       enable = true;
-      scheduler = "scx_rusty"; 
+      scheduler = "scx_rusty";
     };
   };
 }
