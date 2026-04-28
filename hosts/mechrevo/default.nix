@@ -52,3 +52,4 @@
 # feat: switch localsend to gaming module
 # feat: update configuration files to remove vscode and bottles, and add python312Packages.dirsearch
 # refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors
+# feat(desktop): enable obs-studio
