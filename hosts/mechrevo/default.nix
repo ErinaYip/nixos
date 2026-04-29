@@ -42,13 +42,12 @@ with eriniteLib; {
       hyprland = {
         settings = {
           monitor = [
-            "desc:China Star Optoelectronics Technology Co. Ltd MNG007DA5-4, preferred, 1920x0, 1.6, transform, 1"
-            "desc:HKC OVERSEAS LIMITED X5 0000000000001, 1920x1080@260.00Hz, 0x0, 1"
+            "eDP-2, preferred, 1920x0, 1.6, transform, 1"
+            "DP-3, 1920x1080@260.00Hz, 0x0, 1"
           ];
           workspace = [
-            "1, monitor:DP-2,      default:true"
-            "2, monitor:eDP-1,     default:true"
-            "9, monitor:Virtual-1, default:true"
+            "1, monitor:DP-3,      default:true"
+            "2, monitor:eDP-2,     default:true"
             "2, layout:dwindle"
           ];
         };
