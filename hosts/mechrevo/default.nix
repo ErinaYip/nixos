@@ -58,3 +58,4 @@
 # fix(default.nix): enable laptop support and comment out vbox setting
 # refactor(mechrevo): update hyprland monitor configuration
 # refactor(mechrevo): update Hyprland monitor configuration for improved display settings
+# refactor(cli): enable codex for mechrevo
