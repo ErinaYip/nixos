@@ -19,6 +19,7 @@ with eriniteLib; mkModule args {
       # laptop = enabled;
       media = enabled;
       network = enabled;
+      nh = enabled;
       nix-ld = enabled;
       nix = enabled;
       # nvidia = enabled;

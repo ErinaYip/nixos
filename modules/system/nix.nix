@@ -1,5 +1,4 @@
 {
-  lib,
   default,
   eriniteLib,
   ...
@@ -19,11 +18,6 @@ eriniteLib.mkModule args {
 
     nixpkgs.config.allowUnfree = true;
 
-    nix.gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
     nix.settings.auto-optimise-store = true;
     nix.settings.max-jobs = 16;
     nix.settings.impure-env = [
