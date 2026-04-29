@@ -20,3 +20,4 @@
 # build(hyprland): update Hyprland and configure dynamic-cursors
 # fix(flake): add hyprgrass input and update hyprland configuration
 # fix(flake): update hyprgrass URL to use GitHub
+# refactor(mechrevo): update Hyprland monitor configuration for improved display settings
