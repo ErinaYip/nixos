@@ -61,6 +61,12 @@ This repository contains a personal NixOS flake with:
 - A custom helper library under `lib/`
 - Home Manager integration through `modules/home.nix`
 
+## Current Limitation
+
+- The current repository should be treated as `nh os`-only.
+- Standalone `nh home` usage is not considered reliable or supported.
+- Home Manager is wired into the NixOS module graph, so routine changes should be applied through the host system switch path.
+
 The project centers on the `erinite.*` option tree. Host files mostly enable or override modules through that tree instead of writing all NixOS and Home Manager options directly.
 
 ## Agent Entry
@@ -80,3 +86,8 @@ Before changing code, an agent should understand these facts:
 - When the module system changes, update `module-system.md` first.
 - When directories, hosts, or ownership boundaries change, update `structure.md`.
 - When shared design decisions change, update `architecture.md`.
+
+## TODO
+
+- Revisit whether standalone Home Manager outputs belong in this flake.
+- If standalone Home Manager support returns, document the supported command path and validation rules before re-enabling `nh home` workflows.

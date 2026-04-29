@@ -43,6 +43,13 @@ It uses flakes, Home Manager, Hyprland, and small reusable modules.
 
 Detailed project documentation lives in [`docs/`](./docs/README.md).
 
+## Status
+
+- This repository currently supports `nh os` workflows only.
+- `nh home` is intentionally not supported in the current configuration.
+- Home Manager is integrated through the NixOS module tree instead of being maintained as a stable standalone `nh home` entrypoint.
+- Use `nh os switch` or `sudo nixos-rebuild switch --flake .#<host>` for normal updates.
+
 ## Hosts
 
 - `mechrevo`: main machine, NVIDIA PRIME, Podman, gaming, dual monitor setup.
@@ -105,6 +112,12 @@ Maintenance aliases:
 | `sns` | switch to the new system |
 | `snb` | build the new system for next boot |
 | `snr` | update inputs and switch to the new system |
+
+Warning:
+
+- `nh home` is disabled on purpose.
+- Do not treat this repository as a stable standalone Home Manager flake right now.
+- If you need to update user-level config, apply it through `nh os switch` because Home Manager is embedded in the NixOS configuration.
 
 Manual switch:
 
@@ -181,3 +194,8 @@ The `common` preset enables the base system, Hyprland desktop, CLI tools and Loc
 ## Notes
 
 This repo is made for my own machines. Some values are hardware or user specific, such as username, proxy config path, display layout, NVIDIA bus IDs and Git user info.
+
+## TODO
+
+- Re-evaluate whether standalone `homeConfigurations` should exist at all.
+- If `nh home` support is reintroduced later, make host detection, unfree package handling, and documentation consistent first.
