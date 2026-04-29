@@ -1,5 +1,4 @@
 {
-  lib,
   eriniteLib,
   ...
 } @ args:
@@ -12,10 +11,10 @@ with eriniteLib; mkModule args {
     autoStart = mkBoolOption false "Whether to start sunshine on launch.";
   };
 
-  configFn = { ... }: {
+  configFn = { cfg, ... }: {
     services.sunshine = {
       enable = true;
-      autoStart = false;
+      autoStart = cfg.autoStart;
       capSysAdmin = true;
       openFirewall = true;
     };
