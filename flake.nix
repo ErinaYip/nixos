@@ -14,7 +14,7 @@
       inputs.hyprland.follows = "hyprland";
     };
     hyprgrass = {
-      url = "github:ErinaYip/hyprgrass";
+      url = "github:horriblename/hyprgrass";
       inputs.hyprland.follows = "hyprland";
     };
 
