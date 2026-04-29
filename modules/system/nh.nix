@@ -35,7 +35,7 @@ with eriniteLib; mkModule args {
               { key = "t"; cmd = "test"; }
               { key = "u"; cmd = "build"; }
             ]
-          ) [ "os" "home" ]
+          ) [ "os" ]
         );
       shells = [ "zsh" ];
     })
