@@ -55,6 +55,7 @@ with eriniteLib; {
     };
 
     cli = {
+      codex = enabled;
       git = {
         user = {
           name = "ErinaYip";

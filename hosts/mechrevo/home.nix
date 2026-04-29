@@ -14,7 +14,6 @@
     seclists
     exiftool
     zsteg
-    codex
     zola
     python312Packages.dirsearch
 
