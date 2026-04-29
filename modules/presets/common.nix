@@ -4,3 +4,4 @@
 # feat: add kernel module with scx scheduler
 # feat: enable media support in system configuration and add media module
 # refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors
+# feat(nh): add nh module
