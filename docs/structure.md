@@ -8,11 +8,11 @@ Project entry point. Defines inputs, host construction, and the development shel
 
 ### `lib/`
 
-Holds `eriniteLib`, the helper library used by the module layer.
+Holds `eriniteLib`, the helper library used by the module layer. Imported and exposed in `flake.nix` as `eriniteLib`.
 
 ### `modules/`
 
-Contains reusable configuration modules grouped by domain:
+Current categories under `modules/`:
 
 - `system/` for NixOS system services and platform behavior
 - `desktop/` for graphical environment and desktop integration
@@ -28,9 +28,9 @@ Contains per-machine entry points and hardware-specific configuration.
 Current hosts:
 
 - `mechrevo`
-  Main machine. Uses NVIDIA PRIME, Podman, gaming modules, and a more complex Hyprland monitor layout.
+  Main machine. Uses NVIDIA PRIME, Podman, gaming modules, OBS Studio, and a more complex Hyprland monitor layout.
 - `nec`
-  Laptop. Uses laptop-specific modules and a simpler Hyprland setup.
+  Laptop. Uses laptop-specific modules, simpler Hyprland setup, and has Codex CLI enabled.
 
 ### `docs/`
 

@@ -2,7 +2,7 @@
 
 ## Core Entry
 
-The shared module helper lives in `lib/default.nix` and is exposed as `eriniteLib`.
+The shared module helper lives in `lib/default.nix`. It is imported directly in `flake.nix` and exposed as `eriniteLib` to all module roots through `specialArgs`.
 
 The most important helper is `mkModule`.
 
@@ -50,8 +50,11 @@ Useful helpers in `eriniteLib`:
 
 - `mkOpt`, `mkBoolOpt`, `mkStrOpt`, `mkListOpt`, `mkAttrOpt`
 - `mkShellAliases`
+- `mkInputPkgb`, `mkInputPkga` - import packages from flake inputs
+- `mergeSettings` - merge nested attribute sets preserving module semantics
 - `enabled` and `disabled`
 - `files` and `modules` for recursive module discovery
+- `getDir` - scan directory structure recursively
 
 ## Module Discovery
 
