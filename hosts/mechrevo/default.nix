@@ -59,3 +59,4 @@
 # refactor(mechrevo): update hyprland monitor configuration
 # refactor(mechrevo): update Hyprland monitor configuration for improved display settings
 # refactor(cli): enable codex for mechrevo
+# feat(hyprland): add additional monitor settings and workspace configurations
