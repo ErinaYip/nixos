@@ -45,10 +45,9 @@ Detailed project documentation lives in [`docs/`](./docs/README.md).
 
 ## Status
 
-- This repository currently supports `nh os` workflows only.
-- `nh home` is intentionally not supported in the current configuration.
-- Home Manager is integrated through the NixOS module tree instead of being maintained as a stable standalone `nh home` entrypoint.
-- Use `nh os switch` or `sudo nixos-rebuild switch --flake .#<host>` for normal updates.
+- This repository supports both `nh os` and `nh home` workflows.
+- Home Manager still shares the same module graph through `erinite.homeModule`.
+- Use `nh os switch` for full system updates, or `nh home switch` for user-only updates.
 
 ## Hosts
 
@@ -113,11 +112,17 @@ Maintenance aliases:
 | `snb` | build the new system for next boot |
 | `snr` | update inputs and switch to the new system |
 
-Warning:
+Home-only switch:
 
-- `nh home` is disabled on purpose.
-- Do not treat this repository as a stable standalone Home Manager flake right now.
-- If you need to update user-level config, apply it through `nh os switch` because Home Manager is embedded in the NixOS configuration.
+```bash
+nh home switch .
+```
+
+Notes:
+
+- `nh os switch` remains the canonical path for full host updates.
+- `nh home switch` now reuses the same composed Home Manager module exported as `homeConfigurations`.
+- Home targets are exposed as `era@mechrevo` and `era@nec`.
 
 Manual switch:
 
@@ -197,5 +202,4 @@ This repo is made for my own machines. Some values are hardware or user specific
 
 ## TODO
 
-- Re-evaluate whether standalone `homeConfigurations` should exist at all.
-- If `nh home` support is reintroduced later, make host detection, unfree package handling, and documentation consistent first.
+- Keep `nixosConfigurations` and `homeConfigurations` behavior aligned when changing the module graph.
