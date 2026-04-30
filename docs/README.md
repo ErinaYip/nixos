@@ -63,9 +63,9 @@ This repository contains a personal NixOS flake with:
 
 ## Current Limitation
 
-- The current repository should be treated as `nh os`-only.
-- Standalone `nh home` usage is not considered reliable or supported.
-- Home Manager is wired into the NixOS module graph, so routine changes should be applied through the host system switch path.
+- The repository supports both `nh os` and standalone `nh home`.
+- Standalone Home Manager reuses the same composed `erinite.homeModule` exported from each host evaluation.
+- Full-system changes should still go through the host system switch path.
 
 The project centers on the `erinite.*` option tree. Host files mostly enable or override modules through that tree instead of writing all NixOS and Home Manager options directly.
 
@@ -76,7 +76,7 @@ Before changing code, an agent should understand these facts:
 - `flake.nix` defines the shared inputs and constructs each host with `addHost`.
 - `lib/default.nix` defines `eriniteLib`, including `mkModule`, which is the common wrapper used by most modules.
 - `modules/default.nix` imports all module files under `modules/`.
-- `modules/home.nix` bridges `erinite.home` into Home Manager through `home-manager.users.<username>.imports`.
+- `modules/home.nix` composes `erinite.homeModule` and bridges it into both `home-manager.users.<username>.imports` and standalone `homeConfigurations`.
 - `hosts/<name>/default.nix` is the main host entry where modules are enabled and per-host overrides are set.
 
 ## Maintenance Rules
@@ -89,5 +89,4 @@ Before changing code, an agent should understand these facts:
 
 ## TODO
 
-- Revisit whether standalone Home Manager outputs belong in this flake.
-- If standalone Home Manager support returns, document the supported command path and validation rules before re-enabling `nh home` workflows.
+- Keep `erinite.homeModule`, `homeConfigurations`, and `nh` usage docs aligned when the Home Manager interface changes.
