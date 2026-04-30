@@ -20,5 +20,37 @@
     php
     python3
     uv
+
+    cowsay
+    lolcat
+    cava
+    tldr
+    jq
+    foremost
+    binwalk
+    john
+    ffuf
+    feroxbuster
+    seclists
+    exiftool
+    zsteg
+    zola
+    python312Packages.dirsearch
+
+    wavemon
+
+    wireshark
+    # bottles
+
+    qq
+    wechat
+    materialgram
+    vscode
+    obsidian
+    libreoffice
   ];
+
+  environment.sessionVariables = {
+    SECLISTS = "${pkgs.seclists}/share/wordlists/seclists";
+  };
 }

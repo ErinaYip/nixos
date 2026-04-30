@@ -1,6 +1,4 @@
 {
-  lib,
-  pkgs,
   eriniteLib,
   ...
 }:
@@ -9,7 +7,6 @@ with eriniteLib; {
     ./hardware-configuration.nix
     ./configuration.nix
   ];
-  erinite.home = import ./home.nix { inherit lib pkgs; };
 
   erinite = {
     presets = {
