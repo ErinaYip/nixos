@@ -47,6 +47,11 @@
   outputs = {self, nixpkgs, home-manager, ...} @ inputs: let
     system = "x86_64-linux";
     pkgs = import nixpkgs {inherit system;};
+    homePkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
+    eriniteLib = import ./lib { inherit inputs pkgs; lib = pkgs.lib; };
 
     default = {
       inherit system;
@@ -54,11 +59,6 @@
       systemStateVersion = "25.11";
       homeStateVersion = "26.05";
     };
-
-    # mkLib = pkgs: pkgs.lib.extend (final: prev: {
-    #   erinite = import ./lib {lib = prev; inputs = inputs; pkgs = pkgs;};
-    # });
-    
 
     addHost = hostName: nixpkgs.lib.nixosSystem {
       inherit system;
@@ -68,15 +68,33 @@
         (./. + "/hosts/${hostName}")
       ];
       specialArgs = {
-        # lib = mkLib nixpkgs;
         inherit inputs hostName default;
-        eriniteLib = import ./lib { inherit inputs pkgs; lib=pkgs.lib; };
+        inherit eriniteLib;
       };
     };
-  in {
+
     nixosConfigurations = {
       mechrevo = addHost "mechrevo";
       nec = addHost "nec";
+    };
+
+    addHome = hostName: home-manager.lib.homeManagerConfiguration {
+      pkgs = homePkgs;
+      extraSpecialArgs = {
+        inherit inputs hostName default eriniteLib;
+      };
+      modules =
+        nixosConfigurations.${hostName}.config.home-manager.sharedModules
+        ++ [
+          nixosConfigurations.${hostName}.config.erinite.homeModule
+        ];
+    };
+  in {
+    inherit nixosConfigurations;
+
+    homeConfigurations = {
+      "${default.username}@mechrevo" = addHome "mechrevo";
+      "${default.username}@nec" = addHome "nec";
     };
 
     devShells.${system}.default = pkgs.mkShell {
