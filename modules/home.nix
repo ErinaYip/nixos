@@ -8,3 +8,4 @@
 # refactor: update home config path across modules
 # fix: resolve merge conflict in home stateVersion
 # refactor: change home module type to deferredModule
+# feat(home): enhance home-manager integration with base module and allow unfree packages

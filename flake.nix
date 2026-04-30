@@ -55,3 +55,4 @@
 # fix(flake): add hyprgrass input and update hyprland configuration
 # fix(flake): update hyprgrass URL to use GitHub
 # fix(flake): update hyprgrass URL to reflect new repository owner
+# feat(home): enhance home-manager integration with base module and allow unfree packages
