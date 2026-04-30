@@ -52,7 +52,8 @@ The repository uses both NixOS modules and Home Manager modules:
 
 - System-level settings are emitted directly as NixOS options.
 - User-level settings are emitted through `erinite.home`.
-- `modules/home.nix` imports `config.erinite.home` into `home-manager.users.${default.username}`.
+- `modules/home.nix` composes `config.erinite.homeModule` and imports it into `home-manager.users.${default.username}`.
+- `flake.nix` also exports that same composed module as standalone `homeConfigurations` for `nh home`, along with any host-level `home-manager.sharedModules`.
 
 That means a system module can also contribute Home Manager configuration by writing to `erinite.home`.
 

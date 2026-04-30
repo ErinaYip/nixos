@@ -99,3 +99,10 @@ eriniteLib.mkModule args {
   };
 }
 ```
+
+## Home Manager Composition
+
+- Modules contribute user-level settings by writing to `erinite.home`.
+- `modules/home.nix` wraps those definitions into a composed `erinite.homeModule`.
+- `erinite.homeModule` adds base `home.*` defaults and becomes the shared entrypoint for both NixOS-integrated Home Manager and standalone `homeConfigurations`.
+- Standalone `homeConfigurations` also reuse `config.home-manager.sharedModules` from the host evaluation so third-party Home Manager modules stay available.
