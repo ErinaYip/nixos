@@ -46,6 +46,7 @@
 
   outputs = {self, nixpkgs, home-manager, ...} @ inputs: let
     system = "x86_64-linux";
+    lib = nixpkgs.lib;
     pkgs = import nixpkgs {inherit system;};
     homePkgs = import nixpkgs {
       inherit system;
@@ -60,42 +61,46 @@
       homeStateVersion = "26.05";
     };
 
-    addHost = hostName: nixpkgs.lib.nixosSystem {
-      inherit system;
-      modules = [
-        ./modules/home.nix
-        ./modules
-        (./. + "/hosts/${hostName}")
-      ];
-      specialArgs = {
-        inherit inputs hostName default;
-        inherit eriniteLib;
-      };
-    };
+    hostNames = [
+      "mechrevo"
+      "nec"
+    ];
 
-    nixosConfigurations = {
-      mechrevo = addHost "mechrevo";
-      nec = addHost "nec";
-    };
-
-    addHome = hostName: home-manager.lib.homeManagerConfiguration {
-      pkgs = homePkgs;
-      extraSpecialArgs = {
-        inherit inputs hostName default eriniteLib;
-      };
-      modules =
-        nixosConfigurations.${hostName}.config.home-manager.sharedModules
-        ++ [
-          nixosConfigurations.${hostName}.config.erinite.homeModule
+    addHost = hostName: let
+      nixos = lib.nixosSystem {
+        inherit system;
+        modules = [
+          ./modules/home.nix
+          ./modules
+          (./. + "/hosts/${hostName}")
         ];
+        specialArgs = {
+          inherit inputs hostName default;
+          inherit eriniteLib;
+        };
+      };
+    in {
+      inherit nixos;
+      home = home-manager.lib.homeManagerConfiguration {
+        pkgs = homePkgs;
+        extraSpecialArgs = {
+          inherit inputs hostName default eriniteLib;
+        };
+        modules =
+          nixos.config.home-manager.sharedModules
+          ++ [
+            nixos.config.erinite.homeModule
+          ];
+      };
     };
-  in {
-    inherit nixosConfigurations;
 
-    homeConfigurations = {
-      "${default.username}@mechrevo" = addHome "mechrevo";
-      "${default.username}@nec" = addHome "nec";
-    };
+    hosts = lib.genAttrs hostNames addHost;
+  in {
+    nixosConfigurations = lib.mapAttrs (_: host: host.nixos) hosts;
+
+    homeConfigurations = lib.mapAttrs'
+      (hostName: host: lib.nameValuePair "${default.username}@${hostName}" host.home)
+      hosts;
 
     devShells.${system}.default = pkgs.mkShell {
       buildInputs = [home-manager.packages.${system}.default];
