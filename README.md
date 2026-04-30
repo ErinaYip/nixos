@@ -108,9 +108,14 @@ Maintenance aliases:
 
 | Alias | Command |
 | --- | --- |
-| `sns` | switch to the new system |
-| `snb` | build the new system for next boot |
-| `snr` | update inputs and switch to the new system |
+| `nos` | `nh os switch` |
+| `nob` | `nh os boot` |
+| `not` | `nh os test` |
+| `nou` | `nh os build` |
+| `nhs` | `nh home switch` |
+| `nhb` | `nh home boot` |
+| `nht` | `nh home test` |
+| `nhu` | `nh home build` |
 
 Home-only switch:
 
