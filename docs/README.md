@@ -79,6 +79,21 @@ Before changing code, an agent should understand these facts:
 - `modules/home.nix` composes `erinite.homeModule` and bridges it into both `home-manager.users.<username>.imports` and standalone `homeConfigurations`.
 - `hosts/<name>/default.nix` is the main host entry where modules are enabled and per-host overrides are set.
 
+## Command Aliases
+
+The `system.nh` module generates these shell aliases:
+
+| Alias | Command |
+| --- | --- |
+| `nos` | `nh os switch` |
+| `nob` | `nh os boot` |
+| `not` | `nh os test` |
+| `nou` | `nh os build` |
+| `nhs` | `nh home switch` |
+| `nhb` | `nh home boot` |
+| `nht` | `nh home test` |
+| `nhu` | `nh home build` |
+
 ## Maintenance Rules
 
 - Keep these docs factual and close to the current code.
