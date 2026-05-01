@@ -12,11 +12,15 @@ with eriniteLib; mkModule args {
       enable = true;
       settings = {
         model = "gpt-5.4";
-        model_provider = "codeboy";
+        model_provider = "xem";
         model_providers = {
           codeboy = {
             name = "codeboy";
             base_url = "https://api-be.codeboy.site/v1";
+          };
+          xem = {
+            name = "xem";
+            base_url = "http://new.xem8k5.top:3000/v1";
           };
         };
       };
