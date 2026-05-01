@@ -1,5 +1,4 @@
 {
-  lib,
   eriniteLib,
   ...
 } @ args:
@@ -17,13 +16,14 @@ with eriniteLib; mkModule args {
       kernel = enabled;
       keyd = enabled;
       # laptop = enabled;
+      ly = enabled;
       media = enabled;
       network = enabled;
       nh = enabled;
       nix-ld = enabled;
       nix = enabled;
       # nvidia = enabled;
-      sddm = enabled;
+      # sddm = enabled;
       sound = enabled;
       users = enabled;
       # virtualisation = enabled;
