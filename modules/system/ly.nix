@@ -12,12 +12,15 @@ eriniteLib.mkModule args {
       enable = true;
 
       settings = {
-        animate = true;
-        animation = "0";      # 0=PSX, 1=Doom, 2=Matrix (根据你的需求调整)
         hide_borders = false;
+        full_color = true;
+        bigclock = "en";
+        bigclock_seconds = true;
+        animation = "dur_file";
+        dur_file_path = "/etc/ly/blackhole.dur";
       };
     };
 
-    environment.etc."ly/custom.dur".source = ../../assets/blackhole-smooth-240x67.dur; 
+    environment.etc."ly/blackhole.dur".source = ../../assets/blackhole-smooth-240x67.dur; 
   };
 }
