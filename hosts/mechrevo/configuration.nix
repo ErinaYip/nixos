@@ -52,7 +52,7 @@ with eriniteLib; {
     libreoffice
   ];
 
-  programs.cava = enabled;
+  erinite.home.programs.cava = enabled;
 
   environment.sessionVariables = {
     SECLISTS = "${pkgs.seclists}/share/wordlists/seclists";

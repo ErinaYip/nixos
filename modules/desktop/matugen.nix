@@ -42,7 +42,7 @@ eriniteLib.mkModule args {
 
       programs.btop.settings.color_theme = "matugen";
       programs.fuzzel.settings.main.include = "~/.config/fuzzel/themes/matugen";
-      programs.cava.settings.theme = "matugen";
+      programs.cava.settings.color.theme = "matugen";
     };
   };
 }

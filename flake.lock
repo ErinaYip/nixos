@@ -561,23 +561,6 @@
         "type": "github"
       }
     },
-    "ida-pro-overlay": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1777775623,
-        "narHash": "sha256-SriKlqCyYOTr7L+OKaMI+l2vrOkq213EAcORluXUOws=",
-        "path": "/home/era/Documents/ida-pro-overlay/",
-        "type": "path"
-      },
-      "original": {
-        "path": "/home/era/Documents/ida-pro-overlay/",
-        "type": "path"
-      }
-    },
     "matugen": {
       "inputs": {
         "nixpkgs": [
@@ -772,7 +755,6 @@
         "hypr-dynamic-cursors": "hypr-dynamic-cursors",
         "hyprgrass": "hyprgrass",
         "hyprland": "hyprland",
-        "ida-pro-overlay": "ida-pro-overlay",
         "matugen": "matugen",
         "nixpkgs": "nixpkgs_4",
         "oh-my-rime-nix": "oh-my-rime-nix",
