@@ -1,4 +1,9 @@
-{ pkgs, ... }: {
+{
+  pkgs,
+  eriniteLib,
+  ...
+}:
+with eriniteLib; {
   networking.firewall = {
     allowedTCPPorts = [
       25565 # minecraft
@@ -8,7 +13,6 @@
   environment.systemPackages = with pkgs; [
     vim
     wget
-    git
 
     zip
     unzip
@@ -23,7 +27,6 @@
 
     cowsay
     lolcat
-    cava
     tldr
     jq
     foremost
@@ -39,16 +42,17 @@
 
     wavemon
 
-    wireshark
+    # wireshark
     # bottles
 
-    qq
-    wechat
-    materialgram
+    qq wechat materialgram
+
     vscode
     obsidian
     libreoffice
   ];
+
+  programs.cava = enabled;
 
   environment.sessionVariables = {
     SECLISTS = "${pkgs.seclists}/share/wordlists/seclists";
