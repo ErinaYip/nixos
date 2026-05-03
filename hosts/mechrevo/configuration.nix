@@ -4,3 +4,4 @@
 # feat: update configuration files to include additional packages and remove direnv support
 # feat: update configuration files to remove vscode and bottles, and add python312Packages.dirsearch
 # feat(nixos): consolidate home packages and session variables into configuration.nix
+# refactor(mechrevo): reorganize packages and enable cava
