@@ -1,6 +1,4 @@
-
 {
-  lib,
   inputs,
   eriniteLib,
   ...
@@ -35,10 +33,16 @@ eriniteLib.mkModule args {
         [templates.prismlauncher]
         input_path = "${../../assets/templates/prismlauncher.json}"
         output_path = "~/.local/share/PrismLauncher/themes/Matugen/theme.json"
+
+        [templates.cava]
+        input_path = "${../../assets/templates/cava-colors.ini}"
+        output_path = '~/.config/cava/themes/matugen'
+        post_hook = 'pkill -USR1 cava'
       '';
 
       programs.btop.settings.color_theme = "matugen";
       programs.fuzzel.settings.main.include = "~/.config/fuzzel/themes/matugen";
+      programs.cava.settings.theme = "matugen";
     };
   };
 }

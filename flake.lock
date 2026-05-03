@@ -183,11 +183,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1777518431,
-        "narHash": "sha256-SwgiG2T5pbyo33Vz7/vUCAhEMgwCK8Pa2nDSx5a6/WE=",
+        "lastModified": 1777771152,
+        "narHash": "sha256-+J0PGlJpLvo1ukmHM0ksI8PtBDwMCYyh87rbs86F0/c=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "2e54a938cdd4c8e414b2518edc3d82308027c670",
+        "rev": "9c9fc9368a6d9e698d03d3780d3b930ebc060334",
         "type": "github"
       },
       "original": {
@@ -317,11 +317,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1777497195,
-        "narHash": "sha256-PSfNE2GhPwKyzsMkpDnw1fE7OdYqORzG93iHSfOd9vw=",
+        "lastModified": 1777759969,
+        "narHash": "sha256-7KSqSehOHNHQfM0sRAcGQbfz0vDuItox8i61X8/nzYw=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "56d7a43102b53f79a2311662783d5dd94cb2f1a5",
+        "rev": "6ec0228c38a6203e4789fe7e7e793a558521c109",
         "type": "github"
       },
       "original": {
@@ -561,6 +561,23 @@
         "type": "github"
       }
     },
+    "ida-pro-overlay": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1777775623,
+        "narHash": "sha256-SriKlqCyYOTr7L+OKaMI+l2vrOkq213EAcORluXUOws=",
+        "path": "/home/era/Documents/ida-pro-overlay/",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/era/Documents/ida-pro-overlay/",
+        "type": "path"
+      }
+    },
     "matugen": {
       "inputs": {
         "nixpkgs": [
@@ -647,11 +664,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1777268161,
-        "narHash": "sha256-bxrdOn8SCOv8tN4JbTF/TXq7kjo9ag4M+C8yzzIRYbE=",
+        "lastModified": 1777578337,
+        "narHash": "sha256-Ad49moKWeXtKBJNy2ebiTQUEgdLyvGmTeykAQ9xM+Z4=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "1c3fe55ad329cbcb28471bb30f05c9827f724c76",
+        "rev": "15f4ee454b1dce334612fa6843b3e05cf546efab",
         "type": "github"
       },
       "original": {
@@ -755,6 +772,7 @@
         "hypr-dynamic-cursors": "hypr-dynamic-cursors",
         "hyprgrass": "hyprgrass",
         "hyprland": "hyprland",
+        "ida-pro-overlay": "ida-pro-overlay",
         "matugen": "matugen",
         "nixpkgs": "nixpkgs_4",
         "oh-my-rime-nix": "oh-my-rime-nix",
