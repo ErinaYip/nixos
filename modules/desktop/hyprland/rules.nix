@@ -6,6 +6,8 @@
     "float true, match:initial_title .*float.*"
     "float true, match:initial_title .*图片和视频.*"
     "float true, match:initial_title .*图片查看器.*"
+    "float true, match:initial_title .*视频播放器.*"
+    "float true, match:initial_title .*媒体查看器.*"
     "float true, match:initial_title .*画中画.*"
     "float true, match:initial_title .*打开文件.*"
   ];
