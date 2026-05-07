@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   eriniteLib,
   ...
 } @ args:
@@ -8,7 +9,13 @@ with eriniteLib; mkModule args {
   category = "cli";
   name = "fastfetch";
 
-  configFn = { ... }: lib.mkMerge [
+  configFn = { ... }: let
+    fastfetch-icons = pkgs.fetchgit {
+      url = "https://codeberg.org/erina/eps.git";
+      rev = "3c1781b5d34098b8e17943dc5ea304aa7bc01597";
+      sha256 = "sha256-nfKM9hudU8kJqEwMMjVrhObKgTRwn7wjV9Yb1c+hFqs=";
+    };
+  in lib.mkMerge [
     {
       erinite.home.programs.fastfetch = {
         enable = true;
@@ -61,7 +68,7 @@ with eriniteLib; mkModule args {
 
     (mkShellAliases {
       aliases = {
-        # fastfetch = "fastfetch --logo $(find ${../../assets/fastfetch-icons} -type f | shuf -n 1)";
+        fastfetch = "fastfetch --logo $(find ${fastfetch-icons} -type f | shuf -n 1)";
         ff = "fastfetch";
       };
       shells = [ "zsh" ];
