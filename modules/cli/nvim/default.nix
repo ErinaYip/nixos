@@ -1,4 +1,5 @@
 {
+  lib,
   inputs,
   eriniteLib,
   ...
@@ -16,6 +17,7 @@ with eriniteLib; mkModule args {
     };
     mkKeymapd = mode: key: action: desc: mkKeymap mode key action desc {};
     mkKeymaps = mode: key: action: mkKeymap mode key action "" {};
+    inherit (lib.generators) mkLuaInline;
   in {
     programs.nvf = {
       enable = true;
@@ -38,27 +40,27 @@ with eriniteLib; mkModule args {
           relativenumber = true;
           cursorline = true;
           autowrite = true;
-          # splitbelow = true;
+          splitbelow = true;
           splitright = true;
           winborder = "rounded";
           signcolumn = "yes";
           fileformat = "unix";
           # fileformats = ["unix" "dos" "mac"];
-          # wrap = false;
+          wrap = false;
           ignorecase = true;
           smartcase = true;
-          # hlsearch = true;
-          # incsearch = true;
+          hlsearch = true;
+          incsearch = true;
           tabstop = 2;
           shiftwidth = 2;
           expandtab = true;
           autoindent = true;
           smartindent = true;
-          # termguicolors = true;
-          # laststatus = 2;
+          termguicolors = true;
+          laststatus = 2;
           scrolloff = 999;
-          # sidescrolloff = 5;
-          # undofile = true;
+          sidescrolloff = 5;
+          undofile = true;
           clipboard = "unnamedplus";
           virtualedit = "block";
           # list = true;
@@ -140,6 +142,19 @@ with eriniteLib; mkModule args {
         terminal = {
           toggleterm = {
             enable = true;
+            setupOpts = {
+              shell = "zsh";
+              direction = "float";
+              size = mkLuaInline ''
+                function(term)
+                  if term.direction == "horizontal" then
+                    return 8
+                  elseif term.direction == "vertical" then
+                    return vim.o.columns * 0.4
+                  end
+                end
+              '';
+            };
             lazygit.enable = true;
           };
         };
