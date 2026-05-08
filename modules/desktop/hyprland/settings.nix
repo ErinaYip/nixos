@@ -9,3 +9,4 @@
 # fix(hyprland): ensure vfr is set to true in misc settings
 # fix(hyprland): remove vfr setting from misc configuration
 # fix(hyprland): add grass configuration and touch gestures support
+# fix(hyprland): adjust gap settings for better layout consistency
