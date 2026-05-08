@@ -1,7 +1,7 @@
 {
   general = {
-    gaps_in = 8;
-    gaps_out = 12;
+    gaps_in = 4;
+    gaps_out = 4;
     border_size = 2;
     layout = "master";
     resize_on_border = true;
