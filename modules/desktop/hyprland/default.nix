@@ -20,3 +20,4 @@
 # refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors
 # fix(hyprland): add grass configuration and touch gestures support
 # fix(hyprland): update hyprgrass source to GitHub and comment out dynamic cursors plugin
+# refactor(nvim): modularize configuration files
