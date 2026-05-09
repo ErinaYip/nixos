@@ -56,7 +56,7 @@ with eriniteLib; mkModule args {
         settings = settings;
         package = mkInputPkga "hyprland";
         plugins = [
-          # (mkInputPkga "hypr-dynamic-cursors")
+          (mkInputPkga "hypr-dynamic-cursors")
           (lib.mkIf cfg.grass (mkInputPkga "hyprgrass"))
         ];
       };
