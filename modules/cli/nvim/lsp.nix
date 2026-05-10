@@ -6,6 +6,24 @@
     };
   };
 
+  debugger = {
+    nvim-dap = {
+      enable = true;
+      ui.enable = true;
+    };
+  };
+
+  languages = {
+    enableFormat = true;
+    enableTreesitter = true;
+    enableExtraDiagnostics = true;
+    enableDAP = true;
+
+    nix.enable = true;
+    markdown.enable = true;
+    python.enable = true;
+  };
+
   lsp = {
     enable = true;
 
@@ -19,5 +37,12 @@
     # otter-nvim.enable = isMaximal;
     # nvim-docs-view.enable = isMaximal;
     # presets.harper.enable = isMaximal;
+    # servers = {
+    #   basedpyright = {
+    #     enable = true;
+    #     filetypes = ["python"];
+    #     root_markers = ["pyproject.toml" "pyrightconfig.json" ".git" ".venv"];
+    #   };
+    # };
   };
 }

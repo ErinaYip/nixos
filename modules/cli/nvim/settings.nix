@@ -29,7 +29,7 @@
     termguicolors = true;
     laststatus = 2;
     scrolloff = 999;
-    sidescrolloff = 5;
+    sidescrolloff = 999;
     undofile = true;
     clipboard = "unnamedplus";
     virtualedit = "block";

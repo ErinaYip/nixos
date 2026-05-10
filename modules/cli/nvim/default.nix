@@ -33,7 +33,6 @@ with eriniteLib;
           (import ./lsp.nix arg)
 
           (import ./settings.nix)
-          (import ./languages.nix)
           (import ./lualine.nix)
           (import ./blink-cmp.nix)
 
@@ -49,13 +48,6 @@ with eriniteLib;
               breadcrumbs = {
                 enable = true;
                 navbuddy.enable = true;
-              };
-            };
-
-            debugger = {
-              nvim-dap = {
-                enable = true;
-                ui.enable = true;
               };
             };
 
