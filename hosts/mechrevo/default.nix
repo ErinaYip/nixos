@@ -1,7 +1,4 @@
-{
-  eriniteLib,
-  ...
-}:
+{eriniteLib, ...}:
 with eriniteLib; {
   imports = [
     ./hardware-configuration.nix
@@ -57,6 +54,7 @@ with eriniteLib; {
 
     cli = {
       codex = enabled;
+      opencode = enabled;
       git = {
         user = {
           name = "ErinaYip";
