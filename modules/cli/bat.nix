@@ -9,7 +9,7 @@ with eriniteLib;
     category = "cli";
     name = "bat";
 
-    configFn = {...}:
+    configFn = _:
       lib.mkMerge [
         {
           programs = {

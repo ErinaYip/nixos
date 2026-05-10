@@ -9,8 +9,6 @@ with eriniteLib;
     category = "cli";
     name = "nvim";
 
-    imports = [inputs.nvf.nixosModules.default];
-
     configFn = _: let
       mkKeymap = mode: key: action: desc: {
         silent ? true,
@@ -23,7 +21,11 @@ with eriniteLib;
 
       arg = {inherit lib enabled disabled mkKeymap mkKeymapd mkKeymaps;};
     in {
-      programs.nvf = {
+      home-manager.sharedModules = [
+        inputs.nvf.homeManagerModules.default
+      ];
+
+      erinite.home.programs.nvf = {
         enable = true;
         settings.vim = lib.mkMerge [
           (import ./toggterm.nix arg)

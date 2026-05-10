@@ -1,13 +1,9 @@
-{
-  lib,
-  eriniteLib,
-  ...
-} @ args:
+{eriniteLib, ...} @ args:
 eriniteLib.mkModule args {
   category = "cli";
   name = "btop";
 
-  configFn = {...}: {
+  configFn = _: {
     erinite.home.programs.btop = {
       enable = true;
       settings.theme_background = false;
