@@ -2,3 +2,4 @@
 # fix: update btop module path
 # refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors
 # Refactor with Alejandra
+# refactor(cli): simplify config
