@@ -33,3 +33,4 @@
 # fix: restructure git module settings for improved clarity
 # refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors
 # feat(git): add GPG signing configuration for commits
+# Refactor with Alejandra

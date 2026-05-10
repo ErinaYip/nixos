@@ -5,3 +5,4 @@
 # fix: move imports to top level in boot module
 # refactor: remove blank line in boot module
 # refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors
+# Refactor with Alejandra

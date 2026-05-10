@@ -4,3 +4,4 @@
 # refactor: resolve merge conflicts in modules
 # refactor: simplify keyd module configuration by removing defaultSettings
 # refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors
+# Refactor with Alejandra

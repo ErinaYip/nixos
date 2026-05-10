@@ -8,3 +8,4 @@
 # refactor: update home config path across modules
 # feat: updated gram hash
 # refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors
+# Refactor with Alejandra

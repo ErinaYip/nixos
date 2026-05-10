@@ -6,3 +6,4 @@
 # refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors
 # feat(nh): add nh module
 # feat(nixos): add ly module and integrate blackhole animation file
+# Refactor with Alejandra

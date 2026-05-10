@@ -58,3 +58,4 @@
 # feat(home): enhance home-manager integration with base module and allow unfree packages
 # feat(nixos): refactor host and home configuration management for improved clarity and structure
 # feat(nvim): migrate to nvf configuration
+# Refactor with Alejandra

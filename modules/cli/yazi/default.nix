@@ -6,3 +6,4 @@
 # fix: correct yazi module typo
 # refactor: resolve merge conflicts in modules
 # refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors
+# Refactor with Alejandra

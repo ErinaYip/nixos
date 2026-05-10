@@ -6,3 +6,4 @@
 # feat(nixos): consolidate home packages and session variables into configuration.nix
 # refactor(mechrevo): reorganize packages and enable cava
 # fix: fix cava configuration
+# Refactor with Alejandra

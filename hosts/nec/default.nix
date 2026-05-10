@@ -6,3 +6,4 @@
 # refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors
 # fix(default.nix): remove unused variables and clean up syntax
 # fix(flake): add hyprgrass input and update hyprland configuration
+# Refactor with Alejandra

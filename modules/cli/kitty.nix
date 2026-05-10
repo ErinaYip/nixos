@@ -10,3 +10,4 @@
 # refactor: resolve merge conflicts in modules
 # fix: update shell aliases for bat, eza, fastfetch, kitty, and nvim modules
 # refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors
+# Refactor with Alejandra

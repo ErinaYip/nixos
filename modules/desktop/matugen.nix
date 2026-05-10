@@ -8,3 +8,4 @@
 # refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors
 # feat(matugen): add cava color template
 # fix: fix cava configuration
+# Refactor with Alejandra
