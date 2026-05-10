@@ -2,3 +2,4 @@
 # refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors
 # refactor(cli): enable codex for mechrevo
 # feat(nixos): update codex model provider to 'xem'
+# feat(codex): update model version to gpt-5.5
