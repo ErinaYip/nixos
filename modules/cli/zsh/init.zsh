@@ -23,3 +23,5 @@ zstyle ':completion:*' verbose true
 
 eval "$(direnv hook zsh)"
 eval "$(zoxide init zsh)"
+
+any-nix-shell zsh --info-right | source /dev/stdin
