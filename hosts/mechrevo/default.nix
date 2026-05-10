@@ -61,3 +61,4 @@
 # refactor(cli): enable codex for mechrevo
 # feat(hyprland): add additional monitor settings and workspace configurations
 # feat(nixos): consolidate home packages and session variables into configuration.nix
+# feat(nvim): enable opencode in CLI configuration
