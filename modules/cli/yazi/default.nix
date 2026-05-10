@@ -1,5 +1,4 @@
 {
-  lib,
   pkgs,
   eriniteLib,
   ...
@@ -26,7 +25,7 @@ eriniteLib.mkModule args {
           "smart-enter" = pkgs.yaziPlugins.smart-enter;
         };
 
-        settings = settings;
+        inherit settings;
         keymap = import ./keymap.nix;
       };
     };
