@@ -3,18 +3,17 @@
   eriniteLib,
   ...
 } @ args:
-
 eriniteLib.mkModule args {
   category = "system";
   name = "nix";
 
-  configFn = { ... }: {
+  configFn = {...}: {
     system.stateVersion = default.systemStateVersion;
 
     programs.appimage.enable = true;
     programs.appimage.binfmt = true;
 
-    nix.settings.experimental-features = [ "nix-command" "flakes" "configurable-impure-env" ];
+    nix.settings.experimental-features = ["nix-command" "flakes" "configurable-impure-env"];
 
     nixpkgs.config.allowUnfree = true;
 
@@ -32,7 +31,7 @@ eriniteLib.mkModule args {
       "https://cache.nixos.org"
     ];
 
-    nix.settings.trusted-users = [ default.username ];
+    nix.settings.trusted-users = [default.username];
     nix.settings.trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];

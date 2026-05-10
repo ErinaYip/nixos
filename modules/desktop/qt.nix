@@ -3,12 +3,11 @@
   eriniteLib,
   ...
 } @ args:
-
 eriniteLib.mkModule args {
   category = "desktop";
   name = "qt";
 
-  configFn = { ... }: {
+  configFn = {...}: {
     erinite.home.qt = {
       enable = true;
       platformTheme.name = "gtk";

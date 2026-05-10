@@ -4,12 +4,11 @@
   eriniteLib,
   ...
 } @ args:
-
 eriniteLib.mkModule args {
   category = "desktop";
   name = "gtk";
 
-  configFn = { ... }: {
+  configFn = {...}: {
     erinite.home.gtk = {
       enable = true;
       theme = {

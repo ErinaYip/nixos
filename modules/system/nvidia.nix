@@ -4,7 +4,6 @@
   eriniteLib,
   ...
 } @ args:
-
 eriniteLib.mkModule args {
   category = "system";
   name = "nvidia";
@@ -14,11 +13,11 @@ eriniteLib.mkModule args {
       enable = eriniteLib.mkBoolOpt false "Enable NVIDIA PRIME Offload.";
       nvidiaBusId = eriniteLib.mkStrOpt "" "Nvidia dGPU Bus ID (e.g., PCI:1:0:0)";
       amdgpuBusId = eriniteLib.mkStrOpt "" "AMD iGPU Bus ID (e.g., PCI:6:0:0)";
-      intelBusId  = eriniteLib.mkStrOpt "" "Intel iGPU Bus ID (e.g., PCI:0:2:0)";
+      intelBusId = eriniteLib.mkStrOpt "" "Intel iGPU Bus ID (e.g., PCI:0:2:0)";
     };
   };
 
-  configFn = { cfg, ... }: {
+  configFn = {cfg, ...}: {
     hardware.graphics = {
       enable = true;
       enable32Bit = true;
@@ -26,7 +25,7 @@ eriniteLib.mkModule args {
 
     services.xserver = {
       enable = true;
-      videoDrivers = [ "nvidia" ];
+      videoDrivers = ["nvidia"];
     };
 
     hardware.nvidia = {
@@ -45,7 +44,7 @@ eriniteLib.mkModule args {
         nvidiaBusId = cfg.prime.nvidiaBusId;
 
         amdgpuBusId = lib.mkIf (cfg.prime.amdgpuBusId != "") cfg.prime.amdgpuBusId;
-        intelBusId  = lib.mkIf (cfg.prime.intelBusId != "") cfg.prime.intelBusId;
+        intelBusId = lib.mkIf (cfg.prime.intelBusId != "") cfg.prime.intelBusId;
       };
     };
 

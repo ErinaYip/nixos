@@ -5,15 +5,13 @@
   eriniteLib,
   ...
 } @ args:
-
 eriniteLib.mkModule args {
   category = "system";
   name = "fcitx5";
 
-
-  configFn = { ... }: {
-    home-manager.sharedModules = [ 
-      inputs.oh-my-rime-nix.homeModules.default 
+  configFn = {...}: {
+    home-manager.sharedModules = [
+      inputs.oh-my-rime-nix.homeModules.default
     ];
 
     i18n.inputMethod = {
@@ -35,26 +33,54 @@ eriniteLib.mkModule args {
     in {
       programs.oh-my-rime.enable = true;
 
-      wayland.windowManager.hyprland.settings.exec-once = [ 
+      wayland.windowManager.hyprland.settings.exec-once = [
         "fcitx5 -d -r"
       ];
 
       programs.oh-my-rime.rimeConfig = {
-        schema_list = [ { schema = "rime_mint"; } ];
+        schema_list = [{schema = "rime_mint";}];
         key_binder = {
           bindings = [
-            { when = "composing"; accept = "Control+p"; send = "Up"; }
-            { when = "composing"; accept = "Control+n"; send = "Down"; }
-            { when = "composing"; accept = "Shift+Tab"; send = "Up"; }
-            { when = "composing"; accept = "Tab"; send = "Down"; }
-            { when = "paging"; accept = "minus"; send = "Page_Up"; }
-            { when = "has_menu"; accept = "equal"; send = "Page_Down"; }
-            { when = "always"; accept = "Control+Shift+1"; select = ".next"; }
+            {
+              when = "composing";
+              accept = "Control+p";
+              send = "Up";
+            }
+            {
+              when = "composing";
+              accept = "Control+n";
+              send = "Down";
+            }
+            {
+              when = "composing";
+              accept = "Shift+Tab";
+              send = "Up";
+            }
+            {
+              when = "composing";
+              accept = "Tab";
+              send = "Down";
+            }
+            {
+              when = "paging";
+              accept = "minus";
+              send = "Page_Up";
+            }
+            {
+              when = "has_menu";
+              accept = "equal";
+              send = "Page_Down";
+            }
+            {
+              when = "always";
+              accept = "Control+Shift+1";
+              select = ".next";
+            }
           ];
         };
         switcher = {
           caption = "";
-          hotkeys = [ "Control+grave" ];
+          hotkeys = ["Control+grave"];
         };
       };
 
@@ -69,9 +95,9 @@ eriniteLib.mkModule args {
           # "derive/^([zcs])([^h])/$1h$2/" # z, c, s => zh, ch, sh
           "derive/([ei])n$/$1ng/" # en => eng, in => ing
           "derive/([ei])ng$/$1n/" # eng => en, ing => in
-          "derive/([iu])an$/$lan/"  # ian => iang, uan => uang
+          "derive/([iu])an$/$lan/" # ian => iang, uan => uang
           "derive/([iu])ang$/$lan/" # iang => ian, uang => uan
-          "derive/([aeiou])ng$/$1gn/"  # dagn => dang
+          "derive/([aeiou])ng$/$1gn/" # dagn => dang
           "derive/([dtngkhrzcs])o(u|ng)$/$1o/" # zho => zhong|zhou
           "derive/ong$/on/" # zhonguo => zhong guo
           "abbrev/^([a-z]).+$/$1/" #简拼（首字母）
@@ -82,7 +108,7 @@ eriniteLib.mkModule args {
         "grammar/language" = wanxiang;
         "grammar/collocation_max_length" = 5;
         "grammar/collocation_min_length" = 2;
-    
+
         # translator 内加载
         "translator/contextual_suggestions" = true;
         "translator/max_homophones" = 7;
@@ -91,4 +117,3 @@ eriniteLib.mkModule args {
     };
   };
 }
-

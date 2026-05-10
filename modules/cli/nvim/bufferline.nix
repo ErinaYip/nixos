@@ -1,4 +1,4 @@
-{ mkKeymapd, ... }: {
+{mkKeymapd, ...}: {
   tabline.nvimBufferline = {
     enable = true;
     setupOpts.options = {

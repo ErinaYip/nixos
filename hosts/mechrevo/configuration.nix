@@ -45,7 +45,9 @@ with eriniteLib; {
     # wireshark
     # bottles
 
-    qq wechat materialgram
+    qq
+    wechat
+    materialgram
 
     vscode
     obsidian

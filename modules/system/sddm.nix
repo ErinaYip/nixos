@@ -5,14 +5,13 @@
   eriniteLib,
   ...
 } @ args:
-
 eriniteLib.mkModule args {
   category = "system";
   name = "sddm";
 
-  imports = [ inputs.silentSDDM.nixosModules.default ];
+  imports = [inputs.silentSDDM.nixosModules.default];
 
-  configFn = { ... }: {
+  configFn = {...}: {
     programs.silentSDDM = {
       enable = true;
       theme = "default";
@@ -21,11 +20,11 @@ eriniteLib.mkModule args {
     services.displayManager.sddm = {
       enable = true;
 
-      package = pkgs.kdePackages.sddm; 
+      package = pkgs.kdePackages.sddm;
 
       settings = {
         General = {
-          InputMethod = lib.mkForce ""; 
+          InputMethod = lib.mkForce "";
         };
       };
 

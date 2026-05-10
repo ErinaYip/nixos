@@ -4,7 +4,6 @@
   eriniteLib,
   ...
 } @ args:
-
 eriniteLib.mkModule args {
   category = "cli";
   name = "starship";
@@ -17,7 +16,7 @@ eriniteLib.mkModule args {
     };
   };
 
-  configFn = { settings, ... }: {
+  configFn = {settings, ...}: {
     erinite.home = {
       programs.starship = {
         enable = true;

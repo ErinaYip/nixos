@@ -4,12 +4,11 @@
   eriniteLib,
   ...
 } @ args:
-
 eriniteLib.mkModule args {
   category = "desktop";
   name = "obs-studio";
 
-  configFn = { ... }: {
+  configFn = {...}: {
     environment.systemPackages = [
       (pkgs.wrapOBS {
         plugins = with pkgs.obs-studio-plugins; [

@@ -4,16 +4,14 @@
   default,
   inputs,
   ...
-}:
-let
+}: let
   baseHomeModule = {
     home.username = lib.mkDefault default.username;
     home.homeDirectory = lib.mkDefault "/home/${default.username}";
     home.stateVersion = lib.mkDefault default.homeStateVersion;
     xdg.enable = lib.mkDefault true;
   };
-in
-{
+in {
   imports = [
     inputs.home-manager.nixosModules.home-manager
   ];
@@ -44,7 +42,7 @@ in
       useGlobalPkgs = true;
       useUserPackages = true;
 
-      extraSpecialArgs = { inherit inputs default; };
+      extraSpecialArgs = {inherit inputs default;};
 
       users.${default.username} = {
         imports = [

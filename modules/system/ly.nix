@@ -1,13 +1,9 @@
-{
-  eriniteLib,
-  ...
-} @ args:
-
+{eriniteLib, ...} @ args:
 eriniteLib.mkModule args {
   category = "system";
   name = "ly";
 
-  configFn = { ... }: {
+  configFn = {...}: {
     services.displayManager.ly = {
       enable = true;
 
@@ -21,6 +17,6 @@ eriniteLib.mkModule args {
       };
     };
 
-    environment.etc."ly/blackhole.dur".source = ../../assets/blackhole-smooth-240x67.dur; 
+    environment.etc."ly/blackhole.dur".source = ../../assets/blackhole-smooth-240x67.dur;
   };
 }

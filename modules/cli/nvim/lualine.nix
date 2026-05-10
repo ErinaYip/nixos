@@ -5,10 +5,10 @@
 
     setupOpts.options = {
       disabled_filetypes = {
-        statusline = [ "snacks_dashboard" ];
-        winbar = [ ];
+        statusline = ["snacks_dashboard"];
+        winbar = [];
       };
-      ignore_focus = [ "neo-tree" "snacks_picker" "snacks_picker_list" "snacks_picker_input"  ];
+      ignore_focus = ["neo-tree" "snacks_picker" "snacks_picker_list" "snacks_picker_input"];
     };
 
     globalStatus = true;
@@ -16,7 +16,7 @@
       left = "";
       right = "";
     };
-    sectionSeparator =  {
+    sectionSeparator = {
       left = "";
       right = "";
     };

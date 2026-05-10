@@ -4,12 +4,11 @@
   eriniteLib,
   ...
 } @ args:
-
 eriniteLib.mkModule args {
   category = "system";
   name = "fonts";
 
-  configFn = { ... }: {
+  configFn = {...}: {
     fonts = {
       enableDefaultPackages = true;
       packages = with pkgs; [
@@ -25,7 +24,7 @@ eriniteLib.mkModule args {
       ];
 
       fontconfig.defaultFonts = {
-        emoji = [ "Noto Color Emoji" ];
+        emoji = ["Noto Color Emoji"];
         monospace = [
           "Maple Mono NF CN"
           "Noto Sans Mono CJK SC"

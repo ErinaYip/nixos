@@ -4,14 +4,13 @@
   eriniteLib,
   ...
 } @ args:
-
 eriniteLib.mkModule args {
   category = "cli";
   name = "yazi";
 
   defaultSettings = import ./settings.nix;
 
-  configFn = { settings, ... }: {
+  configFn = {settings, ...}: {
     erinite.home = {
       home.packages = with pkgs; [
         fzf

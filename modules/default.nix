@@ -1,4 +1,3 @@
-{eriniteLib, ...}:
-{
+{eriniteLib, ...}: {
   imports = eriniteLib.modules ./.;
 }

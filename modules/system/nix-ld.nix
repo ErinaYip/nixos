@@ -4,12 +4,11 @@
   eriniteLib,
   ...
 } @ args:
-
 eriniteLib.mkModule args {
   category = "system";
   name = "nix-ld";
 
-  configFn = { ... }: {
+  configFn = {...}: {
     programs.nix-ld = {
       enable = true;
       libraries = with pkgs; [

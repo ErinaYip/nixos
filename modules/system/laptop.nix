@@ -1,13 +1,9 @@
-{
-  eriniteLib,
-  ...
-} @ args:
-
+{eriniteLib, ...} @ args:
 eriniteLib.mkModule args {
   category = "system";
   name = "laptop";
 
-  configFn = { ... }: {
+  configFn = {...}: {
     services.upower.enable = true;
     services.tuned.enable = false;
     services.power-profiles-daemon.enable = false;

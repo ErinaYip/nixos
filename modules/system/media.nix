@@ -4,12 +4,11 @@
   eriniteLib,
   ...
 } @ args:
-
 eriniteLib.mkModule args {
   category = "system";
   name = "media";
 
-  configFn = { ... }: {
+  configFn = {...}: {
     environment.systemPackages = with pkgs; [
       vlc
       nomacs

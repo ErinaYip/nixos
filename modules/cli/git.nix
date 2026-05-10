@@ -4,7 +4,6 @@
   eriniteLib,
   ...
 } @ args:
-
 eriniteLib.mkModule args {
   category = "cli";
   name = "git";
@@ -16,7 +15,7 @@ eriniteLib.mkModule args {
     };
   };
 
-  configFn = { cfg, ... }: {
+  configFn = {cfg, ...}: {
     environment.systemPackages = [pkgs.git];
 
     erinite.home = {

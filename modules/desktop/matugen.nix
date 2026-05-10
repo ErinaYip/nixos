@@ -3,14 +3,13 @@
   eriniteLib,
   ...
 } @ args:
-
 eriniteLib.mkModule args {
   category = "desktop";
   name = "matugen";
 
-  imports = [ inputs.matugen.nixosModules.default ];
+  imports = [inputs.matugen.nixosModules.default];
 
-  configFn = { ... }: {
+  configFn = {...}: {
     programs.matugen.enable = true;
 
     erinite.home = {

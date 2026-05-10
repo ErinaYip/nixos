@@ -3,12 +3,11 @@
   eriniteLib,
   ...
 } @ args:
-
 eriniteLib.mkModule args {
   category = "system";
   name = "sound";
 
-  configFn = { ... }: {
+  configFn = {...}: {
     security.rtkit.enable = true;
     services.pipewire = {
       enable = true;

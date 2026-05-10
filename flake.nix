@@ -48,7 +48,12 @@
     };
   };
 
-  outputs = {self, nixpkgs, home-manager, ...} @ inputs: let
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    ...
+  } @ inputs: let
     system = "x86_64-linux";
     lib = nixpkgs.lib;
     pkgs = import nixpkgs {inherit system;};
@@ -56,7 +61,10 @@
       inherit system;
       config.allowUnfree = true;
     };
-    eriniteLib = import ./lib { inherit inputs pkgs; lib = pkgs.lib; };
+    eriniteLib = import ./lib {
+      inherit inputs pkgs;
+      lib = pkgs.lib;
+    };
 
     default = {
       inherit system;
@@ -102,7 +110,8 @@
   in {
     nixosConfigurations = lib.mapAttrs (_: host: host.nixos) hosts;
 
-    homeConfigurations = lib.mapAttrs'
+    homeConfigurations =
+      lib.mapAttrs'
       (hostName: host: lib.nameValuePair "${default.username}@${hostName}" host.home)
       hosts;
 

@@ -3,12 +3,11 @@
   eriniteLib,
   ...
 } @ args:
-
 eriniteLib.mkModule args {
   category = "programs";
   name = "localsend";
 
-  configFn = { ... }: {
+  configFn = {...}: {
     programs.localsend = {
       enable = true;
       openFirewall = true;

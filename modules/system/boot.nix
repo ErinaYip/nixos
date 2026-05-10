@@ -4,21 +4,21 @@
   eriniteLib,
   ...
 } @ args:
-
 eriniteLib.mkModule args {
   category = "system";
   name = "boot";
 
   opts = {
-    engine = eriniteLib.mkOpt
-      (lib.types.enum [ "systemd-boot" "grub" ])
-      "systemd-boot" 
+    engine =
+      eriniteLib.mkOpt
+      (lib.types.enum ["systemd-boot" "grub"])
+      "systemd-boot"
       "The bootloader engine to use.";
   };
 
-  imports = [ inputs.grub2-themes.nixosModules.default ];
+  imports = [inputs.grub2-themes.nixosModules.default];
 
-  configFn = { cfg, ... }: {
+  configFn = {cfg, ...}: {
     boot.loader.efi.canTouchEfiVariables = true;
 
     boot.loader.systemd-boot = lib.mkIf (cfg.engine == "systemd-boot") {
