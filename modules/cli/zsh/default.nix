@@ -1,6 +1,6 @@
 {
-  eriniteLib,
   pkgs,
+  eriniteLib,
   ...
 } @ args:
 with eriniteLib;
@@ -9,22 +9,21 @@ with eriniteLib;
     name = "zsh";
 
     configFn = _: {
-      programs.zsh = enabled;
-      environment.systemPackages = [
-        pkgs.any-nix-shell
-      ];
+      erinite.home = {
+        home.packages = [pkgs.any-nix-shell];
 
-      erinite.home.programs.zsh = {
-        enable = true;
-        autosuggestion.enable = true;
-        syntaxHighlighting.enable = true;
-        history.size = 10000;
+        programs.zsh = {
+          enable = true;
+          autosuggestion.enable = true;
+          syntaxHighlighting.enable = true;
+          history.size = 10000;
 
-        initContent = ''
-          ${builtins.readFile ./init.zsh}
-          ${builtins.readFile ./fzf-settings.zsh}
-          ${builtins.readFile ./fzf.zsh}
-        '';
+          initContent = ''
+            ${builtins.readFile ./init.zsh}
+            ${builtins.readFile ./fzf-settings.zsh}
+            ${builtins.readFile ./fzf.zsh}
+          '';
+        };
       };
     };
   }
