@@ -18,7 +18,7 @@ with eriniteLib; {
       virtualisation = {
         enable = true;
         podman = true;
-        # vbox = true;
+        vbox = true;
       };
 
       nvidia = {

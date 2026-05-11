@@ -17,8 +17,9 @@ with eriniteLib;
     configFn = {cfg, ...}:
       lib.mkMerge [
         (lib.mkIf cfg.podman {
-          virtualisation.containers.enable = true;
           virtualisation = {
+            containers.enable = true;
+
             podman = {
               enable = true;
               dockerCompat = true;
@@ -33,13 +34,13 @@ with eriniteLib;
         })
 
         (lib.mkIf cfg.vbox {
-          virtualisation.virtualbox = {
-            host.enable = true;
+          virtualisation.virtualbox.host = {
+            enable = true;
+            addNetworkInterface = false;
+            enableKvm = true;
           };
-          users.extraGroups.vboxusers.members = [
-            "user-with-access-to-virtualbox"
-            "djw"
-          ];
+
+          users.extraGroups.vboxusers.members = ["user-with-access-to-virtualbox"];
         })
       ];
   }
