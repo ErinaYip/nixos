@@ -38,10 +38,10 @@
       url = "github:AvengeMedia/DankMaterialShell/stable";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    erina-vim = {
-      url = "git+https://codeberg.org/erina/erina-vim.git";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # erina-vim = {
+    #   url = "git+https://codeberg.org/erina/erina-vim.git";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     oh-my-rime-nix = {
       url = "git+https://codeberg.org/erina/oh-my-rime-nix.git";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -49,13 +49,13 @@
   };
 
   outputs = {
-    self,
+    # self,
     nixpkgs,
     home-manager,
     ...
   } @ inputs: let
     system = "x86_64-linux";
-    lib = nixpkgs.lib;
+    inherit (nixpkgs) lib;
     pkgs = import nixpkgs {inherit system;};
     homePkgs = import nixpkgs {
       inherit system;
@@ -63,7 +63,7 @@
     };
     eriniteLib = import ./lib {
       inherit inputs pkgs;
-      lib = pkgs.lib;
+      inherit (pkgs) lib;
     };
 
     default = {

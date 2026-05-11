@@ -7,6 +7,8 @@
         auto_close = true;
       };
 
+      bigfile.enabled = true;
+
       dashboard = {
         sections = [
           {section = "header";}

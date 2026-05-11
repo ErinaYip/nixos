@@ -36,8 +36,10 @@
     list = true;
     listchars = "trail:·,tab:  ";
 
-    foldlevel = 999;
-    foldlevelstart = 999;
+    foldmethod = "expr";
+    foldlevel = 99;
+    foldlevelstart = 99;
+    foldenable = true;
   };
 
   theme = {
