@@ -2,9 +2,9 @@
   tabline.nvimBufferline = {
     enable = true;
     setupOpts.options = {
+      numbers = "none";
       indicator = {
         style = "icon";
-        icon = "▎";
       };
     };
   };

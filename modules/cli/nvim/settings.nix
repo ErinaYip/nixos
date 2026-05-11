@@ -5,7 +5,7 @@
     providers.wl-copy.enable = true;
   };
 
-  opts = {
+  options = {
     number = true;
     relativenumber = true;
     cursorline = true;
@@ -33,8 +33,11 @@
     undofile = true;
     clipboard = "unnamedplus";
     virtualedit = "block";
-    # list = true;
-    # listchars = "trail:·,tab:  ";
+    list = true;
+    listchars = "trail:·,tab:  ";
+
+    foldlevel = 999;
+    foldlevelstart = 999;
   };
 
   theme = {

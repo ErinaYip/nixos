@@ -1,4 +1,9 @@
-{enabled, ...}: {
+{
+  lib,
+  pkgs,
+  enabled,
+  ...
+}: {
   diagnostics = {
     enable = true;
     config = {
@@ -19,9 +24,16 @@
     enableExtraDiagnostics = true;
     enableDAP = true;
 
-    nix.enable = true;
-    markdown.enable = true;
-    python.enable = true;
+    nix = enabled;
+    markdown = enabled;
+    python = enabled;
+    typescript = enabled;
+    astro = enabled;
+  };
+
+  treesitter = {
+    enable = true;
+    # fold = true;
   };
 
   lsp = {
@@ -37,12 +49,15 @@
     # otter-nvim.enable = isMaximal;
     # nvim-docs-view.enable = isMaximal;
     # presets.harper.enable = isMaximal;
-    # servers = {
-    #   basedpyright = {
-    #     enable = true;
-    #     filetypes = ["python"];
-    #     root_markers = ["pyproject.toml" "pyrightconfig.json" ".git" ".venv"];
-    #   };
-    # };
+    servers = {
+      "astro-language-server" = {
+        cmd = lib.mkForce [
+          "env"
+          "NODE_PATH=${pkgs.typescript}/lib/node_modules"
+          "${pkgs.astro-language-server}/bin/astro-ls"
+          "--stdio"
+        ];
+      };
+    };
   };
 }

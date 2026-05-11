@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   inputs,
   eriniteLib,
   ...
@@ -18,8 +19,9 @@ with eriniteLib;
       };
       mkKeymapd = mode: key: action: desc: mkKeymap mode key action desc {};
       mkKeymaps = mode: key: action: mkKeymap mode key action "" {};
+      inherit (lib.generators) mkLuaInline;
 
-      arg = {inherit lib enabled disabled mkKeymap mkKeymapd mkKeymaps;};
+      arg = {inherit lib pkgs mkLuaInline enabled disabled mkKeymap mkKeymapd mkKeymaps;};
     in {
       home-manager.sharedModules = [
         inputs.nvf.homeManagerModules.default
@@ -47,6 +49,40 @@ with eriniteLib;
               noice = enabled;
               colorizer = enabled;
               fastaction = enabled;
+              nvim-ufo = {
+                enable = true;
+                setupOpts = {
+                  fold_virt_text_handler = mkLuaInline ''
+                     function(virtText, lnum, endLnum, width, truncate)
+                        local newVirtText = {}
+                        local suffix = (' 󰁂 %d '):format(endLnum - lnum)
+                        local sufWidth = vim.fn.strdisplaywidth(suffix)
+                        local targetWidth = width - sufWidth
+                        local curWidth = 0
+                        for _, chunk in ipairs(virtText) do
+                            local chunkText = chunk[1]
+                            local chunkWidth = vim.fn.strdisplaywidth(chunkText)
+                            if targetWidth > curWidth + chunkWidth then
+                                table.insert(newVirtText, chunk)
+                            else
+                                chunkText = truncate(chunkText, targetWidth - curWidth)
+                                local hlGroup = chunk[2]
+                                table.insert(newVirtText, {chunkText, hlGroup})
+                                chunkWidth = vim.fn.strdisplaywidth(chunkText)
+                                -- str width returned from truncate() may less than 2nd argument, need padding
+                                if curWidth + chunkWidth < targetWidth then
+                                    suffix = suffix .. (' '):rep(targetWidth - curWidth - chunkWidth)
+                                end
+                                break
+                            end
+                            curWidth = curWidth + chunkWidth
+                        end
+                        table.insert(newVirtText, {suffix, 'MoreMsg'})
+                        return newVirtText
+                    end
+                  '';
+                };
+              };
               breadcrumbs = {
                 enable = true;
                 navbuddy.enable = true;
