@@ -28,3 +28,4 @@
 # fix: fix cava configuration
 # fix(flake.lock): update locked versions and hashes for dependencies
 # feat(nvim): migrate to nvf configuration
+# feat(nvim): update settings and snacks configurations, enhance folding and add bigfile support

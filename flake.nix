@@ -59,3 +59,4 @@
 # feat(nixos): refactor host and home configuration management for improved clarity and structure
 # feat(nvim): migrate to nvf configuration
 # Refactor with Alejandra
+# feat(nvim): update settings and snacks configurations, enhance folding and add bigfile support
