@@ -6,3 +6,4 @@
 # fix(sddm): disable Wayland support in SDDM configuration
 # refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors
 # Refactor with Alejandra
+# refactor

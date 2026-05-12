@@ -9,3 +9,4 @@
 # feat: updated gram hash
 # refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors
 # Refactor with Alejandra
+# refactor
