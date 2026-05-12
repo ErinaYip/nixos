@@ -1,7 +1,7 @@
 {
   lib,
-  inputs,
   pkgs,
+  inputs,
   eriniteLib,
   ...
 } @ args:
@@ -11,7 +11,7 @@ eriniteLib.mkModule args {
 
   imports = [inputs.silentSDDM.nixosModules.default];
 
-  configFn = {...}: {
+  configFn = _: {
     programs.silentSDDM = {
       enable = true;
       theme = "default";

@@ -1,22 +1,11 @@
 {mkKeymapd, ...}: {
-  terminal = {
-    toggleterm = {
-      enable = true;
-      setupOpts = {
-        shell = "zsh";
-        direction = "float";
-        # size = lib.mkLuaInline ''
-        #   function(term)
-        #     if term.direction == "horizontal" then
-        #       return 8
-        #     elseif term.direction == "vertical" then
-        #       return vim.o.columns * 0.4
-        #     end
-        #   end
-        # '';
-      };
-      lazygit.enable = true;
+  terminal.toggleterm = {
+    enable = true;
+    setupOpts = {
+      shell = "zsh";
+      direction = "float";
     };
+    lazygit.enable = true;
   };
 
   luaConfigPost = ''

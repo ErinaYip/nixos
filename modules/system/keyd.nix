@@ -1,13 +1,9 @@
-{
-  lib,
-  eriniteLib,
-  ...
-} @ args:
+{eriniteLib, ...} @ args:
 eriniteLib.mkModule args {
   category = "system";
   name = "keyd";
 
-  configFn = {...}: {
+  configFn = _: {
     services.keyd = {
       enable = true;
       keyboards.default = {

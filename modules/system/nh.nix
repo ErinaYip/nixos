@@ -18,11 +18,14 @@ with eriniteLib;
         {
           programs.nh = {
             enable = true;
-            clean.enable = true;
-            clean.extraArgs = "--keep-since 4d --keep 3";
-            flake = cfg.flake;
+            clean = {
+              enable = true;
+              extraArgs = "--keep-since 4d --keep 3";
+            };
+            inherit (cfg) flake;
           };
         }
+
         (mkShellAliases {
           aliases = builtins.listToAttrs (
             builtins.concatMap (

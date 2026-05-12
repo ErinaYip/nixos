@@ -19,24 +19,26 @@ eriniteLib.mkModule args {
   imports = [inputs.grub2-themes.nixosModules.default];
 
   configFn = {cfg, ...}: {
-    boot.loader.efi.canTouchEfiVariables = true;
+    boot.loader = {
+      efi.canTouchEfiVariables = true;
 
-    boot.loader.systemd-boot = lib.mkIf (cfg.engine == "systemd-boot") {
-      enable = true;
-      configurationLimit = 10;
-    };
+      systemd-boot = lib.mkIf (cfg.engine == "systemd-boot") {
+        enable = true;
+        configurationLimit = 10;
+      };
 
-    boot.loader.grub = lib.mkIf (cfg.engine == "grub") {
-      enable = true;
-      device = "nodev";
-      efiSupport = true;
-      useOSProber = true;
-    };
+      grub = lib.mkIf (cfg.engine == "grub") {
+        enable = true;
+        device = "nodev";
+        efiSupport = true;
+        useOSProber = true;
+      };
 
-    boot.loader.grub2-theme = lib.mkIf (cfg.engine == "grub") {
-      enable = true;
-      theme = "stylish";
-      footer = true;
+      grub2-theme = lib.mkIf (cfg.engine == "grub") {
+        enable = true;
+        theme = "stylish";
+        footer = true;
+      };
     };
   };
 }

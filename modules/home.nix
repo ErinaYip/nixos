@@ -6,9 +6,11 @@
   ...
 }: let
   baseHomeModule = {
-    home.username = lib.mkDefault default.username;
-    home.homeDirectory = lib.mkDefault "/home/${default.username}";
-    home.stateVersion = lib.mkDefault default.homeStateVersion;
+    home = {
+      username = lib.mkDefault default.username;
+      homeDirectory = lib.mkDefault "/home/${default.username}";
+      stateVersion = lib.mkDefault default.homeStateVersion;
+    };
     xdg.enable = lib.mkDefault true;
   };
 in {
@@ -45,9 +47,7 @@ in {
       extraSpecialArgs = {inherit inputs default;};
 
       users.${default.username} = {
-        imports = [
-          config.erinite.homeModule
-        ];
+        imports = [config.erinite.homeModule];
       };
     };
   };

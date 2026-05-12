@@ -1,5 +1,4 @@
 {
-  lib,
   pkgs,
   eriniteLib,
   ...
@@ -8,7 +7,7 @@ eriniteLib.mkModule args {
   category = "system";
   name = "fonts";
 
-  configFn = {...}: {
+  configFn = _: {
     fonts = {
       enableDefaultPackages = true;
       packages = with pkgs; [
