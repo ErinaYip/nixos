@@ -35,7 +35,21 @@ This repository is not a complete copy of the original project. It is intended t
 <br>
 <br>
 
-<h1 align="center">EriniteOS</h1>
+<!--toc:start-->
+
+- [Status](#status)
+- [Hosts](#hosts)
+- [Structure](#structure)
+- [Features](#features)
+- [Desktop Setup](#desktop-setup)
+- [Screenshots](#screenshots)
+- [Usage](#usage)
+- [Install](#install)
+- [Modules](#modules)
+- [Notes](#notes)
+- [TODO](#todo)
+
+<!--toc:end-->
 
 My personal NixOS configuration.
 
@@ -47,7 +61,8 @@ Detailed project documentation lives in [`docs/`](./docs/README.md).
 
 - This repository supports both `nh os` and `nh home` workflows.
 - Home Manager still shares the same module graph through `erinite.homeModule`.
-- Use `nh os switch` for full system updates, or `nh home switch` for user-only updates.
+- Use `nh os switch` for full system updates, or `nh home switch` for user-only
+  updates.
 
 ## Hosts
 
@@ -84,38 +99,38 @@ Detailed project documentation lives in [`docs/`](./docs/README.md).
 
 ## Desktop Setup
 
-| Part | Choice |
-| --- | --- |
-| Window manager | Hyprland |
-| Shell | zsh |
-| Terminal | kitty |
-| Editor | Nixvim with erina-vim |
-| Prompt | starship |
-| App launcher | fuzzel |
-| Bar / shell | DankMaterialShell |
-| Theming | matugen, GTK, Qt, Bibata cursor |
-| Input method | Fcitx5 + Rime |
+| Part           | Choice                          |
+| -------------- | ------------------------------- |
+| Window manager | Hyprland                        |
+| Shell          | zsh                             |
+| Terminal       | kitty                           |
+| Editor         | Nixvim with erina-vim           |
+| Prompt         | starship                        |
+| App launcher   | fuzzel                          |
+| Bar / shell    | DankMaterialShell               |
+| Theming        | matugen, GTK, Qt, Bibata cursor |
+| Input method   | Fcitx5 + Rime                   |
 
 ## Screenshots
 
-| `nec` | `mechrevo` |
-| --- | --- |
+| `nec`                         | `mechrevo`                              |
+| ----------------------------- | --------------------------------------- |
 | ![nec](./screenshots/nec.png) | ![mechrevo](./screenshots/mechrevo.png) |
 
 ## Usage
 
 Maintenance aliases:
 
-| Alias | Command |
-| --- | --- |
-| `nos` | `nh os switch` |
-| `nob` | `nh os boot` |
-| `not` | `nh os test` |
-| `nou` | `nh os build` |
+| Alias | Command          |
+| ----- | ---------------- |
+| `nos` | `nh os switch`   |
+| `nob` | `nh os boot`     |
+| `not` | `nh os test`     |
+| `nou` | `nh os build`    |
 | `nhs` | `nh home switch` |
-| `nhb` | `nh home boot` |
-| `nht` | `nh home test` |
-| `nhu` | `nh home build` |
+| `nhb` | `nh home boot`   |
+| `nht` | `nh home test`   |
+| `nhu` | `nh home build`  |
 
 Home-only switch:
 
@@ -126,7 +141,8 @@ nh home switch .
 Notes:
 
 - `nh os switch` remains the canonical path for full host updates.
-- `nh home switch` now reuses the same composed Home Manager module exported as `homeConfigurations`.
+- `nh home switch` now reuses the same composed Home Manager module exported as
+  `homeConfigurations`.
 - Home targets are exposed as `era@mechrevo` and `era@nec`.
 
 Manual switch:
@@ -155,7 +171,8 @@ nix develop
 
 ## Install
 
-Boot from a NixOS installer, connect to the network, then prepare disks and mount the new system.
+Boot from a NixOS installer, connect to the network, then prepare disks and
+mount the new system.
 
 Clone this repo:
 
@@ -199,12 +216,16 @@ with eriniteLib; {
 }
 ```
 
-The `common` preset enables the base system, Hyprland desktop, CLI tools and LocalSend.
+The `common` preset enables the base system, Hyprland desktop, CLI tools and
+LocalSend.
 
 ## Notes
 
-This repo is made for my own machines. Some values are hardware or user specific, such as username, proxy config path, display layout, NVIDIA bus IDs and Git user info.
+This repo is made for my own machines. Some values are hardware or user
+specific, such as username, proxy config path, display layout, NVIDIA bus IDs
+and Git user info.
 
 ## TODO
 
-- Keep `nixosConfigurations` and `homeConfigurations` behavior aligned when changing the module graph.
+- Keep `nixosConfigurations` and `homeConfigurations` behavior aligned when
+  changing the module graph.
