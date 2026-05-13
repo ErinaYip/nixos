@@ -3,3 +3,4 @@
 # refactor(cli): enable codex for mechrevo
 # feat(nixos): update codex model provider to 'xem'
 # feat(codex): update model version to gpt-5.5
+# feat(codex): update model provider to router and remove xem configuration
