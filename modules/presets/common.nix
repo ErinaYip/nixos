@@ -36,7 +36,7 @@ with eriniteLib;
           matugen = enabled;
           nemo = enabled;
           qt = enabled;
-          # sunshine = enabled;
+          # streaming = enabled;
         };
 
         cli = {
