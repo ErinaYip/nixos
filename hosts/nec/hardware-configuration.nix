@@ -2,43 +2,46 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 {
-  config,
   lib,
   pkgs,
+  config,
   modulesPath,
   ...
 }: {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
-
-  boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "uas" "sd_mod" "rtsx_pci_sdmmc"];
-  boot.initrd.kernelModules = [];
-  boot.kernelModules = ["kvm-intel"];
-  boot.extraModulePackages = [];
-
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/ed97e800-2705-463f-9382-d54bef05722e";
-    fsType = "btrfs";
-    options = ["subvol=root" "compress=zstd"];
+  boot = {
+    initrd.availableKernelModules = ["xhci_pci" "ahci" "uas" "sd_mod" "rtsx_pci_sdmmc"];
+    initrd.kernelModules = [];
+    kernelModules = ["kvm-intel" "hid-multitouch"];
+    extraModulePackages = [];
   };
 
-  fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/ed97e800-2705-463f-9382-d54bef05722e";
-    fsType = "btrfs";
-    options = ["subvol=home" "compress=zstd"];
-  };
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-uuid/ed97e800-2705-463f-9382-d54bef05722e";
+      fsType = "btrfs";
+      options = ["subvol=root" "compress=zstd"];
+    };
 
-  fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/ed97e800-2705-463f-9382-d54bef05722e";
-    fsType = "btrfs";
-    options = ["subvol=nix" "compress=zstd" "noatime"];
-  };
+    "/home" = {
+      device = "/dev/disk/by-uuid/ed97e800-2705-463f-9382-d54bef05722e";
+      fsType = "btrfs";
+      options = ["subvol=home" "compress=zstd"];
+    };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/D2E7-1414";
-    fsType = "vfat";
-    options = ["fmask=0022" "dmask=0022"];
+    "/nix" = {
+      device = "/dev/disk/by-uuid/ed97e800-2705-463f-9382-d54bef05722e";
+      fsType = "btrfs";
+      options = ["subvol=nix" "compress=zstd" "noatime"];
+    };
+
+    "/boot" = {
+      device = "/dev/disk/by-uuid/D2E7-1414";
+      fsType = "vfat";
+      options = ["fmask=0022" "dmask=0022"];
+    };
   };
 
   swapDevices = [

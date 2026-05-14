@@ -38,24 +38,4 @@ with eriniteLib; {
 
     qq
   ];
-
-  boot.kernelParams = [
-    "pcie_aspm=force"
-    "intel_pstate=enable"
-    "intel_idle.max_cstate=4"
-    "drm.vblank_mode=1"
-    "mitigations=off"
-    "quiet"
-    "splash"
-    "nosmt"
-  ];
-
-  services.thermald.enable = true;
-
-  boot.blacklistedKernelModules = [
-    "btusb"
-    "bluetooth"
-    "uvcvideo"
-    "snd_hda_intel"
-  ];
 }
