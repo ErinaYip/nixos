@@ -119,18 +119,22 @@ Detailed project documentation lives in [`docs/`](./docs/README.md).
 
 ## Usage
 
-Maintenance aliases:
+Quality of life commands:
 
-| Alias | Command          |
-| ----- | ---------------- |
-| `nos` | `nh os switch`   |
-| `nob` | `nh os boot`     |
-| `not` | `nh os test`     |
-| `nou` | `nh os build`    |
-| `nhs` | `nh home switch` |
-| `nhb` | `nh home boot`   |
-| `nht` | `nh home test`   |
-| `nhu` | `nh home build`  |
+| Alias | Command                             |
+| ----- | ----------------------------------- |
+| `nos` | `nh os switch`                      |
+| `nob` | `nh os boot`                        |
+| `not` | `nh os test`                        |
+| `nou` | `nh os build`                       |
+| `nhs` | `nh home switch`                    |
+| `nhb` | `nh home boot`                      |
+| `nht` | `nh home test`                      |
+| `nhu` | `nh home build`                     |
+| `sns` | `sudo nixos-rebuild switch --flake` |
+| `snb` | `sudo nixos-rebuild boot --flake`   |
+| `snt` | `sudo nixos-rebuild test --flake`   |
+| `snu` | `sudo nixos-rebuild build --flake`  |
 
 Home-only switch:
 
@@ -140,6 +144,8 @@ nh home switch .
 
 Notes:
 
+- `nh` commands are preferred than `sudo nixos-rebuild` commands because they
+  have gc enabled.
 - `nh os switch` remains the canonical path for full host updates.
 - `nh home switch` now reuses the same composed Home Manager module exported as
   `homeConfigurations`.
