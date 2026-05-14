@@ -8,3 +8,4 @@
 # feat(nixos): add ly module and integrate blackhole animation file
 # Refactor with Alejandra
 # refactor
+# feat(streaming): add streaming module and remove sunshine module
