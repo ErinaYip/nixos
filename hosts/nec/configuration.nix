@@ -8,3 +8,4 @@
 # refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors
 # fix(laptop): update TLP settings for better power management
 # Refactor with Alejandra
+# refactor(configuration): reorganize boot and file system settings in configuration files
