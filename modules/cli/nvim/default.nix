@@ -47,7 +47,12 @@ with eriniteLib;
 
             ui = {
               noice = enabled;
-              colorizer = enabled;
+              colorizer = {
+                enable = true;
+                setupOpts.filetypes = {
+                  "*" = {};
+                };
+              };
               fastaction = enabled;
               nvim-ufo = {
                 enable = true;
@@ -91,11 +96,21 @@ with eriniteLib;
 
             visuals = {
               nvim-web-devicons = enabled;
-              # nvim-cursorline.enable = true;
-              # fidget-nvim.enable = true;
-
-              # highlight-undo.enable = true;
-              # blink-indent.enable = true;
+              fidget-nvim = enabled;
+              nvim-cursorline = {
+                enable = true;
+                setupOpts = {
+                  cursorline.enable = true;
+                  cursorword.enable = true;
+                  disable_filetypes = ["snacks_dashboard"];
+                };
+              };
+              # highlight-undo = {
+              #   enable = true;
+              #   setupOpts = {
+              #     ignored_filetypes = ["snacks_dashboard"];
+              #   };
+              # };
               indent-blankline = enabled;
             };
 
