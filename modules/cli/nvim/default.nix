@@ -5,3 +5,4 @@
 # feat(nvim): refactor LSP and settings, add language support in lsp.nix
 # refactor(cli): simplify config
 # feat(nvim): enhance bufferline and LSP configurations, add fold handling
+# feat(nvim): enhance UI configuration with detailed options for colorizer and cursorline
