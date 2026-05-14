@@ -29,6 +29,7 @@
     python = enabled;
     typescript = enabled;
     astro = enabled;
+    scss = enabled;
   };
 
   treesitter = {
