@@ -11,20 +11,20 @@ with eriniteLib;
 
     opts = {
       host = {
-        enable = mkBoolOption false "Whether to enable streaming host.";
+        enable = mkBoolOpt false "Whether to enable streaming host.";
         package =
           mkOpt
           (lib.types.enum ["sunshine"])
           "sunshine"
           "The streaming software to use.";
-        autoStart = mkBoolOption false "Whether to start sunshine on launch.";
+        autoStart = mkBoolOpt false "Whether to start sunshine on launch.";
       };
-      guest.enable = mkBoolOption flase "Whether to enable streaming guest.";
+      guest.enable = mkBoolOpt false "Whether to enable streaming guest.";
     };
 
     configFn = {cfg, ...}: {
       services = lib.mkIf cfg.host.enable {
-        sunshine = lib.mkif (cfg.host.package == "sunshine") {
+        sunshine = lib.mkIf (cfg.host.package == "sunshine") {
           enable = true;
           inherit (cfg.host) autoStart;
           capSysAdmin = true;
@@ -32,6 +32,6 @@ with eriniteLib;
         };
       };
 
-      environment.package = lib.mkIf cfg.guest.enable [pkgs.moonlight];
+      environment.systemPackages = lib.mkIf cfg.guest.enable [pkgs.moonlight];
     };
   }
