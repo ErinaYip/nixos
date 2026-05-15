@@ -22,3 +22,4 @@
 # fix(hyprland): update hyprgrass source to GitHub and comment out dynamic cursors plugin
 # refactor(nvim): modularize configuration files
 # Refactor with Alejandra
+# feat(hyprland): switch to lua configs and disabled pulgins for now

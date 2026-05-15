@@ -5,3 +5,4 @@
 # feat: add hyprland config with binds, rules and settings
 # refactor: restructure hyprland module settings
 # Refactor with Alejandra
+# feat(hyprland): switch to lua configs and disabled pulgins for now

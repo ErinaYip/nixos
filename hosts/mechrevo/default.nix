@@ -63,3 +63,4 @@
 # feat(nixos): consolidate home packages and session variables into configuration.nix
 # feat(nvim): enable opencode in CLI configuration
 # feat(virtualisation): enable virtualbox configurations
+# feat(hyprland): switch to lua configs and disabled pulgins for now

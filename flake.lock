@@ -30,3 +30,4 @@
 # feat(nvim): migrate to nvf configuration
 # feat(nvim): update settings and snacks configurations, enhance folding and add bigfile support
 # feat: updated flake lock
+# feat(hyprland): switch to lua configs and disabled pulgins for now

@@ -10,3 +10,4 @@
 # fix(hyprland): remove vfr setting from misc configuration
 # fix(hyprland): add grass configuration and touch gestures support
 # fix(hyprland): adjust gap settings for better layout consistency
+# feat(hyprland): switch to lua configs and disabled pulgins for now
