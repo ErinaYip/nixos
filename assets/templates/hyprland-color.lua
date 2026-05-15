@@ -1,0 +1,1 @@
+-- feat(matugen): configure matugen template for hyprland

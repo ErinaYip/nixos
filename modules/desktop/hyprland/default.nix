@@ -23,3 +23,4 @@
 # refactor(nvim): modularize configuration files
 # Refactor with Alejandra
 # feat(hyprland): switch to lua configs and disabled pulgins for now
+# feat(matugen): configure matugen template for hyprland

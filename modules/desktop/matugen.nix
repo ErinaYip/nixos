@@ -9,3 +9,4 @@
 # feat(matugen): add cava color template
 # fix: fix cava configuration
 # Refactor with Alejandra
+# feat(matugen): configure matugen template for hyprland
