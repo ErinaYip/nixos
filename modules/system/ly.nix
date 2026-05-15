@@ -3,7 +3,7 @@ eriniteLib.mkModule args {
   category = "system";
   name = "ly";
 
-  configFn = {...}: {
+  configFn = _: {
     services.displayManager.ly = {
       enable = true;
 
@@ -12,7 +12,9 @@ eriniteLib.mkModule args {
         full_color = true;
         bigclock = "en";
         bigclock_seconds = true;
+        clear_password = true;
         animation = "dur_file";
+        ly_log = "/var/log/ly.log";
         dur_file_path = "/etc/ly/blackhole.dur";
       };
     };
