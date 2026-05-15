@@ -1,44 +1,77 @@
-{
+{lib}: let
+  raw = lib.generators.mkLuaInline;
+in {
   wayland.windowManager.hyprland.settings = {
-    windowrule = [
-      "float on, match:class ^(org.quickshell)$"
+    window_rule = [
+      {
+        name = "float-quickshell";
+        match.class = "^(org.quickshell)$";
+        float = true;
+      }
     ];
 
-    layerrule = [
-      "no_anim on, match:namespace ^(dms)$"
+    layer_rule = [
+      {
+        name = "no-anim-dms";
+        match.namespace = "^(dms)$";
+        no_anim = true;
+      }
     ];
 
-    misc = {
+    config.misc = {
       disable_hyprland_logo = true;
       disable_splash_rendering = true;
     };
 
     env = [
-      "QT_QPA_PLATFORM,wayland"
-      "ELECTRON_OZONE_PLATFORM_HINT,auto"
-      "QT_QPA_PLATFORMTHEME,gtk3"
-      "QT_QPA_PLATFORMTHEME_QT6,gtk3"
+      {_args = ["QT_QPA_PLATFORM" "wayland"];}
+      {_args = ["ELECTRON_OZONE_PLATFORM_HINT" "auto"];}
+      {_args = ["QT_QPA_PLATFORMTHEME" "gtk3"];}
+      {_args = ["QT_QPA_PLATFORMTHEME_QT6" "gtk3"];}
     ];
   };
 
   wayland.windowManager.hyprland.settings.bind = [
-    "$mod, space, exec, dms ipc call spotlight toggle"
-    "$mod, v,     exec, dms ipc call clipboard toggle"
-    "$mod, m,     exec, dms ipc call processlist focusOrToggle"
-    "$mod, comma, exec, dms ipc call settings focusOrToggle"
-    "$mod, n,     exec, dms ipc call notifications toggle"
-    "$mod, y,     exec, dms ipc call dankdash wallpaper"
-    "$mod, tab,   exec, dms ipc call hypr toggleOverview"
+    {
+      _args = ["SUPER + space" (raw ''hl.dsp.exec_cmd("dms ipc call spotlight toggle")'')];
+    }
+    {
+      _args = ["SUPER + v" (raw ''hl.dsp.exec_cmd("dms ipc call clipboard toggle")'')];
+    }
+    {
+      _args = ["SUPER + m" (raw ''hl.dsp.exec_cmd("dms ipc call processlist focusOrToggle")'')];
+    }
+    {
+      _args = ["SUPER + comma" (raw ''hl.dsp.exec_cmd("dms ipc call settings focusOrToggle")'')];
+    }
+    {
+      _args = ["SUPER + n" (raw ''hl.dsp.exec_cmd("dms ipc call notifications toggle")'')];
+    }
+    {
+      _args = ["SUPER + y" (raw ''hl.dsp.exec_cmd("dms ipc call dankdash wallpaper")'')];
+    }
+    {
+      _args = ["SUPER + tab" (raw ''hl.dsp.exec_cmd("dms ipc call hypr toggleOverview")'')];
+    }
 
-    "$mod ALT, l, exec, dms ipc call lock lock"
-  ];
-
-  wayland.windowManager.hyprland.settings.bindel = [
-    ", XF86AudioRaiseVolume,  exec, dms ipc call audio increment 3"
-    ", XF86AudioLowerVolume,  exec, dms ipc call audio decrement 3"
-    ", XF86AudioMute,         exec, dms ipc call audio mute"
-    ", XF86MonBrightnessUp,   exec, dms ipc call brightness increment 5"
-    ", XF86MonBrightnessDown, exec, dms ipc call brightness decrement 5"
+    {
+      _args = ["SUPER + ALT + l" (raw ''hl.dsp.exec_cmd("dms ipc call lock lock")'')];
+    }
+    {
+      _args = ["XF86AudioRaiseVolume" (raw ''hl.dsp.exec_cmd("dms ipc call audio increment 3")'') {locked = true; repeating = true;}];
+    }
+    {
+      _args = ["XF86AudioLowerVolume" (raw ''hl.dsp.exec_cmd("dms ipc call audio decrement 3")'') {locked = true; repeating = true;}];
+    }
+    {
+      _args = ["XF86AudioMute" (raw ''hl.dsp.exec_cmd("dms ipc call audio mute")'') {locked = true; repeating = true;}];
+    }
+    {
+      _args = ["XF86MonBrightnessUp" (raw ''hl.dsp.exec_cmd("dms ipc call brightness increment 5")'') {locked = true; repeating = true;}];
+    }
+    {
+      _args = ["XF86MonBrightnessDown" (raw ''hl.dsp.exec_cmd("dms ipc call brightness decrement 5")'') {locked = true; repeating = true;}];
+    }
   ];
 
   services.hypridle = {

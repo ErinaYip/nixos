@@ -1,8 +1,4 @@
 {
-  wayland.windowManager.hyprland.settings.source = [
-    "dms/colors.conf"
-  ];
-
   programs.kitty.extraConfig = "
     include dank-tabs.conf
     include dank-theme.conf

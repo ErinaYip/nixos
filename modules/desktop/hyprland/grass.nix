@@ -1,5 +1,5 @@
 {
-  plugin.touch_gestures = {
+  config.plugin.touch_gestures = {
     sensitivity = 4.0;
     resize_on_border_long_press = true;
 

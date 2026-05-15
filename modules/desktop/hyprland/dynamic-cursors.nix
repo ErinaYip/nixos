@@ -1,5 +1,5 @@
 {
-  plugin.dynamic-cursors = {
+  config.plugin."dynamic-cursors" = {
     enabled = true;
     mode = "rotate";
 

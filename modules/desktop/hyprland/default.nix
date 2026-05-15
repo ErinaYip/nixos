@@ -14,11 +14,11 @@ with eriniteLib;
     };
 
     defaultSettings = lib.mkMerge [
-      (import ./binds.nix)
+      (import ./binds.nix {inherit lib;})
       (import ./rules.nix)
       (import ./settings.nix)
-      (import ./dynamic-cursors.nix)
-      (import ./grass.nix)
+      # (import ./dynamic-cursors.nix)
+      # (import ./grass.nix)
     ];
 
     configFn = {
@@ -56,6 +56,7 @@ with eriniteLib;
       erinite.home = {
         wayland.windowManager.hyprland = {
           enable = true;
+          configType = "lua";
           systemd.enable = false;
           settings = settings;
           package = mkInputPkga "hyprland";

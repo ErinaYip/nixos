@@ -100,9 +100,9 @@ eriniteLib.mkModule args {
         };
       };
 
-      wayland.windowManager.hyprland.settings.exec-once = [
-        "fcitx5 -d -r"
-      ];
+      # wayland.windowManager.hyprland.settings.exec-once = [
+      #   "fcitx5 -d -r"
+      # ];
 
       home.file.".local/share/fcitx5/rime/${wanxiang}.gram" = {
         source = gram;

@@ -36,17 +36,58 @@ with eriniteLib; {
       hyprland = {
         settings = {
           monitor = [
-            "eDP-1, preferred, 1920x0, 1.6, transform, 1"
-            "eDP-2, preferred, 1920x0, 1.6, transform, 1"
-            "DP-2, 1920x1080@260.00Hz, 0x0, 1"
-            "DP-3, 1920x1080@260.00Hz, 0x0, 1"
+            {
+              output = "eDP-1";
+              mode = "preferred";
+              position = "1920x0";
+              scale = "1.6";
+              transform = 1;
+            }
+            {
+              output = "eDP-2";
+              mode = "preferred";
+              position = "1920x0";
+              scale = "1.6";
+              transform = 1;
+            }
+            {
+              output = "DP-2";
+              mode = "1920x1080@260.00Hz";
+              position = "0x0";
+              scale = "1";
+            }
+            {
+              output = "DP-3";
+              mode = "1920x1080@260.00Hz";
+              position = "0x0";
+              scale = "1";
+            }
           ];
-          workspace = [
-            "1, monitor:DP-2,      default:true"
-            "1, monitor:DP-3,      default:true"
-            "2, monitor:eDP-1,     default:true"
-            "2, monitor:eDP-2,     default:true"
-            "2, layout:dwindle"
+          workspace_rule = [
+            {
+              workspace = "1";
+              monitor = "DP-2";
+              default = true;
+            }
+            {
+              workspace = "1";
+              monitor = "DP-3";
+              default = true;
+            }
+            {
+              workspace = "2";
+              monitor = "eDP-1";
+              default = true;
+            }
+            {
+              workspace = "2";
+              monitor = "eDP-2";
+              default = true;
+            }
+            {
+              workspace = "2";
+              layout = "dwindle";
+            }
           ];
         };
       };
