@@ -22,8 +22,8 @@ with eriniteLib;
     ];
 
     configFn = {
-      settings,
       cfg,
+      settings,
       ...
     }: {
       programs.hyprland = {
@@ -34,31 +34,35 @@ with eriniteLib;
         portalPackage = mkInputPkgb "hyprland" "xdg-desktop-portal-hyprland";
       };
 
-      environment.systemPackages = with pkgs; [
-        wl-clipboard
-        grim
-        slurp
-      ];
+      environment = {
+        systemPackages = with pkgs; [
+          wl-clipboard
+          grim
+          slurp
+        ];
 
-      environment.localBinInPath = true;
-      environment.pathsToLink = [
-        "/share/applications"
-        "/share/xdg-desktop-portal"
-      ];
+        localBinInPath = true;
+        pathsToLink = [
+          "/share/applications"
+          "/share/xdg-desktop-portal"
+        ];
+      };
 
-      nix.settings.substituters = [
-        "https://hyprland.cachix.org"
-      ];
-      nix.settings.trusted-public-keys = [
-        "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-      ];
+      nix.settings = {
+        substituters = [
+          "https://hyprland.cachix.org"
+        ];
+        trusted-public-keys = [
+          "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+        ];
+      };
 
       erinite.home = {
         wayland.windowManager.hyprland = {
           enable = true;
           configType = "lua";
           systemd.enable = false;
-          settings = settings;
+          inherit settings;
           package = mkInputPkga "hyprland";
           plugins = [
             (mkInputPkga "hypr-dynamic-cursors")

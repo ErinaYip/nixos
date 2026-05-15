@@ -1,4 +1,5 @@
 {
+  lib,
   inputs,
   eriniteLib,
   ...
@@ -9,7 +10,7 @@ eriniteLib.mkModule args {
 
   imports = [inputs.matugen.nixosModules.default];
 
-  configFn = {...}: {
+  configFn = _: {
     programs.matugen.enable = true;
 
     erinite.home = {
@@ -37,11 +38,16 @@ eriniteLib.mkModule args {
         input_path = "${../../assets/templates/cava-colors.ini}"
         output_path = '~/.config/cava/themes/matugen'
         post_hook = 'pkill -USR1 cava'
+
+        [templates.hyprland]
+        input_path = "${../../assets/templates/hyprland-color.lua}"
+        output_path = '~/.config/hypr/colors.lua'
       '';
 
       programs.btop.settings.color_theme = "matugen";
       programs.fuzzel.settings.main.include = "~/.config/fuzzel/themes/matugen";
       programs.cava.settings.color.theme = "matugen";
+      wayland.windowManager.hyprland.extraConfig = ''require("colors")'';
     };
   };
 }
