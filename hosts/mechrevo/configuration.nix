@@ -8,3 +8,4 @@
 # fix: fix cava configuration
 # Refactor with Alejandra
 # feat(hyprland): configure workspace rules and monitor settings for Hyprland
+# refactor(hyprland): simplify external monitor detection and configuration logic
