@@ -10,3 +10,4 @@
 # fix: fix cava configuration
 # Refactor with Alejandra
 # feat(matugen): configure matugen template for hyprland
+# refactor(matugen): remove unused lib input and restructure program settings
