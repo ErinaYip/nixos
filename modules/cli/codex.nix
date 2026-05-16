@@ -10,17 +10,17 @@ with eriniteLib;
         settings = {
           model = "gpt-5.5";
           model_reasoning_effort = "medium";
-          model_provider = "router";
+          model_provider = "vespervei";
           model_providers = {
-            codeboy = {
-              name = "codeboy";
-              base_url = "https://api-be.codeboy.site/v1";
+            freemodel = {
+              name = "freemodel";
+              base_url = "https://api.freemodel.dev/v1";
               env_key = "OPENAI_API_KEY";
             };
-            router = {
-              name = "router";
-              base_url = "https://china.claudecoder.me/v1";
-              env_key = "OPENAI_API_KEY";
+            vespervei = {
+              name = "vespervei";
+              base_url = "https://api.vespervei.com/v1";
+              env_key = "VESPERVEI_API_KEY";
             };
           };
         };
