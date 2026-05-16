@@ -5,3 +5,4 @@
 # feat(codex): update model version to gpt-5.5
 # feat(codex): update model provider to router and remove xem configuration
 # fix(codex): update model provider to use vespervei
+# fix(codex): model provider
