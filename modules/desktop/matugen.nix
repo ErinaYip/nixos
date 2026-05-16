@@ -1,5 +1,4 @@
 {
-  lib,
   inputs,
   eriniteLib,
   ...
@@ -44,9 +43,11 @@ eriniteLib.mkModule args {
         output_path = '~/.config/hypr/colors.lua'
       '';
 
-      programs.btop.settings.color_theme = "matugen";
-      programs.fuzzel.settings.main.include = "~/.config/fuzzel/themes/matugen";
-      programs.cava.settings.color.theme = "matugen";
+      programs = {
+        btop.settings.color_theme = "matugen";
+        fuzzel.settings.main.include = "~/.config/fuzzel/themes/matugen";
+        cava.settings.color.theme = "matugen";
+      };
       wayland.windowManager.hyprland.extraConfig = ''require("colors")'';
     };
   };
