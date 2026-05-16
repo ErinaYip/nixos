@@ -64,3 +64,4 @@
 # feat(nvim): enable opencode in CLI configuration
 # feat(virtualisation): enable virtualbox configurations
 # feat(hyprland): switch to lua configs and disabled pulgins for now
+# feat(virtualisation): enable wine support in virtualisation module
