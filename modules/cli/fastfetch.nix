@@ -14,3 +14,4 @@
 # refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors
 # feat(fastfetch): update fastfetch configuration to use fetched icons
 # Refactor with Alejandra
+# refactor
