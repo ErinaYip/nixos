@@ -8,9 +8,9 @@ with eriniteLib;
       erinite.home.programs.codex = {
         enable = true;
         settings = {
-          model = "gpt-5.4";
+          model = "gpt-5.5";
           model_reasoning_effort = "medium";
-          model_provider = "aiapi";
+          model_provider = "vespervei";
           model_providers = {
             freemodel = {
               name = "freemodel";
@@ -21,11 +21,6 @@ with eriniteLib;
               name = "vespervei";
               base_url = "https://api.vespervei.com/v1";
               env_key = "VESPERVEI_API_KEY";
-            };
-            aiapi = {
-              name = "aiapi";
-              base_url = "https://aiapi.isomoes.site/v1";
-              env_key = "OPENAI_API_KEY";
             };
           };
         };

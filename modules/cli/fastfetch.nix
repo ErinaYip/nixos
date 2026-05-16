@@ -9,7 +9,7 @@ with eriniteLib;
     category = "cli";
     name = "fastfetch";
 
-    configFn = {...}: let
+    configFn = _: let
       fastfetch-icons = pkgs.fetchgit {
         url = "https://codeberg.org/erina/eps.git";
         rev = "3c1781b5d34098b8e17943dc5ea304aa7bc01597";

@@ -8,7 +8,7 @@ with eriniteLib;
     category = "cli";
     name = "eza";
 
-    configFn = {...}:
+    configFn = _:
       lib.mkMerge [
         {
           erinite.home.programs.eza = {

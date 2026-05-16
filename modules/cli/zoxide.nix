@@ -1,13 +1,9 @@
-{
-  lib,
-  eriniteLib,
-  ...
-} @ args:
+{eriniteLib, ...} @ args:
 eriniteLib.mkModule args {
   category = "cli";
   name = "zoxide";
 
-  configFn = {...}: {
+  configFn = _: {
     erinite.home.programs.zoxide = {
       enable = true;
       options = [

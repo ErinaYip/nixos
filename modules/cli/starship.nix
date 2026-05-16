@@ -1,5 +1,4 @@
 {
-  lib,
   pkgs,
   eriniteLib,
   ...
@@ -23,7 +22,7 @@ eriniteLib.mkModule args {
         enableBashIntegration = true;
         enableFishIntegration = true;
         enableZshIntegration = true;
-        settings = settings;
+        inherit settings;
       };
 
       programs.yazi = {
