@@ -13,19 +13,7 @@ with eriniteLib;
       grass = mkBoolOpt false "Whether to enable hyprgrass";
     };
 
-    defaultSettings = lib.mkMerge [
-      (import ./binds.nix {inherit lib;})
-      (import ./rules.nix)
-      (import ./settings.nix)
-      # (import ./dynamic-cursors.nix)
-      # (import ./grass.nix)
-    ];
-
-    configFn = {
-      cfg,
-      settings,
-      ...
-    }: {
+    configFn = {cfg, ...}: {
       programs.hyprland = {
         enable = true;
         withUWSM = true;
@@ -62,7 +50,14 @@ with eriniteLib;
           enable = true;
           configType = "lua";
           systemd.enable = false;
-          inherit settings;
+          settings = lib.mkMerge [
+            (import ./binds.nix {inherit lib;})
+            (import ./rules.nix)
+            (import ./settings.nix)
+            # (import ./dynamic-cursors.nix)
+            # (import ./grass.nix)
+          ];
+
           package = mkInputPkga "hyprland";
           plugins = [
             (mkInputPkga "hypr-dynamic-cursors")

@@ -2,8 +2,6 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 {
-  config,
-  lib,
   pkgs,
   eriniteLib,
   ...
@@ -38,4 +36,17 @@ with eriniteLib; {
 
     qq
   ];
+
+  erinite.home = {
+    wayland.windowManager.hyprland.settings = {
+      monitor = [
+        {
+          output = "eDP-1";
+          mode = "preferred";
+          position = "0x0";
+          scale = "1.25";
+        }
+      ];
+    };
+  };
 }
