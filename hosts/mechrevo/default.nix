@@ -19,6 +19,7 @@ with eriniteLib; {
         enable = true;
         podman = true;
         vbox = true;
+        wine = true;
       };
 
       nvidia = {

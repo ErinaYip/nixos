@@ -12,6 +12,7 @@ with eriniteLib;
     opts = {
       podman = mkBoolOpt false "Whether to enable podman";
       vbox = mkBoolOpt false "Whether to enable virtual-box";
+      wine = mkBoolOpt false "Whether to enable wine";
     };
 
     configFn = {cfg, ...}:
@@ -41,6 +42,13 @@ with eriniteLib;
           };
 
           users.extraGroups.vboxusers.members = ["user-with-access-to-virtualbox"];
+        })
+
+        (lib.mkIf cfg.wine {
+          environment.systemPackages = with pkgs; [
+            winetricks
+            wineWow64Packages.waylandFull
+          ];
         })
       ];
   }
