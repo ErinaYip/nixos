@@ -9,3 +9,4 @@
 # fix(laptop): update TLP settings for better power management
 # Refactor with Alejandra
 # refactor(configuration): reorganize boot and file system settings in configuration files
+# feat(hyprland): configure workspace rules and monitor settings for Hyprland

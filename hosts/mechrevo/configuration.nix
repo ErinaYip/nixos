@@ -7,3 +7,4 @@
 # refactor(mechrevo): reorganize packages and enable cava
 # fix: fix cava configuration
 # Refactor with Alejandra
+# feat(hyprland): configure workspace rules and monitor settings for Hyprland

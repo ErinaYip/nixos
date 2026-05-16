@@ -8,3 +8,4 @@
 # fix(flake): add hyprgrass input and update hyprland configuration
 # Refactor with Alejandra
 # feat(hyprland): switch to lua configs and disabled pulgins for now
+# feat(hyprland): configure workspace rules and monitor settings for Hyprland
