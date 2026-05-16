@@ -87,50 +87,37 @@ with eriniteLib; {
 
       extraConfig = ''
         local function has_external_monitor()
-            local handle = io.popen("hyprctl monitors all -j")
-            if not handle then return false end
-            local result = handle:read("*a")
-            handle:close()
-
-            if string.find(result, '"name":%s*"DP%-2"') or string.find(result, '"name":%s*"DP%-3"') then
-                return true
+            local monitors = hl.get_monitors()
+            for _, mon in ipairs(monitors) do
+                if mon.name == "DP-2" or mon.name == "DP-3" then
+                    return true
+                end
             end
             return false
         end
+        local is_ext = has_external_monitor()
+        local trans = is_ext and 1 or 0
 
-        local is_external_connected = has_external_monitor()
-        local internal_transform = is_external_connected and 1 or 0
+        local internal_screens = {"eDP-1", "eDP-2"}
+        for _, name in ipairs(internal_screens) do
+            hl.monitor({
+                ["output"] = name,
+                ["mode"] = "preferred",
+                ["position"] = "1920x0",
+                ["scale"] = "1.6",
+                ["transform"] = trans
+            })
+        end
 
-        -- settings.monitor
-        hl.monitor({
-          ["mode"] = "preferred",
-          ["output"] = "eDP-1",
-          ["position"] = "1920x0",
-          ["scale"] = "1.6",
-          ["transform"] = internal_transform
-        })
-
-        hl.monitor({
-          ["mode"] = "preferred",
-          ["output"] = "eDP-2",
-          ["position"] = "1920x0",
-          ["scale"] = "1.6",
-          ["transform"] = internal_transform
-        })
-
-        hl.monitor({
-          ["mode"] = "1920x1080@260.00Hz",
-          ["output"] = "DP-2",
-          ["position"] = "0x0",
-          ["scale"] = "1"
-        })
-
-        hl.monitor({
-          ["mode"] = "1920x1080@260.00Hz",
-          ["output"] = "DP-3",
-          ["position"] = "0x0",
-          ["scale"] = "1"
-        })
+        local external_screens = {"DP-2", "DP-3"}
+        for _, name in ipairs(external_screens) do
+            hl.monitor({
+                ["output"] = name,
+                ["mode"] = "1920x1080@260.00Hz",
+                ["position"] = "0x0",
+                ["scale"] = "1"
+            })
+        end
       '';
     };
   };
