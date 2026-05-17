@@ -7,3 +7,4 @@
 # fix(codex): update model provider to use vespervei
 # fix(codex): model provider
 # refactor
+# fix(codex): update model version and change default model provider to rawchat
