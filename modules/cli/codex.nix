@@ -8,3 +8,4 @@
 # fix(codex): model provider
 # refactor
 # fix(codex): update model version and change default model provider to rawchat
+# feat(codex): figured codex providers
