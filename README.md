@@ -66,8 +66,8 @@ Detailed project documentation lives in [`docs/`](./docs/README.md).
 
 ## Hosts
 
-- `mechrevo`: main machine, NVIDIA PRIME, Podman, gaming, dual monitor setup.
-- `nec`: laptop, power management, Windows boot entry, simple Hyprland setup.
+- `mechrevo`: main machine, NVIDIA PRIME, Podman, Wine, gaming, dynamic dual monitor setup.
+- `nec`: laptop, power management, Windows boot entry, simple Hyprland monitor setup.
 
 ## Structure
 
@@ -95,7 +95,7 @@ Detailed project documentation lives in [`docs/`](./docs/README.md).
 - Hyprland desktop with DankMaterialShell.
 - Chinese input with Fcitx5 and Rime.
 - Common CLI tools like zsh, kitty, nvim, yazi, bat, eza and starship.
-- Optional modules for NVIDIA, Podman, Steam, Sunshine, OBS and more.
+- Optional modules for NVIDIA, Podman, VirtualBox, Wine, Steam, streaming, OBS and more.
 
 ## Desktop Setup
 
@@ -110,6 +110,11 @@ Detailed project documentation lives in [`docs/`](./docs/README.md).
 | Bar / shell    | DankMaterialShell               |
 | Theming        | matugen, GTK, Qt, Bibata cursor |
 | Input method   | Fcitx5 + Rime                   |
+
+Hyprland is generated through Home Manager's Lua config mode. Shared defaults
+live in `modules/desktop/hyprland/`, while host-specific monitor and workspace
+logic lives in each host's configuration. `matugen` also writes a Lua color file
+for Hyprland and loads it from the generated config.
 
 ## Screenshots
 
@@ -228,8 +233,8 @@ LocalSend.
 ## Notes
 
 This repo is made for my own machines. Some values are hardware or user
-specific, such as username, proxy config path, display layout, NVIDIA bus IDs
-and Git user info.
+specific, such as username, proxy config path, display layout, NVIDIA bus IDs,
+Codex provider experiments and Git user info.
 
 ## TODO
 

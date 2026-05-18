@@ -60,6 +60,8 @@ This repository contains a personal NixOS flake with:
 - Reusable modules under `modules/`
 - A custom helper library under `lib/`
 - Home Manager integration through `modules/home.nix`
+- Lua-based Hyprland configuration through Home Manager
+- Matugen templates for terminal, launcher, file manager, shell, and Hyprland colors
 
 ## Current Limitation
 
@@ -78,6 +80,11 @@ Before changing code, an agent should understand these facts:
 - `modules/default.nix` imports all module files under `modules/`.
 - `modules/home.nix` composes `erinite.homeModule` and bridges it into both `home-manager.users.<username>.imports` and standalone `homeConfigurations`.
 - `hosts/<name>/default.nix` is the main host entry where modules are enabled and per-host overrides are set.
+- Host-specific Hyprland monitor and workspace details can also live in
+  `hosts/<name>/configuration.nix` when they are too machine-specific for the shared module.
+- `modules/desktop/hyprland/` emits structured Lua config, binds, animations, window rules, and portal integration.
+- `modules/desktop/dms/` contributes DMS-specific Hyprland rules, binds, hypridle settings, and theming includes.
+- `modules/desktop/matugen.nix` writes generated theme files, including `~/.config/hypr/colors.lua`.
 
 ## Command Aliases
 
