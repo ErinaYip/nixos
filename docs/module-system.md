@@ -44,6 +44,11 @@ This matters for nested settings trees such as:
 
 Without recursive merging, host overrides can accidentally replace an entire nested subtree.
 
+Hyprland settings are currently structured for Lua output instead of traditional
+Hyprland conf strings. Lists such as binds, rules, environment variables,
+curves, animations, monitors, and workspace rules use attribute sets with
+arguments where needed. Raw Lua snippets use `lib.generators.mkLuaInline`.
+
 ## Common Helpers
 
 Useful helpers in `eriniteLib`:
@@ -106,3 +111,8 @@ eriniteLib.mkModule args {
 - `modules/home.nix` wraps those definitions into a composed `erinite.homeModule`.
 - `erinite.homeModule` adds base `home.*` defaults and becomes the shared entrypoint for both NixOS-integrated Home Manager and standalone `homeConfigurations`.
 - Standalone `homeConfigurations` also reuse `config.home-manager.sharedModules` from the host evaluation so third-party Home Manager modules stay available.
+
+Modules often enable a NixOS service or package while also writing the
+corresponding user configuration into `erinite.home`. `desktop.hyprland`,
+`desktop.dms`, `desktop.matugen`, `cli.codex` and `cli.opencode` all follow this
+pattern.

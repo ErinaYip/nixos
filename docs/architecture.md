@@ -35,6 +35,13 @@ The high-level flow is:
 5. Host files set values under `erinite.*`.
 6. Enabled modules emit final NixOS and Home Manager configuration.
 
+Hyprland is an important special case in the current tree. The shared
+`desktop.hyprland` module enables the system package, portal, Home Manager
+integration, and Lua config mode. Common binds, rules, animations and base
+settings are composed under `modules/desktop/hyprland/`. Host-specific monitor
+and workspace logic stays in host configuration files when it depends on local
+outputs, refresh rates, rotation, or external monitor detection.
+
 ## Design Pattern
 
 Most modules follow the same pattern:
@@ -56,6 +63,21 @@ The repository uses both NixOS modules and Home Manager modules:
 - `flake.nix` also exports that same composed module as standalone `homeConfigurations` for `nh home`, along with any host-level `home-manager.sharedModules`.
 
 That means a system module can also contribute Home Manager configuration by writing to `erinite.home`.
+
+The desktop stack uses this bridge heavily. For example, `desktop.hyprland`,
+`desktop.dms`, `desktop.matugen`, `system.fcitx5`, and several CLI modules all
+contribute Home Manager state through `erinite.home` even when their enablement
+is selected from the NixOS host.
+
+## Current Desktop Flow
+
+The current graphical session is centered on:
+
+- Hyprland from the flake input, with UWSM enabled and Home Manager using `configType = "lua"`.
+- DankMaterialShell as the shell layer, with Hyprland window/layer rules and IPC keybinds.
+- Matugen-generated theme files for btop, fuzzel, yazi, PrismLauncher, cava, and Hyprland.
+- Fcitx5 + Rime for input method packages and user configuration.
+- Optional Hyprland plugins from inputs, with `hyprgrass` controlled by the host-level `grass` option.
 
 ## Presets
 

@@ -28,9 +28,9 @@ Contains per-machine entry points and hardware-specific configuration.
 Current hosts:
 
 - `mechrevo`
-  Main machine. Uses NVIDIA PRIME, Podman, gaming modules, OBS Studio, and a more complex Hyprland monitor layout.
+  Main machine. Uses NVIDIA PRIME, Podman, VirtualBox, Wine, gaming modules, OBS Studio, and dynamic Hyprland monitor/workspace logic for internal and external displays.
 - `nec`
-  Laptop. Uses laptop-specific modules, simpler Hyprland setup, and has Codex CLI enabled.
+  Laptop. Uses laptop-specific modules, a simple scaled Hyprland monitor setup, and has Codex CLI enabled.
 
 ### `docs/`
 
@@ -39,6 +39,9 @@ Repository documentation and agent onboarding material.
 ### `assets/`
 
 Repository assets and templates used by modules.
+
+Current templates include generated themes for btop, fuzzel, yazi,
+PrismLauncher, cava, and Hyprland Lua colors.
 
 ## Important Files
 
@@ -70,6 +73,11 @@ If you need to understand or change behavior, start here:
   `modules/` and `lib/default.nix`
 - Home Manager behavior:
   `modules/home.nix` and any module writing to `erinite.home`
+- Hyprland behavior:
+  `modules/desktop/hyprland/`, `modules/desktop/dms/hyprland.nix`, and host-level
+  `wayland.windowManager.hyprland` overrides
+- Theme generation:
+  `modules/desktop/matugen.nix` and `assets/templates/`
 - Host-only behavior:
   `hosts/<name>/`
 - Feature enablement defaults:
