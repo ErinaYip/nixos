@@ -10,3 +10,4 @@
 # feat(hyprland): configure workspace rules and monitor settings for Hyprland
 # refactor(hyprland): simplify external monitor detection and configuration logic
 # refactor(hyprland): streamline workspace rule configuration and external monitor detection
+# refactor(hyprland): improve monitor setup logic and enhance readability
