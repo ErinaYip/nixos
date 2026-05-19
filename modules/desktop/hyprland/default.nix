@@ -25,3 +25,4 @@
 # feat(hyprland): switch to lua configs and disabled pulgins for now
 # feat(matugen): configure matugen template for hyprland
 # feat(hyprland): configure workspace rules and monitor settings for Hyprland
+# refactor(hyprland): update dynamic cursors and grass plugin configurations

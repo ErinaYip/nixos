@@ -11,3 +11,4 @@
 # refactor(hyprland): simplify external monitor detection and configuration logic
 # refactor(hyprland): streamline workspace rule configuration and external monitor detection
 # refactor(hyprland): improve monitor setup logic and enhance readability
+# refactor(hyprland): update dynamic cursors and grass plugin configurations
