@@ -60,22 +60,36 @@ with eriniteLib; {
     wayland.windowManager.hyprland.extraConfig = ''
       local is_ext = false
       for _, mon in ipairs(hl.get_monitors()) do
-          if mon.name == "DP-2" or mon.name == "DP-3" then is_ext = true break end
-      end
-
-      local function setup_screens(monitors, ws, cfg)
-          for _, name in ipairs(monitors) do
-              cfg.output = name
-              hl.monitor(cfg)
-
-              if is_ext then
-                  hl.workspace_rule({workspace = ws, monitor = name, default = true})
-              end
+          if mon.name == "DP-2" or mon.name == "DP-3" then
+              is_ext = true
+              break
           end
       end
 
-      setup_screens({"eDP-1", "eDP-2"}, "2", {mode = "preferred", position = "1920x0", scale = "1.6", transform = is_ext and 1 or 0})
-      setup_screens({"DP-2", "DP-3"},   "1", {mode = "1920x1080@260.00Hz", position = "0x0", scale = "1"})
+      for _, name in ipairs({"eDP-1", "eDP-2"}) do
+          hl.monitor({
+              output = name,
+              mode = "2560x1600@180.00Hz",
+              position = is_ext and "1920x0" or "0x0",
+              scale = "1.6",
+              transform = is_ext and 1 or 0
+          })
+          if is_ext then
+              hl.workspace_rule({workspace = "2", monitor = name, default = true})
+          end
+      end
+
+      for _, name in ipairs({"DP-2", "DP-3"}) do
+          hl.monitor({
+              output = name,
+              mode = "1920x1080@260.00Hz",
+              position = "0x0",
+              scale = "1"
+          })
+          if is_ext then
+              hl.workspace_rule({workspace = "1", monitor = name, default = true})
+          end
+      end
 
       hl.workspace_rule({workspace = "2", layout = "dwindle"})
     '';
