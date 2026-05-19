@@ -54,8 +54,8 @@ with eriniteLib;
             (import ./binds.nix {inherit lib;})
             (import ./rules.nix)
             (import ./settings.nix)
-            # (import ./dynamic-cursors.nix)
-            # (import ./grass.nix)
+            (import ./dynamic-cursors.nix)
+            (lib.mkIf cfg.grass (import ./grass.nix))
           ];
 
           package = mkInputPkga "hyprland";

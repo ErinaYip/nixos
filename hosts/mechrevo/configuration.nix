@@ -31,7 +31,7 @@ with eriniteLib; {
     jq
     foremost
     binwalk
-    john
+    # john
     ffuf
     feroxbuster
     seclists
