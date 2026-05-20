@@ -70,12 +70,13 @@ with eriniteLib; {
           hl.monitor({
               output = name,
               mode = "2560x1600@180.00Hz",
-              position = is_ext and "1920x0" or "0x0",
+              position = "1920x0",
               scale = "1.6",
               transform = is_ext and 1 or 0
           })
           if is_ext then
               hl.workspace_rule({workspace = "2", monitor = name, default = true})
+              hl.workspace_rule({workspace = "2", layout = "dwindle"})
           end
       end
 
@@ -90,8 +91,6 @@ with eriniteLib; {
               hl.workspace_rule({workspace = "1", monitor = name, default = true})
           end
       end
-
-      hl.workspace_rule({workspace = "2", layout = "dwindle"})
     '';
   };
 
