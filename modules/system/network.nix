@@ -18,17 +18,33 @@ with eriniteLib;
     configFn = {cfg, ...}:
       lib.mkMerge [
         {
-          networking.hostName = hostName;
+          networking = {
+            inherit hostName;
+
+            networkmanager = {
+              enable = true;
+              wifi.backend = "iwd";
+            };
+            firewall.enable = true;
+          };
+
           time.timeZone = "Asia/Shanghai";
 
-          hardware.bluetooth.enable = true;
-          networking.networkmanager = {
+          hardware.bluetooth = {
             enable = true;
-            wifi.backend = "iwd";
+            powerOnBoot = true;
+            settings = {
+              General = {
+                Experimental = true;
+                FastConnectable = true;
+              };
+              Policy = {
+                AutoEnable = true;
+              };
+            };
           };
 
           users.users.${default.username}.extraGroups = ["networkmanager"];
-          networking.firewall.enable = true;
         }
 
         (lib.mkIf cfg.proxy {
