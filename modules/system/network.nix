@@ -10,3 +10,4 @@
 # refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors
 # fix(network): remove clash-verge-rev from systemPackages
 # Refactor with Alejandra
+# refactor(network): restructure networking configuration for clarity and organization
