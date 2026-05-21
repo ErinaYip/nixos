@@ -10,3 +10,4 @@
 # refactor
 # feat(streaming): add streaming module and remove sunshine module
 # refactor(common): switch to sddm
+# refactor(common): switch to ly
