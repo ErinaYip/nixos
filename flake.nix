@@ -61,3 +61,6 @@
 # Refactor with Alejandra
 # feat(nvim): update settings and snacks configurations, enhance folding and add bigfile support
 # feat: switch to nixos 25.11
+# Revert "feat: switch to nixos 25.11"
+#
+# This reverts commit 57f13dac0b8de4a38f01ce8077919196af967dbc.

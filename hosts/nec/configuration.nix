@@ -11,3 +11,6 @@
 # refactor(configuration): reorganize boot and file system settings in configuration files
 # feat(hyprland): configure workspace rules and monitor settings for Hyprland
 # feat: switch to nixos 25.11
+# Revert "feat: switch to nixos 25.11"
+#
+# This reverts commit 57f13dac0b8de4a38f01ce8077919196af967dbc.

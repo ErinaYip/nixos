@@ -14,3 +14,6 @@
 # refactor(hyprland): update dynamic cursors and grass plugin configurations
 # refactor(hyprland): simplify monitor position logic and ensure workspace layout is consistently applied
 # feat: switch to nixos 25.11
+# Revert "feat: switch to nixos 25.11"
+#
+# This reverts commit 57f13dac0b8de4a38f01ce8077919196af967dbc.
