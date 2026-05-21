@@ -40,12 +40,7 @@ with eriniteLib; {
   erinite.home = {
     wayland.windowManager.hyprland.settings = {
       monitor = [
-        {
-          output = "eDP-1";
-          mode = "preferred";
-          position = "0x0";
-          scale = "1.25";
-        }
+        "eDP-1, preferred, 0x0, 1.25"
       ];
     };
   };

@@ -1,86 +1,68 @@
-{lib}: let
-  raw = lib.generators.mkLuaInline;
+{
+  "$mod" = "SUPER";
 
-  bind = mods: dispatcher: {
-    _args = [
-      mods
-      (raw dispatcher)
-    ];
-  };
+  bindm = [
+    "$mod, mouse:272, movewindow"
+    "$mod, mouse:273, resizewindow"
+  ];
 
-  bindWithOpts = mods: dispatcher: opts: {
-    _args = [
-      mods
-      (raw dispatcher)
-      opts
-    ];
-  };
-
-  directionName = {
-    h = "left";
-    l = "right";
-    k = "up";
-    j = "down";
-  };
-in {
   gesture = [
   ];
 
   bind =
     [
-      (bindWithOpts "SUPER + mouse:272" "hl.dsp.window.drag()" {mouse = true;})
-      (bindWithOpts "SUPER + mouse:273" "hl.dsp.window.resize()" {mouse = true;})
+      "$mod, Q, killactive,"
+      "$mod, A, fullscreen, 1"
+      "$mod, F, togglefloating,"
+      "$mod, R, layoutmsg, colresize +conf"
+      "$mod SHIFT, R, layoutmsg, colresize -conf"
+      '', Print, exec, grim -g "$(slurp)" - | wl-copy''
+      ''$mod, S, exec, grim -g "$(slurp)" - | wl-copy''
 
-      (bind "SUPER + Q" "hl.dsp.window.close()")
-      (bind "SUPER + A" ''hl.dsp.window.fullscreen({ mode = "maximized" })'')
-      (bind "SUPER + F" ''hl.dsp.window.float({ action = "toggle" })'')
-      (bind "SUPER + R" ''hl.dsp.layout("colresize +conf")'')
-      (bind "SUPER + SHIFT + R" ''hl.dsp.layout("colresize -conf")'')
-      (bind "Print" ''hl.dsp.exec_cmd([[grim -g "$(slurp)" - | wl-copy]])'')
-      (bind "SUPER + S" ''hl.dsp.exec_cmd([[grim -g "$(slurp)" - | wl-copy]])'')
+      "$mod, Return, exec, kitty"
+      "$mod, T, exec, kitty --title=float"
 
-      (bind "SUPER + Return" ''hl.dsp.exec_cmd("kitty")'')
-      (bind "SUPER + T" ''hl.dsp.exec_cmd("kitty --title=float")'')
+      "$mod, B, exec, firefox"
+      "$mod, C, exec, chromium"
+      "$mod, D, exec, fuzzel"
+      "$mod, E, exec, nemo"
 
-      (bind "SUPER + B" ''hl.dsp.exec_cmd("firefox")'')
-      (bind "SUPER + C" ''hl.dsp.exec_cmd("chromium")'')
-      (bind "SUPER + D" ''hl.dsp.exec_cmd("fuzzel")'')
-      (bind "SUPER + E" ''hl.dsp.exec_cmd("nemo")'')
-
-      (bind "SUPER + mouse_down" ''hl.dsp.focus({ workspace = "r-1" })'')
-      (bind "SUPER + mouse_up" ''hl.dsp.focus({ workspace = "r+1" })'')
+      "$mod, mouse_down, workspace, r-1"
+      "$mod, mouse_up, workspace, r+1"
+      "$mod SHIFT, mouse_down, movetoworkspace, r-1"
+      "$mod SHIFT, mouse_up, movetoworkspace, r+1"
     ]
     ++ (
       builtins.concatLists (builtins.genList (
           i: let
             ws = i + 1;
           in [
-            (bind "SUPER + code:1${toString i}" "hl.dsp.focus({ workspace = ${toString ws} })")
-            (bind "SUPER + SHIFT + code:1${toString i}" "hl.dsp.window.move({ workspace = ${toString ws} })")
+            "$mod, code:1${toString i}, workspace, ${toString ws}"
+            "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString ws}"
           ]
         )
         9)
     )
     ++ (
       builtins.concatLists (map (x: [
-          (bind "SUPER + ${x.key}" ''hl.dsp.focus({ direction = "${directionName.${x.dir}}" })'')
-          (bind "SUPER + SHIFT + ${x.key}" ''hl.dsp.window.move({ direction = "${directionName.${x.dir}}" })'')
+          "$mod, ${x.key}, movefocus, ${x.dir}"
+          "$mod SHIFT, ${x.key}, movewindow, ${x.dir}"
         ]) [
           {
             key = "H";
-            dir = "h";
-          }
-          {
-            key = "L";
             dir = "l";
           }
           {
+            key = "L";
+            dir = "r";
+          }
+          {
             key = "K";
-            dir = "k";
+            dir = "u";
           }
           {
             key = "J";
-            dir = "j";
+            dir = "d";
           }
         ])
     );
