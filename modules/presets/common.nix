@@ -36,6 +36,7 @@ with eriniteLib;
           matugen = enabled;
           nemo = enabled;
           qt = enabled;
+          stylix = enabled;
           # streaming = enabled;
         };
 
