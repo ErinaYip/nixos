@@ -29,7 +29,7 @@ eriniteLib.mkModule args {
             restartIfChanged = true; # Auto-restart dms.service when dms-shell changes
           };
 
-          enableSystemMonitoring = false; # System monitoring widgets (dgop is unavailable in nixpkgs 25.11)
+          enableSystemMonitoring = true; # System monitoring widgets (dgop)
           enableVPN = false; # VPN management widget
           enableDynamicTheming = true; # Wallpaper-based theming (matugen)
           enableAudioWavelength = true; # Audio visualizer (cava)
@@ -38,7 +38,7 @@ eriniteLib.mkModule args {
         };
       }
 
-      (import ./hyprland.nix)
+      (import ./hyprland.nix {inherit lib;})
       (import ./templates.nix)
     ];
   };

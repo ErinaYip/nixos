@@ -48,7 +48,7 @@ eriniteLib.mkModule args {
         fuzzel.settings.main.include = "~/.config/fuzzel/themes/matugen";
         cava.settings.color.theme = "matugen";
       };
-      # waylard.windowManager.hyprland.extraConfig = ''require("colors")'';
+      wayland.windowManager.hyprland.extraConfig = ''require("colors")'';
     };
   };
 }

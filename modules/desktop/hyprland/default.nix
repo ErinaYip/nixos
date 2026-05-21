@@ -48,19 +48,20 @@ with eriniteLib;
       erinite.home = {
         wayland.windowManager.hyprland = {
           enable = true;
+          configType = "lua";
           systemd.enable = false;
           settings = lib.mkMerge [
-            (import ./binds.nix)
+            (import ./binds.nix {inherit lib;})
             (import ./rules.nix)
             (import ./settings.nix)
-            # (import ./dynamic-cursors.nix)
-            # (lib.mkIf cfg.grass (import ./grass.nix))
+            (import ./dynamic-cursors.nix)
+            (lib.mkIf cfg.grass (import ./grass.nix))
           ];
 
           package = mkInputPkga "hyprland";
           plugins = [
-            # (mkInputPkga "hypr-dynamic-cursors")
-            # (lib.mkIf cfg.grass (mkInputPkga "hyprgrass"))
+            (mkInputPkga "hypr-dynamic-cursors")
+            (lib.mkIf cfg.grass (mkInputPkga "hyprgrass"))
           ];
         };
 
