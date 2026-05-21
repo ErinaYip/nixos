@@ -49,6 +49,8 @@ in {
 
       (bind "SUPER + mouse_down" ''hl.dsp.focus({ workspace = "r-1" })'')
       (bind "SUPER + mouse_up" ''hl.dsp.focus({ workspace = "r+1" })'')
+      (bind "SUPER + mouse_down" ''hl.dsp.window.move({ workspace = "r-1" })'')
+      (bind "SUPER + mouse_up" ''hl.dsp.window.move({ workspace = "r+1" })'')
     ]
     ++ (
       builtins.concatLists (builtins.genList (
