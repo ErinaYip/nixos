@@ -136,5 +136,10 @@ with eriniteLib;
           }
         ];
       };
+
+      environment.variables = {
+        EDITOR = "nvim";
+        VISUAL = "nvim";
+      };
     };
   }
