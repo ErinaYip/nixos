@@ -4,7 +4,7 @@ with eriniteLib;
     category = "presets";
     name = "common";
 
-    configFn = {...}: {
+    configFn = _: {
       erinite = {
         system = {
           boot = enabled;
@@ -14,14 +14,14 @@ with eriniteLib;
           kernel = enabled;
           keyd = enabled;
           # laptop = enabled;
-          # ly = enabled;
+          ly = enabled;
           media = enabled;
           network = enabled;
           nh = enabled;
           nix-ld = enabled;
           nix = enabled;
           # nvidia = enabled;
-          sddm = enabled;
+          # sddm = enabled;
           sound = enabled;
           users = enabled;
           # virtualisation = enabled;
