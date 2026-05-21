@@ -9,3 +9,4 @@
 # Refactor with Alejandra
 # feat(hyprland): switch to lua configs and disabled pulgins for now
 # feat(hyprland): configure workspace rules and monitor settings for Hyprland
+# refactor(hyprgrass): diable hyprgrass for now
