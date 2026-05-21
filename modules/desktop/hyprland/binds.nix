@@ -11,3 +11,4 @@
 #
 # This reverts commit 57f13dac0b8de4a38f01ce8077919196af967dbc.
 # feat(binds): add mouse down/up bindings for window movement
+# Add Hyprland session shortcuts
