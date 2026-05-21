@@ -38,6 +38,10 @@ in {
       (bind "SUPER + SHIFT + R" ''hl.dsp.layout("colresize -conf")'')
       (bind "Print" ''hl.dsp.exec_cmd([[grim -g "$(slurp)" - | wl-copy]])'')
       (bind "SUPER + S" ''hl.dsp.exec_cmd([[grim -g "$(slurp)" - | wl-copy]])'')
+      (bind "SUPER + Print" ''hl.dsp.exec_cmd("grim - | wl-copy")'')
+
+      (bind "SUPER + CTRL + R" ''hl.dsp.exec_cmd("hyprctl reload")'')
+      (bind "SUPER + CTRL + E" "hl.dsp.exit()")
 
       (bind "SUPER + Return" ''hl.dsp.exec_cmd("kitty")'')
       (bind "SUPER + T" ''hl.dsp.exec_cmd("kitty --title=float")'')
@@ -49,8 +53,12 @@ in {
 
       (bind "SUPER + mouse_down" ''hl.dsp.focus({ workspace = "r-1" })'')
       (bind "SUPER + mouse_up" ''hl.dsp.focus({ workspace = "r+1" })'')
-      (bind "SUPER + mouse_down" ''hl.dsp.window.move({ workspace = "r-1" })'')
-      (bind "SUPER + mouse_up" ''hl.dsp.window.move({ workspace = "r+1" })'')
+      (bind "SUPER + equal" ''hl.dsp.focus({ workspace = "r+1" })'')
+      (bind "SUPER + minus" ''hl.dsp.focus({ workspace = "r-1" })'')
+      (bind "SUPER + SHIFT + mouse_down" ''hl.dsp.window.move({ workspace = "r-1" })'')
+      (bind "SUPER + SHIFT + mouse_up" ''hl.dsp.window.move({ workspace = "r+1" })'')
+      (bind "SUPER + SHIFT + equal" ''hl.dsp.window.move({ workspace = "r+1" })'')
+      (bind "SUPER + SHIFT + minus" ''hl.dsp.window.move({ workspace = "r-1" })'')
     ]
     ++ (
       builtins.concatLists (builtins.genList (
