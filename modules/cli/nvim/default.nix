@@ -6,3 +6,4 @@
 # refactor(cli): simplify config
 # feat(nvim): enhance bufferline and LSP configurations, add fold handling
 # feat(nvim): enhance UI configuration with detailed options for colorizer and cursorline
+# Set nvim as default editor
