@@ -9,3 +9,4 @@
 # refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors
 # Refactor with Alejandra
 # feat(hyprland): switch to lua configs and disabled pulgins for now
+# feat: switch to nixos 25.11

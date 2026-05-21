@@ -60,3 +60,4 @@
 # feat(nvim): migrate to nvf configuration
 # Refactor with Alejandra
 # feat(nvim): update settings and snacks configurations, enhance folding and add bigfile support
+# feat: switch to nixos 25.11

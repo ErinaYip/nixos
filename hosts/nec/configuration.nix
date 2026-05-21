@@ -10,3 +10,4 @@
 # Refactor with Alejandra
 # refactor(configuration): reorganize boot and file system settings in configuration files
 # feat(hyprland): configure workspace rules and monitor settings for Hyprland
+# feat: switch to nixos 25.11

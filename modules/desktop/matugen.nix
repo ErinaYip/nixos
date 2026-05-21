@@ -11,3 +11,4 @@
 # Refactor with Alejandra
 # feat(matugen): configure matugen template for hyprland
 # refactor(matugen): remove unused lib input and restructure program settings
+# feat: switch to nixos 25.11

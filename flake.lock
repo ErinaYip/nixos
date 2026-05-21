@@ -32,3 +32,4 @@
 # feat: updated flake lock
 # feat(hyprland): switch to lua configs and disabled pulgins for now
 # refactor(hyprland): update dynamic cursors and grass plugin configurations
+# feat: switch to nixos 25.11

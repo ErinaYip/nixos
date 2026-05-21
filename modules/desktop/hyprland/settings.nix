@@ -11,3 +11,4 @@
 # fix(hyprland): add grass configuration and touch gestures support
 # fix(hyprland): adjust gap settings for better layout consistency
 # feat(hyprland): switch to lua configs and disabled pulgins for now
+# feat: switch to nixos 25.11

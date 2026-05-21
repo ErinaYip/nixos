@@ -13,3 +13,4 @@
 # refactor(hyprland): improve monitor setup logic and enhance readability
 # refactor(hyprland): update dynamic cursors and grass plugin configurations
 # refactor(hyprland): simplify monitor position logic and ensure workspace layout is consistently applied
+# feat: switch to nixos 25.11
