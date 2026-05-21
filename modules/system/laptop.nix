@@ -5,3 +5,4 @@
 # fix(laptop): update TLP settings for better power management
 # refactor(laptop): remove intel gpu freq config
 # Refactor with Alejandra
+# refactor(laptop): switch to tuned
