@@ -9,3 +9,4 @@
 # Refactor with Alejandra
 # refactor
 # feat(streaming): add streaming module and remove sunshine module
+# refactor(common): switch to sddm
