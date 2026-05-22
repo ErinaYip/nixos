@@ -16,7 +16,7 @@ with eriniteLib;
         options = {
           name = mkStrOpt "" "Specialisation and color scheme name.";
           image = lib.mkOption {
-            type = types.oneOf [types.path types.package];
+            type = types.oneOf [types.path types.package types.str];
             description = "Wallpaper image used to generate this theme.";
           };
           polarity = lib.mkOption {
@@ -35,7 +35,7 @@ with eriniteLib;
     in {
       default = lib.mkOption {
         type = types.nullOr types.str;
-        default = null;
+        default = "nixos-local-dark";
         description = "Wallpaper theme name to apply to the base configuration.";
       };
       wallpapers = mkListOpt wallpaperModule [] "Wallpapers to turn into theme specialisations.";
@@ -43,6 +43,15 @@ with eriniteLib;
 
     configFn = {cfg, ...}: let
       script = ../../lib/color-scheme/matugen-to-base16.py;
+      defaultWallpapers = [
+        {
+          name = "nixos-local-dark";
+          polarity = "dark";
+          image = "${pkgs.nixos-artwork.wallpapers.simple-dark-gray.src}";
+          matugenScheme = "scheme-tonal-spot";
+          fallbackColor = null;
+        }
+      ];
 
       buildScheme = wallpaper:
         pkgs.runCommand "${wallpaper.name}-base16.yaml" {
@@ -78,28 +87,32 @@ with eriniteLib;
         };
       };
 
-      byName = lib.listToAttrs (
-        map (wallpaper: lib.nameValuePair wallpaper.name wallpaper) cfg.wallpapers
+      wallpapersByName = lib.foldl' (
+        acc: wallpaper:
+          acc
+          // {
+            ${wallpaper.name} = wallpaper;
+          }
+      ) {} (
+        defaultWallpapers ++ cfg.wallpapers
       );
 
       defaultWallpaper =
         if cfg.default == null
         then null
-        else byName.${cfg.default};
+        else wallpapersByName.${cfg.default};
+
+      wallpapers = lib.attrValues wallpapersByName;
     in
       lib.mkMerge [
         {
           assertions = [
             {
-              assertion = cfg.wallpapers != [];
-              message = "erinite.desktop.theme-specialisations.wallpapers must not be empty when enabled.";
-            }
-            {
-              assertion = lib.all (wallpaper: wallpaper.name != "") cfg.wallpapers;
+              assertion = lib.all (wallpaper: wallpaper.name != "") wallpapers;
               message = "Every erinite.desktop.theme-specialisations.wallpapers entry needs a non-empty name.";
             }
             {
-              assertion = cfg.default == null || builtins.hasAttr cfg.default byName;
+              assertion = cfg.default == null || builtins.hasAttr cfg.default wallpapersByName;
               message = "erinite.desktop.theme-specialisations.default must match one of the configured wallpaper names.";
             }
           ];
@@ -118,7 +131,7 @@ with eriniteLib;
                   environment.etc."erinite-theme/specialisation".text = wallpaper.name;
                 };
               })
-            cfg.wallpapers
+            wallpapers
           );
         }
       ];
