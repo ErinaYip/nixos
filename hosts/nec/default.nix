@@ -1,39 +1,42 @@
-{eriniteLib, ...}:
-with eriniteLib; {
-  imports = [
-    ./hardware-configuration.nix
-    ./configuration.nix
-  ];
+{eriniteLib, ...}: {
+  meta = {};
 
-  erinite = {
-    presets = {
-      common = enabled;
-    };
+  module = with eriniteLib; {
+    imports = [
+      ./hardware-configuration.nix
+      ./configuration.nix
+    ];
 
-    system = {
-      boot.engine = "grub";
-      network.proxy = true;
-      laptop = enabled;
-    };
+    erinite = {
+      presets = {
+        common = enabled;
+      };
 
-    desktop = {
-      # hyprland.grass = true;
-    };
+      system = {
+        boot.engine = "grub";
+        network.proxy = true;
+        laptop = enabled;
+      };
 
-    cli = {
-      codex = enabled;
-      git = {
-        enable = true;
-        user = {
-          name = "ErinaYip";
-          email = "erinayip@outlook.com";
+      desktop = {
+        # hyprland.grass = true;
+      };
+
+      cli = {
+        codex = enabled;
+        git = {
+          enable = true;
+          user = {
+            name = "ErinaYip";
+            email = "erinayip@outlook.com";
+          };
         };
       };
-    };
 
-    browsers = {
-      chromium = enabled;
-      firefox = enabled;
+      browsers = {
+        chromium = enabled;
+        firefox = enabled;
+      };
     };
   };
 }

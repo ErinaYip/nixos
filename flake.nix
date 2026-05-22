@@ -64,10 +64,6 @@
       inherit system;
       config = mkNixpkgsConfig {};
     };
-    homePkgs = import nixpkgs {
-      inherit system;
-      config = mkNixpkgsConfig {};
-    };
     eriniteLib = import ./lib {
       inherit inputs pkgs;
       inherit (pkgs) lib;
@@ -80,16 +76,21 @@
       homeStateVersion = "26.05";
     };
 
-    hostConfigs = {
-      mechrevo.cudaSupport = true;
-      nec = {};
-    };
+    hostNames =
+      lib.attrNames
+      (lib.filterAttrs
+        (_: type: type == "directory")
+        (builtins.readDir ./hosts));
 
-    addHost = hostName: hostConfig: let
+    mkHost = hostName: let
+      host = import (./. + "/hosts/${hostName}") {
+        inherit inputs lib eriniteLib pkgs;
+      };
+      hostMeta = host.meta or {};
       hostPkgs = import nixpkgs {
         inherit system;
         config = mkNixpkgsConfig {
-          cudaSupport = hostConfig.cudaSupport or false;
+          cudaSupport = hostMeta.cudaSupport or false;
         };
       };
 
@@ -99,7 +100,7 @@
           {nixpkgs.pkgs = hostPkgs;}
           ./modules/home.nix
           ./modules
-          (./. + "/hosts/${hostName}")
+          host.module
         ];
         specialArgs = {
           inherit inputs hostName default;
@@ -121,7 +122,7 @@
       };
     };
 
-    hosts = lib.mapAttrs addHost hostConfigs;
+    hosts = lib.genAttrs hostNames mkHost;
   in {
     nixosConfigurations = lib.mapAttrs (_: host: host.nixos) hosts;
 

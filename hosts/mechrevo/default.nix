@@ -9,8 +9,12 @@
     system = pkgs.stdenv.hostPlatform.system;
     config.allowUnfree = true;
   };
-in
-  with eriniteLib; {
+in {
+  meta = {
+    cudaSupport = true;
+  };
+
+  module = with eriniteLib; {
     imports = [
       ./hardware-configuration.nix
       ./configuration.nix
@@ -69,4 +73,5 @@ in
         gaming = enabled;
       };
     };
-  }
+  };
+}
