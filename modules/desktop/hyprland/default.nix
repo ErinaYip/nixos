@@ -10,7 +10,7 @@ with eriniteLib;
     name = "hyprland";
 
     opts = {
-      grass = mkBoolOpt false "Whether to enable hyprgrass";
+      # grass = mkBoolOpt false "Whether to enable hyprgrass";
     };
 
     configFn = {cfg, ...}: {
@@ -55,13 +55,13 @@ with eriniteLib;
             (import ./rules.nix)
             (import ./settings.nix)
             (import ./dynamic-cursors.nix)
-            (lib.mkIf cfg.grass (import ./grass.nix))
+            # (lib.mkIf cfg.grass (import ./grass.nix))
           ];
 
           package = mkInputPkga "hyprland";
           plugins = [
             (mkInputPkga "hypr-dynamic-cursors")
-            (lib.mkIf cfg.grass (mkInputPkga "hyprgrass"))
+            # (lib.mkIf cfg.grass (mkInputPkga "hyprgrass"))
           ];
         };
 
