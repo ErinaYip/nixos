@@ -39,3 +39,4 @@
 # refactor(common): switch to ly
 # Add Stylix test configuration
 # fix: use linux7.0.3 kernel for mechrevo to fix bluetooth failure
+# fix: comment out conflict configurations

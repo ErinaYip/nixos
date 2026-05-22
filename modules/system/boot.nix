@@ -7,3 +7,4 @@
 # refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors
 # Refactor with Alejandra
 # refactor
+# fix: comment out conflict configurations

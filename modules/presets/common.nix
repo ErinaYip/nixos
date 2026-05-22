@@ -12,3 +12,4 @@
 # refactor(common): switch to sddm
 # refactor(common): switch to ly
 # Add Stylix test configuration
+# fix: comment out conflict configurations
