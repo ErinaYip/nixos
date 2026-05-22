@@ -13,3 +13,4 @@
 # refactor(common): switch to ly
 # Add Stylix test configuration
 # fix: comment out conflict configurations
+# fix: enable fcitx5 and disable themes in rime configuration

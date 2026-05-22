@@ -11,3 +11,4 @@
 # Refactor with Alejandra
 # refactor
 # feat(hyprland): switch to lua configs and disabled pulgins for now
+# fix: enable fcitx5 and disable themes in rime configuration
