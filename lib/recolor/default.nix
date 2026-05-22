@@ -1,2 +1,1 @@
-# Add Stylix test configuration
 # feat: add recolor module and integrate into stylix configuration

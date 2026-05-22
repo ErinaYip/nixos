@@ -35,3 +35,4 @@
 # fix(lib): merge mkModule defaultSettings recursively
 # refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors
 # Refactor with Alejandra
+# feat: add recolor module and integrate into stylix configuration
