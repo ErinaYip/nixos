@@ -3,3 +3,4 @@ fix: correct typo in directory name asstes to assets
 refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors
 docs: enhance module system and structure documentation for clarity
 docs: update configuration notes
+docs: enhance README and architecture documentation with host discovery details

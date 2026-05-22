@@ -75,11 +75,11 @@ The project centers on the `erinite.*` option tree. Host files mostly enable or 
 
 Before changing code, an agent should understand these facts:
 
-- `flake.nix` defines the shared inputs and constructs each host with `addHost`.
+- `flake.nix` defines the shared inputs, discovers host directories, and constructs each host with `mkHost`.
 - `lib/default.nix` defines `eriniteLib`, including `mkModule`, which is the common wrapper used by most modules.
 - `modules/default.nix` imports all module files under `modules/`.
 - `modules/home.nix` composes `erinite.homeModule` and bridges it into both `home-manager.users.<username>.imports` and standalone `homeConfigurations`.
-- `hosts/<name>/default.nix` is the main host entry where modules are enabled and per-host overrides are set.
+- `hosts/<name>/default.nix` returns `{ meta, module }`; `meta` contains host construction flags such as `cudaSupport`, and `module` is the actual NixOS host module.
 - Host-specific Hyprland monitor and workspace details can also live in
   `hosts/<name>/configuration.nix` when they are too machine-specific for the shared module.
 - `modules/desktop/hyprland/` emits structured Lua config, binds, animations, window rules, and portal integration.

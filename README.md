@@ -69,6 +69,11 @@ Detailed project documentation lives in [`docs/`](./docs/README.md).
 - `mechrevo`: main machine, NVIDIA PRIME, Podman, Wine, gaming, dynamic dual monitor setup.
 - `nec`: laptop, power management, Windows boot entry, simple Hyprland monitor setup.
 
+Hosts are discovered automatically from directories under `hosts/`. Each
+`hosts/<name>/default.nix` returns host metadata plus the actual NixOS module;
+for example, `meta.cudaSupport = true` enables CUDA support for that host's
+`pkgs`, while omitting it keeps CUDA disabled.
+
 ## Structure
 
 ```text
@@ -90,6 +95,7 @@ Detailed project documentation lives in [`docs/`](./docs/README.md).
 ## Features
 
 - NixOS flake with multiple hosts.
+- Automatic host discovery from `hosts/<name>/default.nix`.
 - Home Manager integration.
 - Modular options under `erinite.*`.
 - Hyprland desktop with DankMaterialShell.
@@ -235,6 +241,12 @@ LocalSend.
 This repo is made for my own machines. Some values are hardware or user
 specific, such as username, proxy config path, display layout, NVIDIA bus IDs,
 Codex provider experiments and Git user info.
+
+`nixpkgs.config` is applied when each host's `pkgs` is imported in `flake.nix`,
+then passed to NixOS through `nixpkgs.pkgs`. This keeps
+`home-manager.useGlobalPkgs` compatible with Home Manager's newer warning about
+`nixpkgs.config` and `nixpkgs.overlays`. Stylix's Home Manager overlay is
+disabled for the same reason.
 
 ## TODO
 
