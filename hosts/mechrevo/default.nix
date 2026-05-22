@@ -67,3 +67,4 @@
 # feat(virtualisation): enable wine support in virtualisation module
 # feat(hyprland): configure workspace rules and monitor settings for Hyprland
 # fix: use linux7.0.3 kernel for mechrevo to fix bluetooth failure
+# refactor: streamline host configuration and add meta information
