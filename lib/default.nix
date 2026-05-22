@@ -5,6 +5,10 @@
   ...
 }:
 lib.makeExtensible (final: {
+  imports = [
+    ./recolor
+  ];
+
   mkOpt = type: default: description:
     lib.mkOption {inherit type default description;};
 
@@ -38,6 +42,8 @@ lib.makeExtensible (final: {
 
   mkInputPkgb = input: pkg: inputs.${input}.packages.${pkgs.stdenv.hostPlatform.system}.${pkg};
   mkInputPkga = input: final.mkInputPkgb input input;
+
+  recolorScript = args: (import ./recolor args).recolorScript;
 
   mergeSettings = definitions:
     (lib.evalModules {
