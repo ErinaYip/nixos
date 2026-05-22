@@ -15,8 +15,6 @@ eriniteLib.mkModule args {
 
     nix.settings.experimental-features = ["nix-command" "flakes" "configurable-impure-env"];
 
-    nixpkgs.config.allowUnfree = true;
-
     nix.settings.auto-optimise-store = true;
     nix.settings.max-jobs = 16;
     nix.settings.impure-env = [

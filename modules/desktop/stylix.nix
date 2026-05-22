@@ -12,6 +12,7 @@ with eriniteLib;
     configFn = _: {
       home-manager.sharedModules = [
         inputs.stylix.homeModules.default
+        {stylix.overlays.enable = false;}
       ];
 
       erinite.home.stylix = {

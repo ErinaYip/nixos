@@ -56,10 +56,17 @@
   } @ inputs: let
     system = "x86_64-linux";
     inherit (nixpkgs) lib;
-    pkgs = import nixpkgs {inherit system;};
+    mkNixpkgsConfig = {cudaSupport ? false}: {
+      allowUnfree = true;
+      inherit cudaSupport;
+    };
+    pkgs = import nixpkgs {
+      inherit system;
+      config = mkNixpkgsConfig {};
+    };
     homePkgs = import nixpkgs {
       inherit system;
-      config.allowUnfree = true;
+      config = mkNixpkgsConfig {};
     };
     eriniteLib = import ./lib {
       inherit inputs pkgs;
@@ -73,15 +80,23 @@
       homeStateVersion = "26.05";
     };
 
-    hostNames = [
-      "mechrevo"
-      "nec"
-    ];
+    hostConfigs = {
+      mechrevo.cudaSupport = true;
+      nec = {};
+    };
 
-    addHost = hostName: let
+    addHost = hostName: hostConfig: let
+      hostPkgs = import nixpkgs {
+        inherit system;
+        config = mkNixpkgsConfig {
+          cudaSupport = hostConfig.cudaSupport or false;
+        };
+      };
+
       nixos = lib.nixosSystem {
         inherit system;
         modules = [
+          {nixpkgs.pkgs = hostPkgs;}
           ./modules/home.nix
           ./modules
           (./. + "/hosts/${hostName}")
@@ -94,7 +109,7 @@
     in {
       inherit nixos;
       home = home-manager.lib.homeManagerConfiguration {
-        pkgs = homePkgs;
+        pkgs = hostPkgs;
         extraSpecialArgs = {
           inherit inputs hostName default eriniteLib;
         };
@@ -106,7 +121,7 @@
       };
     };
 
-    hosts = lib.genAttrs hostNames addHost;
+    hosts = lib.mapAttrs addHost hostConfigs;
   in {
     nixosConfigurations = lib.mapAttrs (_: host: host.nixos) hosts;
 
