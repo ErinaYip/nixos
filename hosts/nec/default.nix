@@ -17,7 +17,7 @@ with eriniteLib; {
     };
 
     desktop = {
-      hyprland.grass = true;
+      # hyprland.grass = true;
     };
 
     cli = {
