@@ -66,3 +66,4 @@
 # This reverts commit 57f13dac0b8de4a38f01ce8077919196af967dbc.
 # refactor(flake): remove commentes
 # Add Stylix test configuration
+# fix: use linux7.0.3 kernel for mechrevo to fix bluetooth failure
