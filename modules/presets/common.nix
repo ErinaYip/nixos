@@ -8,7 +8,7 @@ with eriniteLib;
       erinite = {
         system = {
           boot = enabled;
-          # fcitx5 = enabled;
+          fcitx5 = enabled;
           fonts = enabled;
           i18n = enabled;
           kernel = enabled;

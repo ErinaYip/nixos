@@ -23,6 +23,7 @@ eriniteLib.mkModule args {
       programs = {
         oh-my-rime = {
           enable = true;
+          themes.enable = false;
 
           rimeConfig = {
             schema_list = [{schema = "rime_mint";}];

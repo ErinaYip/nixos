@@ -852,11 +852,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1778836634,
-        "narHash": "sha256-/JGq8SoWWvQi57mnR19mtWZbpxMHemMHxJlHjzjsg0k=",
+        "lastModified": 1779452056,
+        "narHash": "sha256-gtSwUgTTLGEPQZKymn7JeoMV7DtB/5O0DBBhLpr/hdU=",
         "ref": "refs/heads/main",
-        "rev": "1de8615ae296ef335a350dab1da32d333ce385f3",
-        "revCount": 72,
+        "rev": "54f1bb167e25977b8243576dece6365ee7b4717d",
+        "revCount": 73,
         "type": "git",
         "url": "https://codeberg.org/erina/oh-my-rime-nix.git"
       },
