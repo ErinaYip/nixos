@@ -15,3 +15,4 @@
 # This reverts commit 57f13dac0b8de4a38f01ce8077919196af967dbc.
 # fix: comment out conflict configurations
 # feat: add settings module for dank-material-shell
+# feat: add dms package restart functionality and refactor config function
