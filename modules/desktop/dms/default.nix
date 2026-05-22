@@ -22,6 +22,7 @@ eriniteLib.mkModule args {
       {
         programs.dank-material-shell = {
           enable = true;
+          settings = import ./settings.nix;
           quickshell.package = pkgs.quickshell;
 
           systemd = {
