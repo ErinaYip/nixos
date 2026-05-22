@@ -69,3 +69,4 @@
 # fix: use linux7.0.3 kernel for mechrevo to fix bluetooth failure
 # refactor: streamline host configuration and add meta information
 # feat: add theme specialisations module and integrate wallpaper generation script
+# refactor: simplify wallpaper handling in theme configurations
