@@ -23,7 +23,8 @@ Current categories under `modules/`:
 
 ### `hosts/`
 
-Contains per-machine entry points and hardware-specific configuration.
+Contains per-machine entry points and hardware-specific configuration. Host
+directories are discovered automatically when they contain a `default.nix`.
 
 Current hosts:
 
@@ -56,6 +57,25 @@ Auto-imports the module tree.
 ### `hosts/<name>/default.nix`
 
 Primary host definition. This is usually the best place to inspect host intent first.
+
+Each file returns an attribute set:
+
+```nix
+{
+  meta = {
+    # Optional. Defaults to false when omitted.
+    cudaSupport = true;
+  };
+
+  module = { ... }: {
+    # Normal NixOS host module.
+  };
+}
+```
+
+`flake.nix` reads `meta` before evaluating the NixOS module so it can construct
+host-specific `pkgs`. The `module` attribute is what gets imported into
+`nixosSystem`.
 
 ### `hosts/<name>/configuration.nix`
 

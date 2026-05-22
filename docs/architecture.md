@@ -21,19 +21,22 @@ The configuration has four main layers:
 
 The high-level flow is:
 
-1. `flake.nix` defines inputs and a helper `addHost`.
-2. `addHost` creates a `nixosSystem` with three module roots:
+1. `flake.nix` defines inputs and discovers host directories under `hosts/`.
+2. For each discovered host, `mkHost` imports `hosts/<hostName>/default.nix` and reads its `{ meta, module }` result.
+3. `mkHost` creates a host-specific `pkgs` with shared nixpkgs config and host metadata such as `meta.cudaSupport`.
+4. `mkHost` creates a `nixosSystem` with four module roots:
+   - `{ nixpkgs.pkgs = hostPkgs; }`
    - `modules/home.nix`
    - `modules/`
-   - `hosts/<hostName>`
-3. `specialArgs` injects:
+   - `hosts/<hostName>/default.nix`'s `module`
+5. `specialArgs` injects:
    - `lib` extended with `eriniteLib`
    - `inputs`
    - `hostName`
    - `default`
-4. Modules expose options under `erinite.<category>.<name>`.
-5. Host files set values under `erinite.*`.
-6. Enabled modules emit final NixOS and Home Manager configuration.
+6. Modules expose options under `erinite.<category>.<name>`.
+7. Host modules set values under `erinite.*`.
+8. Enabled modules emit final NixOS and Home Manager configuration.
 
 Hyprland is an important special case in the current tree. The shared
 `desktop.hyprland` module enables the system package, portal, Home Manager
@@ -61,8 +64,18 @@ The repository uses both NixOS modules and Home Manager modules:
 - User-level settings are emitted through `erinite.home`.
 - `modules/home.nix` composes `config.erinite.homeModule` and imports it into `home-manager.users.${default.username}`.
 - `flake.nix` also exports that same composed module as standalone `homeConfigurations` for `nh home`, along with any host-level `home-manager.sharedModules`.
+- Both NixOS-integrated Home Manager and standalone `homeConfigurations` use the same host-specific `hostPkgs`.
 
 That means a system module can also contribute Home Manager configuration by writing to `erinite.home`.
+
+Because `home-manager.useGlobalPkgs = true`, host-level nixpkgs settings are
+applied while importing `hostPkgs` in `flake.nix` instead of through
+`nixpkgs.config` module options. `hostPkgs` is then passed to NixOS with
+`nixpkgs.pkgs`. This avoids Home Manager's warning about `nixpkgs.config` and
+`nixpkgs.overlays` under `useGlobalPkgs`.
+
+Stylix's Home Manager module is imported as a shared module, but its Home
+Manager-side overlays are disabled for the same reason.
 
 The desktop stack uses this bridge heavily. For example, `desktop.hyprland`,
 `desktop.dms`, `desktop.matugen`, `system.fcitx5`, and several CLI modules all
