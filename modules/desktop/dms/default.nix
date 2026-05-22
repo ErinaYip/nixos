@@ -9,7 +9,9 @@ eriniteLib.mkModule args {
   category = "desktop";
   name = "dms";
 
-  configFn = {...}: {
+  configFn = {...}: let
+    dmsPackage = inputs.dms.packages.${pkgs.stdenv.hostPlatform.system}.dms-shell;
+  in {
     home-manager.sharedModules = [
       inputs.dms.homeModules.dank-material-shell
     ];
@@ -37,6 +39,10 @@ eriniteLib.mkModule args {
           enableCalendarEvents = true; # Calendar integration (khal)
           enableClipboardPaste = true; # Pasting from the clipboard history (wtype)
         };
+
+        home.activation.restartDms = inputs.home-manager.lib.hm.dag.entryAfter ["reloadSystemd"] ''
+          $DRY_RUN_CMD ${dmsPackage}/bin/dms restart
+        '';
       }
 
       (import ./hyprland.nix {inherit lib;})
