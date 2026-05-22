@@ -39,7 +39,7 @@ eriniteLib.mkModule args {
       }
 
       (import ./hyprland.nix {inherit lib;})
-      (import ./templates.nix)
+      # (import ./templates.nix)
     ];
   };
 }

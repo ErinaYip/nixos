@@ -8,7 +8,7 @@ with eriniteLib;
       erinite = {
         system = {
           boot = enabled;
-          fcitx5 = enabled;
+          # fcitx5 = enabled;
           fonts = enabled;
           i18n = enabled;
           kernel = enabled;
@@ -32,10 +32,10 @@ with eriniteLib;
           hyprland = enabled;
           cursor = enabled;
           fuzzel = enabled;
-          gtk = enabled;
-          matugen = enabled;
+          # gtk = enabled;
+          # matugen = enabled;
           nemo = enabled;
-          qt = enabled;
+          # qt = enabled;
           stylix = enabled;
           # streaming = enabled;
         };
