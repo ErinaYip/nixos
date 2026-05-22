@@ -38,10 +38,6 @@
       url = "github:AvengeMedia/DankMaterialShell/stable";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # erina-vim = {
-    #   url = "git+https://codeberg.org/erina/erina-vim.git";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
     oh-my-rime-nix = {
       url = "git+https://codeberg.org/erina/oh-my-rime-nix.git";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -49,7 +45,6 @@
   };
 
   outputs = {
-    # self,
     nixpkgs,
     home-manager,
     ...
