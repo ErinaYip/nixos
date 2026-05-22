@@ -67,3 +67,5 @@
 # refactor(flake): remove commentes
 # Add Stylix test configuration
 # fix: use linux7.0.3 kernel for mechrevo to fix bluetooth failure
+# fix: evaluation warning: era profile: You have set either `nixpkgs.config` or `nixpkgs.overlays` while using `home-manager.useGlobalPkgs`.
+#                     This will soon not be possible. Please remove all `nixpkgs` options when using `home-manager.useGlobalPkgs`.

@@ -16,3 +16,5 @@
 # refactor: rename lib.erinite to eriniteLib and add hypr-dynamic-cursors
 # feat(nh): add nh module
 # Refactor with Alejandra
+# fix: evaluation warning: era profile: You have set either `nixpkgs.config` or `nixpkgs.overlays` while using `home-manager.useGlobalPkgs`.
+#                     This will soon not be possible. Please remove all `nixpkgs` options when using `home-manager.useGlobalPkgs`.

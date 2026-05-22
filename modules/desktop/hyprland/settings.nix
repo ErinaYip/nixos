@@ -16,3 +16,5 @@
 #
 # This reverts commit 57f13dac0b8de4a38f01ce8077919196af967dbc.
 # fix: comment out conflict configurations
+# fix: evaluation warning: era profile: You have set either `nixpkgs.config` or `nixpkgs.overlays` while using `home-manager.useGlobalPkgs`.
+#                     This will soon not be possible. Please remove all `nixpkgs` options when using `home-manager.useGlobalPkgs`.
