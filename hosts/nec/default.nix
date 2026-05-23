@@ -12,3 +12,4 @@
 # refactor(hyprgrass): diable hyprgrass for now
 # refactor: streamline host configuration and add meta information
 # refactor: split os and home modules
+# refactor: update configurations for codex, stylix, and theme specialisations
