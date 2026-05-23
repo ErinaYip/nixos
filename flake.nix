@@ -93,14 +93,20 @@
           cudaSupport = hostMeta.cudaSupport or false;
         };
       };
+      hostOsModules = host.osModules or [];
+      hostHomeModules = [./home] ++ (host.homeModules or []);
 
       nixos = lib.nixosSystem {
         inherit system;
         modules = [
           {nixpkgs.pkgs = hostPkgs;}
-          ./modules/home.nix
-          ./modules
-          host.module
+          ./os
+        ]
+        ++ hostOsModules
+        ++ [
+          {
+            home-manager.users.${default.username}.imports = hostHomeModules;
+          }
         ];
         specialArgs = {
           inherit inputs hostName default;
@@ -114,11 +120,7 @@
         extraSpecialArgs = {
           inherit inputs hostName default eriniteLib;
         };
-        modules =
-          nixos.config.home-manager.sharedModules
-          ++ [
-            nixos.config.erinite.homeModule
-          ];
+        modules = hostHomeModules;
       };
     };
 

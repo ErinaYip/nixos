@@ -14,79 +14,83 @@ in {
     cudaSupport = true;
   };
 
-  module = with eriniteLib; {
-    imports = [
-      ./hardware-configuration.nix
-      ./configuration.nix
-    ];
+  osModules = with eriniteLib; [
+    ./hardware-configuration.nix
+    ./os.nix
+    {
+      boot.kernelPackages = lib.mkForce goodKernelPkgs.linuxPackages_latest;
 
-    boot.kernelPackages = lib.mkForce goodKernelPkgs.linuxPackages_latest;
+      erinite = {
+        presets.common = enabled;
 
-    erinite = {
-      presets = {
-        common = enabled;
-      };
-
-      system = {
-        boot.engine = "grub";
-        kernel.sched_ext = true;
-        network.proxy = true;
-        laptop = enabled;
-        virtualisation = {
-          enable = true;
-          podman = true;
-          vbox = true;
-          wine = true;
-        };
-
-        nvidia = {
-          enable = true;
-          prime = {
+        system = {
+          boot.engine = "grub";
+          kernel.sched_ext = true;
+          network.proxy = true;
+          laptop = enabled;
+          virtualisation = {
             enable = true;
-            nvidiaBusId = "PCI:1:0:0";
-            amdgpuBusId = "PCI:6:0:0";
+            podman = true;
+            vbox = true;
+            wine = true;
           };
-        };
-      };
 
-      desktop = {
-        obs-studio = enabled;
-        theme-specialisations = {
-          enable = true;
-          default = "kurogame-olive";
-          wallpapers = {
-            kurogame-olive = {
-              image = pkgs.fetchurl {
-                name = "kurogame-olive.png";
-                url = "https://media-cdn-zspms.kurogame.com/pnswebsite/website2.0/images/1773936000000/6y9pm8iicrjyhd354y-17739965643372.png";
-                hash = "sha256-wdC7ZU7KChFkyQW0B5twnpq4i1nFIovfyNEklSY973I=";
-              };
-            };
-            kurogame-blue = {
-              image = pkgs.fetchurl {
-                name = "kurogame-blue.png";
-                url = "https://media-cdn-zspms.kurogame.com/pnswebsite/website2.0/images/1773936000000/ogvbi74cjtbp460lif-17739965468193.png";
-                hash = "sha256-Hl/vRLR2V0F3JRrYl0JYjxWN9KVWkFpzaWFojOXHmJQ=";
-              };
+          nvidia = {
+            enable = true;
+            prime = {
+              enable = true;
+              nvidiaBusId = "PCI:1:0:0";
+              amdgpuBusId = "PCI:6:0:0";
             };
           };
         };
-      };
 
-      cli = {
-        codex = enabled;
-        opencode = enabled;
-        git = {
-          user = {
-            name = "ErinaYip";
-            email = "erinayip@outlook.com";
+        desktop = {
+          obs-studio = enabled;
+          theme-specialisations = {
+            enable = true;
+            default = "kurogame-olive";
+            wallpapers = {
+              kurogame-olive = {
+                image = pkgs.fetchurl {
+                  name = "kurogame-olive.png";
+                  url = "https://media-cdn-zspms.kurogame.com/pnswebsite/website2.0/images/1773936000000/6y9pm8iicrjyhd354y-17739965643372.png";
+                  hash = "sha256-wdC7ZU7KChFkyQW0B5twnpq4i1nFIovfyNEklSY973I=";
+                };
+              };
+              kurogame-blue = {
+                image = pkgs.fetchurl {
+                  name = "kurogame-blue.png";
+                  url = "https://media-cdn-zspms.kurogame.com/pnswebsite/website2.0/images/1773936000000/ogvbi74cjtbp460lif-17739965468193.png";
+                  hash = "sha256-Hl/vRLR2V0F3JRrYl0JYjxWN9KVWkFpzaWFojOXHmJQ=";
+                };
+              };
+            };
+          };
+        };
+
+        programs.gaming = enabled;
+      };
+    }
+  ];
+
+  homeModules = with eriniteLib; [
+    {
+      erinite.home = {
+        presets.common = enabled;
+        cli = {
+          codex = enabled;
+          opencode = enabled;
+          git = {
+            enable = true;
+            user = {
+              name = "ErinaYip";
+              email = "erinayip@outlook.com";
+            };
           };
         };
       };
-
-      programs = {
-        gaming = enabled;
-      };
-    };
-  };
+    }
+    ./home.nix
+  ];
 }

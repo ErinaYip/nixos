@@ -24,22 +24,6 @@ lib.makeExtensible (final: {
   mkAttrOpt = valueType: default: description:
     final.mkOpt (lib.types.attrsOf valueType) default description;
 
-  mkShellAliases = {
-    aliases,
-    shells ? [],
-    system ? true,
-  }:
-    lib.mkMerge (
-      lib.optional system {
-        environment.shellAliases = aliases;
-      }
-      ++ map (
-        shell:
-          lib.setAttrByPath ["erinite" "home" "programs" shell "shellAliases"] aliases
-      )
-      shells
-    );
-
   mkInputPkgb = input: pkg: inputs.${input}.packages.${pkgs.stdenv.hostPlatform.system}.${pkg};
   mkInputPkga = input: final.mkInputPkgb input input;
 
@@ -62,22 +46,23 @@ lib.makeExtensible (final: {
   mkModule = args: {
     category,
     name,
+    namespace ? ["erinite"],
     imports ? [],
     opts ? {},
     defaultSettings ? {},
     configFn,
   }: let
-    cfg = args.config.erinite.${category}.${name};
+    optionPath = namespace ++ [category name];
+    cfg = lib.getAttrFromPath optionPath args.config;
     mergedSettings = final.mergeSettings [defaultSettings cfg.settings];
   in {
     inherit imports;
 
-    options.erinite.${category}.${name} =
-      {
+    options = lib.setAttrByPath optionPath ({
         enable = final.mkBoolOpt false "Whether to enable ${name}.";
         settings = final.mkOpt (args.lib.types.attrsOf args.lib.types.anything) {} "Configuration settings for ${name}.";
       }
-      // opts;
+      // opts);
 
     config = args.lib.mkIf cfg.enable (
       configFn {

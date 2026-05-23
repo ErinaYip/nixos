@@ -54,7 +54,6 @@ arguments where needed. Raw Lua snippets use `lib.generators.mkLuaInline`.
 Useful helpers in `eriniteLib`:
 
 - `mkOpt`, `mkBoolOpt`, `mkStrOpt`, `mkListOpt`, `mkAttrOpt`
-- `mkShellAliases`
 - `mkInputPkgb`, `mkInputPkga` - import packages from flake inputs
 - `mergeSettings` - merge nested attribute sets preserving module semantics
 - `enabled` and `disabled`
@@ -63,7 +62,8 @@ Useful helpers in `eriniteLib`:
 
 ## Module Discovery
 
-`modules/default.nix` imports all modules by calling `eriniteLib.modules ./.`.
+`os/default.nix` and `home/default.nix` import their module trees by calling
+`eriniteLib.modules ./.`.
 
 `eriniteLib.modules`:
 
@@ -71,13 +71,13 @@ Useful helpers in `eriniteLib`:
 - Treats a directory with `default.nix` as a single module root
 - Includes `.nix` files except `default.nix`
 
-This is why most directories under `modules/` do not need a hand-maintained import list.
+This is why most directories under `os/` and `home/` do not need a hand-maintained import list.
 
 ## Writing a New Module
 
 Recommended process:
 
-1. Pick a category under `modules/`.
+1. Pick a category under `os/` or `home/`.
 2. Create a module file using `eriniteLib.mkModule`.
 3. Keep defaults in `defaultSettings` when the module has a settings tree.
 4. Put raw implementation in `configFn`.
@@ -97,7 +97,7 @@ eriniteLib.mkModule args {
   };
 
   configFn = { settings, ... }: {
-    erinite.home.programs.example = {
+    programs.example = {
       enable = true;
       settings = settings;
     };
@@ -107,12 +107,13 @@ eriniteLib.mkModule args {
 
 ## Home Manager Composition
 
-- Modules contribute user-level settings by writing to `erinite.home`.
-- `modules/home.nix` wraps those definitions into a composed `erinite.homeModule`.
-- `erinite.homeModule` adds base `home.*` defaults and becomes the shared entrypoint for both NixOS-integrated Home Manager and standalone `homeConfigurations`.
-- Standalone `homeConfigurations` also reuse `config.home-manager.sharedModules` from the host evaluation so third-party Home Manager modules stay available.
+Home Manager has an explicit root module at `home/default.nix`.
+Standalone `homeConfigurations` import that module directly, then import
+the host's `homeModules`.
 
-Modules often enable a NixOS service or package while also writing the
-corresponding user configuration into `erinite.home`. `desktop.hyprland`,
-`desktop.dms`, `desktop.matugen`, `cli.codex` and `cli.opencode` all follow this
-pattern.
+The NixOS side starts from `os/default.nix`, which imports the Home Manager NixOS
+module and wires the same Home Manager root into
+`home-manager.users.<username>`. Host-specific NixOS configuration lives in
+the host's `osModules`.
+
+New user-level configuration should go in `home/` or `hosts/<name>/home.nix`.

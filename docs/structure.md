@@ -10,9 +10,9 @@ Project entry point. Defines inputs, host construction, and the development shel
 
 Holds `eriniteLib`, the helper library used by the module layer. Imported and exposed in `flake.nix` as `eriniteLib`.
 
-### `modules/`
+### `os/` and `home/`
 
-Current categories under `modules/`:
+Current categories under `os/` and `home/`:
 
 - `system/` for NixOS system services and platform behavior
 - `desktop/` for graphical environment and desktop integration
@@ -46,11 +46,11 @@ PrismLauncher, cava, and Hyprland Lua colors.
 
 ## Important Files
 
-### `modules/home.nix`
+### `home/default.nix`
 
 Bridge from NixOS module space into Home Manager module space.
 
-### `modules/default.nix`
+### `os/default.nix and home/default.nix`
 
 Auto-imports the module tree.
 
@@ -67,19 +67,23 @@ Each file returns an attribute set:
     cudaSupport = true;
   };
 
-  module = { ... }: {
-    # Normal NixOS host module.
-  };
+  osModules = [
+    ./hardware-configuration.nix
+    ./os.nix
+    # Host-specific NixOS modules.
+  ];
+
+  homeModules = [
+    # Host-specific Home Manager modules.
+    ./home.nix
+  ];
 }
 ```
 
 `flake.nix` reads `meta` before evaluating the NixOS module so it can construct
-host-specific `pkgs`. The `module` attribute is what gets imported into
-`nixosSystem`.
-
-### `hosts/<name>/configuration.nix`
-
-Additional host-specific system configuration not abstracted into shared modules.
+host-specific `pkgs`. The `osModules` list is imported into `nixosSystem`, and
+the `homeModules` list is imported by both standalone Home Manager and the
+Home Manager user inside NixOS.
 
 ### `hosts/<name>/hardware-configuration.nix`
 
@@ -90,15 +94,15 @@ Generated hardware configuration.
 If you need to understand or change behavior, start here:
 
 - Shared behavior across hosts:
-  `modules/` and `lib/default.nix`
+  `os/` and `home/` and `lib/default.nix`
 - Home Manager behavior:
-  `modules/home.nix` and any module writing to `erinite.home`
+  `home/default.nix` and any module writing to `erinite.home`
 - Hyprland behavior:
-  `modules/desktop/hyprland/`, `modules/desktop/dms/hyprland.nix`, and host-level
+  `home/desktop/hyprland/`, `home/desktop/dms/hyprland.nix`, and host-level
   `wayland.windowManager.hyprland` overrides
 - Theme generation:
-  `modules/desktop/matugen.nix` and `assets/templates/`
+  `home/desktop/matugen.nix` and `assets/templates/`
 - Host-only behavior:
   `hosts/<name>/`
 - Feature enablement defaults:
-  `modules/presets/common.nix`
+  `os/presets/common.nix and home/presets/common.nix`
