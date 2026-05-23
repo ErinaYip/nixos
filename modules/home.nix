@@ -11,3 +11,4 @@
 # feat(home): enhance home-manager integration with base module and allow unfree packages
 # Refactor with Alejandra
 # refactor
+# feat: remove Firefox profile configurations

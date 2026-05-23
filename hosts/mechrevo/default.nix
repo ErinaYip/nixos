@@ -72,3 +72,4 @@
 # refactor: simplify wallpaper handling in theme configurations
 # refactor: update wallpaper configuration to use attribute sets for theme specialisations
 # feat: add Firefox profiles and enable browser support in configuration
+# feat: remove Firefox profile configurations
