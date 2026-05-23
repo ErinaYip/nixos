@@ -26,6 +26,10 @@ with eriniteLib;
           # virtualisation = enabled;
         };
 
+        desktop = {
+          hyprland = enabled;
+        };
+
         programs = {
           # gaming = enabled;
           localsend = enabled;
