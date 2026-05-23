@@ -71,3 +71,4 @@
 #                     This will soon not be possible. Please remove all `nixpkgs` options when using `home-manager.useGlobalPkgs`.
 # refactor: streamline host configuration and add meta information
 # refactor: split os and home modules
+# refactor: enhance theme specialisations and integrate with desktop settings
