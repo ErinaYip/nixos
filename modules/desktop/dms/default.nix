@@ -16,3 +16,4 @@
 # fix: comment out conflict configurations
 # feat: add settings module for dank-material-shell
 # feat: add dms package restart functionality and refactor config function
+# feat: add Firefox profiles and enable browser support in configuration

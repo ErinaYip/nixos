@@ -14,3 +14,4 @@
 # Add Stylix test configuration
 # fix: comment out conflict configurations
 # fix: enable fcitx5 and disable themes in rime configuration
+# feat: add Firefox profiles and enable browser support in configuration
