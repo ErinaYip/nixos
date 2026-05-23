@@ -90,7 +90,11 @@ in {
             };
           };
         };
-        desktop.stylix.settings = theme.wallpapers.${theme.default};
+        desktop.theme-specialisations =
+          {
+            enable = true;
+          }
+          // theme;
       };
     }
     ./home.nix

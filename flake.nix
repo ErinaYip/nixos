@@ -118,6 +118,7 @@
       home = home-manager.lib.homeManagerConfiguration {
         pkgs = hostPkgs;
         extraSpecialArgs = {
+          pkgs = hostPkgs;
           inherit inputs hostName default eriniteLib;
         };
         modules = hostHomeModules;

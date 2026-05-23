@@ -1,14 +1,14 @@
 {
   lib,
   pkgs,
-  default,
   eriniteLib,
   ...
 } @ args: let
   inherit (eriniteLib) mkModule mkStrOpt mkAttrOpt;
-  inherit (lib) types mkOption mapAttrs escapeShellArg optionalString mkForce id;
+  inherit (lib) types mkOption escapeShellArg optionalString;
 in
   mkModule args {
+    namespace = ["erinite" "home"];
     category = "desktop";
     name = "theme-specialisations";
 
@@ -34,7 +34,7 @@ in
       };
     in {
       default = mkStrOpt "nixos-local-dark" "Wallpaper theme name to apply to the base configuration.";
-      wallpapers = mkAttrOpt wallpaperModule {} "Wallpapers to turn into theme specialisations.";
+      wallpapers = mkAttrOpt wallpaperModule {} "Wallpapers to turn into Home Manager theme settings.";
     };
 
     configFn = {cfg, ...}: let
@@ -52,7 +52,7 @@ in
         // cfg.wallpapers;
 
       buildScheme = name: wallpaper:
-        pkgs.runCommand "${name}-base16.yaml" {
+        pkgs.runCommand "${name}-home-base16.yaml" {
           nativeBuildInputs = with pkgs; [imagemagick matugen python3];
         } ''
           python ${script} ${escapeShellArg (toString wallpaper.image)} \
@@ -63,22 +63,10 @@ in
             --output $out
         '';
 
-      buildSystemConfig = name: wallpaper: useForce: let
-        maybeForce =
-          if useForce
-          then mkForce
-          else id;
-      in {
-        stylix = {
-          base16Scheme = maybeForce "${buildScheme name wallpaper}";
-          image = maybeForce wallpaper.image;
-          polarity = maybeForce wallpaper.polarity;
-        };
-
-        environment.etc = {
-          "erinite-theme/name".text = maybeForce name;
-          "erinite-theme/wallpaper".source = maybeForce wallpaper.image;
-        };
+      buildHomeSettings = name: wallpaper: {
+        base16Scheme = "${buildScheme name wallpaper}";
+        image = wallpaper.image;
+        polarity = wallpaper.polarity;
       };
 
       defaultWallpaper = wallpapers.${cfg.default};
@@ -86,28 +74,10 @@ in
       assertions = [
         {
           assertion = builtins.hasAttr cfg.default wallpapers;
-          message = "erinite.desktop.theme-specialisations.default must match one of the configured wallpaper names.";
+          message = "erinite.home.desktop.theme-specialisations.default must match one of the configured wallpaper names.";
         }
       ];
 
-      inherit ((buildSystemConfig cfg.default defaultWallpaper false)) stylix;
-      environment.etc = (buildSystemConfig cfg.default defaultWallpaper false).environment.etc;
-
-      specialisation =
-        mapAttrs (name: wallpaper: {
-          configuration = let
-            forcedConfig = buildSystemConfig name wallpaper true;
-          in {
-            inherit (forcedConfig) stylix;
-            environment.etc =
-              forcedConfig.environment.etc
-              // {
-                "erinite-theme/specialisation".text = mkForce name;
-              };
-
-            home-manager.users.${default.username}.erinite.home.desktop.theme-specialisations.default = mkForce name;
-          };
-        })
-        wallpapers;
+      erinite.home.desktop.stylix.settings = buildHomeSettings cfg.default defaultWallpaper;
     };
   }

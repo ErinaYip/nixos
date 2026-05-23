@@ -9,16 +9,30 @@ eriniteLib.mkModule args {
   category = "desktop";
   name = "stylix";
 
-  configFn = _: {
-    stylix = {
-      enable = true;
-      autoEnable = true;
-      image = lib.mkDefault pkgs.nixos-artwork.wallpapers.wallpaper-catppuccin-frappe.src;
+  defaultSettings = {
+    autoEnable = true;
+    image = lib.mkDefault pkgs.nixos-artwork.wallpapers.catppuccin-frappe.src;
 
-      targets = {
-        nvf.enable = false;
-        firefox.enable = false;
-      };
+    icons = {
+      enable = true;
+      package = pkgs.tela-icon-theme;
+      dark = "Tela-dracula-dark";
+      light = "Tela-dracula-light";
     };
+
+    targets = {
+      nvf.enable = false;
+      firefox.enable = false;
+    };
+  };
+
+  configFn = {settings, ...}: {
+    stylix = lib.mkMerge [
+      settings
+      {
+        enable = true;
+        overlays.enable = false;
+      }
+    ];
   };
 }

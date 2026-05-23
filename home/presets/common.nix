@@ -23,6 +23,7 @@ with eriniteLib;
           nemo = enabled;
           # qt = enabled;
           stylix = enabled;
+          theme-specialisations = enabled;
         };
 
         cli = {

@@ -1,5 +1,6 @@
 {
   inputs,
+  pkgs,
   default,
   hostName,
   eriniteLib,
@@ -16,7 +17,7 @@
     useUserPackages = true;
 
     extraSpecialArgs = {
-      inherit inputs hostName default eriniteLib;
+      inherit inputs pkgs hostName default eriniteLib;
     };
   };
 }
