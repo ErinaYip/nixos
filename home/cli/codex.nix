@@ -10,7 +10,7 @@ eriniteLib.mkModule args {
       settings = {
         model = "gpt-5.5";
         model_reasoning_effort = "medium";
-        model_provider = "freemodel";
+        model_provider = "hua";
 
         sandbox_workspace_write.network_access = true;
 

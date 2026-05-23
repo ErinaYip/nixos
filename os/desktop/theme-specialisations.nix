@@ -23,7 +23,7 @@ in
             default = "dark";
             description = "Stylix polarity for this generated theme.";
           };
-          matugenScheme = mkStrOpt "scheme-tonal-spot" "Matugen scheme type.";
+          matugenScheme = mkStrOpt "scheme-rainbow" "Matugen scheme type.";
           fallbackColor = mkOption {
             type = types.nullOr types.str;
             default = null;
@@ -44,7 +44,7 @@ in
           nixos-local-dark = {
             polarity = "dark";
             image = pkgs.nixos-artwork.wallpapers.simple-dark-gray.src;
-            matugenScheme = "scheme-tonal-spot";
+            matugenScheme = "scheme-rainbow";
             fallbackColor = null;
           };
         }

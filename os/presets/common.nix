@@ -28,6 +28,10 @@ with eriniteLib;
 
         desktop = {
           hyprland = enabled;
+          # obs-studio = enabled;
+          # streaming = enabled;
+          stylix = enabled;
+          theme-specialisations = enabled;
         };
 
         programs = {

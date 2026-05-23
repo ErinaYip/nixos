@@ -13,7 +13,7 @@ eriniteLib.mkModule args {
     stylix = {
       enable = true;
       autoEnable = true;
-      image = lib.mkDefault pkgs.nixos-artwork.wallpapers.simple-dark-gray.src;
+      image = lib.mkDefault pkgs.nixos-artwork.wallpapers.wallpaper-catppuccin-frappe.src;
 
       targets = {
         nvf.enable = false;

@@ -22,9 +22,7 @@
       erinite.home = {
         presets.common = enabled;
         cli = {
-          codex = enabled;
           git = {
-            enable = true;
             user = {
               name = "ErinaYip";
               email = "erinayip@outlook.com";
