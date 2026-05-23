@@ -57,6 +57,12 @@ with eriniteLib; {
   erinite.home = {
     programs.cava = enabled;
 
+    stylix.targets.firefox.profileNames = [
+      "my-profile"
+      "default"
+      "zap-client-profile"
+    ];
+
     wayland.windowManager.hyprland = {
       extraConfig = ''
         local is_ext = false

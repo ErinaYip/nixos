@@ -9,15 +9,11 @@ eriniteLib.mkModule args {
   category = "desktop";
   name = "dms";
 
-  configFn = {...}: let
+  configFn = _: let
     dmsPackage = inputs.dms.packages.${pkgs.stdenv.hostPlatform.system}.dms-shell;
   in {
     home-manager.sharedModules = [
       inputs.dms.homeModules.dank-material-shell
-    ];
-
-    environment.systemPackages = with pkgs; [
-      pywalfox-native
     ];
 
     erinite.home = lib.mkMerge [

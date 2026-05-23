@@ -59,6 +59,11 @@ with eriniteLib;
           # gaming = enabled;
           localsend = enabled;
         };
+
+        browsers = {
+          chromium = enabled;
+          firefox = enabled;
+        };
       };
     };
   }

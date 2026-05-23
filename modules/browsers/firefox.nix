@@ -1,16 +1,25 @@
 {
   lib,
-  pkgs,
   eriniteLib,
   ...
 } @ args:
-eriniteLib.mkModule args {
-  category = "browsers";
-  name = "firefox";
+with eriniteLib;
+  mkModule args {
+    category = "browsers";
+    name = "firefox";
 
-  configFn = {...}: {
-    environment.systemPackages = with pkgs; [
-      firefox
-    ];
-  };
-}
+    opts = {
+      profiles = mkAttrOpt lib.types.attrs {
+        "default" = {
+          isDefault = true;
+        };
+      } "Firefox profiles configuration";
+    };
+
+    configFn = {cfg, ...}: {
+      erinite.home.programs.firefox = {
+        enable = true;
+        inherit (cfg) profiles;
+      };
+    };
+  }

@@ -85,8 +85,18 @@ in {
       };
 
       browsers = {
-        firefox = enabled;
         chromium = enabled;
+        firefox.profiles = {
+          default = {
+            id = 0;
+            path = "3kyzzdo5.default";
+            isDefault = true;
+          };
+          zap-client-profile = {
+            id = 1;
+            path = "9iboizsk.zap-client-profile";
+          };
+        };
       };
 
       programs = {
