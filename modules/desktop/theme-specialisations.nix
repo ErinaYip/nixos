@@ -3,28 +3,28 @@
   pkgs,
   eriniteLib,
   ...
-} @ args:
-with eriniteLib;
+} @ args: let
+  inherit (eriniteLib) mkModule mkStrOpt mkAttrOpt;
+  inherit (lib) types mkOption mapAttrs escapeShellArg optionalString mkForce id;
+in
   mkModule args {
     category = "desktop";
     name = "theme-specialisations";
 
     opts = let
-      inherit (lib) types;
-
       wallpaperModule = types.submodule {
         options = {
-          image = lib.mkOption {
+          image = mkOption {
             type = types.oneOf [types.path types.package types.str];
             description = "Wallpaper image used to generate this theme.";
           };
-          polarity = lib.mkOption {
+          polarity = mkOption {
             type = types.enum ["dark" "light"];
             default = "dark";
             description = "Stylix polarity for this generated theme.";
           };
           matugenScheme = mkStrOpt "scheme-tonal-spot" "Matugen scheme type.";
-          fallbackColor = lib.mkOption {
+          fallbackColor = mkOption {
             type = types.nullOr types.str;
             default = null;
             description = "Optional fallback source color for matugen.";
@@ -32,87 +32,79 @@ with eriniteLib;
         };
       };
     in {
-      default = lib.mkOption {
-        type = types.nullOr types.str;
-        default = "nixos-local-dark";
-        description = "Wallpaper theme name to apply to the base configuration.";
-      };
+      default = mkStrOpt "nixos-local-dark" "Wallpaper theme name to apply to the base configuration.";
       wallpapers = mkAttrOpt wallpaperModule {} "Wallpapers to turn into theme specialisations.";
     };
 
     configFn = {cfg, ...}: let
       script = ../../lib/color-scheme/matugen-to-base16.py;
-      defaultWallpapers = {
-        nixos-local-dark = {
-          polarity = "dark";
-          image = "${pkgs.nixos-artwork.wallpapers.simple-dark-gray.src}";
-          matugenScheme = "scheme-tonal-spot";
-          fallbackColor = null;
-        };
-      };
+
+      wallpapers =
+        {
+          nixos-local-dark = {
+            polarity = "dark";
+            image = pkgs.nixos-artwork.wallpapers.simple-dark-gray.src;
+            matugenScheme = "scheme-tonal-spot";
+            fallbackColor = null;
+          };
+        }
+        // cfg.wallpapers;
 
       buildScheme = name: wallpaper:
         pkgs.runCommand "${name}-base16.yaml" {
-          nativeBuildInputs = [
-            pkgs.imagemagick
-            pkgs.matugen
-            pkgs.python3
-          ];
+          nativeBuildInputs = with pkgs; [imagemagick matugen python3];
         } ''
-          python ${script} ${lib.escapeShellArg (toString wallpaper.image)} \
-            --name ${lib.escapeShellArg name} \
-            --polarity ${lib.escapeShellArg wallpaper.polarity} \
-            --type ${lib.escapeShellArg wallpaper.matugenScheme} \
-            ${lib.optionalString (wallpaper.fallbackColor != null) "--fallback-color ${lib.escapeShellArg wallpaper.fallbackColor}"} \
+          python ${script} ${escapeShellArg (toString wallpaper.image)} \
+            --name ${escapeShellArg name} \
+            --polarity ${escapeShellArg wallpaper.polarity} \
+            --type ${escapeShellArg wallpaper.matugenScheme} \
+            ${optionalString (wallpaper.fallbackColor != null) "--fallback-color ${escapeShellArg wallpaper.fallbackColor}"} \
             --output $out
         '';
 
-      buildHomeConfig = specialisationTheme: name: wallpaper: let
-        priority =
-          if specialisationTheme
-          then lib.mkOverride 80
-          else lib.mkOverride 90;
+      buildSystemConfig = name: wallpaper: useForce: let
+        maybeForce =
+          if useForce
+          then mkForce
+          else id;
       in {
         stylix = {
-          base16Scheme = priority "${buildScheme name wallpaper}";
-          image = priority wallpaper.image;
-          polarity = priority wallpaper.polarity;
+          base16Scheme = maybeForce "${buildScheme name wallpaper}";
+          image = maybeForce wallpaper.image;
+          polarity = maybeForce wallpaper.polarity;
         };
 
-        xdg.dataFile = {
-          "erinite-theme/name".text = priority name;
-          "erinite-theme/wallpaper".source = priority wallpaper.image;
+        environment.etc = {
+          "erinite-theme/name".text = maybeForce name;
+          "erinite-theme/wallpaper".source = maybeForce wallpaper.image;
         };
       };
 
-      wallpapers = defaultWallpapers // cfg.wallpapers;
-
-      defaultWallpaper =
-        if cfg.default == null
-        then null
-        else wallpapers.${cfg.default};
-    in
-      lib.mkMerge [
+      defaultWallpaper = wallpapers.${cfg.default};
+    in {
+      assertions = [
         {
-          assertions = [
-            {
-              assertion = cfg.default == null || builtins.hasAttr cfg.default wallpapers;
-              message = "erinite.desktop.theme-specialisations.default must match one of the configured wallpaper names.";
-            }
-          ];
-        }
-
-        (lib.mkIf (defaultWallpaper != null) {
-          erinite.home = buildHomeConfig false cfg.default defaultWallpaper;
-        })
-
-        {
-          specialisation = lib.mapAttrs (name: wallpaper: {
-            configuration = {
-              erinite.home = buildHomeConfig true name wallpaper;
-              environment.etc."erinite-theme/specialisation".text = name;
-            };
-          }) wallpapers;
+          assertion = builtins.hasAttr cfg.default wallpapers;
+          message = "erinite.desktop.theme-specialisations.default must match one of the configured wallpaper names.";
         }
       ];
+
+      inherit ((buildSystemConfig cfg.default defaultWallpaper false)) stylix;
+      environment.etc = (buildSystemConfig cfg.default defaultWallpaper false).environment.etc;
+
+      specialisation =
+        mapAttrs (name: wallpaper: {
+          configuration = let
+            forcedConfig = buildSystemConfig name wallpaper true;
+          in {
+            inherit (forcedConfig) stylix;
+            environment.etc =
+              forcedConfig.environment.etc
+              // {
+                "erinite-theme/specialisation".text = mkForce name;
+              };
+          };
+        })
+        wallpapers;
+    };
   }

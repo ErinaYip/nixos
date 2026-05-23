@@ -9,39 +9,26 @@ with eriniteLib;
     category = "desktop";
     name = "stylix";
 
+    imports = [
+      inputs.stylix.nixosModules.default
+    ];
+
     configFn = _: {
       home-manager.sharedModules = [
-        inputs.stylix.homeModules.default
         {stylix.overlays.enable = false;}
       ];
+
+      stylix = {
+        enable = true;
+      };
 
       erinite.home.stylix = {
         enable = true;
         autoEnable = true;
 
         targets = {
-          neovim.enable = false;
           nvf.enable = false;
         };
-
-        # fonts = {
-        #   monospace = {
-        #     package = pkgs.maple-mono.NF-CN;
-        #     name = "Maple Mono NF CN";
-        #   };
-        #   sansSerif = {
-        #     package = pkgs.source-han-sans;
-        #     name = "Source Han Sans SC";
-        #   };
-        #   serif = {
-        #     package = pkgs.source-han-serif;
-        #     name = "Source Han Serif SC";
-        #   };
-        #   emoji = {
-        #     package = pkgs.noto-fonts-color-emoji;
-        #     name = "Noto Color Emoji";
-        #   };
-        # };
 
         icons = {
           enable = true;
