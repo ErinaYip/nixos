@@ -57,16 +57,16 @@ If you are new to the repository, read in this order:
 This repository contains a personal NixOS flake with:
 
 - Multiple hosts under `hosts/`
-- Reusable modules under `modules/`
+- Reusable modules under `os/` and `home/`
 - A custom helper library under `lib/`
-- Home Manager integration through `modules/home.nix`
+- Home Manager integration through `home/default.nix`
 - Lua-based Hyprland configuration through Home Manager
 - Matugen templates for terminal, launcher, file manager, shell, and Hyprland colors
 
 ## Current Limitation
 
 - The repository supports both `nh os` and standalone `nh home`.
-- Standalone Home Manager reuses the same composed `erinite.homeModule` exported from each host evaluation.
+- Standalone Home Manager reuses the same host `homeModules` list imported by NixOS-integrated Home Manager.
 - Full-system changes should still go through the host system switch path.
 
 The project centers on the `erinite.*` option tree. Host files mostly enable or override modules through that tree instead of writing all NixOS and Home Manager options directly.
@@ -77,14 +77,14 @@ Before changing code, an agent should understand these facts:
 
 - `flake.nix` defines the shared inputs, discovers host directories, and constructs each host with `mkHost`.
 - `lib/default.nix` defines `eriniteLib`, including `mkModule`, which is the common wrapper used by most modules.
-- `modules/default.nix` imports all module files under `modules/`.
-- `modules/home.nix` composes `erinite.homeModule` and bridges it into both `home-manager.users.<username>.imports` and standalone `homeConfigurations`.
-- `hosts/<name>/default.nix` returns `{ meta, module }`; `meta` contains host construction flags such as `cudaSupport`, and `module` is the actual NixOS host module.
+- `os/default.nix and home/default.nix` imports all module files under `os/` and `home/`.
+- `flake.nix` imports the same host `homeModules` into both `home-manager.users.<username>.imports` and standalone `homeConfigurations`.
+- `hosts/<name>/default.nix` returns `{ meta, osModules, homeModules }`; `meta` contains host construction flags such as `cudaSupport`.
 - Host-specific Hyprland monitor and workspace details can also live in
-  `hosts/<name>/configuration.nix` when they are too machine-specific for the shared module.
-- `modules/desktop/hyprland/` emits structured Lua config, binds, animations, window rules, and portal integration.
-- `modules/desktop/dms/` contributes DMS-specific Hyprland rules, binds, hypridle settings, and theming includes.
-- `modules/desktop/matugen.nix` writes generated theme files, including `~/.config/hypr/colors.lua`.
+  `hosts/<name>/home.nix` when they are too machine-specific for the shared module.
+- `home/desktop/hyprland/` emits structured Lua config, binds, animations, window rules, and portal integration.
+- `home/desktop/dms/` contributes DMS-specific Hyprland rules, binds, hypridle settings, and theming includes.
+- `home/desktop/matugen.nix` writes generated theme files, including `~/.config/hypr/colors.lua`.
 
 ## Command Aliases
 
@@ -111,4 +111,4 @@ The `system.nh` module generates these shell aliases:
 
 ## TODO
 
-- Keep `erinite.homeModule`, `homeConfigurations`, and `nh` usage docs aligned when the Home Manager interface changes.
+- Keep `homeModules`, `homeConfigurations`, and `nh` usage docs aligned when the Home Manager interface changes.

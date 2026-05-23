@@ -11,3 +11,4 @@
 # feat(hyprland): configure workspace rules and monitor settings for Hyprland
 # refactor(hyprgrass): diable hyprgrass for now
 # refactor: streamline host configuration and add meta information
+# refactor: split os and home modules

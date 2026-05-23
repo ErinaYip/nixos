@@ -60,7 +60,8 @@ Detailed project documentation lives in [`docs/`](./docs/README.md).
 ## Status
 
 - This repository supports both `nh os` and `nh home` workflows.
-- Home Manager still shares the same module graph through `erinite.homeModule`.
+- NixOS and Home Manager now have separate top-level entrypoints: `os/` and
+  `home/`.
 - Use `nh os switch` for full system updates, or `nh home switch` for user-only
   updates.
 
@@ -69,10 +70,10 @@ Detailed project documentation lives in [`docs/`](./docs/README.md).
 - `mechrevo`: main machine, NVIDIA PRIME, Podman, Wine, gaming, dynamic dual monitor setup.
 - `nec`: laptop, power management, Windows boot entry, simple Hyprland monitor setup.
 
-Hosts are discovered automatically from directories under `hosts/`. Each
-`hosts/<name>/default.nix` returns host metadata plus the actual NixOS module;
-for example, `meta.cudaSupport = true` enables CUDA support for that host's
-`pkgs`, while omitting it keeps CUDA disabled.
+Hosts are discovered automatically from directories under `hosts/`. Each host
+uses `default.nix` for metadata and OS-level feature switches, `os.nix` for
+machine-specific NixOS configuration, and `home.nix` for machine-specific Home
+Manager configuration.
 
 ## Structure
 
@@ -82,14 +83,9 @@ for example, `meta.cudaSupport = true` enables CUDA support for that host's
 ├── hosts/
 │   ├── mechrevo/
 │   └── nec/
+├── home/
 ├── lib/
-└── modules/
-    ├── browsers/
-    ├── cli/
-    ├── desktop/
-    ├── presets/
-    ├── programs/
-    └── system/
+└── os/
 ```
 
 ## Features
@@ -118,7 +114,7 @@ for example, `meta.cudaSupport = true` enables CUDA support for that host's
 | Input method   | Fcitx5 + Rime                   |
 
 Hyprland is generated through Home Manager's Lua config mode. Shared defaults
-live in `modules/desktop/hyprland/`, while host-specific monitor and workspace
+live in `home/desktop/hyprland/`, while host-specific monitor and workspace
 logic lives in each host's configuration. `matugen` also writes a Lua color file
 for Hyprland and loads it from the generated config.
 
@@ -158,8 +154,8 @@ Notes:
 - `nh` commands are preferred than `sudo nixos-rebuild` commands because they
   have gc enabled.
 - `nh os switch` remains the canonical path for full host updates.
-- `nh home switch` now reuses the same composed Home Manager module exported as
-  `homeConfigurations`.
+- `nh home switch` evaluates `home/default.nix` directly, plus the
+  selected host's `home.nix`.
 - Home targets are exposed as `era@mechrevo` and `era@nec`.
 
 Manual switch:
@@ -245,10 +241,8 @@ Codex provider experiments and Git user info.
 `nixpkgs.config` is applied when each host's `pkgs` is imported in `flake.nix`,
 then passed to NixOS through `nixpkgs.pkgs`. This keeps
 `home-manager.useGlobalPkgs` compatible with Home Manager's newer warning about
-`nixpkgs.config` and `nixpkgs.overlays`. Stylix's Home Manager overlay is
-disabled for the same reason.
+`nixpkgs.config` and `nixpkgs.overlays`.
 
 ## TODO
 
-- Keep `nixosConfigurations` and `homeConfigurations` behavior aligned when
-  changing the module graph.
+- Keep OS-only modules under `os/` and Home Manager modules under `home/`.
