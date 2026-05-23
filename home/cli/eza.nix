@@ -28,11 +28,13 @@ with eriniteLib;
           };
         }
 
-        { programs.zsh.shellAliases = {
+        {
+          programs.zsh.shellAliases = {
             tree = "eza --tree";
             ls = "eza";
             ll = "eza -l";
             la = "eza -la";
-          }; }
+          };
+        }
       ];
   }

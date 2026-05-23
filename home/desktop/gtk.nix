@@ -1,6 +1,10 @@
-{pkgs, eriniteLib, ...} @ args:
+{
+  pkgs,
+  eriniteLib,
+  ...
+} @ args:
 eriniteLib.mkModule args {
-    namespace = ["erinite" "home"];
+  namespace = ["erinite" "home"];
   category = "desktop";
   name = "gtk";
 

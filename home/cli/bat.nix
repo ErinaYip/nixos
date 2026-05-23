@@ -24,10 +24,12 @@ with eriniteLib;
           };
         }
 
-        { programs.zsh.shellAliases = {
+        {
+          programs.zsh.shellAliases = {
             cat = "batpipe";
             less = "bat";
             man = "batman";
-          }; }
+          };
+        }
       ];
   }

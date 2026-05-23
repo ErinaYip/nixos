@@ -5,7 +5,7 @@
   ...
 } @ args:
 eriniteLib.mkModule args {
-    namespace = ["erinite" "home"];
+  namespace = ["erinite" "home"];
   category = "desktop";
   name = "stylix";
 

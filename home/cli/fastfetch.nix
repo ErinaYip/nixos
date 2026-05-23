@@ -167,9 +167,11 @@ with eriniteLib;
           };
         }
 
-        { programs.zsh.shellAliases = {
+        {
+          programs.zsh.shellAliases = {
             fastfetch = "fastfetch --logo $(find ${fastfetch-icons} -type f | shuf -n 1)";
             ff = "fastfetch";
-          }; }
+          };
+        }
       ];
   }
