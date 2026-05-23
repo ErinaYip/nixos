@@ -44,7 +44,9 @@ in {
       useGlobalPkgs = true;
       useUserPackages = true;
 
-      extraSpecialArgs = {inherit inputs default;};
+      extraSpecialArgs = {
+        inherit inputs default;
+      };
 
       users.${default.username} = {
         imports = [config.erinite.homeModule];
