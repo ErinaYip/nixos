@@ -6,19 +6,28 @@
   ...
 } @ args:
 eriniteLib.mkModule args {
-    namespace = ["erinite" "home"];
+  namespace = ["erinite" "home"];
   category = "desktop";
   name = "dms";
 
-  configFn = _: let
+  opts = {
+    session = lib.mkOption {
+      type = lib.types.attrs;
+      default = {};
+      description = "Dms session state settings.";
+    };
+  };
+
+  configFn = {cfg, ...}: let
     dmsPackage = inputs.dms.packages.${pkgs.stdenv.hostPlatform.system}.dms-shell;
   in
     lib.mkMerge [
       {
         programs.dank-material-shell = {
           enable = true;
+
           settings = import ./settings.nix;
-          quickshell.package = pkgs.quickshell;
+          inherit (cfg) session;
 
           systemd = {
             enable = true;

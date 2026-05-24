@@ -28,7 +28,9 @@ in
           message = "erinite.home.desktop.theme-specialisations.default must match one of the configured wallpaper names.";
         }
       ];
-
-      erinite.home.desktop.stylix.settings = buildHomeSettings cfg.default defaultWallpaper;
+      erinite.home.desktop = {
+        stylix.settings = buildHomeSettings cfg.default defaultWallpaper;
+        dms.session.wallpaperPath = defaultWallpaper.image;
+      };
     };
   }
