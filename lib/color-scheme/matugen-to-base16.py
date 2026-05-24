@@ -53,6 +53,8 @@ def main():
         command.extend(
             [
                 "--dry-run",
+                "--source-color-index",
+                "0",
                 "--type",
                 args.type,
                 "--json",
