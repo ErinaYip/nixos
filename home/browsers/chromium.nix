@@ -9,6 +9,21 @@ eriniteLib.mkModule args {
   name = "chromium";
 
   configFn = _: {
-    home.packages = [pkgs.chromium];
+    programs.chromium = {
+      enable = true;
+      package = pkgs.chromium;
+
+      extensions = [
+        "eimadpbcbfnmbkopoojfekhnkhdbieeh" # Dark Reader
+        "ginpbkfigcoaokgflihfhhmglmbchinc" # HackBar
+        "gppongmhjkpfnbhagpmjfkannfbllamg" # Wappalyzer
+        "pfnededegaaopdmhkdmcofjmoldfiped" # Proxy SwitchyOmega 3 / ZeroOmega
+      ];
+    };
+
+    xdg.configFile."chromium/Default/Bookmarks" = {
+      source = ../../assets/browser-profiles/chromium/Bookmarks;
+      force = true;
+    };
   };
 }

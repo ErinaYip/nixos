@@ -1,0 +1,418 @@
+{
+   "checksum": "6488cead93270ca8d0c1e67bbb65a77d",
+   "roots": {
+      "bookmark_bar": {
+         "children": [ {
+            "children": [ {
+               "date_added": "13411131900183023",
+               "date_last_used": "13421587957952679",
+               "guid": "acb9eddb-fe86-4f57-8803-25178532bb5d",
+               "id": "14",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "网络安全比赛日历",
+               "type": "url",
+               "url": "http://www.supermatch.fun/"
+            }, {
+               "date_added": "13410791547647447",
+               "date_last_used": "13421306557713231",
+               "guid": "2dac2cb7-3406-4bf5-a918-d626c0e438bb",
+               "id": "5",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "CTF+ 比赛大厅 | CTF+",
+               "type": "url",
+               "url": "https://www.ctfplus.cn/competition/hall?competitionId=1980650453213384704"
+            }, {
+               "date_added": "13410791569822890",
+               "date_last_used": "13419340646684647",
+               "guid": "bddd0f3d-5d01-4101-8669-3cad45600194",
+               "id": "8",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "攻防世界",
+               "type": "url",
+               "url": "https://adworld.xctf.org.cn/challenges/list"
+            }, {
+               "date_added": "13411123340532734",
+               "date_last_used": "13421306574594834",
+               "guid": "f93b5b6f-9d16-4664-976f-3729074d93a4",
+               "id": "12",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "青少年CTF练习平台",
+               "type": "url",
+               "url": "https://www.qsnctf.com/#/main/driving-range"
+            }, {
+               "date_added": "13411289251787912",
+               "date_last_used": "13421661177782977",
+               "guid": "b5765ef4-1683-4231-a607-dc74dd6d65be",
+               "id": "17",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "NBUT::CTF",
+               "type": "url",
+               "url": "http://10.26.229.11/"
+            }, {
+               "date_added": "13417764551926108",
+               "date_last_used": "13421306587361320",
+               "guid": "162920d0-b354-423e-8984-0465ebf69c11",
+               "id": "50",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "青岑网安 | QingCen CTF",
+               "type": "url",
+               "url": "https://ctf.qingcen.net/"
+            }, {
+               "children": [ {
+                  "date_added": "13414523660254416",
+                  "date_last_used": "13415281031012920",
+                  "guid": "dfb856ca-22fc-4b5e-a334-f1ab937fa6c7",
+                  "id": "32",
+                  "meta_info": {
+                     "power_bookmark_meta": ""
+                  },
+                  "name": "furry::CTF",
+                  "type": "url",
+                  "url": "https://furryctf.com/"
+               }, {
+                  "date_added": "13414556789088477",
+                  "date_last_used": "13418390738872757",
+                  "guid": "f0ac40db-c5ef-484b-9266-477d45013ac6",
+                  "id": "37",
+                  "meta_info": {
+                     "power_bookmark_meta": ""
+                  },
+                  "name": "SHCTF 3rd",
+                  "type": "url",
+                  "url": "https://shc.tf/games/"
+               }, {
+                  "date_added": "13414556799702938",
+                  "date_last_used": "13418390758615001",
+                  "guid": "6846fb63-b782-4d13-9b9f-a6b090adf106",
+                  "id": "38",
+                  "meta_info": {
+                     "power_bookmark_meta": ""
+                  },
+                  "name": "赛事 - Vidar-Team CTF 终端",
+                  "type": "url",
+                  "url": "https://hgame.vidar.club/games"
+               }, {
+                  "date_added": "13418391061248241",
+                  "date_last_used": "13419741883193886",
+                  "guid": "10bc7e86-a2f3-4a34-9b47-9a80d08faf46",
+                  "id": "54",
+                  "meta_info": {
+                     "power_bookmark_meta": ""
+                  },
+                  "name": "N::CTF",
+                  "type": "url",
+                  "url": "https://nctf.x1ct34m.com/"
+               }, {
+                  "date_added": "13414819780990125",
+                  "date_last_used": "13418391077987852",
+                  "guid": "ea49beff-5edd-4edf-beeb-f2d4c759dc2a",
+                  "id": "48",
+                  "meta_info": {
+                     "power_bookmark_meta": ""
+                  },
+                  "name": "赛事 - 西电 CTF 终端",
+                  "type": "url",
+                  "url": "https://ctf.xidian.edu.cn/games/"
+               }, {
+                  "date_added": "13418999018368325",
+                  "date_last_used": "13419514436938513",
+                  "guid": "051dd4a5-cb38-478f-954c-5a95e1486f63",
+                  "id": "58",
+                  "meta_info": {
+                     "power_bookmark_meta": ""
+                  },
+                  "name": "XUJCLab",
+                  "type": "url",
+                  "url": "https://ctf.xujclab.com/"
+               }, {
+                  "date_added": "13418460500677380",
+                  "date_last_used": "13418536458407294",
+                  "guid": "63ffa64f-2167-4e5e-ac12-4753a4fb5e43",
+                  "id": "56",
+                  "meta_info": {
+                     "power_bookmark_meta": ""
+                  },
+                  "name": "PolarD&N",
+                  "type": "url",
+                  "url": "https://game.polarctf.com/#/page/challenges"
+               } ],
+               "date_added": "13414523683864248",
+               "date_last_used": "0",
+               "date_modified": "13419340749813374",
+               "guid": "800f7d64-7126-4b25-85cd-3434c8ef95b3",
+               "id": "33",
+               "name": "Games",
+               "type": "folder"
+            }, {
+               "date_added": "13419340749813374",
+               "date_last_used": "13419504006672014",
+               "guid": "19b6d6c2-6333-465e-8741-858378db6e4b",
+               "id": "62",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "ctf.show",
+               "type": "url",
+               "url": "https://ctf.show/challenges"
+            }, {
+               "date_added": "13419514284372276",
+               "date_last_used": "13421306595530592",
+               "guid": "e4da39dc-ebce-4e3f-a671-73908fb3cad3",
+               "id": "64",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Review::CTF",
+               "type": "url",
+               "url": "https://gz.imxbt.cn/"
+            }, {
+               "date_added": "13421745001300001",
+               "date_last_used": "0",
+               "guid": "3e13a167-9ac5-4ebe-8457-bb3fdccb8348",
+               "id": "68",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Can you spot the vulnerability? Wizer CTF",
+               "type": "url",
+               "url": "https://wizer-ctf.com/?pos=last"
+            } ],
+            "date_added": "13410791568145811",
+            "date_last_used": "0",
+            "date_modified": "13421745003548031",
+            "guid": "b46df441-b9c0-42e6-a07d-ef76b428fe62",
+            "id": "6",
+            "name": "CTF题站",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13410795749712730",
+               "date_last_used": "13422794779943201",
+               "guid": "40ce1123-ead5-40cb-ae74-58bb5a0d5506",
+               "id": "9",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "CyberChef",
+               "type": "url",
+               "url": "file:///home/era/CyberChef/CyberChef_v10.19.4.html"
+            }, {
+               "date_added": "13414692481771204",
+               "date_last_used": "13419242512462165",
+               "guid": "aa8a899f-21c0-4a0a-94dc-7c358388a83c",
+               "id": "41",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "JSFuck - Write any JavaScript with 6 Characters: []()!+",
+               "type": "url",
+               "url": "https://jsfuck.com/"
+            }, {
+               "date_added": "13414692542147764",
+               "date_last_used": "13419133769611580",
+               "guid": "4d5efb79-1972-4a93-9ea3-f952057a219f",
+               "id": "42",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "JSON Web Tokens - jwt.io",
+               "type": "url",
+               "url": "https://www.jwt.io/"
+            }, {
+               "date_added": "13414762789313071",
+               "date_last_used": "13414929809321791",
+               "guid": "420cbe32-6e32-4308-851a-74f2c689cbaa",
+               "id": "44",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Try It Online",
+               "type": "url",
+               "url": "https://tio.run/#"
+            }, {
+               "date_added": "13417871291547852",
+               "date_last_used": "0",
+               "guid": "00d1b9ca-2d4a-4bd5-8393-aaaaf4ce2903",
+               "id": "52",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "md5在线解密破解,md5解密加密",
+               "type": "url",
+               "url": "https://www.cmd5.com/"
+            }, {
+               "date_added": "13419240555240316",
+               "date_last_used": "13421752675937055",
+               "guid": "7f7f9e26-7118-4eaa-b0c6-692c89d43c1b",
+               "id": "60",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Webhook.site - Test, transform and automate Web requests and emails",
+               "type": "url",
+               "url": "http://webhook.site/#!/view/f1567d46-2765-403d-b533-0b673110d1da"
+            }, {
+               "date_added": "13420120025833569",
+               "date_last_used": "13422796363483496",
+               "guid": "f6b1960b-1ad0-4c14-9a13-6b0bb7c95a8d",
+               "id": "66",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "GTFOBins",
+               "type": "url",
+               "url": "https://gtfobins.org/"
+            } ],
+            "date_added": "13410795759724747",
+            "date_last_used": "0",
+            "date_modified": "13421745001300001",
+            "guid": "51bd401f-437a-498e-9ff2-0a0b3388ab80",
+            "id": "10",
+            "name": "CTF工具",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "date_added": "13411401072313252",
+               "date_last_used": "13415032733138256",
+               "guid": "1e807fff-4c6b-42f9-9d95-377984f97d95",
+               "id": "19",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Erina - erina.top",
+               "type": "url",
+               "url": "https://blog.erina.top/"
+            }, {
+               "date_added": "13411401094170612",
+               "date_last_used": "13415032715398146",
+               "guid": "63f6a7da-6a05-4c9c-8b31-20e5a3c3c5cc",
+               "id": "21",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "Nan0inPsyLog",
+               "type": "url",
+               "url": "https://nan0in27.cn/"
+            }, {
+               "date_added": "13414818799533770",
+               "date_last_used": "0",
+               "guid": "37a14a1b-2193-4e17-a420-1b3f946bface",
+               "id": "46",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "正规子群",
+               "type": "url",
+               "url": "https://normalsubgroup.cauchy.top/"
+            }, {
+               "date_added": "13414818893494027",
+               "date_last_used": "0",
+               "guid": "416751a5-f1e2-4425-a536-1de95463dce4",
+               "id": "47",
+               "meta_info": {
+                  "power_bookmark_meta": ""
+               },
+               "name": "文档 - NewStar CTF",
+               "type": "url",
+               "url": "https://newstar.wiki/"
+            } ],
+            "date_added": "13411401087377614",
+            "date_last_used": "0",
+            "date_modified": "13414819780990125",
+            "guid": "e64c01ee-f0b3-4cde-8f06-99ec8f8157d6",
+            "id": "20",
+            "name": "CTF博客",
+            "type": "folder"
+         }, {
+            "children": [ {
+               "children": [ {
+                  "date_added": "13411579434191524",
+                  "date_last_used": "0",
+                  "guid": "9d37bd4e-453a-4ff6-999b-5a30914fa4ae",
+                  "id": "23",
+                  "meta_info": {
+                     "power_bookmark_meta": ""
+                  },
+                  "name": "NodeCook | 全球 Ping，Traceroute，DNS，HTTP 以及更多",
+                  "type": "url",
+                  "url": "https://www.nodecook.com/zh"
+               }, {
+                  "date_added": "13411579566985203",
+                  "date_last_used": "0",
+                  "guid": "364a7126-0cb3-40e8-bfe1-52d3f5c9e9d9",
+                  "id": "26",
+                  "meta_info": {
+                     "power_bookmark_meta": ""
+                  },
+                  "name": "iP地址查询--手机号码查询归属地 | 邮政编码查询 | iP地址归属地查询 | 身份证号码验证在线查询网",
+                  "type": "url",
+                  "url": "https://ip138.com/"
+               } ],
+               "date_added": "13411579452104893",
+               "date_last_used": "0",
+               "date_modified": "13414523660254416",
+               "guid": "36a9b200-c219-4d7c-9fdb-75bb8cf11d2c",
+               "id": "25",
+               "name": "测绘",
+               "type": "folder"
+            } ],
+            "date_added": "13411579452104763",
+            "date_last_used": "0",
+            "date_modified": "13411579452104763",
+            "guid": "80574ae3-0433-4703-8714-8815c960c833",
+            "id": "24",
+            "name": "渗透",
+            "type": "folder"
+         } ],
+         "date_added": "13410790647584902",
+         "date_last_used": "0",
+         "date_modified": "13417764551926108",
+         "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
+         "id": "1",
+         "name": "书签栏",
+         "type": "folder"
+      },
+      "other": {
+         "children": [ {
+            "children": [  ],
+            "date_added": "13410791568145882",
+            "date_last_used": "0",
+            "date_modified": "13410791568145882",
+            "guid": "ee2a60fc-51a1-4894-aa56-2ed08d3dfd52",
+            "id": "7",
+            "name": "新建文件夹",
+            "type": "folder"
+         } ],
+         "date_added": "13410790647584902",
+         "date_last_used": "0",
+         "date_modified": "13410791547647447",
+         "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
+         "id": "2",
+         "name": "其他书签",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [  ],
+         "date_added": "13410790647584902",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "4cf2e351-0e85-532b-bb37-df045d8f8d0f",
+         "id": "3",
+         "name": "移动设备书签",
+         "type": "folder"
+      }
+   },
+   "version": 1
+}
