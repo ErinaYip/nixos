@@ -22,7 +22,10 @@ eriniteLib.mkModule args {
 
     targets = {
       nvf.enable = false;
-      firefox.enable = false;
+      firefox = {
+        profileNames = ["default"];
+        colorTheme.enable = true;
+      };
     };
   };
 
