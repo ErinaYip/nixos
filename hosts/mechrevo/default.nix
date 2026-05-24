@@ -66,11 +66,7 @@ in {
 
         desktop = {
           obs-studio = enabled;
-          theme-specialisations =
-            {
-              enable = true;
-            }
-            // theme;
+          theme-specialisations = enabled // theme;
         };
 
         programs.gaming = enabled;
@@ -90,11 +86,10 @@ in {
             };
           };
         };
-        desktop.theme-specialisations =
-          {
-            enable = true;
-          }
-          // theme;
+
+        desktop = {
+          theme-specialisations = enabled // theme;
+        };
       };
     }
     ./home.nix

@@ -28,17 +28,21 @@ def main():
     parser = argparse.ArgumentParser(
         description="Create a base16 YAML file from matugen output"
     )
-    parser.add_argument("image", help="Image to generate the colors from")
-    parser.add_argument("--name", "-n", required=True, help="Name of the color scheme")
-    parser.add_argument("--polarity", "-p", default="dark", choices=["dark", "light"])
-    parser.add_argument(
+    _ = parser.add_argument("image", help="Image to generate the colors from")
+    _ = parser.add_argument(
+        "--name", "-n", required=True, help="Name of the color scheme"
+    )
+    _ = parser.add_argument(
+        "--polarity", "-p", default="dark", choices=["dark", "light"]
+    )
+    _ = parser.add_argument(
         "--type", "-t", default="scheme-tonal-spot", help="Matugen scheme type"
     )
-    parser.add_argument(
+    _ = parser.add_argument(
         "--fallback-color",
         help="Color to use if matugen cannot extract one from the image",
     )
-    parser.add_argument(
+    _ = parser.add_argument(
         "--output", "-o", default="base16.yaml", help="Output YAML path"
     )
     args = parser.parse_args()
