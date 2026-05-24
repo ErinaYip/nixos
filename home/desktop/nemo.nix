@@ -9,6 +9,13 @@ eriniteLib.mkModule args {
   name = "nemo";
 
   configFn = _: {
+    home.packages = with pkgs; [
+      nemo-with-extensions
+      nemo-fileroller
+      gvfs
+      file-roller
+    ];
+
     dconf.settings."org/cinnamon/desktop/applications/terminal".exec = "kitty";
 
     services.udiskie = {
