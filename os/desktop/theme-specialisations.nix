@@ -24,7 +24,7 @@ in
             default = "dark";
             description = "Stylix polarity for this generated theme.";
           };
-          matugenScheme = mkStrOpt "scheme-rainbow" "Matugen scheme type.";
+          matugenScheme = mkStrOpt "scheme-content" "Matugen scheme type.";
           fallbackColor = mkOption {
             type = types.nullOr types.str;
             default = null;
@@ -45,7 +45,7 @@ in
           nixos-local-dark = {
             polarity = "dark";
             image = pkgs.nixos-artwork.wallpapers.catppuccin-frappe.src;
-            matugenScheme = "scheme-rainbow";
+            matugenScheme = "scheme-content";
             fallbackColor = null;
           };
         }

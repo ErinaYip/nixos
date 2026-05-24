@@ -25,13 +25,22 @@ BASE16_MAP = {
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Create a base16 YAML file from matugen output")
+    parser = argparse.ArgumentParser(
+        description="Create a base16 YAML file from matugen output"
+    )
     parser.add_argument("image", help="Image to generate the colors from")
     parser.add_argument("--name", "-n", required=True, help="Name of the color scheme")
     parser.add_argument("--polarity", "-p", default="dark", choices=["dark", "light"])
-    parser.add_argument("--type", "-t", default="scheme-tonal-spot", help="Matugen scheme type")
-    parser.add_argument("--fallback-color", help="Color to use if matugen cannot extract one from the image")
-    parser.add_argument("--output", "-o", default="base16.yaml", help="Output YAML path")
+    parser.add_argument(
+        "--type", "-t", default="scheme-tonal-spot", help="Matugen scheme type"
+    )
+    parser.add_argument(
+        "--fallback-color",
+        help="Color to use if matugen cannot extract one from the image",
+    )
+    parser.add_argument(
+        "--output", "-o", default="base16.yaml", help="Output YAML path"
+    )
     args = parser.parse_args()
 
     def matugen_command(source):
@@ -48,8 +57,14 @@ def main():
         )
         return command
 
-    source = ["color", "hex", args.fallback_color] if args.fallback_color else ["image", args.image]
-    proc = subprocess.run(matugen_command(source), capture_output=True, text=True, check=False)
+    source = (
+        ["color", "hex", args.fallback_color]
+        if args.fallback_color
+        else ["image", args.image]
+    )
+    proc = subprocess.run(
+        matugen_command(source), capture_output=True, text=True, check=False
+    )
     if proc.returncode != 0 and not args.fallback_color:
         average = subprocess.run(
             [
