@@ -37,3 +37,4 @@
 # Refactor with Alejandra
 # feat: add recolor module and integrate into stylix configuration
 # refactor: split os and home modules
+# refactor: streamline theme specialisations and enhance wallpaper handling
