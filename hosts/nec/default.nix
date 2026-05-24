@@ -13,3 +13,4 @@
 # refactor: streamline host configuration and add meta information
 # refactor: split os and home modules
 # refactor: update configurations for codex, stylix, and theme specialisations
+# refactor: disabled auto enable for theme-specialisations module
