@@ -7,33 +7,40 @@ eriniteLib.mkModule args {
   category = "system";
   name = "nix";
 
-  configFn = {...}: {
+  configFn = _: {
     system.stateVersion = default.systemStateVersion;
 
-    programs.appimage.enable = true;
-    programs.appimage.binfmt = true;
+    programs = {
+      direnv.enable = true;
+      appimage = {
+        enable = true;
+        binfmt = true;
+      };
+    };
 
-    nix.settings.experimental-features = ["nix-command" "flakes" "configurable-impure-env"];
+    nixpkgs.config.allowUnfree = true;
 
-    nix.settings.auto-optimise-store = true;
-    nix.settings.max-jobs = 16;
-    nix.settings.impure-env = [
-      "GOPROXY=https://goproxy.cn,direct"
-    ];
-    nix.settings.substituters = [
-      "https://mirrors.ustc.edu.cn/nix-channels/store"
-      "https://mirror.nju.edu.cn/nix-channels/store"
-      "https://mirrors.cernet.edu.cn/nix-channels/store"
-      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
-      "https://nix-community.cachix.org"
-      "https://cache.nixos.org"
-    ];
+    nix.settings = {
+      experimental-features = ["nix-command" "flakes" "configurable-impure-env"];
 
-    nix.settings.trusted-users = [default.username];
-    nix.settings.trusted-public-keys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-    ];
+      auto-optimise-store = true;
+      max-jobs = 16;
+      impure-env = [
+        "GOPROXY=https://goproxy.cn,direct"
+      ];
+      substituters = [
+        "https://mirrors.ustc.edu.cn/nix-channels/store"
+        "https://mirror.nju.edu.cn/nix-channels/store"
+        "https://mirrors.cernet.edu.cn/nix-channels/store"
+        "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+        "https://nix-community.cachix.org"
+        "https://cache.nixos.org"
+      ];
 
-    programs.direnv.enable = true;
+      trusted-users = [default.username];
+      trusted-public-keys = [
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      ];
+    };
   };
 }
