@@ -79,7 +79,7 @@ Before changing code, an agent should understand these facts:
 - `lib/default.nix` defines `eriniteLib`, including `mkModule`, which is the common wrapper used by most modules.
 - `os/default.nix and home/default.nix` imports all module files under `os/` and `home/`.
 - `flake.nix` imports the same host `homeModules` into both `home-manager.users.<username>.imports` and standalone `homeConfigurations`.
-- `hosts/<name>/default.nix` returns `{ meta, osModules, homeModules }`; `meta` contains host construction flags such as `cudaSupport`.
+- `hosts/<name>/default.nix` returns `{ osModules, homeModules }`.
 - Host-specific Hyprland monitor and workspace details can also live in
   `hosts/<name>/home.nix` when they are too machine-specific for the shared module.
 - `home/desktop/hyprland/` emits structured Lua config, binds, animations, window rules, and portal integration.

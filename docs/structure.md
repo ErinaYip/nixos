@@ -5,3 +5,4 @@ docs: enhance module system and structure documentation for clarity
 docs: update configuration notes
 docs: enhance README and architecture documentation with host discovery details
 refactor: split os and home modules
+docs: update host configuration docs

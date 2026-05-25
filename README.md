@@ -71,7 +71,7 @@ Detailed project documentation lives in [`docs/`](./docs/README.md).
 - `nec`: laptop, power management, Windows boot entry, simple Hyprland monitor setup.
 
 Hosts are discovered automatically from directories under `hosts/`. Each host
-uses `default.nix` for metadata and OS-level feature switches, `os.nix` for
+uses `default.nix` to compose OS and Home Manager modules, `os.nix` for
 machine-specific NixOS configuration, and `home.nix` for machine-specific Home
 Manager configuration.
 
@@ -238,10 +238,8 @@ This repo is made for my own machines. Some values are hardware or user
 specific, such as username, proxy config path, display layout, NVIDIA bus IDs,
 Codex provider experiments and Git user info.
 
-`nixpkgs.config` is applied when each host's `pkgs` is imported in `flake.nix`,
-then passed to NixOS through `nixpkgs.pkgs`. This keeps
-`home-manager.useGlobalPkgs` compatible with Home Manager's newer warning about
-`nixpkgs.config` and `nixpkgs.overlays`.
+Hardware-specific nixpkgs settings live with the module that needs them; for
+example, the NVIDIA module enables CUDA support when it is turned on.
 
 ## TODO
 
