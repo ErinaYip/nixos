@@ -50,16 +50,16 @@ with eriniteLib;
         (lib.mkIf cfg.proxy {
           services.mihomo = {
             enable = true;
-            configFile = "/home/era/Downloads/iKuuu_V2.yaml";
+            configFile = "/home/era/Downloads/KuKe.yaml";
             tunMode = true;
             webui = pkgs.metacubexd;
           };
 
-          environment.sessionVariables = {
-            HTTP_PROXY = "http://127.0.0.1:7890";
-            HTTPS_PROXY = "http://127.0.0.1:7890";
-            ALL_PROXY = "socks5://127.0.0.1:7891";
-          };
+          # environment.sessionVariables = {
+          #   HTTP_PROXY = "http://127.0.0.1:7890";
+          #   HTTPS_PROXY = "http://127.0.0.1:7890";
+          #   ALL_PROXY = "http://127.0.0.1:7890";
+          # };
         })
       ];
   }
