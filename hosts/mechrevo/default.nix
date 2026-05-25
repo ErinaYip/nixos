@@ -78,3 +78,4 @@
 # refactor: enhance theme specialisations and integrate with desktop settings
 # refactor: disabled auto enable for theme-specialisations module
 # feat: add matugen and stylix presets, update default configurations
+# refactor: move cuda support back to nvidia module

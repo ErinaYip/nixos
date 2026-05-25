@@ -72,3 +72,4 @@
 # refactor: streamline host configuration and add meta information
 # refactor: split os and home modules
 # refactor: enhance theme specialisations and integrate with desktop settings
+# refactor: move cuda support back to nvidia module
