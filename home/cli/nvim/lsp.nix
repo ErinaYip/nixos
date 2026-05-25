@@ -59,6 +59,18 @@
           "--stdio"
         ];
       };
+      "basedpyright" = {
+        settings = {
+          basedpyright = {
+            analysis = {
+              autoSearchPaths = true;
+              typeCheckingMode = "basic";
+              useLibraryCodeForTypes = true;
+              diagnosticMode = "openFilesOnly";
+            };
+          };
+        };
+      };
     };
   };
 }
