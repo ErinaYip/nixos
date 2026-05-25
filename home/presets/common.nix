@@ -37,8 +37,6 @@ with eriniteLib;
           fastfetch = enabled;
           git = enabled;
           kitty = enabled;
-          nh = enabled;
-          nix = enabled;
           opencode = enabled;
           starship = enabled;
           zoxide = enabled;
