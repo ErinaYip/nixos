@@ -8,6 +8,7 @@ with eriniteLib;
       erinite = {
         system = {
           boot = enabled;
+          config-source = enabled;
           fonts = enabled;
           i18n = enabled;
           kernel = enabled;
