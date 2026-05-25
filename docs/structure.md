@@ -62,11 +62,6 @@ Each file returns an attribute set:
 
 ```nix
 {
-  meta = {
-    # Optional. Defaults to false when omitted.
-    cudaSupport = true;
-  };
-
   osModules = [
     ./hardware-configuration.nix
     ./os.nix
@@ -80,10 +75,10 @@ Each file returns an attribute set:
 }
 ```
 
-`flake.nix` reads `meta` before evaluating the NixOS module so it can construct
-host-specific `pkgs`. The `osModules` list is imported into `nixosSystem`, and
-the `homeModules` list is imported by both standalone Home Manager and the
-Home Manager user inside NixOS.
+The `osModules` list is imported into `nixosSystem`, and the `homeModules` list
+is imported by both standalone Home Manager and the Home Manager user inside
+NixOS. Hardware-specific nixpkgs settings such as CUDA support live in the
+module that needs them, for example `os/system/nvidia.nix`.
 
 ### `hosts/<name>/hardware-configuration.nix`
 

@@ -22,10 +22,9 @@ The configuration has four main layers:
 The high-level flow is:
 
 1. `flake.nix` defines inputs and discovers host directories under `hosts/`.
-2. For each discovered host, `mkHost` imports `hosts/<hostName>/default.nix` and reads its `{ meta, osModules, homeModules }` result.
-3. `mkHost` creates a host-specific `pkgs` with shared nixpkgs config and host metadata such as `meta.cudaSupport`.
+2. For each discovered host, `mkHost` imports `hosts/<hostName>/default.nix` and reads its `{ osModules, homeModules }` result.
+3. `mkHost` creates a `nixosSystem` for the host.
 4. `mkHost` creates a `nixosSystem` with these module roots:
-   - `{ nixpkgs.pkgs = hostPkgs; }`
    - `os/`
    - `hosts/<hostName>/default.nix`'s `osModules`
    - `home-manager.users.<username>.imports = [ ./home ] ++ homeModules`
@@ -64,16 +63,14 @@ The repository uses both NixOS modules and Home Manager modules:
 - User-level settings are emitted directly as Home Manager options.
 - Home modules expose options under `erinite.home`.
 - `flake.nix` imports the same host `homeModules` into NixOS-integrated Home Manager and standalone `homeConfigurations`.
-- Both NixOS-integrated Home Manager and standalone `homeConfigurations` use the same host-specific `hostPkgs`.
+- Both NixOS-integrated Home Manager and standalone `homeConfigurations` import the same host Home Manager modules.
 
 That keeps OS and Home behavior symmetrical while still allowing each side to
 own its own module tree.
 
-Because `home-manager.useGlobalPkgs = true`, host-level nixpkgs settings are
-applied while importing `hostPkgs` in `flake.nix` instead of through
-`nixpkgs.config` module options. `hostPkgs` is then passed to NixOS with
-`nixpkgs.pkgs`. This avoids Home Manager's warning about `nixpkgs.config` and
-`nixpkgs.overlays` under `useGlobalPkgs`.
+Hardware-specific nixpkgs settings are owned by the module that needs them.
+For example, `os/system/nvidia.nix` enables CUDA support alongside the NVIDIA
+driver configuration.
 
 Stylix's Home Manager module is imported as a shared module, but its Home
 Manager-side overlays are disabled for the same reason.
