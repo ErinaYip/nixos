@@ -12,10 +12,6 @@
   shared = import ../shared.nix args;
   inherit (shared) theme;
 in {
-  meta = {
-    cudaSupport = true;
-  };
-
   osModules = with eriniteLib; [
     ./hardware-configuration.nix
     ./os.nix

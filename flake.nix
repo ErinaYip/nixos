@@ -56,14 +56,7 @@
   } @ inputs: let
     system = "x86_64-linux";
     inherit (nixpkgs) lib;
-    mkNixpkgsConfig = {cudaSupport ? false}: {
-      allowUnfree = true;
-      inherit cudaSupport;
-    };
-    pkgs = import nixpkgs {
-      inherit system;
-      config = mkNixpkgsConfig {};
-    };
+    pkgs = import nixpkgs {inherit system;};
     eriniteLib = import ./lib {
       inherit inputs pkgs;
       inherit (pkgs) lib;
@@ -86,20 +79,12 @@
       host = import (./. + "/hosts/${hostName}") {
         inherit inputs lib eriniteLib pkgs;
       };
-      hostMeta = host.meta or {};
-      hostPkgs = import nixpkgs {
-        inherit system;
-        config = mkNixpkgsConfig {
-          cudaSupport = hostMeta.cudaSupport or false;
-        };
-      };
       hostOsModules = host.osModules or [];
       hostHomeModules = [./home] ++ (host.homeModules or []);
 
       nixos = lib.nixosSystem {
         inherit system;
         modules = [
-          {nixpkgs.pkgs = hostPkgs;}
           ./os
         ]
         ++ hostOsModules
@@ -116,9 +101,9 @@
     in {
       inherit nixos;
       home = home-manager.lib.homeManagerConfiguration {
-        pkgs = hostPkgs;
+        pkgs = pkgs;
         extraSpecialArgs = {
-          pkgs = hostPkgs;
+          pkgs = pkgs;
           inherit inputs hostName default eriniteLib;
         };
         modules = hostHomeModules;

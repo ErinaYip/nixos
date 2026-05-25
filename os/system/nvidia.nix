@@ -48,6 +48,10 @@ eriniteLib.mkModule args {
       };
     };
 
+    nixpkgs.config = {
+      allowUnfree = true;
+      cudaSupport = true;
+    };
     nix.settings.substituters = [
       "https://cache.nixos-cuda.org"
     ];

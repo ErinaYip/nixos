@@ -2,8 +2,6 @@
   shared = import ../shared.nix args;
   inherit (shared) theme;
 in {
-  meta = {};
-
   osModules = with eriniteLib; [
     ./hardware-configuration.nix
     ./os.nix
