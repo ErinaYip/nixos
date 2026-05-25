@@ -1,33 +1,16 @@
 {
-  inputs,
-  pkgs,
   lib,
+  pkgs,
+  inputs,
   eriniteLib,
   ...
-}: let
+} @ args: let
   goodKernelPkgs = import inputs.nixpkgs-kernel-good {
     system = pkgs.stdenv.hostPlatform.system;
     config.allowUnfree = true;
   };
-  theme = {
-    default = "kurogame-olive";
-    wallpapers = {
-      kurogame-olive = {
-        image = pkgs.fetchurl {
-          name = "kurogame-olive.png";
-          url = "https://media-cdn-zspms.kurogame.com/pnswebsite/website2.0/images/1773936000000/6y9pm8iicrjyhd354y-17739965643372.png";
-          hash = "sha256-wdC7ZU7KChFkyQW0B5twnpq4i1nFIovfyNEklSY973I=";
-        };
-      };
-      kurogame-blue = {
-        image = pkgs.fetchurl {
-          name = "kurogame-blue.png";
-          url = "https://media-cdn-zspms.kurogame.com/pnswebsite/website2.0/images/1773936000000/ogvbi74cjtbp460lif-17739965468193.png";
-          hash = "sha256-Hl/vRLR2V0F3JRrYl0JYjxWN9KVWkFpzaWFojOXHmJQ=";
-        };
-      };
-    };
-  };
+  shared = import ../shared.nix args;
+  inherit (shared) theme;
 in {
   meta = {
     cudaSupport = true;
@@ -40,7 +23,10 @@ in {
       boot.kernelPackages = lib.mkForce goodKernelPkgs.linuxPackages_latest;
 
       erinite = {
-        presets.common = enabled;
+        presets = {
+          common = enabled;
+          stylix = enabled;
+        };
 
         system = {
           boot.engine = "grub";
@@ -66,7 +52,7 @@ in {
 
         desktop = {
           obs-studio = enabled;
-          theme-specialisations = enabled // theme;
+          theme-specialisations = theme;
         };
 
         programs.gaming = enabled;
@@ -77,7 +63,11 @@ in {
   homeModules = with eriniteLib; [
     {
       erinite.home = {
-        presets.common = enabled;
+        presets = {
+          common = enabled;
+          stylix = enabled;
+        };
+
         cli = {
           git = {
             user = {
@@ -88,7 +78,7 @@ in {
         };
 
         desktop = {
-          theme-specialisations = enabled // theme;
+          theme-specialisations = theme;
         };
       };
     }

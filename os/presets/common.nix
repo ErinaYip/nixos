@@ -30,7 +30,7 @@ with eriniteLib;
           hyprland = enabled;
           # obs-studio = enabled;
           # streaming = enabled;
-          stylix = enabled;
+          # stylix = enabled;
           # theme-specialisations = enabled;
         };
 

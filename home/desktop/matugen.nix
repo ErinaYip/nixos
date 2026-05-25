@@ -32,7 +32,7 @@ eriniteLib.mkModule args {
 
       [templates.hyprland]
       input_path = "${../../assets/templates/hyprland-color.lua}"
-      output_path = '~/.config/hypr/colors.lua'
+      output_path = '~/.config/hypr/matugen.lua'
     '';
 
     programs = {
@@ -40,6 +40,6 @@ eriniteLib.mkModule args {
       fuzzel.settings.main.include = "~/.config/fuzzel/themes/matugen";
       cava.settings.color.theme = "matugen";
     };
-    wayland.windowManager.hyprland.extraConfig = ''require("colors")'';
+    wayland.windowManager.hyprland.extraConfig = ''require("matugen")'';
   };
 }

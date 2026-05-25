@@ -1,21 +1,6 @@
-{
-  pkgs,
-  eriniteLib,
-  ...
-}: let
-  theme = {
-    default = "kurogame-blue";
-    wallpapers = {
-      kurogame-blue = {
-        polarity = "dark";
-        image = pkgs.fetchurl {
-          name = "kurogame-blue.png";
-          url = "https://media-cdn-zspms.kurogame.com/pnswebsite/website2.0/images/1773936000000/ogvbi74cjtbp460lif-17739965468193.png";
-          hash = "sha256-Hl/vRLR2V0F3JRrYl0JYjxWN9KVWkFpzaWFojOXHmJQ=";
-        };
-      };
-    };
-  };
+{eriniteLib, ...} @ args: let
+  shared = import ../shared.nix args;
+  inherit (shared) theme;
 in {
   meta = {};
 
@@ -24,7 +9,10 @@ in {
     ./os.nix
     {
       erinite = {
-        presets.common = enabled;
+        presets = {
+          common = enabled;
+          stylix = enabled;
+        };
 
         system = {
           boot.engine = "grub";
@@ -33,8 +21,7 @@ in {
         };
 
         desktop = {
-          theme-specialisations = disabled;
-          stylix.settings = theme.wallpapers.${theme.default};
+          theme-specialisations = theme;
         };
       };
     }
@@ -43,7 +30,10 @@ in {
   homeModules = with eriniteLib; [
     {
       erinite.home = {
-        presets.common = enabled;
+        presets = {
+          common = enabled;
+          stylix = enabled;
+        };
 
         cli = {
           git = {
@@ -55,8 +45,7 @@ in {
         };
 
         desktop = {
-          theme-specialisations = disabled;
-          stylix.settings = theme.wallpapers.${theme.default};
+          theme-specialisations = theme;
         };
       };
     }
