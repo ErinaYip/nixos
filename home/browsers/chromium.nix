@@ -1,8 +1,4 @@
-{
-  pkgs,
-  eriniteLib,
-  ...
-} @ args:
+{eriniteLib, ...} @ args:
 eriniteLib.mkModule args {
   namespace = ["erinite" "home"];
   category = "browsers";
@@ -11,13 +7,13 @@ eriniteLib.mkModule args {
   configFn = _: {
     programs.chromium = {
       enable = true;
-      package = pkgs.chromium;
 
       extensions = [
-        "eimadpbcbfnmbkopoojfekhnkhdbieeh" # Dark Reader
-        "ginpbkfigcoaokgflihfhhmglmbchinc" # HackBar
-        "gppongmhjkpfnbhagpmjfkannfbllamg" # Wappalyzer
-        "pfnededegaaopdmhkdmcofjmoldfiped" # Proxy SwitchyOmega 3 / ZeroOmega
+        {id = "cjpalhdlnbpafiamejdnhcphjbkeiagm";} # ublock origin
+        {id = "eimadpbcbfnmbkopoojfekhnkhdbieeh";} # Dark Reader
+        {id = "ginpbkfigcoaokgflihfhhmglmbchinc";} # HackBar
+        {id = "gppongmhjkpfnbhagpmjfkannfbllamg";} # Wappalyzer
+        {id = "pfnededegaaopdmhkdmcofjmoldfiped";} # Proxy SwitchyOmega 3 / ZeroOmega
       ];
     };
 
