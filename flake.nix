@@ -40,7 +40,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     dms = {
-      url = "github:AvengeMedia/DankMaterialShell/stable";
+      url = "github:AvengeMedia/DankMaterialShell/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     oh-my-rime-nix = {
@@ -84,15 +84,16 @@
 
       nixos = lib.nixosSystem {
         inherit system;
-        modules = [
-          ./os
-        ]
-        ++ hostOsModules
-        ++ [
-          {
-            home-manager.users.${default.username}.imports = hostHomeModules;
-          }
-        ];
+        modules =
+          [
+            ./os
+          ]
+          ++ hostOsModules
+          ++ [
+            {
+              home-manager.users.${default.username}.imports = hostHomeModules;
+            }
+          ];
         specialArgs = {
           inherit inputs hostName default;
           inherit eriniteLib;
