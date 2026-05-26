@@ -1,5 +1,20 @@
-{lib}: let
+{lib, ...}: let
   raw = lib.generators.mkLuaInline;
+
+  bind = mods: dispatcher: {
+    _args = [
+      mods
+      (raw dispatcher)
+    ];
+  };
+
+  bindWithOpts = mods: dispatcher: opts: {
+    _args = [
+      mods
+      (raw dispatcher)
+      opts
+    ];
+  };
 in {
   wayland.windowManager.hyprland.settings = {
     window_rule = [
@@ -32,46 +47,36 @@ in {
   };
 
   wayland.windowManager.hyprland.settings.bind = [
-    {
-      _args = ["SUPER + space" (raw ''hl.dsp.exec_cmd("dms ipc call spotlight toggle")'')];
-    }
-    {
-      _args = ["SUPER + v" (raw ''hl.dsp.exec_cmd("dms ipc call clipboard toggle")'')];
-    }
-    {
-      _args = ["SUPER + m" (raw ''hl.dsp.exec_cmd("dms ipc call processlist focusOrToggle")'')];
-    }
-    {
-      _args = ["SUPER + comma" (raw ''hl.dsp.exec_cmd("dms ipc call settings focusOrToggle")'')];
-    }
-    {
-      _args = ["SUPER + n" (raw ''hl.dsp.exec_cmd("dms ipc call notifications toggle")'')];
-    }
-    {
-      _args = ["SUPER + y" (raw ''hl.dsp.exec_cmd("dms ipc call dankdash wallpaper")'')];
-    }
-    {
-      _args = ["SUPER + tab" (raw ''hl.dsp.exec_cmd("dms ipc call hypr toggleOverview")'')];
-    }
+    (bind "SUPER + space" ''hl.dsp.exec_cmd("dms ipc call spotlight toggle")'')
+    (bind "SUPER + v" ''hl.dsp.exec_cmd("dms ipc call clipboard toggle")'')
+    (bind "SUPER + m" ''hl.dsp.exec_cmd("dms ipc call processlist focusOrToggle")'')
+    (bind "SUPER + comma" ''hl.dsp.exec_cmd("dms ipc call settings focusOrToggle")'')
+    # (bind "SUPER + n" ''hl.dsp.exec_cmd("dms ipc call notifications toggle")'')
+    # (bind "SUPER + y" ''hl.dsp.exec_cmd("dms ipc call dankdash wallpaper")'')
+    (bind "SUPER + tab" ''hl.dsp.exec_cmd("dms ipc call hypr toggleOverview")'')
 
-    {
-      _args = ["SUPER + ALT + l" (raw ''hl.dsp.exec_cmd("dms ipc call lock lock")'')];
-    }
-    {
-      _args = ["XF86AudioRaiseVolume" (raw ''hl.dsp.exec_cmd("dms ipc call audio increment 3")'') {locked = true; repeating = true;}];
-    }
-    {
-      _args = ["XF86AudioLowerVolume" (raw ''hl.dsp.exec_cmd("dms ipc call audio decrement 3")'') {locked = true; repeating = true;}];
-    }
-    {
-      _args = ["XF86AudioMute" (raw ''hl.dsp.exec_cmd("dms ipc call audio mute")'') {locked = true; repeating = true;}];
-    }
-    {
-      _args = ["XF86MonBrightnessUp" (raw ''hl.dsp.exec_cmd("dms ipc call brightness increment 5")'') {locked = true; repeating = true;}];
-    }
-    {
-      _args = ["XF86MonBrightnessDown" (raw ''hl.dsp.exec_cmd("dms ipc call brightness decrement 5")'') {locked = true; repeating = true;}];
-    }
+    (bind "SUPER + ALT + l" ''hl.dsp.exec_cmd("dms ipc call lock lock")'')
+
+    (bindWithOpts "XF86AudioRaiseVolume" ''hl.dsp.exec_cmd("dms ipc call audio increment 3")'' {
+      locked = true;
+      repeating = true;
+    })
+    (bindWithOpts "XF86AudioLowerVolume" ''hl.dsp.exec_cmd("dms ipc call audio decrement 3")'' {
+      locked = true;
+      repeating = true;
+    })
+    (bindWithOpts "XF86AudioMute" ''hl.dsp.exec_cmd("dms ipc call audio mute")'' {
+      locked = true;
+      repeating = true;
+    })
+    (bindWithOpts "XF86MonBrightnessUp" ''hl.dsp.exec_cmd("dms ipc call brightness increment 5")'' {
+      locked = true;
+      repeating = true;
+    })
+    (bindWithOpts "XF86MonBrightnessDown" ''hl.dsp.exec_cmd("dms ipc call brightness decrement 5")'' {
+      locked = true;
+      repeating = true;
+    })
   ];
 
   services.hypridle = {
