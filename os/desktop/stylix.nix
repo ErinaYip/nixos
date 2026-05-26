@@ -1,5 +1,4 @@
 {
-  lib,
   pkgs,
   inputs,
   eriniteLib,
@@ -10,9 +9,7 @@ with eriniteLib;
     category = "desktop";
     name = "stylix";
 
-    imports = [
-      inputs.stylix.nixosModules.default
-    ];
+    imports = [inputs.stylix.nixosModules.default];
 
     defaultSettings = {
       icons = {
@@ -27,12 +24,9 @@ with eriniteLib;
     };
 
     configFn = {settings, ...}: {
-      stylix = lib.mkMerge [
-        settings
-        {
-          enable = true;
-          homeManagerIntegration.autoImport = false;
-        }
-      ];
+      stylix =
+        enabled
+        // settings
+        // {homeManagerIntegration.autoImport = false;};
     };
   }

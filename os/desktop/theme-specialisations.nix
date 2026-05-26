@@ -4,52 +4,39 @@
   eriniteLib,
   ...
 } @ args: let
-  inherit (eriniteLib) mkModule themeSpecialisations;
-  inherit (lib) mapAttrs mkForce id;
+  inherit (lib) mapAttrs mkForce;
+  inherit (eriniteLib) mkModule;
+  inherit (eriniteLib.themeSpecialisations) mkThemeBase16Scheme mkThemeSpecialisationOptions;
 in
   mkModule args {
     category = "desktop";
     name = "theme-specialisations";
 
-    opts = themeSpecialisations.mkThemeSpecialisationOptions "Wallpapers to turn into theme specialisations.";
+    opts = mkThemeSpecialisationOptions "Wallpapers to turn into theme specialisations.";
 
     configFn = {cfg, ...}: let
-      wallpapers = themeSpecialisations.mkThemeWallpapers cfg;
-
-      buildSystemConfig = name: wallpaper: useForce: let
-        maybeForce =
-          if useForce
-          then mkForce
-          else id;
-      in {
-        stylix = {
-          base16Scheme = maybeForce "${themeSpecialisations.mkThemeBase16Scheme "" name wallpaper}";
-          image = maybeForce wallpaper.image;
-          polarity = maybeForce wallpaper.polarity;
-        };
-
-        environment.etc = {
-          "erinite-theme/name".text = maybeForce name;
-          "erinite-theme/wallpaper".source = maybeForce wallpaper.image;
-        };
-      };
-
+      inherit (cfg) wallpapers;
       defaultWallpaper = wallpapers.${cfg.default};
+
+      buildStylix = name: wallpaper: {
+        base16Scheme = "${mkThemeBase16Scheme "" name wallpaper}";
+        inherit (wallpaper) image polarity;
+      };
+      buildEtc = name: wallpaper: {
+        "erinite-theme/name".text = name;
+        "erinite-theme/wallpaper".source = wallpaper.image;
+      };
     in {
-      inherit ((buildSystemConfig cfg.default defaultWallpaper false)) stylix;
-      environment.etc = (buildSystemConfig cfg.default defaultWallpaper false).environment.etc;
+      stylix = buildStylix cfg.default defaultWallpaper;
+      environment.etc = buildEtc cfg.default defaultWallpaper;
 
       specialisation =
         mapAttrs (name: wallpaper: {
-          configuration = let
-            forcedConfig = buildSystemConfig name wallpaper true;
-          in {
-            inherit (forcedConfig) stylix;
+          configuration = {
+            stylix = mapAttrs (_: mkForce) (buildStylix name wallpaper);
             environment.etc =
-              forcedConfig.environment.etc
-              // {
-                "erinite-theme/specialisation".text = mkForce name;
-              };
+              mapAttrs (_: mkForce) (buildEtc name wallpaper)
+              // {"erinite-theme/specialisation".text = mkForce name;};
 
             home-manager.users.${default.username}.erinite.home.desktop.theme-specialisations.default = mkForce name;
           };

@@ -22,19 +22,17 @@
     };
   };
 in {
-  mkThemeSpecialisationOptions = wallpapersDescription: {
+  mkThemeSpecialisationOptions = description: {
     default = mkStrOpt "nixos-local-dark" "Wallpaper theme name to apply to the base configuration.";
-    wallpapers = mkAttrOpt wallpaperModule {} wallpapersDescription;
+    wallpapers =
+      mkAttrOpt wallpaperModule {
+        nixos-local-dark = {
+          polarity = "dark";
+          image = pkgs.nixos-artwork.wallpapers.catppuccin-frappe.src;
+        };
+      }
+      description;
   };
-
-  mkThemeWallpapers = cfg:
-    {
-      nixos-local-dark = {
-        polarity = "dark";
-        image = pkgs.nixos-artwork.wallpapers.catppuccin-frappe.src;
-      };
-    }
-    // cfg.wallpapers;
 
   mkThemeBase16Scheme = suffix: name: wallpaper:
     pkgs.runCommand "${name}-${suffix}base16.yaml" {
