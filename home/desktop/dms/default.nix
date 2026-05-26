@@ -5,48 +5,45 @@
   eriniteLib,
   ...
 } @ args:
-eriniteLib.mkModule args {
-  namespace = ["erinite" "home"];
-  category = "desktop";
-  name = "dms";
+with eriniteLib;
+  mkModule args {
+    namespace = ["erinite" "home"];
+    category = "desktop";
+    name = "dms";
 
-  opts = {
-    session = lib.mkOption {
-      type = lib.types.attrs;
-      default = {};
-      description = "Dms session state settings.";
+    opts = {
+      session = mkAttrOpt lib.types.attrs {} "Dms session state settings.";
     };
-  };
 
-  configFn = {cfg, ...}: let
-    dmsPackage = inputs.dms.packages.${pkgs.stdenv.hostPlatform.system}.dms-shell;
-  in
-    lib.mkMerge [
-      {
-        programs.dank-material-shell = {
-          enable = true;
-
-          settings = import ./settings.nix;
-          inherit (cfg) session;
-
-          systemd = {
+    configFn = {cfg, ...}: let
+      dmsPackage = inputs.dms.packages.${pkgs.stdenv.hostPlatform.system}.dms-shell;
+    in
+      lib.mkMerge [
+        {
+          programs.dank-material-shell = {
             enable = true;
-            restartIfChanged = true;
+
+            settings = import ./settings.nix;
+            inherit (cfg) session;
+
+            systemd = {
+              enable = true;
+              restartIfChanged = true;
+            };
+
+            enableSystemMonitoring = true;
+            enableVPN = false;
+            enableDynamicTheming = true;
+            enableAudioWavelength = true;
+            enableCalendarEvents = true;
+            enableClipboardPaste = true;
           };
 
-          enableSystemMonitoring = true;
-          enableVPN = false;
-          enableDynamicTheming = true;
-          enableAudioWavelength = true;
-          enableCalendarEvents = true;
-          enableClipboardPaste = true;
-        };
+          home.activation.restartDms = inputs.home-manager.lib.hm.dag.entryAfter ["reloadSystemd"] ''
+            $DRY_RUN_CMD ${dmsPackage}/bin/dms restart
+          '';
+        }
 
-        home.activation.restartDms = inputs.home-manager.lib.hm.dag.entryAfter ["reloadSystemd"] ''
-          $DRY_RUN_CMD ${dmsPackage}/bin/dms restart
-        '';
-      }
-
-      (import ./hyprland.nix args)
-    ];
-}
+        (import ./hyprland.nix args)
+      ];
+  }
