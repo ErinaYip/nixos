@@ -38,7 +38,7 @@ in {
 
   mkThemeBase16Scheme = suffix: name: wallpaper:
     pkgs.runCommand "${name}-${suffix}base16.yaml" {
-      nativeBuildInputs = with pkgs; [imagemagick matugen python3];
+      nativeBuildInputs = with pkgs; [matugen python3];
     } ''
       python ${script} ${escapeShellArg (toString wallpaper.image)} \
         --name ${escapeShellArg name} \
