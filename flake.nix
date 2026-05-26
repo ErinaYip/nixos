@@ -73,3 +73,4 @@
 # refactor: split os and home modules
 # refactor: enhance theme specialisations and integrate with desktop settings
 # refactor: move cuda support back to nvidia module
+# feat(dms): switch dms to master branch
