@@ -44,7 +44,7 @@ with eriniteLib;
         }
 
         {
-          programs.zsh.shellAliases = {
+          erinite.home.cli.zsh.aliases = {
             icat = "kitten icat";
           };
         }

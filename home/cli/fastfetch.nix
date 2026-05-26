@@ -168,7 +168,7 @@ with eriniteLib;
         }
 
         {
-          programs.zsh.shellAliases = {
+          erinite.home.cli.zsh.aliases = {
             fastfetch = "fastfetch --logo $(find ${fastfetch-icons} -type f | shuf -n 1)";
             ff = "fastfetch";
           };

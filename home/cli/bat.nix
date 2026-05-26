@@ -25,7 +25,7 @@ with eriniteLib;
         }
 
         {
-          programs.zsh.shellAliases = {
+          erinite.home.cli.zsh.aliases = {
             cat = "batpipe";
             less = "bat";
             man = "batman";

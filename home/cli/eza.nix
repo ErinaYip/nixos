@@ -29,7 +29,7 @@ with eriniteLib;
         }
 
         {
-          programs.zsh.shellAliases = {
+          erinite.home.cli.zsh.aliases = {
             tree = "eza --tree";
             ls = "eza";
             ll = "eza -l";
