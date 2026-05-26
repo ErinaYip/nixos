@@ -1,5 +1,4 @@
 {
-  lib,
   pkgs,
   eriniteLib,
   ...
@@ -11,8 +10,12 @@ with eriniteLib;
     name = "stylix";
 
     defaultSettings = {
-      autoEnable = true;
-      image = lib.mkDefault pkgs.nixos-artwork.wallpapers.catppuccin-frappe.src;
+      fonts.sizes = {
+        desktop = 12;
+        applications = 12;
+        # popups = 12;
+        # terminal = 10;
+      };
 
       icons = {
         enable = true;
@@ -32,12 +35,6 @@ with eriniteLib;
     };
 
     configFn = {settings, ...}: {
-      stylix = lib.mkMerge [
-        settings
-        {
-          enable = true;
-          overlays.enable = false;
-        }
-      ];
+      stylix = enabled // settings;
     };
   }

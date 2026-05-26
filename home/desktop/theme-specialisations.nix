@@ -1,35 +1,25 @@
-{
-  lib,
-  eriniteLib,
-  ...
-} @ args: let
-  inherit (eriniteLib) mkModule themeSpecialisations;
+{eriniteLib, ...} @ args: let
+  inherit (eriniteLib) mkModule;
+  inherit (eriniteLib.themeSpecialisations) mkThemeBase16Scheme mkThemeSpecialisationOptions;
 in
   mkModule args {
     namespace = ["erinite" "home"];
     category = "desktop";
     name = "theme-specialisations";
 
-    opts = themeSpecialisations.mkThemeSpecialisationOptions "Wallpapers to turn into Home Manager theme settings.";
+    opts = mkThemeSpecialisationOptions "Wallpapers to turn into Home Manager theme settings.";
 
     configFn = {cfg, ...}: let
-      wallpapers = themeSpecialisations.mkThemeWallpapers cfg;
+      inherit (cfg) wallpapers;
+      defaultWallpaper = wallpapers.${cfg.default};
 
-      buildHomeSettings = name: wallpaper: {
-        base16Scheme = "${themeSpecialisations.mkThemeBase16Scheme "home-" name wallpaper}";
+      buildStylix = name: wallpaper: {
+        base16Scheme = "${mkThemeBase16Scheme "" name wallpaper}";
         inherit (wallpaper) image polarity;
       };
-
-      defaultWallpaper = wallpapers.${cfg.default};
     in {
-      assertions = [
-        {
-          assertion = builtins.hasAttr cfg.default wallpapers;
-          message = "erinite.home.desktop.theme-specialisations.default must match one of the configured wallpaper names.";
-        }
-      ];
       erinite.home.desktop = {
-        stylix.settings = buildHomeSettings cfg.default defaultWallpaper;
+        stylix.settings = buildStylix cfg.default defaultWallpaper;
         dms.session.wallpaperPath = defaultWallpaper.image;
       };
     };
