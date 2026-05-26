@@ -1,13 +1,6 @@
 {lib}: let
   raw = lib.generators.mkLuaInline;
 
-  bind = mods: dispatcher: {
-    _args = [
-      mods
-      (raw dispatcher)
-    ];
-  };
-
   bindWithOpts = mods: dispatcher: opts: {
     _args = [
       mods
@@ -15,6 +8,7 @@
       opts
     ];
   };
+  bind = mods: dispatcher: bindWithOpts mods dispatcher {};
 
   directionName = {
     h = "left";
