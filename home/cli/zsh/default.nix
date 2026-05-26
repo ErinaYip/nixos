@@ -1,5 +1,7 @@
 {
+  lib,
   pkgs,
+  osConfig,
   eriniteLib,
   ...
 } @ args:
@@ -14,9 +16,12 @@ with eriniteLib;
 
       programs.zsh = {
         enable = true;
+        enableCompletion = true;
         autosuggestion.enable = true;
         syntaxHighlighting.enable = true;
         history.size = 10000;
+
+        shellAliases = lib.mkDefault osConfig.environment.shellAliases;
 
         initContent = ''
           ${builtins.readFile ./init.zsh}
