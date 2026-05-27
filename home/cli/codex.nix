@@ -39,8 +39,7 @@ in
                 model = "gpt-5.5";
                 model_reasoning_effort = "medium";
                 model_provider = "freemodel";
-
-                sandbox_workspace_write.network_access = true;
+                network_access = true;
 
                 features = {
                   apply_patch_freeform = true;
@@ -63,9 +62,9 @@ in
             };
           }
 
-          (mkProvider "hua" "https://huablog.ink")
           (mkProvider "freemodel" "https://api.freemodel.dev/v1")
           (mkProvider "vespervei" "https://api.vespervei.com/v1")
+          (mkProviderWithOpts "hua" "https://huablog.xyz" {wire_api = "responses";})
           (mkProviderWithOpts "rawchat" "https://rawchat.cn/codex" {wire_api = "responses";})
         ];
     }
