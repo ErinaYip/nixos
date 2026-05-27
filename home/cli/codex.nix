@@ -38,23 +38,20 @@ in
               settings = {
                 model = "gpt-5.5";
                 model_reasoning_effort = "medium";
-                model_provider = "freemodel";
                 network_access = true;
 
                 features = {
-                  apply_patch_freeform = true;
-                  plan_tool = true;
                   rmcp_client = true;
-                  streamable_shell = false;
-                  unified_exec = false;
+                  plan_tool = false;
                   view_image_tool = true;
-                  web_search_request = true;
                   parallel = true;
+
+                  streamable_shell = true;
+                  unified_exec = false;
                 };
 
                 experimental = {
                   use_freeform_apply_patch = true;
-                  use_unified_exec_tool = true;
                 };
 
                 inherit (cfg) model_providers profiles;
