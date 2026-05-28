@@ -42,3 +42,4 @@
 # fix: comment out conflict configurations
 # fix: enable fcitx5 and disable themes in rime configuration
 # feat(dms): switch dms to master branch
+# feat: update flake lock
