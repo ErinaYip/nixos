@@ -9,37 +9,41 @@ with eriniteLib;
     category = "cli";
     name = "kitty";
 
-    defaultSettings = {
-      shell = "zsh";
-      confirm_os_window_close = 0;
-      dynamic_background_opacity = true;
-      enable_audio_bell = false;
-      mouse_hide_wait = "-1.0";
-      window_padding_width = 0;
-      hide_window_decorations = "yes";
-      font_family = "MapleMono NF CN";
-      cursor_shape = "beam";
-      cursor_trail = 1;
-
-      extraConfig = ''
-        map ctrl+backspace change_font_size all 0
-        map ctrl+plus change_font_size all +1
-        map ctrl+equal change_font_size all +1
-        map ctrl+kp_add change_font_size all +1
-        map ctrl+minus change_font_size all -1
-        map ctrl+underscore change_font_size all -1
-        map ctrl+kp_subtract change_font_size all -1
-
-        mouse_map left click ungrabbed no_op
-      '';
-    };
-
-    configFn = {settings, ...}:
+    configFn = _:
       lib.mkMerge [
         {
           programs.kitty = {
             enable = true;
-            inherit settings;
+            settings = {
+              shell = "zsh";
+              # linux_display_server = "x11";
+              confirm_os_window_close = 0;
+              dynamic_background_opacity = true;
+              enable_audio_bell = false;
+              mouse_hide_wait = "-1.0";
+              window_padding_width = 0;
+              hide_window_decorations = "yes";
+              font_family = "MapleMono NF CN";
+              cursor_shape = "beam";
+              cursor_trail = 1;
+              scrollback_lines = 10000;
+              touch_scroll_multiplier = 1.5;
+            };
+
+            keybindings = {
+              "ctrl+backspace" = "change_font_size all 0";
+              "ctrl+plus" = "change_font_size all +1";
+              "ctrl+equal" = "change_font_size all +1";
+              "ctrl+kp_add" = "change_font_size all +1";
+              "ctrl+minus" = "change_font_size all -1";
+              "ctrl+underscore" = "change_font_size all -1";
+              "ctrl+kp_subtract" = "change_font_size all -1";
+            };
+
+            mouseBindings = {
+              "ctrl+left click" = "ungrabbed mouse_handle_click selection link prompt";
+              "left click" = "ungrabbed no-op";
+            };
           };
         }
 
