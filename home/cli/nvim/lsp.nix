@@ -51,6 +51,9 @@
     # nvim-docs-view.enable = isMaximal;
     # presets.harper.enable = isMaximal;
     servers = {
+      "marksman" = {
+        filetypes = lib.mkForce ["markdown"];
+      };
       "astro-language-server" = {
         cmd = lib.mkForce [
           "env"
@@ -71,6 +74,20 @@
           };
         };
       };
+      "mdx_analyzer" = {
+        enable = true;
+        cmd = [
+          (lib.getExe pkgs.mdx-language-server)
+          "--stdio"
+        ];
+        filetypes = ["mdx"];
+        root_markers = ["package.json" ".git"];
+      };
     };
   };
+
+  luaConfigRC.filetype = ''
+    vim.filetype.add({ extension = { mdx = "mdx" } })
+    vim.treesitter.language.register("markdown", "mdx")
+  '';
 }
