@@ -21,6 +21,16 @@ Current categories under `os/` and `home/`:
 - `programs/` for optional application stacks
 - `presets/` for grouped enablement
 
+Recently added system modules:
+
+- `os/system/adb.nix` installs Android platform tools and adds the default user
+  to `adbusers`.
+- `os/system/config-source.nix` links the flake source into
+  `/run/current-system/configuration-source` and adds the `nixos-source` shell
+  alias.
+- `os/system/nix.nix` owns Nix settings, unfree package allowance, AppImage
+  support, direnv, and `sudo nixos-rebuild` aliases.
+
 ### `hosts/`
 
 Contains per-machine entry points and hardware-specific configuration. Host
@@ -43,6 +53,8 @@ Repository assets and templates used by modules.
 
 Current templates include generated themes for btop, fuzzel, yazi,
 PrismLauncher, cava, and Hyprland Lua colors.
+Browser profile assets also live here, including Chromium bookmarks and
+Firefox extension/profile settings.
 
 ## Important Files
 
@@ -50,7 +62,7 @@ PrismLauncher, cava, and Hyprland Lua colors.
 
 Bridge from NixOS module space into Home Manager module space.
 
-### `os/default.nix and home/default.nix`
+### `os/default.nix` and `home/default.nix`
 
 Auto-imports the module tree.
 
@@ -78,7 +90,8 @@ Each file returns an attribute set:
 The `osModules` list is imported into `nixosSystem`, and the `homeModules` list
 is imported by both standalone Home Manager and the Home Manager user inside
 NixOS. Hardware-specific nixpkgs settings such as CUDA support live in the
-module that needs them, for example `os/system/nvidia.nix`.
+module that needs them, for example `os/system/nvidia.nix`. General nixpkgs
+policy such as `allowUnfree` lives in `os/system/nix.nix`.
 
 ### `hosts/<name>/hardware-configuration.nix`
 
@@ -97,7 +110,10 @@ If you need to understand or change behavior, start here:
   `wayland.windowManager.hyprland` overrides
 - Theme generation:
   `home/desktop/matugen.nix` and `assets/templates/`
+- Runtime source snapshot:
+  `/run/current-system/configuration-source`, provided by
+  `os/system/config-source.nix`
 - Host-only behavior:
   `hosts/<name>/`
 - Feature enablement defaults:
-  `os/presets/common.nix and home/presets/common.nix`
+  `os/presets/common.nix` and `home/presets/common.nix`

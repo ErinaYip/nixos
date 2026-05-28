@@ -23,17 +23,18 @@ The high-level flow is:
 
 1. `flake.nix` defines inputs and discovers host directories under `hosts/`.
 2. For each discovered host, `mkHost` imports `hosts/<hostName>/default.nix` and reads its `{ osModules, homeModules }` result.
-3. `mkHost` creates a `nixosSystem` for the host.
+3. The host result is split into `hostOsModules` and `hostHomeModules`.
+   `hostHomeModules` is always `[ ./home ] ++ host.homeModules`.
 4. `mkHost` creates a `nixosSystem` with these module roots:
    - `os/`
    - `hosts/<hostName>/default.nix`'s `osModules`
-   - `home-manager.users.<username>.imports = [ ./home ] ++ homeModules`
+   - `home-manager.users.<username>.imports = hostHomeModules`
 5. `specialArgs` injects:
    - `inputs`
    - `hostName`
    - `default`
    - `eriniteLib`
-6. Standalone `homeConfigurations` imports the same `[ ./home ] ++ homeModules` list.
+6. Standalone `homeConfigurations` imports the same `hostHomeModules` list.
 7. Modules expose options under `erinite.<category>.<name>` or `erinite.home.<category>.<name>`.
 8. Host modules set values under `erinite.*` and enabled modules emit final NixOS or Home Manager configuration.
 
@@ -70,7 +71,8 @@ own its own module tree.
 
 Hardware-specific nixpkgs settings are owned by the module that needs them.
 For example, `os/system/nvidia.nix` enables CUDA support alongside the NVIDIA
-driver configuration.
+driver configuration. General unfree package allowance is owned by
+`os/system/nix.nix`.
 
 Stylix's Home Manager module is imported as a shared module, but its Home
 Manager-side overlays are disabled for the same reason.
@@ -85,13 +87,18 @@ and `homeModules`.
 The current graphical session is centered on:
 
 - Hyprland from the flake input, with UWSM enabled and Home Manager using `configType = "lua"`.
-- DankMaterialShell as the shell layer, with Hyprland window/layer rules and IPC keybinds.
+- DankMaterialShell from the `master` flake input as the shell layer, with Hyprland window/layer rules and IPC keybinds.
 - Matugen-generated theme files for btop, fuzzel, yazi, PrismLauncher, cava, and Hyprland.
 - Fcitx5 + Rime for input method packages and user configuration.
 - Optional Hyprland plugins from inputs, with `hyprgrass` controlled by the host-level `grass` option.
 
 ## Presets
 
-`os/presets/common.nix and home/presets/common.nix` is a convenience preset. It enables the baseline desktop, CLI, and system stack used by both current hosts.
+`os/presets/common.nix` and `home/presets/common.nix` are convenience presets.
+They enable the baseline desktop, CLI, and system stack used by current hosts.
+The OS preset owns system services such as Nix, nh, config-source, networking,
+fonts, sound, users, keyd, Ly, Hyprland system integration, and LocalSend. The
+Home preset owns user-session applications such as browsers, DMS, Hyprland
+config, Stylix, Zsh, nh aliases, Codex, nvim, yazi, kitty, and other CLI tools.
 
 Hosts still add their own hardware and behavioral overrides on top of that preset.

@@ -44,6 +44,12 @@ This matters for nested settings trees such as:
 
 Without recursive merging, host overrides can accidentally replace an entire nested subtree.
 
+Modules can also expose extra options through `opts`. For example,
+`home/cli/zsh/default.nix` exposes an `aliases` attribute set so other Home
+modules can contribute aliases without writing directly to `programs.zsh`, and
+`home/cli/codex.nix` exposes `profiles` and `model_providers` so provider
+definitions can be composed through the normal option tree.
+
 Hyprland settings are currently structured for Lua output instead of traditional
 Hyprland conf strings. Lists such as binds, rules, environment variables,
 curves, animations, monitors, and workspace rules use attribute sets with
@@ -59,6 +65,12 @@ Useful helpers in `eriniteLib`:
 - `enabled` and `disabled`
 - `files` and `modules` for recursive module discovery
 - `getDir` - scan directory structure recursively
+
+Small module-local helper functions are preferred when they clarify repeated
+data shapes. Current examples include alias generation in `os/system/nh.nix`
+and `home/cli/nh.nix`, Nix rebuild alias generation in `os/system/nix.nix` and
+`home/cli/zsh/default.nix`, provider generation in `home/cli/codex.nix`, and
+Hyprland bind generation in `home/desktop/dms/hyprland.nix`.
 
 ## Module Discovery
 
@@ -117,3 +129,9 @@ module and wires the same Home Manager root into
 the host's `osModules`.
 
 New user-level configuration should go in `home/` or `hosts/<name>/home.nix`.
+
+Cross-module Home Manager composition should usually target an `erinite.home`
+option instead of downstream Home Manager options directly. The current Zsh
+alias flow is the pattern: `home/cli/nh.nix` and `home/cli/codex.nix` populate
+`erinite.home.cli.zsh.aliases`, and the Zsh module is the only module that
+materializes those values into `programs.zsh.shellAliases`.
