@@ -24,6 +24,13 @@ with eriniteLib;
         light = "Tela-dracula-light";
       };
 
+      fonts = {
+        serif.name = "Noto Serif CJK SC";
+        sansSerif.name = "Noto Sans CJK SC";
+        monospace.name = "Maple Mono NF CN";
+        emoji.name = "Noto Color Emoji";
+      };
+
       targets = {
         nvf = disabled;
         dank-material-shell = disabled;
