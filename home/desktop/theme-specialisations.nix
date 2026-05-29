@@ -175,7 +175,10 @@ in
     in {
       erinite.home.desktop = {
         stylix.settings = buildStylix cfg.default defaultWallpaper;
-        dms.session.wallpaperPath = defaultWallpaperPath;
+        dms = {
+          session.wallpaperPath = defaultWallpaperPath;
+          settings.matugenScheme = defaultWallpaper.type;
+        };
       };
 
       home.packages = [switcher];

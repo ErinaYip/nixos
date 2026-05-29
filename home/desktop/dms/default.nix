@@ -16,7 +16,13 @@ with eriniteLib;
       session = mkOpt lib.types.attrs {} "Dms session state settings.";
     };
 
-    configFn = {cfg, ...}: let
+    defaultSettings = import ./settings.nix;
+
+    configFn = {
+      cfg,
+      settings,
+      ...
+    }: let
       dmsPackage = inputs.dms.packages.${pkgs.stdenv.hostPlatform.system}.dms-shell;
     in
       lib.mkMerge [
@@ -24,7 +30,7 @@ with eriniteLib;
           programs.dank-material-shell = {
             enable = true;
 
-            settings = import ./settings.nix;
+            inherit settings;
             inherit (cfg) session;
 
             systemd = {

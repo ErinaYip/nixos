@@ -91,8 +91,10 @@ in
             environment.etc =
               mapAttrs (_: mkForce) (buildEtc name wallpaper)
               // {"erinite-theme/specialisation".text = mkForce name;};
-
-            home-manager.users.${default.username}.erinite.home.desktop.theme-specialisations.default = mkForce name;
+            home-manager.users.${default.username}.erinite.home.desktop = {
+              theme-specialisations.default = mkForce name;
+              dms.settings.matugenScheme = mkForce wallpaper.type;
+            };
           };
         })
         wallpapers;
