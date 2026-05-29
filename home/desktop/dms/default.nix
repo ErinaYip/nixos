@@ -12,6 +12,7 @@ with eriniteLib;
     name = "dms";
 
     opts = {
+      restartIfChanged = mkBoolOpt false "Whether to auto restart dms if configurations changed.";
       session = mkOpt lib.types.attrs {} "Dms session state settings.";
     };
 
@@ -28,7 +29,7 @@ with eriniteLib;
 
             systemd = {
               enable = true;
-              restartIfChanged = true;
+              inherit (cfg) restartIfChanged;
             };
 
             enableSystemMonitoring = true;
@@ -39,9 +40,11 @@ with eriniteLib;
             enableClipboardPaste = true;
           };
 
-          home.activation.restartDms = inputs.home-manager.lib.hm.dag.entryAfter ["reloadSystemd"] ''
-            $DRY_RUN_CMD ${dmsPackage}/bin/dms restart
-          '';
+          home.activation.restartDms = lib.mkIf cfg.restartIfChanged (
+            inputs.home-manager.lib.hm.dag.entryAfter ["reloadSystemd"] ''
+              $DRY_RUN_CMD ${dmsPackage}/bin/dms restart
+            ''
+          );
         }
 
         (import ./hyprland.nix args)
