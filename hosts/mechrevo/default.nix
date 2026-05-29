@@ -80,3 +80,4 @@
 # feat: add matugen and stylix presets, update default configurations
 # refactor: move cuda support back to nvidia module
 # feat(adb): add adb module
+# fix: add allowunfree for both os and home modules

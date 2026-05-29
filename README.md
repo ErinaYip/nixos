@@ -156,6 +156,8 @@ Notes:
 - `nh os switch` remains the canonical path for full host updates.
 - `nh home switch` evaluates `home/default.nix` directly, plus the
   selected host's `home.nix`.
+- Standalone Home Manager uses the shared flake `pkgs` import, including its
+  unfree package allowance.
 - Home targets are exposed as `era@mechrevo` and `era@nec`.
 
 Manual switch:

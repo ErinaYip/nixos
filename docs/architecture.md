@@ -6,3 +6,4 @@ docs: enhance README and architecture documentation with host discovery details
 refactor: split os and home modules
 docs: update host configuration docs
 docs: sync documentation with recent updates
+fix: add allowunfree for both os and home modules

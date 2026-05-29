@@ -74,3 +74,4 @@
 # refactor: enhance theme specialisations and integrate with desktop settings
 # refactor: move cuda support back to nvidia module
 # feat(dms): switch dms to master branch
+# fix: add allowunfree for both os and home modules
