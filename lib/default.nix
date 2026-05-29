@@ -18,6 +18,9 @@ lib.makeExtensible (final: {
   mkStrOpt = default: description:
     final.mkOpt lib.types.str default description;
 
+  mkIntOpt = default: description:
+    final.mkOpt lib.types.int default description;
+
   mkListOpt = elemType: default: description:
     final.mkOpt (lib.types.listOf elemType) default description;
 
