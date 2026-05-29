@@ -2,7 +2,13 @@
 with eriniteLib; {
   programs = {
     cava = enabled;
-    vscode = enabled;
+    vscode = {
+      enable = true;
+
+      profiles.default.userSettings = {
+        "workbench.iconTheme" = "material-icon-theme";
+      };
+    };
   };
 
   wayland.windowManager.hyprland.extraConfig = ''
@@ -22,7 +28,7 @@ with eriniteLib; {
     hl.monitor({
       output = eDP,
       mode = "2560x1600@180.00Hz",
-      position = has_ext and "1920x0" or "0x0",
+      position = "1920x0",
       scale = 1.6,
       transform = has_ext and 1 or 0,
     })

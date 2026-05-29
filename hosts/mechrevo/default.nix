@@ -7,6 +7,7 @@
 } @ args: let
   goodKernelPkgs = import inputs.nixpkgs-kernel-good {
     system = pkgs.stdenv.hostPlatform.system;
+    config.allowUnfree = true;
   };
   shared = import ../shared.nix args;
   inherit (shared) theme;

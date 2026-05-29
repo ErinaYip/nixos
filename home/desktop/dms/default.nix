@@ -48,7 +48,7 @@ with eriniteLib;
 
           home.activation.restartDms = lib.mkIf cfg.restartIfChanged (
             inputs.home-manager.lib.hm.dag.entryAfter ["reloadSystemd"] ''
-              $DRY_RUN_CMD ${dmsPackage}/bin/dms restart
+              ${dmsPackage}/bin/dms restart
             ''
           );
         }
