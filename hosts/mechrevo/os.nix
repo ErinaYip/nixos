@@ -44,7 +44,6 @@
     wechat
     materialgram
 
-    vscode
     obsidian
     libreoffice
   ];
