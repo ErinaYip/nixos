@@ -14,7 +14,7 @@ in {
     window_rule = [
       {
         name = "float-quickshell";
-        match.class = "^(org.quickshell)$";
+        match.class = "^(com.danklinux.dms)$";
         float = true;
       }
     ];
@@ -22,7 +22,7 @@ in {
     layer_rule = [
       {
         name = "no-anim-dms";
-        match.namespace = "^(dms)$";
+        match.namespace = "^(dms:bar)$";
         no_anim = true;
       }
     ];
