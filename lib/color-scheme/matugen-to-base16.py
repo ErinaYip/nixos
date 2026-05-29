@@ -3,3 +3,4 @@
 # refactor: disabled auto enable for theme-specialisations module
 # fix: add --source-color-index 0 for matugen cmd
 # refactor: streamline theme specialisations and enhance wallpaper handling
+# feat(stylix): enhance matugen theme color generation script
