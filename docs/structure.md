@@ -28,8 +28,8 @@ Recently added system modules:
 - `os/system/config-source.nix` links the flake source into
   `/run/current-system/configuration-source` and adds the `nixos-source` shell
   alias.
-- `os/system/nix.nix` owns Nix settings, unfree package allowance, AppImage
-  support, direnv, and `sudo nixos-rebuild` aliases.
+- `os/system/nix.nix` owns Nix settings, NixOS-side unfree package allowance,
+  AppImage support, direnv, and `sudo nixos-rebuild` aliases.
 
 ### `hosts/`
 
@@ -90,8 +90,9 @@ Each file returns an attribute set:
 The `osModules` list is imported into `nixosSystem`, and the `homeModules` list
 is imported by both standalone Home Manager and the Home Manager user inside
 NixOS. Hardware-specific nixpkgs settings such as CUDA support live in the
-module that needs them, for example `os/system/nvidia.nix`. General nixpkgs
-policy such as `allowUnfree` lives in `os/system/nix.nix`.
+module that needs them, for example `os/system/nvidia.nix`. NixOS-side nixpkgs
+policy such as `allowUnfree` lives in `os/system/nix.nix`; standalone Home
+Manager gets the same unfree allowance from the `pkgs` import in `flake.nix`.
 
 ### `hosts/<name>/hardware-configuration.nix`
 

@@ -56,7 +56,10 @@
   } @ inputs: let
     system = "x86_64-linux";
     inherit (nixpkgs) lib;
-    pkgs = import nixpkgs {inherit system;};
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
     eriniteLib = import ./lib {
       inherit inputs pkgs;
       inherit (pkgs) lib;
@@ -79,21 +82,17 @@
       host = import (./. + "/hosts/${hostName}") {
         inherit inputs lib eriniteLib pkgs;
       };
-      hostOsModules = host.osModules or [];
-      hostHomeModules = [./home] ++ (host.homeModules or []);
+      hostOsModules = host.osModules;
+      hostHomeModules = [./home] ++ host.homeModules;
 
       nixos = lib.nixosSystem {
         inherit system;
         modules =
           [
             ./os
+            {home-manager.users.${default.username}.imports = hostHomeModules;}
           ]
-          ++ hostOsModules
-          ++ [
-            {
-              home-manager.users.${default.username}.imports = hostHomeModules;
-            }
-          ];
+          ++ hostOsModules;
         specialArgs = {
           inherit inputs hostName default;
           inherit eriniteLib;
@@ -102,10 +101,9 @@
     in {
       inherit nixos;
       home = home-manager.lib.homeManagerConfiguration {
-        pkgs = pkgs;
+        inherit pkgs;
         extraSpecialArgs = {
-          pkgs = pkgs;
-          inherit inputs hostName default eriniteLib;
+          inherit pkgs inputs hostName default eriniteLib;
         };
         modules = hostHomeModules;
       };
@@ -119,9 +117,5 @@
       lib.mapAttrs'
       (hostName: host: lib.nameValuePair "${default.username}@${hostName}" host.home)
       hosts;
-
-    devShells.${system}.default = pkgs.mkShell {
-      buildInputs = [home-manager.packages.${system}.default];
-    };
   };
 }
