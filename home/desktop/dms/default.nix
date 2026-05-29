@@ -4,3 +4,4 @@
 # refactor: simplify dms session option definitions
 # feat(theme): add theme switcher integration
 # feat(dms): enhance dms auto restart configurations
+# feat(theme-specialisation): restart dms if schema changes

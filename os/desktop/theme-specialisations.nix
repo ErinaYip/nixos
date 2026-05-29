@@ -5,3 +5,4 @@
 # refactor: streamline theme specialisations and enhance wallpaper handling
 # refactor: streamline stylix and theme specialisations configurations
 # feat(theme): add theme switcher integration
+# feat(theme-specialisation): restart dms if schema changes
