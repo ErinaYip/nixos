@@ -7,3 +7,4 @@
 # refactor: streamline stylix and theme specialisations configurations
 # feat(stylix): set fonts for stylix
 # fix(stylix): disable overlays
+# feat(fuzzel): opacity and blur
