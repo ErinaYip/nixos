@@ -12,7 +12,7 @@ with eriniteLib;
     name = "dms";
 
     opts = {
-      session = mkAttrOpt lib.types.attrs {} "Dms session state settings.";
+      session = mkOpt lib.types.attrs {} "Dms session state settings.";
     };
 
     configFn = {cfg, ...}: let

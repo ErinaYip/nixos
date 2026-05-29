@@ -1,10 +1,11 @@
 {
   lib,
+  pkgs,
   default,
   eriniteLib,
   ...
 } @ args: let
-  inherit (lib) mapAttrs mkForce;
+  inherit (lib) concatMapStringsSep escapeShellArg mapAttrs mkForce;
   inherit (eriniteLib) mkModule;
   inherit (eriniteLib.themeSpecialisations) mkThemeBase16Scheme mkThemeSpecialisationOptions;
 in
@@ -16,7 +17,33 @@ in
 
     configFn = {cfg, ...}: let
       inherit (cfg) wallpapers;
+      themeNames = builtins.attrNames wallpapers;
       defaultWallpaper = wallpapers.${cfg.default};
+      themeCasePattern = concatMapStringsSep "|" escapeShellArg themeNames;
+
+      switchTheme = pkgs.writeShellScript "erinite-theme-switch-system" ''
+        set -eu
+
+        theme="''${1:?missing theme name}"
+
+        case "$theme" in
+          ${themeCasePattern}) ;;
+          *)
+            echo "Unknown theme: $theme" >&2
+            exit 64
+            ;;
+        esac
+
+        for system in /nix/var/nix/profiles/system /run/current-system; do
+          switcher="$system/specialisation/$theme/bin/switch-to-configuration"
+          if [ -x "$switcher" ]; then
+            exec "$switcher" switch
+          fi
+        done
+
+        echo "No switchable specialisation found for theme: $theme" >&2
+        exit 69
+      '';
 
       buildStylix = name: wallpaper: {
         base16Scheme = "${mkThemeBase16Scheme "" name wallpaper}";
@@ -29,6 +56,33 @@ in
     in {
       stylix = buildStylix cfg.default defaultWallpaper;
       environment.etc = buildEtc cfg.default defaultWallpaper;
+
+      security.polkit = {
+        enable = true;
+        extraConfig = ''
+          polkit.addRule(function(action, subject) {
+            var unit = action.lookup("unit");
+            var verb = action.lookup("verb");
+
+            if (
+              action.id == "org.freedesktop.systemd1.manage-units" &&
+              unit && unit.match(/^erinite-theme-switch@.+\.service$/) &&
+              verb == "start" &&
+              subject.user == "${default.username}"
+            ) {
+              return polkit.Result.YES;
+            }
+          });
+        '';
+      };
+
+      systemd.services."erinite-theme-switch@" = {
+        description = "Switch to NixOS theme specialisation %I";
+        serviceConfig = {
+          Type = "oneshot";
+          ExecStart = "${switchTheme} %I";
+        };
+      };
 
       specialisation =
         mapAttrs (name: wallpaper: {
