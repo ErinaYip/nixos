@@ -6,3 +6,4 @@
 # refactor: update DMS and Stylix configurations for improved session handling and wallpaper management
 # refactor: streamline stylix and theme specialisations configurations
 # feat(stylix): set fonts for stylix
+# fix(stylix): disable overlays
