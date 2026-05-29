@@ -42,6 +42,9 @@ with eriniteLib;
     };
 
     configFn = {settings, ...}: {
-      stylix = enabled // settings;
+      stylix =
+        enabled
+        // settings
+        // {overlays = disabled;};
     };
   }
