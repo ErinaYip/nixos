@@ -24,6 +24,8 @@ with eriniteLib;
         light = "Tela-dracula-light";
       };
 
+      opacity.popups = 0.8;
+
       fonts = {
         serif.name = "Noto Serif CJK SC";
         sansSerif.name = "Noto Sans CJK SC";

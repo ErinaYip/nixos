@@ -5,6 +5,11 @@ eriniteLib.mkModule args {
   name = "fuzzel";
 
   configFn = _: {
-    programs.fuzzel.enable = true;
+    programs.fuzzel = {
+      enable = true;
+      settings = {
+        border.width = 3;
+      };
+    };
   };
 }
