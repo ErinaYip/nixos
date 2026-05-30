@@ -7,6 +7,7 @@
 } @ args: let
   inherit (lib) concatMapStringsSep concatStringsSep escapeShellArg generators mapAttrsToList;
   inherit (eriniteLib) mkModule;
+  inherit (eriniteLib.themeSwitching) mkHomePrograms;
   inherit (eriniteLib.themeSpecialisations) mkThemeBase16Scheme mkThemeSpecialisationOptions;
 
   raw = generators.mkLuaInline;
@@ -67,110 +68,8 @@ in
         inherit (wallpaper) image polarity;
       };
 
-      themeSwitch = pkgs.writeShellApplication {
-        name = "erinite-theme-switch";
-        runtimeInputs = with pkgs; [
-          coreutils
-          gnugrep
-          dmsPackage
-          systemd
-        ];
-        text = ''
-          set -euo pipefail
-
-          current="$(cat /etc/erinite-theme/name 2>/dev/null || true)"
-
-          list_themes() {
-            cat ${themesFile}
-          }
-
-          usage() {
-            printf '%s\n\n%s\n%s\n%s\n' \
-              'Usage: erinite-theme-switch [theme]' \
-              'Options:' \
-              '  --current  print the active theme' \
-              '  --list     list available themes'
-          }
-
-          case "''${1-}" in
-            --current)
-              printf '%s\n' "$current"
-              exit 0
-              ;;
-            --list)
-              list_themes
-              exit 0
-              ;;
-            -h|--help)
-              usage
-              exit 0
-              ;;
-          esac
-
-          if [ "$#" -gt 1 ]; then
-            usage >&2
-            exit 64
-          fi
-
-          if [ "$#" -eq 1 ]; then
-            choice="$1"
-          else
-            exec dms ipc call dankdash wallpaper
-          fi
-
-          if ! grep -Fxq "$choice" ${themesFile}; then
-            printf 'Unknown theme: %s\n' "$choice" >&2
-            exit 64
-          fi
-
-          if [ "$choice" = "$current" ]; then
-            exit 0
-          fi
-
-          unit="$(systemd-escape --template=erinite-theme-switch@.service "$choice")"
-          systemctl start "$unit"
-        '';
-      };
-
-      wallpaperHook = pkgs.writeShellApplication {
-        name = "erinite-theme-switch-from-wallpaper";
-        runtimeInputs = with pkgs; [
-          coreutils
-        ];
-        text = ''
-          set -euo pipefail
-
-          wallpaper="''${1-}"
-          if [ -z "$wallpaper" ]; then
-            exit 0
-          fi
-
-          file_name="$(basename -- "$wallpaper")"
-          theme=""
-
-          case "$file_name" in
-          ${wallpaperCase}
-          esac
-
-          if [ -z "$theme" ]; then
-            exit 0
-          fi
-
-          current="$(cat /etc/erinite-theme/name 2>/dev/null || true)"
-          if [ "$theme" = "$current" ]; then
-            exit 0
-          fi
-
-          exec ${themeSwitch}/bin/erinite-theme-switch "$theme"
-        '';
-      };
-
-      switcher = pkgs.symlinkJoin {
-        name = "erinite-theme-switch";
-        paths = [
-          themeSwitch
-          wallpaperHook
-        ];
+      switcher = mkHomePrograms {
+        inherit dmsPackage themesFile wallpaperCase;
       };
     in {
       erinite.home.desktop = {
@@ -181,11 +80,11 @@ in
         };
       };
 
-      home.packages = [switcher];
+      home.packages = [switcher.package];
 
       programs.dank-material-shell.plugins.wallpaperWatcherDaemon = {
         src = inputs.dms + "/quickshell/PLUGINS/WallpaperWatcherDaemon";
-        settings.scriptPath = "${wallpaperHook}/bin/erinite-theme-switch-from-wallpaper";
+        settings.scriptPath = "${switcher.wallpaperHook}/bin/erinite-theme-switch-from-wallpaper";
       };
 
       xdg.desktopEntries.erinite-theme-switch = {

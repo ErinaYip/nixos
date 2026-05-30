@@ -37,6 +37,10 @@ lib.makeExtensible (final: {
     eriniteLib = final;
   };
 
+  themeSwitching = import ./theme-switching {
+    inherit lib pkgs;
+  };
+
   mergeSettings = definitions:
     (lib.evalModules {
       modules = [
