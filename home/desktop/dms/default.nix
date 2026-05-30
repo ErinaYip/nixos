@@ -7,3 +7,4 @@
 # feat(theme-specialisation): restart dms if schema changes
 # refactor
 # restart dms earlier during activation
+# fix(theme): block wallpaper changes during theme switch

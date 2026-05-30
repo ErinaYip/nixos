@@ -8,3 +8,4 @@
 # feat(stylix): enhance styix theme for nvim and dms
 # refactor theme switching scripts
 # feat(theme-specialisation): enhance and simplify theme switching sctipts
+# fix(theme): block wallpaper changes during theme switch
