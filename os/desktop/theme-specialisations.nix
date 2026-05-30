@@ -8,3 +8,4 @@
 # feat(theme-specialisation): restart dms if schema changes
 # refactor theme switching scripts
 # feat(theme-specialisation): enhance and simplify theme switching sctipts
+# fix(theme): use system profile for theme specialisations
