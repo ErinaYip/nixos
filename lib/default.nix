@@ -40,3 +40,4 @@
 # refactor: streamline theme specialisations and enhance wallpaper handling
 # feat(stylix): enhance matugen theme color generation script
 # refactor theme switching scripts
+# feat(theme-specialisation): enhance and simplify theme switching sctipts

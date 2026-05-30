@@ -7,3 +7,4 @@
 # feat(theme): add theme switcher integration
 # feat(theme-specialisation): restart dms if schema changes
 # refactor theme switching scripts
+# feat(theme-specialisation): enhance and simplify theme switching sctipts
