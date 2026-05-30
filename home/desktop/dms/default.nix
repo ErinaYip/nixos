@@ -47,7 +47,7 @@ with eriniteLib;
           };
 
           home.activation.restartDms = lib.mkIf cfg.restartIfChanged (
-            inputs.home-manager.lib.hm.dag.entryAfter ["reloadSystemd"] ''
+            inputs.home-manager.lib.hm.dag.entryBetween ["onFilesChange" "reloadSystemd"] ["linkGeneration"] ''
               ${dmsPackage}/bin/dms restart
             ''
           );
