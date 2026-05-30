@@ -1,12 +1,12 @@
 {
   lib,
+  pkgs,
   default,
   eriniteLib,
   ...
 } @ args: let
   inherit (lib) mapAttrs mkForce;
   inherit (eriniteLib) mkModule;
-  inherit (eriniteLib.themeSwitching) mkSystemSwitchScript;
   inherit (eriniteLib.themeSpecialisations) mkThemeBase16Scheme mkThemeSpecialisationOptions;
 in
   mkModule args {
@@ -17,12 +17,23 @@ in
 
     configFn = {cfg, ...}: let
       inherit (cfg) wallpapers;
-      themeNames = builtins.attrNames wallpapers;
       defaultWallpaper = wallpapers.${cfg.default};
 
-      switchTheme = mkSystemSwitchScript {
-        inherit themeNames;
-      };
+      switchTheme = pkgs.writeShellScript "erinite-theme-switch-system" ''
+        set -eu
+
+        theme="''${1:?missing theme name}"
+
+        for system in /nix/var/nix/profiles/system /run/current-system; do
+          switcher="$system/specialisation/$theme/bin/switch-to-configuration"
+          if [ -x "$switcher" ]; then
+            exec "$switcher" switch
+          fi
+        done
+
+        echo "No switchable specialisation found for theme: $theme" >&2
+        exit 69
+      '';
 
       buildStylix = name: wallpaper: {
         base16Scheme = "${mkThemeBase16Scheme "" name wallpaper}";
@@ -59,7 +70,7 @@ in
         description = "Switch to NixOS theme specialisation %I";
         serviceConfig = {
           Type = "oneshot";
-          ExecStart = "${switchTheme}/bin/erinite-theme-switch-system %I";
+          ExecStart = "${switchTheme} %I";
         };
       };
 

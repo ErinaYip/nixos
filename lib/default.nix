@@ -5,10 +5,6 @@
   ...
 }:
 lib.makeExtensible (final: {
-  imports = [
-    ./recolor
-  ];
-
   mkOpt = type: default: description:
     lib.mkOption {inherit type default description;};
 
@@ -35,10 +31,6 @@ lib.makeExtensible (final: {
   themeSpecialisations = import ./theme-specialisations.nix {
     inherit lib pkgs;
     eriniteLib = final;
-  };
-
-  themeSwitching = import ./theme-switching {
-    inherit lib pkgs;
   };
 
   mergeSettings = definitions:

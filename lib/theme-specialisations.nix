@@ -14,6 +14,10 @@
         type = types.oneOf [types.path types.package types.str];
         description = "Wallpaper image used to generate this theme.";
       };
+      fileName = mkOption {
+        type = types.str;
+        description = "Wallpaper file name.";
+      };
       index = mkIntOpt 0 "Source color index";
       style = mkOption {
         type = types.enum ["balanced" "vivid" "soft" "analogous" "triad"];
@@ -42,12 +46,30 @@
     };
   };
 in {
+  mkWallpapers =
+    lib.mapAttrs' (fileName: {
+      url,
+      hash,
+      type ? "scheme-tonal-spot",
+      style ? "soft",
+      index ? 0,
+      polarity ? "dark",
+    }:
+      lib.nameValuePair (builtins.head (lib.splitString "." fileName)) {
+        inherit fileName type style index polarity;
+        image = pkgs.fetchurl {
+          name = fileName;
+          inherit url hash;
+        };
+      });
+
   mkThemeSpecialisationOptions = description: {
     default = mkStrOpt "nixos-local-dark" "Wallpaper theme name to apply to the base configuration.";
     wallpapers =
       mkAttrOpt wallpaperModule {
         nixos-local-dark = {
           polarity = "dark";
+          fileName = "nixos-local-dark.png";
           image = pkgs.nixos-artwork.wallpapers.catppuccin-frappe.src;
         };
       }

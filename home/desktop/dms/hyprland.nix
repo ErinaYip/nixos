@@ -61,7 +61,7 @@ in {
     (bind "SUPER + m" ''hl.dsp.exec_cmd("dms ipc call processlist focusOrToggle")'')
     (bind "SUPER + comma" ''hl.dsp.exec_cmd("dms ipc call settings focusOrToggle")'')
     # (bind "SUPER + n" ''hl.dsp.exec_cmd("dms ipc call notifications toggle")'')
-    # (bind "SUPER + y" ''hl.dsp.exec_cmd("dms ipc call dankdash wallpaper")'')
+    (bind "SUPER + y" ''hl.dsp.exec_cmd("dms ipc call dankdash wallpaper")'')
     (bind "SUPER + tab" ''hl.dsp.exec_cmd("dms ipc call hypr toggleOverview")'')
 
     (bind "SUPER + ALT + l" ''hl.dsp.exec_cmd("dms ipc call lock lock")'')
