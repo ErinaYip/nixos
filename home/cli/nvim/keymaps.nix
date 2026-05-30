@@ -4,7 +4,7 @@
   ...
 }: {
   keymaps = [
-    (mkKeymaps ["n" "x"] "d" ''"_d'')
+    # (mkKeymaps ["n" "x"] "d" ''"_d'')
     (mkKeymaps ["n" "x"] "c" ''"_c'')
 
     (mkKeymaps ["n"] "<Up>" "<Nop>")
