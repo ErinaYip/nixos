@@ -39,3 +39,4 @@
 # refactor: split os and home modules
 # refactor: streamline theme specialisations and enhance wallpaper handling
 # feat(stylix): enhance matugen theme color generation script
+# refactor theme switching scripts
