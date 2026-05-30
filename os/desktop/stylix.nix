@@ -2,3 +2,4 @@
 # refactor: enhance theme specialisations and integrate with desktop settings
 # refactor: streamline stylix and theme specialisations configurations
 # feat(stylix): set fonts for stylix
+# feat(recolor): enhance recolor script to faster

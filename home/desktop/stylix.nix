@@ -9,3 +9,4 @@
 # fix(stylix): disable overlays
 # feat(fuzzel): opacity and blur
 # feat(stylix): enhance styix theme for nvim and dms
+# feat(recolor): enhance recolor script to faster
