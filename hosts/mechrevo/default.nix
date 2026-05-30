@@ -5,12 +5,27 @@
   eriniteLib,
   ...
 } @ args: let
+  inherit (eriniteLib.themeSpecialisations) mkWallpapers;
   goodKernelPkgs = import inputs.nixpkgs-kernel-good {
     system = pkgs.stdenv.hostPlatform.system;
     config.allowUnfree = true;
   };
-  shared = import ../shared.nix args;
-  inherit (shared) theme;
+  shared = (import ../shared.nix args).theme;
+  theme = {
+    inherit (shared) default;
+    wallpapers =
+      shared.wallpapers
+      // mkWallpapers {
+        "kurogame-neon-purple.png" = {
+          url = "https://media-cdn-zspms.kurogame.com/pnswebsite/website2.0/images/1770134400000/f8pracrulrwq5570gx-177017628557319.png";
+          hash = "sha256-5EGHH5D+VYMopFQTUy4TjPkLs3MN+e4VzBiJEXHiZUM=";
+        };
+        "kurogame-silver-orange.png" = {
+          url = "https://media-cdn-zspms.kurogame.com/pnswebsite/website2.0/images/1764000000000/vfr8pepbj8kv9i2ozf-17640438278579.png";
+          hash = "sha256-9PnJsPlaKSd7MyhxaoMLsK0pwtnNph6R0SSKJtshrVY=";
+        };
+      };
+  };
 in {
   osModules = with eriniteLib; [
     ./hardware-configuration.nix
