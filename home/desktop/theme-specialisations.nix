@@ -5,3 +5,4 @@
 # refactor: streamline stylix and theme specialisations configurations
 # feat(theme): add theme switcher integration
 # feat(theme-specialisation): restart dms if schema changes
+# feat(stylix): enhance styix theme for nvim and dms

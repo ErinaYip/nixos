@@ -8,3 +8,4 @@
 # feat(stylix): set fonts for stylix
 # fix(stylix): disable overlays
 # feat(fuzzel): opacity and blur
+# feat(stylix): enhance styix theme for nvim and dms
