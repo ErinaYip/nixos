@@ -82,3 +82,4 @@
 # feat(adb): add adb module
 # fix: add allowunfree for both os and home modules
 # refactor
+# feat(mechrevo): add wallpapers
