@@ -52,7 +52,6 @@
     {
       name = "blur-launcher";
       match.namespace = "^(launcher)$";
-      # opacity = "0.8 override 0.8 override";
       blur = true;
     }
   ];

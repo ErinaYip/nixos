@@ -25,6 +25,21 @@ in {
         match.namespace = "^(dms:bar)$";
         no_anim = true;
       }
+      {
+        name = "blur-dms-spotlight";
+        match.namespace = "^(dms:spotlight)$";
+        blur = true;
+      }
+      {
+        name = "blur-dms-dash";
+        match.namespace = "^(dms:dash)$";
+        blur = true;
+      }
+      {
+        name = "blur-dms-dash-background";
+        match.namespace = "^(dms:dash:background)$";
+        blur = true;
+      }
     ];
 
     config.misc = {
