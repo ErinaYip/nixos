@@ -176,7 +176,7 @@ in
       erinite.home.desktop = {
         stylix.settings = buildStylix cfg.default defaultWallpaper;
         dms = {
-          session.wallpaperPath = defaultWallpaperPath;
+          session.wallpaperPath = lib.mkForce defaultWallpaperPath;
           settings.matugenScheme = defaultWallpaper.type;
         };
       };

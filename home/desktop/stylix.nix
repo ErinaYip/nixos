@@ -34,7 +34,7 @@ with eriniteLib;
       };
 
       targets = {
-        nvf = disabled;
+        # nvf = disabled;
         dank-material-shell = disabled;
         firefox = {
           profileNames = ["default"];

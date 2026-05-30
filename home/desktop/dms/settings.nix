@@ -1,5 +1,7 @@
 {
   currentThemeName = "dynamic";
+  monoFontFamily = "Maple Mono NF CN ExtraBold";
+
   currentThemeCategory = "dynamic";
   widgetColorMode = "colorful";
   cornerRadius = 32;
@@ -95,7 +97,6 @@
   weatherEnabled = false;
   networkPreference = "wifi";
 
-  monoFontFamily = "Maple Mono NF CN ExtraBold";
   fontWeight = 600;
 
   fadeToLockEnabled = false;

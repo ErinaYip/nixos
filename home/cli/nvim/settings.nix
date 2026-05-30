@@ -42,9 +42,9 @@
     foldenable = true;
   };
 
-  theme = {
-    enable = true;
-    style = "auto";
-    name = "catppuccin";
-  };
+  # theme = {
+  #   enable = true;
+  #   style = "auto";
+  #   name = "catppuccin";
+  # };
 }
