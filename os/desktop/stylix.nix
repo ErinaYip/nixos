@@ -1,5 +1,4 @@
 {
-  pkgs,
   inputs,
   eriniteLib,
   ...
@@ -12,16 +11,6 @@ with eriniteLib;
     imports = [inputs.stylix.nixosModules.default];
 
     defaultSettings = {
-      icons = {
-        enable = true;
-        # package = pkgs.tela-icon-theme.overrideAttrs (oldAttrs: {
-        #   postInstall = recolorScript args + (oldAttrs.postInstall or "");
-        # });
-        package = pkgs.tela-icon-theme;
-        dark = "Tela-dracula-dark";
-        light = "Tela-dracula-light";
-      };
-
       fonts = {
         serif.name = "Noto Serif CJK SC";
         sansSerif.name = "Noto Sans CJK SC";

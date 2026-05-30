@@ -2,51 +2,70 @@
   pkgs,
   eriniteLib,
   ...
-} @ args:
-with eriniteLib;
-  mkModule args {
-    namespace = ["erinite" "home"];
-    category = "desktop";
-    name = "stylix";
+} @ args: let
+  inherit (eriniteLib) recolorScript;
+  telaIconThemeNames = ["Tela" "Tela-dark"];
+  telaIconTheme = pkgs.tela-icon-theme.overrideAttrs (oldAttrs: {
+    installPhase = ''
+      runHook preInstall
 
-    defaultSettings = {
-      fonts.sizes = {
-        desktop = 12;
-        applications = 12;
-        # popups = 12;
-        # terminal = 10;
-      };
+      patchShebangs install.sh
+      mkdir -p $out/share/icons
+      ./install.sh -d $out/share/icons standard
+      jdupes -l -r $out/share/icons
 
-      icons = {
-        enable = true;
-        package = pkgs.tela-icon-theme;
-        dark = "Tela-dracula-dark";
-        light = "Tela-dracula-light";
-      };
+      runHook postInstall
+    '';
 
-      opacity.popups = 0.8;
+    postInstall =
+      recolorScript (args // {recolorOptions.whitelist = telaIconThemeNames;})
+      + (oldAttrs.postInstall or "");
+  });
+in
+  with eriniteLib;
+    mkModule args {
+      namespace = ["erinite" "home"];
+      category = "desktop";
+      name = "stylix";
 
-      fonts = {
-        serif.name = "Noto Serif CJK SC";
-        sansSerif.name = "Noto Sans CJK SC";
-        monospace.name = "Maple Mono NF CN";
-        emoji.name = "Noto Color Emoji";
-      };
+      defaultSettings = {
+        fonts.sizes = {
+          desktop = 12;
+          applications = 12;
+          # popups = 12;
+          # terminal = 10;
+        };
 
-      targets = {
-        # nvf = disabled;
-        dank-material-shell = disabled;
-        firefox = {
-          profileNames = ["default"];
-          colorTheme.enable = true;
+        icons = {
+          enable = true;
+          package = telaIconTheme;
+          dark = "Tela-dark";
+          light = "Tela";
+        };
+
+        opacity.popups = 0.8;
+
+        fonts = {
+          serif.name = "Noto Serif CJK SC";
+          sansSerif.name = "Noto Sans CJK SC";
+          monospace.name = "Maple Mono NF CN";
+          emoji.name = "Noto Color Emoji";
+        };
+
+        targets = {
+          # nvf = disabled;
+          dank-material-shell = disabled;
+          firefox = {
+            profileNames = ["default"];
+            colorTheme.enable = true;
+          };
         };
       };
-    };
 
-    configFn = {settings, ...}: {
-      stylix =
-        enabled
-        // settings
-        // {overlays = disabled;};
-    };
-  }
+      configFn = {settings, ...}: {
+        stylix =
+          enabled
+          // settings
+          // {overlays = disabled;};
+      };
+    }

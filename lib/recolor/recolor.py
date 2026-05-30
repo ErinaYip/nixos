@@ -746,7 +746,20 @@ def recolor_modified(op: str, args) -> None:
 
 
 def list_of_strings(arg):
-    return arg.split(",")
+    return [item for item in arg.split(",") if item]
+
+
+def get_recolor_roots(args) -> List[str]:
+    if not args.whitelist:
+        return [args.src]
+
+    roots = []
+    for item in args.whitelist:
+        path = os.path.join(args.src, item)
+        check_path(path)
+        roots.append(path)
+
+    return roots
 
 
 def main():
@@ -755,16 +768,22 @@ def main():
     parser.add_argument("--src", type=str)
     parser.add_argument("--monochrome", type=list_of_strings)
     parser.add_argument("--palette", type=list_of_strings)
+    parser.add_argument("--whitelist", type=list_of_strings)
     parser.add_argument("--smooth", type=bool, default=True)
 
     args = parser.parse_args()
+    roots = get_recolor_roots(args)
 
     if args.monochrome != None:
         for idx in range(len(args.monochrome)):
             args.monochrome[idx] = hex_to_hsl(args.monochrome[idx])
-        recolor_modified("monochrome", args)
+        for root in roots:
+            args.src = root
+            recolor_modified("monochrome", args)
     elif args.palette != None:
-        recolor_modified("palette", args)
+        for root in roots:
+            args.src = root
+            recolor_modified("palette", args)
 
 
 if __name__ == "__main__":
