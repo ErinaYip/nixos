@@ -6,3 +6,4 @@
 # feat(dms): enhance dms auto restart configurations
 # feat(theme-specialisation): restart dms if schema changes
 # refactor
+# restart dms earlier during activation
