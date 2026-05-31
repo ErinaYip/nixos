@@ -40,8 +40,6 @@
     # wireshark
     # bottles
 
-    qq
-    wechat
     materialgram
 
     obsidian

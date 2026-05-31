@@ -29,6 +29,5 @@
     pnpm
     nodejs
 
-    qq
   ];
 }

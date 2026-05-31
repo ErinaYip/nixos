@@ -91,6 +91,7 @@ in {
 
         desktop = {
           theme-specialisations = theme;
+          wechat = enabled;
         };
       };
     }
