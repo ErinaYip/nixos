@@ -84,3 +84,4 @@
 # refactor
 # feat(mechrevo): add wallpapers
 # feat(wechat/qq): add wechat and qq home modules
+# deat(mechrevo): add wallpaper
