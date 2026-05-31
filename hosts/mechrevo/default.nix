@@ -83,3 +83,4 @@
 # fix: add allowunfree for both os and home modules
 # refactor
 # feat(mechrevo): add wallpapers
+# feat(wechat/qq): add wechat and qq home modules
