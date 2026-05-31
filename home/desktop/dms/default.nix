@@ -8,3 +8,4 @@
 # refactor
 # restart dms earlier during activation
 # fix(theme): block wallpaper changes during theme switch
+# feat(themeSpecialisation): simplify theme switching
