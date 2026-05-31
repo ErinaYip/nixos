@@ -10,7 +10,7 @@ with eriniteLib;
         desktop = {
           stylix = enabled;
           theme-specialisations = enabled;
-          # dms.restartIfChanged = true;
+          dms.restartIfChanged = true;
         };
       };
     };

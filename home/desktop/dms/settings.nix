@@ -129,10 +129,10 @@
           minimumWidth = false;
           showSwap = false;
         }
-        {
-          id = "network_speed_monitor";
-          enabled = true;
-        }
+        # {
+        #   id = "network_speed_monitor";
+        #   enabled = true;
+        # }
         {
           id = "focusedWindow";
           enabled = true;
