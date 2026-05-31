@@ -11,21 +11,32 @@ with eriniteLib;
     name = "fastfetch";
 
     configFn = _: let
-      fastfetch-icons = pkgs.fetchgit {
-        url = "https://codeberg.org/erina/eps.git";
-        rev = "3c1781b5d34098b8e17943dc5ea304aa7bc01597";
-        sha256 = "sha256-nfKM9hudU8kJqEwMMjVrhObKgTRwn7wjV9Yb1c+hFqs=";
+      fastfetch-icons = pkgs.fetchFromGitea {
+        domain = "codeberg.org";
+        owner = "erina";
+        repo = "eps-pgr";
+        rev = "0.0.2";
+        sha256 = "sha256-+u+cG45ThBacSPP6oE+AFPZTV35Y4zE8RLfSqZMsATg=";
       };
     in
       lib.mkMerge [
+        {
+          erinite.home.cli.zsh.aliases = {
+            fastfetch = "fastfetch --logo $(find ${fastfetch-icons} -type f | shuf -n 1)";
+            ff = "fastfetch";
+          };
+        }
         {
           programs.fastfetch = {
             enable = true;
             settings = {
               logo = {
                 type = "kitty";
-                height = 30;
-                padding.right = 1;
+                height = 32;
+                padding = {
+                  left = 0;
+                  right = 0;
+                };
               };
               display.separator = " ";
               modules = [
@@ -164,13 +175,6 @@ with eriniteLib;
                 "break"
               ];
             };
-          };
-        }
-
-        {
-          erinite.home.cli.zsh.aliases = {
-            fastfetch = "fastfetch --logo $(find ${fastfetch-icons} -type f | shuf -n 1)";
-            ff = "fastfetch";
           };
         }
       ];
