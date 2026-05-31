@@ -4,14 +4,14 @@
 # type: ignore
 
 # Desc: A program for recoloring icon packs, themes and wallpapers. For NovaOS.
-# Auth: Nicklas Vraa
+# Auth: Nicklas Vraa / Erina Yip
 
 from typing import Annotated, List, Set, Tuple, Dict, Optional
 from tqdm import tqdm
 
 # from basic_colormath.type_hints import RGB, Lab
 from basic_colormath.distance import rgb_to_lab, get_delta_e_lab
-from PIL import Image, ImageDraw  # noqa
+from PIL import Image  # noqa
 import os, re, shutil, json, subprocess, argparse, random  # noqa
 
 # Using custom type hints as the default ones in basic_colormath.type_hits arent compatible past python 3.8

@@ -19,8 +19,8 @@ with eriniteLib; {
     for _, mon in ipairs(hl.get_monitors()) do
       if mon.description == "HKC OVERSEAS LIMITED X5 0000000000001" then
         has_ext = true
-        hl.workspace_rule({ workspace = "1", monitor = DP, default = true, })
-        hl.workspace_rule({ workspace = "2", monitor = eDP, default = true, layout = "dwindle", })
+        hl.workspace_rule({ workspace = "2", monitor = DP, default = true, })
+        hl.workspace_rule({ workspace = "1", monitor = eDP, default = true, layout = "dwindle", })
         break
       end
     end
