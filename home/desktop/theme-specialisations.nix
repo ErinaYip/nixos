@@ -38,10 +38,7 @@ in
 
       themeSwitch = pkgs.writeShellApplication {
         name = "erinite-theme-switch";
-        runtimeInputs = with pkgs; [
-          coreutils
-          systemd
-        ];
+        runtimeInputs = with pkgs; [coreutils systemd];
         text = ''
           set -euo pipefail
 
@@ -49,24 +46,8 @@ in
           file_name="$(basename -- "$wallpaper")"
           choice="''${file_name%.*}"
 
-          current="$(cat /etc/erinite-theme/name 2>/dev/null || true)"
-          if [ "$choice" = "$current" ]; then
-            exit 0
-          fi
-
-          lock_dir="''${XDG_STATE_HOME:-$HOME/.local/state}/DankMaterialShell"
-          lock_file="$lock_dir/erinite-theme-switch.lock"
-          mkdir -p "$lock_dir"
-
-          if [ -e "$lock_file" ]; then
-            exit 0
-          fi
-
-          printf '%s\n' "$choice" > "$lock_file"
-          trap 'rm -f "$lock_file"' EXIT
-
           unit="$(systemd-escape --template=erinite-theme-switch@.service "$choice")"
-          systemctl start "$unit"
+          systemctl start "$unit" & dms restart
         '';
       };
     in {
