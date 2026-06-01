@@ -20,6 +20,16 @@ eriniteLib.mkModule args {
         user.email = cfg.user.email;
         init.defaultBranch = "main";
         gpg.format = "ssh";
+        pull.rebaes = false;
+        alias = {
+          s = "status";
+          c = "checkout";
+          f = "fetch";
+          k = "push";
+          ps = "push";
+          j = "pull";
+          pl = "pull";
+        };
       };
       signing = {
         key = "~/.ssh/id_ed25519.pub";
