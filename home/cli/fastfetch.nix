@@ -114,7 +114,7 @@ with eriniteLib;
                   type = "cursor";
                 }
                 {
-                  key = "│ {#36} icons       {#keys}│";
+                  key = "│ {#36} terminal    {#keys}│";
                   type = "terminal";
                 }
                 {
