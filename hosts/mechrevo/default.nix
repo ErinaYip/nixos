@@ -72,6 +72,10 @@ in {
           stylix = enabled;
         };
 
+        games = {
+          prismlauncher = enabled;
+        };
+
         cli = {
           git = {
             user = {

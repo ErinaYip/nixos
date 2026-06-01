@@ -1,8 +1,4 @@
-{
-  pkgs,
-  eriniteLib,
-  ...
-} @ args:
+{eriniteLib, ...} @ args:
 eriniteLib.mkModule args {
   category = "programs";
   name = "gaming";
@@ -19,10 +15,5 @@ eriniteLib.mkModule args {
         localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
       };
     };
-
-    environment.systemPackages = with pkgs; [
-      prismlauncher
-      hmcl
-    ];
   };
 }
