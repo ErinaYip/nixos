@@ -32,6 +32,7 @@ with eriniteLib;
           (import ./keymaps.nix arg)
           (import ./ui.nix arg)
           (import ./lsp.nix arg)
+          (import ./kitty-scrollback.nix arg)
 
           (import ./settings.nix)
           (import ./lualine.nix)

@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   eriniteLib,
   ...
 } @ args:
@@ -16,7 +17,6 @@ with eriniteLib;
             enable = true;
             settings = {
               shell = "zsh";
-              # linux_display_server = "x11";
               confirm_os_window_close = 0;
               dynamic_background_opacity = true;
               enable_audio_bell = false;
@@ -27,10 +27,10 @@ with eriniteLib;
               cursor_shape = "beam";
               cursor_trail = 1;
               scrollback_lines = 10000;
-              touch_scroll_multiplier = 1.5;
             };
 
             keybindings = {
+              # Fonts
               "ctrl+backspace" = "change_font_size all 0";
               "ctrl+plus" = "change_font_size all +1";
               "ctrl+equal" = "change_font_size all +1";
@@ -38,12 +38,26 @@ with eriniteLib;
               "ctrl+minus" = "change_font_size all -1";
               "ctrl+underscore" = "change_font_size all -1";
               "ctrl+kp_subtract" = "change_font_size all -1";
+
+              # Windows
+              "ctrl+x" = "new_os_window_with_cwd";
+              "ctrl+shift+enter" = "new_window_with_cwd";
             };
 
             mouseBindings = {
               "ctrl+left click" = "ungrabbed mouse_handle_click selection link prompt";
               "left click" = "ungrabbed no-op";
             };
+
+            extraConfig = ''
+              allow_remote_control yes
+              listen_on unix:/tmp/kitty
+
+              action_alias kitty_scrollback_nvim kitten ${pkgs.vimPlugins.kitty-scrollback-nvim}/python/kitty_scrollback_nvim.py
+
+              map ctrl+shift+h kitty_scrollback_nvim
+              map ctrl+shift+g kitty_scrollback_nvim --config ksb_builtin_last_cmd_output
+            '';
           };
         }
 
