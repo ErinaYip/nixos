@@ -71,6 +71,7 @@ with eriniteLib;
 
             notify.nvim-notify = enabled;
             comments.comment-nvim = enabled;
+            utility.motion.flash-nvim = enabled;
           }
         ];
       };
