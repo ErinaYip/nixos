@@ -47,7 +47,7 @@ in
           choice="''${file_name%.*}"
 
           unit="$(systemd-escape --template=erinite-theme-switch@.service "$choice")"
-          systemctl start "$unit" & dms restart
+          systemctl start "$unit" & sleep 0.5 ; dms restart
         '';
       };
     in {
