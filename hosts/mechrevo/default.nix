@@ -86,3 +86,4 @@
 # feat(wechat/qq): add wechat and qq home modules
 # deat(mechrevo): add wallpaper
 # update system
+# feat(prismlauncher): add prismlauncher module
