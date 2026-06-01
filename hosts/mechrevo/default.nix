@@ -1,15 +1,5 @@
-{
-  lib,
-  pkgs,
-  inputs,
-  eriniteLib,
-  ...
-} @ args: let
+{eriniteLib, ...} @ args: let
   inherit (eriniteLib.themeSpecialisations) mkWallpapers;
-  goodKernelPkgs = import inputs.nixpkgs-kernel-good {
-    system = pkgs.stdenv.hostPlatform.system;
-    config.allowUnfree = true;
-  };
   shared = (import ../shared.nix args).theme;
   theme = {
     inherit (shared) default;
@@ -35,8 +25,6 @@ in {
     ./hardware-configuration.nix
     ./os.nix
     {
-      boot.kernelPackages = lib.mkForce goodKernelPkgs.linuxPackages_latest;
-
       erinite = {
         presets = {
           common = enabled;
