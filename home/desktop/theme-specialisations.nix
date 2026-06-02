@@ -11,3 +11,4 @@
 # fix(theme): block wallpaper changes during theme switch
 # feat(themeSpecialisation): simplify theme switching
 # feat(theme-specialisation): correct dms restart timing
+# feat(theme-specialisation); enhance theme specialisations with light color schemas
