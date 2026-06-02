@@ -5,7 +5,7 @@
   eriniteLib,
   ...
 } @ args: let
-  inherit (lib) mapAttrs mkForce;
+  inherit (lib) mapAttrs mkForce mapAttrsToList;
   inherit (eriniteLib) mkModule;
   inherit (eriniteLib.themeSpecialisations) mkThemeBase16Scheme mkThemeSpecialisationOptions;
 in
@@ -18,6 +18,16 @@ in
     configFn = {cfg, ...}: let
       inherit (cfg) wallpapers;
       defaultWallpaper = wallpapers.${cfg.default};
+
+      wallpaperLinks =
+        mapAttrsToList
+        (_: wallpaper: {
+          name = wallpaper.fileName;
+          path = wallpaper.image;
+        })
+        wallpapers;
+      wallpaperDir = pkgs.linkFarm "erinite-theme-wallpapers" wallpaperLinks;
+      wallpaperPath = name: "${wallpaperDir}/${wallpapers.${name}.fileName}";
 
       switchTheme = pkgs.writeShellScript "erinite-theme-switch-system" ''
         set -eu
@@ -73,7 +83,13 @@ in
               // {"erinite-theme/specialisation".text = mkForce name;};
             home-manager.users.${default.username}.erinite.home.desktop = {
               theme-specialisations.default = mkForce name;
-              dms.settings.matugenScheme = mkForce wallpaper.type;
+              dms = {
+                session = {
+                  isLightMode = mkForce (wallpaper.polarity == "light");
+                  wallpaperPath = mkForce (wallpaperPath name);
+                };
+                settings.matugenScheme = mkForce wallpaper.type;
+              };
             };
           };
         })

@@ -12,9 +12,10 @@ in {
         url = "https://media-cdn-zspms.kurogame.com/pnswebsite/website2.0/images/1773936000000/ogvbi74cjtbp460lif-17739965468193.png";
         hash = "sha256-Hl/vRLR2V0F3JRrYl0JYjxWN9KVWkFpzaWFojOXHmJQ=";
       };
-      "kurogame-grey-blue.png" = {
+      "kurogame-blue-light.png" = {
         url = "https://media-cdn-zspms.kurogame.com/pnswebsite/website2.0/images/1773936000000/p4w55y5r9nube7xy4d-177399637338912.png";
         hash = "sha256-ZuGDUi+W9DOFNdBw8XWFD53YVvXrA7Ybo/ndyjDugBI=";
+        polarity = "light";
       };
     };
   };

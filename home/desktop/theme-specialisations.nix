@@ -28,9 +28,8 @@ in
         wallpapers;
 
       wallpaperDir = pkgs.linkFarm "erinite-theme-wallpapers" wallpaperLinks;
-      wallpaperPath = name: "${wallpaperDir}/${wallpapers.${name}.fileName}";
       defaultWallpaper = wallpapers.${cfg.default};
-      defaultWallpaperPath = wallpaperPath cfg.default;
+      defaultWallpaperPath = "${wallpaperDir}/${wallpapers.${cfg.default}.fileName}";
       buildStylix = name: wallpaper: {
         base16Scheme = "${mkThemeBase16Scheme "" name wallpaper}";
         inherit (wallpaper) image polarity;
@@ -54,7 +53,10 @@ in
       erinite.home.desktop = {
         stylix.settings = buildStylix cfg.default defaultWallpaper;
         dms = {
-          session.wallpaperPath = lib.mkForce defaultWallpaperPath;
+          session = {
+            isLightMode = defaultWallpaper.polarity == "light";
+            wallpaperPath = defaultWallpaperPath;
+          };
           settings.matugenScheme = defaultWallpaper.type;
         };
       };
