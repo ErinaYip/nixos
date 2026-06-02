@@ -88,3 +88,4 @@
 # update system
 # feat(prismlauncher): add prismlauncher module
 # feat(theme-spicialisation): simplify wallpaper path defination
+# feat(theme-spicialisation): enhance options

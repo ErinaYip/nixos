@@ -4,3 +4,4 @@
 # feat(stylix): enhance matugen theme color generation script
 # feat(theme-specialisation): enhance and simplify theme switching sctipts
 # feat(theme-spicialisation): simplify wallpaper path defination
+# feat(theme-spicialisation): enhance options

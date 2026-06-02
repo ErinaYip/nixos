@@ -11,3 +11,4 @@
 # fix(theme): use system profile for theme specialisations
 # feat(theme-specialisation); enhance theme specialisations with light color schemas
 # feat(theme-spicialisation): simplify wallpaper path defination
+# feat(theme-spicialisation): enhance options

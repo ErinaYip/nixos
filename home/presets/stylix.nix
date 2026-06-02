@@ -4,3 +4,4 @@
 # refactor(stylix)
 # feat(dms): enhance dms tyle
 # feat(themeSpecialisation): simplify theme switching
+# feat(theme-spicialisation): enhance options
