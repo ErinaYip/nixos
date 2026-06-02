@@ -61,7 +61,7 @@ in
 
           (mkProvider "freemodel" "https://api.freemodel.dev/v1")
           (mkProvider "vespervei" "https://api.vespervei.com/v1")
-          (mkProviderWithOpts "hua" "https://huablog.xyz" {wire_api = "responses";})
+          (mkProviderWithOpts "hua" "https://huablog.xyz/v1" {wire_api = "responses";})
           (mkProviderWithOpts "rawchat" "https://rawchat.cn/codex" {wire_api = "responses";})
         ];
     }
