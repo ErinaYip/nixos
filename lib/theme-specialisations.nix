@@ -18,10 +18,10 @@
         type = types.str;
         description = "Wallpaper file name.";
       };
+      path = mkStrOpt null "Wallpaper path.";
       index = mkIntOpt 0 "Source color index";
       style = mkOption {
         type = types.enum ["balanced" "vivid" "soft" "analogous" "triad"];
-        default = "soft";
         description = "base16 remapping style";
       };
       type = mkOption {
@@ -35,33 +35,55 @@
           "scheme-rainbow"
           "scheme-tonal-spot"
         ];
-        default = "scheme-tonal-spot";
         description = "matugen scheme type";
       };
       polarity = mkOption {
         type = types.enum ["dark" "light"];
-        default = "dark";
         description = "Stylix polarity for this generated theme.";
       };
     };
   };
+
+  mkWallpapers = _dir:
+    lib.mapAttrs' (
+      name: wallpaper: let
+        fileName = wallpaper.fileName or name;
+        image =
+          if wallpaper ? image
+          then wallpaper.image
+          else
+            pkgs.fetchurl {
+              name = fileName;
+              inherit (wallpaper) url hash;
+            };
+      in
+        lib.nameValuePair (builtins.head (lib.splitString "." fileName)) {
+          inherit fileName image;
+          type = wallpaper.type or "scheme-tonal-spot";
+          style = wallpaper.style or "soft";
+          index = wallpaper.index or 0;
+          polarity = wallpaper.polarity or "dark";
+          path = "${_dir}/${fileName}";
+        }
+    );
 in {
-  mkWallpapers =
-    lib.mapAttrs' (fileName: {
-      url,
-      hash,
-      type ? "scheme-tonal-spot",
-      style ? "soft",
-      index ? 0,
-      polarity ? "dark",
-    }:
-      lib.nameValuePair (builtins.head (lib.splitString "." fileName)) {
-        inherit fileName type style index polarity;
-        image = pkgs.fetchurl {
-          name = fileName;
-          inherit url hash;
-        };
-      });
+  mkThemes = {
+    default,
+    wallpapers,
+  }: let
+    processedWallpapers = mkWallpapers themeDir wallpapers;
+
+    themeDir = pkgs.linkFarm "erinite-theme-wallpapers" (
+      lib.mapAttrsToList (_: wp: {
+        name = wp.fileName;
+        path = wp.image;
+      })
+      processedWallpapers
+    );
+  in {
+    inherit default;
+    wallpapers = processedWallpapers;
+  };
 
   mkThemeSpecialisationOptions = description: {
     default = mkStrOpt "nixos-local-dark" "Wallpaper theme name to apply to the base configuration.";

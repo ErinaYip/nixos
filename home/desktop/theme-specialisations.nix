@@ -1,11 +1,9 @@
 {
-  lib,
   pkgs,
   inputs,
   eriniteLib,
   ...
 } @ args: let
-  inherit (lib) mapAttrsToList;
   inherit (eriniteLib) mkModule;
   inherit (eriniteLib.themeSpecialisations) mkThemeBase16Scheme mkThemeSpecialisationOptions;
 in
@@ -18,18 +16,8 @@ in
 
     configFn = {cfg, ...}: let
       inherit (cfg) wallpapers;
-
-      wallpaperLinks =
-        mapAttrsToList
-        (_: wallpaper: {
-          name = wallpaper.fileName;
-          path = wallpaper.image;
-        })
-        wallpapers;
-
-      wallpaperDir = pkgs.linkFarm "erinite-theme-wallpapers" wallpaperLinks;
       defaultWallpaper = wallpapers.${cfg.default};
-      defaultWallpaperPath = "${wallpaperDir}/${wallpapers.${cfg.default}.fileName}";
+
       buildStylix = name: wallpaper: {
         base16Scheme = "${mkThemeBase16Scheme "" name wallpaper}";
         inherit (wallpaper) image polarity;
@@ -55,7 +43,7 @@ in
         dms = {
           session = {
             isLightMode = defaultWallpaper.polarity == "light";
-            wallpaperPath = defaultWallpaperPath;
+            wallpaperPath = defaultWallpaper.path;
           };
           settings.matugenScheme = defaultWallpaper.type;
         };

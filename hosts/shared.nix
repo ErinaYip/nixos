@@ -1,9 +1,9 @@
 {eriniteLib, ...}: let
-  inherit (eriniteLib.themeSpecialisations) mkWallpapers;
+  inherit (eriniteLib.themeSpecialisations) mkThemes;
 in {
-  theme = {
+  theme = mkThemes {
     default = "kurogame-olive";
-    wallpapers = mkWallpapers {
+    wallpapers = {
       "kurogame-olive.png" = {
         url = "https://media-cdn-zspms.kurogame.com/pnswebsite/website2.0/images/1773936000000/6y9pm8iicrjyhd354y-17739965643372.png";
         hash = "sha256-wdC7ZU7KChFkyQW0B5twnpq4i1nFIovfyNEklSY973I=";
