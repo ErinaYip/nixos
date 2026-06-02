@@ -12,3 +12,4 @@
 # feat(themeSpecialisation): simplify theme switching
 # feat(theme-specialisation): correct dms restart timing
 # feat(theme-specialisation); enhance theme specialisations with light color schemas
+# feat(theme-spicialisation): simplify wallpaper path defination
