@@ -4,3 +4,4 @@
 # feat(codex): enhance codex provider switcher
 # refactor(codex)
 # feat(codex): enhance codex configs
+# fix(codex): hua base url
