@@ -1,7 +1,5 @@
 {
   lib,
-  pkgs,
-  inputs,
   eriniteLib,
   ...
 } @ args:
@@ -12,7 +10,6 @@ with eriniteLib;
     name = "dms";
 
     opts = {
-      restartIfChanged = mkBoolOpt false "Whether to auto restart dms if configurations changed.";
       session = mkOpt lib.types.attrs {} "Dms session state settings.";
     };
 
@@ -43,12 +40,6 @@ with eriniteLib;
             enableCalendarEvents = true;
             enableClipboardPaste = true;
           };
-
-          home.activation.restartDms = lib.mkIf cfg.restartIfChanged (
-            inputs.home-manager.lib.hm.dag.entryBetween ["onFilesChange" "reloadSystemd"] ["linkGeneration"] ''
-              ${dmsPackage}/bin/dms restart
-            ''
-          );
         }
 
         (import ./hyprland.nix args)

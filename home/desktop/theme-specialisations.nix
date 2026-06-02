@@ -5,7 +5,7 @@
   ...
 } @ args: let
   inherit (eriniteLib) mkModule;
-  inherit (eriniteLib.themeSpecialisations) mkThemeBase16Scheme mkThemeSpecialisationOptions;
+  inherit (eriniteLib.themeSpecialisations) mkThemeSpecialisationOptions;
 in
   mkModule args {
     namespace = ["erinite" "home"];
@@ -18,9 +18,8 @@ in
       inherit (cfg) wallpapers;
       defaultWallpaper = wallpapers.${cfg.default};
 
-      buildStylix = name: wallpaper: {
-        base16Scheme = "${mkThemeBase16Scheme "" name wallpaper}";
-        inherit (wallpaper) image polarity;
+      buildStylix = _name: wallpaper: {
+        inherit (wallpaper) base16Scheme image polarity;
       };
 
       themeSwitch = pkgs.writeShellApplication {
@@ -32,6 +31,8 @@ in
           wallpaper="''${1-}"
           file_name="$(basename -- "$wallpaper")"
           choice="''${file_name%.*}"
+
+          fcitx5 -d -r
 
           unit="$(systemd-escape --template=erinite-theme-switch@.service "$choice")"
           systemctl start "$unit" & sleep 0.5 ; dms restart

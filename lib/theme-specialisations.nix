@@ -18,7 +18,15 @@
         type = types.str;
         description = "Wallpaper file name.";
       };
-      path = mkStrOpt null "Wallpaper path.";
+      path = mkOption {
+        type = types.nullOr types.str;
+        default = null;
+        description = "Wallpaper path.";
+      };
+      base16Scheme = mkOption {
+        type = types.oneOf [types.path types.package types.str];
+        description = "Generated Stylix base16 scheme for this theme.";
+      };
       index = mkIntOpt 0 "Source color index";
       style = mkOption {
         type = types.enum ["balanced" "vivid" "soft" "analogous" "triad"];
@@ -44,60 +52,6 @@
     };
   };
 
-  mkWallpapers = _dir:
-    lib.mapAttrs' (
-      name: wallpaper: let
-        fileName = wallpaper.fileName or name;
-        image =
-          if wallpaper ? image
-          then wallpaper.image
-          else
-            pkgs.fetchurl {
-              name = fileName;
-              inherit (wallpaper) url hash;
-            };
-      in
-        lib.nameValuePair (builtins.head (lib.splitString "." fileName)) {
-          inherit fileName image;
-          type = wallpaper.type or "scheme-tonal-spot";
-          style = wallpaper.style or "soft";
-          index = wallpaper.index or 0;
-          polarity = wallpaper.polarity or "dark";
-          path = "${_dir}/${fileName}";
-        }
-    );
-in {
-  mkThemes = {
-    default,
-    wallpapers,
-  }: let
-    processedWallpapers = mkWallpapers themeDir wallpapers;
-
-    themeDir = pkgs.linkFarm "erinite-theme-wallpapers" (
-      lib.mapAttrsToList (_: wp: {
-        name = wp.fileName;
-        path = wp.image;
-      })
-      processedWallpapers
-    );
-  in {
-    inherit default;
-    wallpapers = processedWallpapers;
-  };
-
-  mkThemeSpecialisationOptions = description: {
-    default = mkStrOpt "nixos-local-dark" "Wallpaper theme name to apply to the base configuration.";
-    wallpapers =
-      mkAttrOpt wallpaperModule {
-        nixos-local-dark = {
-          polarity = "dark";
-          fileName = "nixos-local-dark.png";
-          image = pkgs.nixos-artwork.wallpapers.catppuccin-frappe.src;
-        };
-      }
-      description;
-  };
-
   mkThemeBase16Scheme = suffix: name: wallpaper:
     pkgs.runCommand "${name}-${suffix}base16.yaml" {
       nativeBuildInputs = with pkgs; [matugen python3];
@@ -110,4 +64,68 @@ in {
         --type ${escapeShellArg wallpaper.type} \
         --output $out
     '';
+
+  mkWallpapers = _dir:
+    lib.mapAttrs' (
+      name: wallpaper: let
+        fileName = wallpaper.fileName or name;
+        image =
+          wallpaper.image or (pkgs.fetchurl {
+            name = fileName;
+            inherit (wallpaper) url hash;
+          });
+      in
+        lib.nameValuePair (builtins.head (lib.splitString "." fileName)) {
+          inherit fileName image;
+          type = wallpaper.type or "scheme-tonal-spot";
+          style = wallpaper.style or "soft";
+          index = wallpaper.index or 0;
+          polarity = wallpaper.polarity or "dark";
+          path = "${_dir}/${fileName}";
+        }
+    );
+  mkThemes = {
+    default,
+    wallpapers,
+  }: let
+    processedWallpapers = mkWallpapers themeDir wallpapers;
+    themedWallpapers =
+      lib.mapAttrs
+      (name: wallpaper:
+        wallpaper
+        // {
+          base16Scheme = "${mkThemeBase16Scheme "" name wallpaper}";
+        })
+      processedWallpapers;
+
+    themeDir = pkgs.linkFarm "erinite-theme-wallpapers" (
+      lib.mapAttrsToList (_: wp: {
+        name = wp.fileName;
+        path = wp.image;
+      })
+      processedWallpapers
+    );
+  in {
+    inherit default;
+    wallpapers = themedWallpapers;
+  };
+
+  defaultTheme = mkThemes {
+    default = "nixos-local-dark";
+    wallpapers = {
+      "nixos-local-dark.png" = {
+        polarity = "dark";
+        image = pkgs.nixos-artwork.wallpapers.catppuccin-frappe.src;
+      };
+    };
+  };
+in {
+  inherit mkThemes mkThemeBase16Scheme;
+
+  mkThemeSpecialisationOptions = description: {
+    default = mkStrOpt defaultTheme.default "Wallpaper theme name to apply to the base configuration.";
+    wallpapers =
+      mkAttrOpt wallpaperModule defaultTheme.wallpapers
+      description;
+  };
 }

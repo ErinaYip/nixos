@@ -7,7 +7,7 @@
 } @ args: let
   inherit (lib) mapAttrs mkForce;
   inherit (eriniteLib) mkModule;
-  inherit (eriniteLib.themeSpecialisations) mkThemeBase16Scheme mkThemeSpecialisationOptions;
+  inherit (eriniteLib.themeSpecialisations) mkThemeSpecialisationOptions;
 in
   mkModule args {
     category = "desktop";
@@ -25,9 +25,8 @@ in
         exec /nix/var/nix/profiles/system/specialisation/$theme/bin/switch-to-configuration switch
       '';
 
-      buildStylix = name: wallpaper: {
-        base16Scheme = "${mkThemeBase16Scheme "" name wallpaper}";
-        inherit (wallpaper) image polarity;
+      buildStylix = _name: wallpaper: {
+        inherit (wallpaper) base16Scheme image polarity;
       };
       buildEtc = name: wallpaper: {
         "erinite-theme/name".text = name;
