@@ -14,3 +14,4 @@
 # feat(theme-specialisation); enhance theme specialisations with light color schemas
 # feat(theme-spicialisation): simplify wallpaper path defination
 # feat(theme-spicialisation): enhance options
+# feat(theme-specialisation): enhance fcitx5 restarting
