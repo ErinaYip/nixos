@@ -32,7 +32,7 @@ in
           file_name="$(basename -- "$wallpaper")"
           choice="''${file_name%.*}"
 
-          fcitx5 -d -r
+          fcitx5 -d -r || true
 
           unit="$(systemd-escape --template=erinite-theme-switch@.service "$choice")"
           systemctl start "$unit" & sleep 0.5 ; dms restart
