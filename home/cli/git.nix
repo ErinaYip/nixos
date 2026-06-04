@@ -20,7 +20,7 @@ eriniteLib.mkModule args {
         user.email = cfg.user.email;
         init.defaultBranch = "main";
         gpg.format = "ssh";
-        pull.rebaes = false;
+        pull.rebase = false;
         alias = {
           s = "status";
           c = "checkout";
