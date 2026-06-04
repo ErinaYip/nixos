@@ -1,13 +1,15 @@
 {
   lib,
+  pkgs,
   eriniteLib,
   ...
 } @ args: let
+  tomlFormat = pkgs.formats.toml {};
   mkProviderWithOpts = name: base_url: opts: {
     erinite.home.cli = {
       zsh.aliases."codex-${name}" = "codex --profile ${name}";
       codex = {
-        profiles.${name}.model_provider = name;
+        profileFiles.${name}.model_provider = name;
         model_providers.${name} =
           {
             inherit name base_url;
@@ -26,7 +28,7 @@ in
       name = "codex";
 
       opts = {
-        profiles = mkAttrOpt lib.types.attrs {} "Codex profiles.";
+        profileFiles = mkAttrOpt lib.types.attrs {} "Codex profile config files.";
         model_providers = mkAttrOpt lib.types.attrs {} "Codex model_providers.";
       };
 
@@ -37,7 +39,8 @@ in
               enable = true;
               settings = {
                 model = "gpt-5.5";
-                model_reasoning_effort = "medium";
+                model_reasoning_effort = "high";
+                # model_provider = "freemodel";
                 network_access = true;
 
                 features = {
@@ -54,9 +57,15 @@ in
                   use_freeform_apply_patch = true;
                 };
 
-                inherit (cfg) model_providers profiles;
+                inherit (cfg) model_providers;
               };
             };
+
+            home.file = lib.mapAttrs' (name: settings:
+              lib.nameValuePair ".codex/${name}.config.toml" {
+                source = tomlFormat.generate "${name}.config.toml" settings;
+              })
+            cfg.profileFiles;
           }
 
           (mkProvider "freemodel" "https://api.freemodel.dev/v1")

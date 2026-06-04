@@ -47,8 +47,10 @@ Without recursive merging, host overrides can accidentally replace an entire nes
 Modules can also expose extra options through `opts`. For example,
 `home/cli/zsh/default.nix` exposes an `aliases` attribute set so other Home
 modules can contribute aliases without writing directly to `programs.zsh`, and
-`home/cli/codex.nix` exposes `profiles` and `model_providers` so provider
-definitions can be composed through the normal option tree.
+`home/cli/codex.nix` exposes `profileFiles` and `model_providers` so provider
+definitions can be composed through the normal option tree. Codex profile
+overrides are emitted as `~/.codex/<name>.config.toml` files for the current
+profile loading model.
 
 Hyprland settings are currently structured for Lua output instead of traditional
 Hyprland conf strings. Lists such as binds, rules, environment variables,
