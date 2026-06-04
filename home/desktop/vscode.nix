@@ -10,6 +10,8 @@ with eriniteLib;
     name = "vscode";
 
     configFn = _: {
+      erinite.home.cli.zsh.aliases."code" = "codium";
+
       programs.vscodium = {
         enable = true;
 
@@ -22,8 +24,19 @@ with eriniteLib;
 
           userSettings = {
             "workbench.iconTheme" = "material-icon-theme";
+            "editor.mouseWheelZoom" = true;
           };
         };
+      };
+
+      xdg.desktopEntries.code = {
+        name = "Code";
+        exec = "codium %F";
+        icon = "vscodium";
+        terminal = false;
+        type = "Application";
+        categories = ["Development" "IDE"];
+        mimeType = ["text/plain" "inode/directory"];
       };
     };
   }
