@@ -5,3 +5,4 @@ docs: update README and architecture/module-system docs to reflect support for s
 docs: update configuration notes
 refactor: split os and home modules
 docs: sync documentation with recent updates
+fix(codex): migrate provider profiles
