@@ -17,6 +17,8 @@ with eriniteLib;
         monospace.name = "Maple Mono NF CN";
         emoji.name = "Noto Color Emoji";
       };
+
+      targets.kmscon.enable = false;
     };
 
     configFn = {settings, ...}: {
