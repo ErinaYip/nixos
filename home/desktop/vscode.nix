@@ -15,6 +15,8 @@ with eriniteLib;
 
         profiles.default = {
           extensions = with pkgs.vscode-extensions; [
+            eamodio.gitlens
+            ms-ceintl.vscode-language-pack-zh-hans
             pkief.material-icon-theme
           ];
 
