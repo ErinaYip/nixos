@@ -1,15 +1,6 @@
 {eriniteLib, ...}:
 with eriniteLib; {
-  programs = {
-    cava = enabled;
-    vscode = {
-      enable = true;
-
-      profiles.default.userSettings = {
-        "workbench.iconTheme" = "material-icon-theme";
-      };
-    };
-  };
+  programs.cava = enabled;
 
   wayland.windowManager.hyprland.extraConfig = ''
     local eDP = "desc:China Star Optoelectronics Technology Co. Ltd MNG007DA5-4"

@@ -44,6 +44,7 @@ in {
 
         desktop = {
           theme-specialisations = theme;
+          vscode = enabled;
         };
       };
     }

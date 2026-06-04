@@ -18,7 +18,6 @@
     vim
     wget
     git
-    vscode
 
     zip
     unzip
@@ -28,6 +27,5 @@
     uv
     pnpm
     nodejs
-
   ];
 }
