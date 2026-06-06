@@ -33,6 +33,13 @@ in
       };
 
       configFn = {cfg, ...}:
+        let
+          mutableProfileFiles = lib.mapAttrs' (name: settings:
+            lib.nameValuePair ".codex/${name}.config.toml" {
+              source = tomlFormat.generate "${name}.config.toml" settings;
+            })
+          cfg.profileFiles;
+        in
         lib.mkMerge [
           {
             programs.codex = {
@@ -61,11 +68,23 @@ in
               };
             };
 
-            home.file = lib.mapAttrs' (name: settings:
-              lib.nameValuePair ".codex/${name}.config.toml" {
-                source = tomlFormat.generate "${name}.config.toml" settings;
-              })
-            cfg.profileFiles;
+            home.activation.codexMutableProfileFiles = lib.hm.dag.entryAfter ["linkGeneration"] ''
+              run mkdir -p "$HOME/.codex"
+
+              ${lib.concatStrings (lib.mapAttrsToList (target: file: ''
+                  if [[ -L "$HOME/${target}" ]]; then
+                    target_link="$(readlink "$HOME/${target}")"
+                    if [[ "$target_link" == /nix/store/* ]]; then
+                      run rm "$HOME/${target}"
+                    fi
+                  fi
+
+                  if [[ ! -e "$HOME/${target}" && ! -L "$HOME/${target}" ]]; then
+                    run install -m 600 ${lib.escapeShellArg file.source} "$HOME/${target}"
+                  fi
+                '')
+                mutableProfileFiles)}
+            '';
           }
 
           (mkProvider "freemodel" "https://api.freemodel.dev/v1")
