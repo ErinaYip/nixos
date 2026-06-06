@@ -6,3 +6,4 @@
 # feat(codex): enhance codex configs
 # fix(codex): hua base url
 # fix(codex): migrate provider profiles
+# fix(codex): keep provider profiles mutable
