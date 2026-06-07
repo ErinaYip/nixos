@@ -10,3 +10,4 @@
 # fix(theme): block wallpaper changes during theme switch
 # feat(themeSpecialisation): simplify theme switching
 # feat(theme-spicialisation): enhance options
+# feat(fcitx5): enhance session environment
