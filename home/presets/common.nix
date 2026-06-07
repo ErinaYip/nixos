@@ -6,3 +6,4 @@
 # feat: update zsh aliases structure and add nh module to common presets
 # feat(wechat/qq): add wechat and qq home modules
 # fix(qq): disable qq for package broken
+# feat(qq): enable qq for mechrevo
