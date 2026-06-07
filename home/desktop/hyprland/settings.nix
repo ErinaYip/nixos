@@ -67,12 +67,6 @@
   };
 
   env = [
-    {_args = ["QT_IM_MODULE" "fcitx"];}
-    {_args = ["XMODIFIERS" "@im=fcitx"];}
-    {_args = ["QT_IM_MODULES" "wayland;fcitx"];}
-    {_args = ["SDL_IM_MODULE" "fcitx"];}
-    {_args = ["GLFW_IM_MODULE" "ibus"];}
-
     {_args = ["GDK_BACKEND" "wayland,x11"];}
     {_args = ["QT_QPA_PLATFORM" "wayland;xcb"];}
     {_args = ["SDL_VIDEODRIVER" "wayland"];}

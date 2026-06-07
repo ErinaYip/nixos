@@ -9,6 +9,12 @@ eriniteLib.mkModule args {
   name = "fcitx5";
 
   configFn = _: let
+    inputMethodEnv = {
+      QT_IM_MODULE = "fcitx";
+      XMODIFIERS = "@im=fcitx";
+      SDL_IM_MODULE = "fcitx";
+      GLFW_IM_MODULE = "ibus";
+    };
     wanxiang = "wanxiang-lts-zh-hans";
     gram = pkgs.fetchurl {
       url = "https://cnb.cool/Mintimate/rime/oh-my-rime/-/releases/download/latest/${wanxiang}.gram";
@@ -89,5 +95,7 @@ eriniteLib.mkModule args {
     };
 
     home.file.".local/share/fcitx5/rime/${wanxiang}.gram".source = gram;
+    home.sessionVariables = inputMethodEnv;
+    systemd.user.sessionVariables = inputMethodEnv;
   };
 }
