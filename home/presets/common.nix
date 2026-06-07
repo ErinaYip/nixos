@@ -21,7 +21,6 @@ with eriniteLib;
           # gtk = enabled;
           # matugen = enabled;
           nemo = enabled;
-          # qq = enabled;
           # qt = enabled;
           stylix = enabled;
           # theme-specialisations = enabled;

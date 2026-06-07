@@ -83,6 +83,7 @@ in {
           theme-specialisations = theme;
           vscode = enabled;
           wechat = enabled;
+          qq = enabled;
         };
       };
     }
