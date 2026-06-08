@@ -15,7 +15,6 @@ with eriniteLib;
           keyd = enabled;
           # laptop = enabled;
           ly = enabled;
-          media = enabled;
           network = enabled;
           nh = enabled;
           nix-ld = enabled;
