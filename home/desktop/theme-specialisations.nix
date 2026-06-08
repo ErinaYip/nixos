@@ -15,3 +15,4 @@
 # feat(theme-spicialisation): simplify wallpaper path defination
 # feat(theme-spicialisation): enhance options
 # feat(theme-specialisation): enhance fcitx5 restarting
+# feat(themeSpecialisation): enhance dms theme switch plugin
