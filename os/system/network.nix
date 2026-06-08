@@ -55,11 +55,11 @@ with eriniteLib;
             webui = pkgs.metacubexd;
           };
 
-          # environment.sessionVariables = {
-          #   HTTP_PROXY = "http://127.0.0.1:7890";
-          #   HTTPS_PROXY = "http://127.0.0.1:7890";
-          #   ALL_PROXY = "http://127.0.0.1:7890";
-          # };
+          environment.sessionVariables = {
+            HTTP_PROXY = "http://127.0.0.1:7890";
+            HTTPS_PROXY = "http://127.0.0.1:7890";
+            ALL_PROXY = "http://127.0.0.1:7890";
+          };
         })
       ];
   }
