@@ -34,6 +34,7 @@ in {
         };
 
         cli = {
+          ghostty = enabled;
           git = {
             user = {
               name = "ErinaYip";
