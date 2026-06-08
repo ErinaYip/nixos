@@ -17,3 +17,4 @@
 # feat: add matugen and stylix presets, update default configurations
 # refactor: move cuda support back to nvidia module
 # home: switch vscode module to vscodium
+# feat(nec): enable ghostty for nec
