@@ -16,3 +16,4 @@
 # feat(theme-spicialisation): enhance options
 # feat(theme-specialisation): enhance fcitx5 restarting
 # feat(themeSpecialisation): enhance dms theme switch plugin
+# fix(themeSpecialisation): restore dms wallpaper switch script
