@@ -1,0 +1,12 @@
+{
+  "id": "eriniteThemeSwitcher",
+  "name": "Erinite Theme Switcher",
+  "description": "Switches Erinite NixOS theme specialisations when the DMS wallpaper changes.",
+  "version": "1.0.0",
+  "author": "erina",
+  "type": "daemon",
+  "capabilities": ["wallpaper-theme-switch"],
+  "component": "./ThemeSwitchDaemon.qml",
+  "icon": "wallpaper",
+  "permissions": ["settings_read", "process"]
+}

@@ -1,6 +1,6 @@
 {
+  lib,
   pkgs,
-  inputs,
   eriniteLib,
   ...
 } @ args: let
@@ -21,23 +21,6 @@ in
       buildStylix = _name: wallpaper: {
         inherit (wallpaper) base16Scheme image polarity;
       };
-
-      themeSwitch = pkgs.writeShellApplication {
-        name = "erinite-theme-switch";
-        runtimeInputs = with pkgs; [coreutils systemd];
-        text = ''
-          set -euo pipefail
-
-          wallpaper="''${1-}"
-          file_name="$(basename -- "$wallpaper")"
-          choice="''${file_name%.*}"
-
-          fcitx5 -d -r || true
-
-          unit="$(systemd-escape --template=erinite-theme-switch@.service "$choice")"
-          systemctl start "$unit" & sleep 0.5 ; dms restart
-        '';
-      };
     in {
       erinite.home.desktop = {
         stylix.settings = buildStylix cfg.default defaultWallpaper;
@@ -50,9 +33,14 @@ in
         };
       };
 
-      programs.dank-material-shell.plugins.wallpaperWatcherDaemon = {
-        src = inputs.dms + "/quickshell/PLUGINS/WallpaperWatcherDaemon";
-        settings.scriptPath = "${themeSwitch}/bin/erinite-theme-switch";
+      programs.dank-material-shell.plugins.eriniteThemeSwitcher = {
+        src = ./dms/plugins/EriniteThemeSwitcher;
+        settings = {
+          systemdEscapePath = lib.getExe' pkgs.systemd "systemd-escape";
+          systemctlPath = lib.getExe' pkgs.systemd "systemctl";
+          dmsPath = lib.getExe args.config.programs.dank-material-shell.package;
+          restartDelayMs = 500;
+        };
       };
     };
   }
