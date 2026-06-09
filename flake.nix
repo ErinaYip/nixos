@@ -77,3 +77,4 @@
 # fix: add allowunfree for both os and home modules
 # update system
 # update system
+# feat(dms): add dms screenshot plugin

@@ -3,3 +3,4 @@
 # refactor: simplify bind function in hyprland configuration
 # fix(hyprland): mouse wheel workspace switch
 # feat(theme): add theme switcher integration
+# feat(dms): add dms screenshot plugin

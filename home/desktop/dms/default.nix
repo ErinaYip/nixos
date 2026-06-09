@@ -11,3 +11,4 @@
 # feat(themeSpecialisation): simplify theme switching
 # feat(theme-spicialisation): enhance options
 # feat(fcitx5): enhance session environment
+# feat(dms): add dms screenshot plugin
