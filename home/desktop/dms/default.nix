@@ -55,6 +55,10 @@ with eriniteLib;
             enableAudioWavelength = true;
             enableCalendarEvents = true;
             enableClipboardPaste = true;
+
+            plugins = {
+              quickCapture = enabled;
+            };
           };
         }
 

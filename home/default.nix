@@ -10,6 +10,7 @@
       inputs.stylix.homeModules.stylix
       inputs.nvf.homeManagerModules.default
       inputs.dms.homeModules.dank-material-shell
+      inputs.dms-plugin-registry.modules.default
       inputs.oh-my-rime-nix.homeModules.default
     ]
     ++ eriniteLib.modules ./.;
