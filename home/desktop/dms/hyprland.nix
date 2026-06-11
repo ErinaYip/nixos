@@ -5,3 +5,4 @@
 # feat(hyprland): enhance layer rules
 # feat(theme-specialisation): enhance and simplify theme switching sctipts
 # feat(dms): add dms screenshot plugin
+# deat(dms): disable dms screenshot plugin

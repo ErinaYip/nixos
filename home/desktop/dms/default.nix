@@ -12,3 +12,4 @@
 # feat(theme-spicialisation): enhance options
 # feat(fcitx5): enhance session environment
 # feat(dms): add dms screenshot plugin
+# deat(dms): disable dms screenshot plugin
