@@ -64,9 +64,9 @@ in {
     (bind "SUPER + y" ''hl.dsp.exec_cmd("dms ipc call dankdash wallpaper")'')
     (bind "SUPER + tab" ''hl.dsp.exec_cmd("dms ipc call hypr toggleOverview")'')
 
-    (bind "SUPER + s" ''hl.dsp.exec_cmd("dms ipc call quickCapture screenshot default")'')
-    (bind "SUPER + ALT + s" ''hl.dsp.exec_cmd("dms ipc call quickCapture screenshot default")'')
-    (bind "SUPER + Print" ''hl.dsp.exec_cmd("dms ipc call quickCapture screenshot default")'')
+    # (bind "SUPER + s" ''hl.dsp.exec_cmd("dms ipc call quickCapture screenshot default")'')
+    # (bind "SUPER + ALT + s" ''hl.dsp.exec_cmd("dms ipc call quickCapture screenshot default")'')
+    # (bind "SUPER + Print" ''hl.dsp.exec_cmd("dms ipc call quickCapture screenshot default")'')
 
     (bind "SUPER + ALT + l" ''hl.dsp.exec_cmd("dms ipc call lock lock")'')
 

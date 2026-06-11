@@ -57,7 +57,7 @@ with eriniteLib;
             enableClipboardPaste = true;
 
             plugins = {
-              quickCapture = enabled;
+              # quickCapture = enabled;
             };
           };
         }
