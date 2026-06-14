@@ -30,6 +30,7 @@
     typescript = enabled;
     astro = enabled;
     scss = enabled;
+    clang = enabled;
   };
 
   treesitter = {
