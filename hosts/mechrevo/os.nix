@@ -25,7 +25,7 @@
     tldr
     jq
     foremost
-    binwalk
+    # binwalk
     # john
     ffuf
     feroxbuster
