@@ -87,6 +87,18 @@
     };
   };
 
+  diagnostics.nvim-lint.linters = {
+    "cpplint" = {
+      args = ["--filter=-legal/copyright"];
+    };
+  };
+
+  formatter.conform-nvim.setupOpts.formatters = {
+    "clang-format" = {
+      prepend_args = ["-style=Google"];
+    };
+  };
+
   luaConfigRC.filetype = ''
     vim.filetype.add({ extension = { mdx = "mdx" } })
     vim.treesitter.language.register("markdown", "mdx")
