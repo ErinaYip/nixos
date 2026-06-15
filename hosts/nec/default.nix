@@ -14,7 +14,7 @@ in {
 
         system = {
           boot.engine = "grub";
-          network.proxy = true;
+          # network.proxy = true;
           laptop = enabled;
         };
 
@@ -46,6 +46,7 @@ in {
         desktop = {
           theme-specialisations = theme;
           vscode = enabled;
+          qq = enabled;
         };
       };
     }

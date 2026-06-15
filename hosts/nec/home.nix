@@ -1,4 +1,8 @@
-{
+{pkgs, ...}: {
+  home.packages = with pkgs; [
+    flclash
+  ];
+
   wayland.windowManager.hyprland.settings = {
     monitor = [
       {
