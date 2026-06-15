@@ -18,3 +18,4 @@
 # refactor: move cuda support back to nvidia module
 # home: switch vscode module to vscodium
 # feat(nec): enable ghostty for nec
+# feat(nec): replace mihomo with flclash for nec
