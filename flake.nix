@@ -78,3 +78,4 @@
 # update system
 # update system
 # feat(dms): add dms screenshot plugin
+# feat(stylix): siwtch to my fork
