@@ -4,13 +4,36 @@
   ...
 } @ args:
 with eriniteLib;
+let
+  codeSmart = pkgs.writeShellApplication {
+    name = "code";
+    runtimeInputs = [pkgs.kitty pkgs.jq];
+    text = ''
+      set -euo pipefail
+
+      cwd="$(
+        { kitty @ ls --to unix:/tmp/kitty --match state:focused --output-format=json 2>/dev/null || true; } \
+          | jq -r '.. | objects | select(has("pid") and has("cwd")) | .cwd' \
+          | head -n1
+      )"
+
+      if [ -n "''${cwd:-}" ] && [ "''${cwd}" != "null" ]; then
+        exec codium "''${cwd}"
+      fi
+
+      exec codium
+    '';
+  };
+in
   mkModule args {
     namespace = ["erinite" "home"];
     category = "desktop";
     name = "vscode";
 
     configFn = _: {
-      erinite.home.cli.zsh.aliases."code" = "codium";
+      home.packages = [
+        codeSmart
+      ];
 
       programs.vscodium = {
         enable = true;
