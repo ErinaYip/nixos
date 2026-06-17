@@ -1,26 +1,16 @@
 {
-  eriniteLib,
   pkgs,
+  eriniteLib,
   ...
 } @ args:
-with eriniteLib;
-let
-  codeSmart = pkgs.writeShellApplication {
+with eriniteLib; let
+  code = pkgs.writeShellApplication {
     name = "code";
-    runtimeInputs = [pkgs.kitty pkgs.jq];
     text = ''
       set -euo pipefail
-
-      cwd="$(
-        { kitty @ ls --to unix:/tmp/kitty --match state:focused --output-format=json 2>/dev/null || true; } \
-          | jq -r '.. | objects | select(has("pid") and has("cwd")) | .cwd' \
-          | head -n1
-      )"
-
-      if [ -n "''${cwd:-}" ] && [ "''${cwd}" != "null" ]; then
-        exec codium "''${cwd}"
+      if [ "$#" -gt 0 ]; then
+        exec codium "$@"
       fi
-
       exec codium
     '';
   };
@@ -32,7 +22,7 @@ in
 
     configFn = _: {
       home.packages = [
-        codeSmart
+        code
       ];
 
       programs.vscodium = {

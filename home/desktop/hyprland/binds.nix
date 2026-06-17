@@ -41,16 +41,7 @@ in {
       (bind "SUPER + T" ''hl.dsp.exec_cmd("kitty --title=float")'')
 
       (bind "SUPER + B" ''hl.dsp.exec_cmd("firefox")'')
-      (bind "SUPER + C" ''
-        function()
-          local win = hl.get_active_window()
-          if win and win.class == "kitty" then
-            hl.dispatch(hl.dsp.exec_cmd("code"))
-          else
-            hl.dispatch(hl.dsp.exec_cmd("codium"))
-          end
-        end
-      '')
+      (bind "SUPER + C" ''hl.dsp.exec_cmd("code")'')
       (bind "SUPER + SHIFT + C" ''hl.dsp.exec_cmd("chromium")'')
       (bind "SUPER + D" ''hl.dsp.exec_cmd("fuzzel")'')
       (bind "SUPER + E" ''hl.dsp.exec_cmd("nemo")'')
