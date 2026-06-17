@@ -9,9 +9,9 @@ with eriniteLib; {
     hl.monitor({
       output = "desc:" .. eDP,
       mode = "2560x1600@180.00Hz",
-      position = "0x0",
+      position = "1920x0",
       scale = 1.6,
-      transform = 0,
+      transform = 1,
     })
 
     hl.monitor({
@@ -25,13 +25,6 @@ with eriniteLib; {
       if mon.description == DP then
         hl.workspace_rule({ workspace = "2", monitor = DP, default = true, })
         hl.workspace_rule({ workspace = "1", monitor = eDP, default = true, layout = "dwindle", })
-        hl.monitor({
-          output = "desc:" .. eDP,
-          mode = "2560x1600@180.00Hz",
-          position = "1920x0",
-          scale = 1.6,
-          transform = 1,
-        })
         break
       end
     end
