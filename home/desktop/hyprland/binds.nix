@@ -6,3 +6,4 @@
 # feat(dms): add dms screenshot plugin
 # deat(dms): disable dms screenshot plugin
 # Add smart code launcher for kitty
+# feat(vscode): withdraw smart code

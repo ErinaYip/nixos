@@ -2,3 +2,4 @@
 # feat(vscode): add default extensions
 # feat(vscode): enhance configurations
 # Add smart code launcher for kitty
+# feat(vscode): withdraw smart code
