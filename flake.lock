@@ -331,11 +331,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781365335,
-        "narHash": "sha256-zqDBhXMzfbdlO7F2bGHe7MOtB3xngd/+4ieMHDC+ZXo=",
+        "lastModified": 1781667738,
+        "narHash": "sha256-OxrwHpsWf+QGbos1LMDGAcv7sjBGshcw/43th6waeYI=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "5b6f5733726a1b2ccafb5dec6ac4ca7299fad66c",
+        "rev": "7664e05e2413d5e2b8c54a884eb8ea0f8a504fc2",
         "type": "github"
       },
       "original": {
@@ -966,15 +966,15 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1781018772,
-        "narHash": "sha256-C+cGIUaC6dqfwTbI+BwCd572PbESGA3WYxR1sLTqxkY=",
-        "owner": "nix-community",
+        "lastModified": 1781700898,
+        "narHash": "sha256-JoC2Q+8VD12/lPM9oQnS1lAIVH/NehYu8G8CABY7bPg=",
+        "owner": "erinayip",
         "repo": "stylix",
-        "rev": "a378e4c09031fb15a4d65da88aa628f71fc52f6b",
+        "rev": "9f3ad529df69c067939fcd796e3a0a36a5852576",
         "type": "github"
       },
       "original": {
-        "owner": "nix-community",
+        "owner": "erinayip",
         "repo": "stylix",
         "type": "github"
       }
