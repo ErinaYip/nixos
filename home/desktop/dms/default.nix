@@ -14,3 +14,4 @@
 # feat(dms): add dms screenshot plugin
 # deat(dms): disable dms screenshot plugin
 # feat(dms): add plugin command runner
+# feat(dms): simplify dms settings
