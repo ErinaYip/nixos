@@ -43,10 +43,6 @@
       url = "github:AvengeMedia/DankMaterialShell/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    dms-plugin-registry = {
-      url = "github:AvengeMedia/dms-plugin-registry";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     oh-my-rime-nix = {
       url = "git+https://codeberg.org/erina/oh-my-rime-nix.git";
