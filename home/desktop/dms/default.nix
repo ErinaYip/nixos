@@ -39,14 +39,6 @@ with eriniteLib;
             enableAudioWavelength = true;
             enableCalendarEvents = true;
             enableClipboardPaste = true;
-<<<<<<< HEAD
-
-            plugins = {
-              # quickCapture = enabled;
-              commandRunner = enabled;
-            };
-=======
->>>>>>> 653ef1db172d14eca4e1a6d7daeb73efa68891e6
           };
         }
 
