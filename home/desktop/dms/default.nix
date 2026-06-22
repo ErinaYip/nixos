@@ -13,3 +13,4 @@
 # feat(fcitx5): enhance session environment
 # feat(dms): add dms screenshot plugin
 # deat(dms): disable dms screenshot plugin
+# feat(dms): add plugin command runner
