@@ -58,6 +58,7 @@ with eriniteLib;
 
             plugins = {
               # quickCapture = enabled;
+              commandRunner = enabled;
             };
           };
         }
