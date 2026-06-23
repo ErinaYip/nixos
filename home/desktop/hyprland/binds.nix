@@ -30,9 +30,12 @@ in {
       (bind "SUPER + F" ''hl.dsp.window.float({ action = "toggle" })'')
       # (bind "SUPER + R" ''hl.dsp.layout("colresize +conf")'')
       # (bind "SUPER + SHIFT + R" ''hl.dsp.layout("colresize -conf")'')
-      (bind "Print" ''hl.dsp.exec_cmd([[grim -g "$(slurp)" - | wl-copy]])'')
-      (bind "SUPER + S" ''hl.dsp.exec_cmd([[grim -g "$(slurp)" - | wl-copy]])'')
-      (bind "SUPER + Print" ''hl.dsp.exec_cmd("grim - | wl-copy")'')
+
+      # Screenshot
+      # (bind "Print" ''hl.dsp.exec_cmd([[grim -g "$(slurp)" - | wl-copy]])'')
+      # (bind "SUPER + S" ''hl.dsp.exec_cmd([[grim -g "$(slurp)" - | wl-copy]])'')
+      # (bind "SUPER + Print" ''hl.dsp.exec_cmd("grim - | wl-copy")'')
+      (bind "SUPER + S" ''hl.dsp.exec_cmd("grim -o $(hyprctl activeworkspace -j | jq -r '.monitor') -t ppm - | satty --filename -")'')
 
       (bind "SUPER + CTRL + R" ''hl.dsp.exec_cmd("hyprctl reload")'')
       (bind "SUPER + CTRL + E" "hl.dsp.exit()")
