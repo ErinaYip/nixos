@@ -8,3 +8,4 @@
 # fix(qq): disable qq for package broken
 # feat(qq): enable qq for mechrevo
 # some fix
+# feat(satty): add satty and apply to hyprland

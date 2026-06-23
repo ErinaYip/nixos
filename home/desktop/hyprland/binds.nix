@@ -7,3 +7,4 @@
 # deat(dms): disable dms screenshot plugin
 # Add smart code launcher for kitty
 # feat(vscode): withdraw smart code
+# feat(satty): add satty and apply to hyprland
