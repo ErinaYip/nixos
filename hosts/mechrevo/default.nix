@@ -81,6 +81,7 @@ in {
 
         desktop = {
           theme-specialisations = theme;
+          obsidian = enabled;
           vscode = enabled;
           wechat = enabled;
           qq = enabled;

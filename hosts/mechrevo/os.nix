@@ -42,7 +42,6 @@
 
     materialgram
 
-    obsidian
     libreoffice
   ];
 
