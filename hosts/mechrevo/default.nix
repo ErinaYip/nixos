@@ -85,7 +85,13 @@ in {
             subBar.screenPreferences = ["eDP-1" "eDP-2"];
           };
           theme-specialisations = theme;
-          obsidian = enabled;
+          obsidian =
+            enabled
+            // {
+              vaults.notes = {
+                target = "Documents/notes";
+              };
+            };
           vscode = enabled;
           wechat = enabled;
           qq = enabled;

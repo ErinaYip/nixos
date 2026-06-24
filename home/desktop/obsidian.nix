@@ -60,14 +60,22 @@ in
     category = "desktop";
     name = "obsidian";
 
-    defaultSettings = {
-      vault = {
-        name = "notes";
-        target = "Documents/notes";
-      };
+    opts = {
+      vaults =
+        mkOpt
+        (lib.types.attrsOf (lib.types.submodule {
+          options = {
+            target = lib.mkOption {
+              type = lib.types.str;
+              description = "Vault path relative to the home directory.";
+            };
+          };
+        }))
+        {}
+        "Obsidian vaults to configure.";
     };
 
-    configFn = {settings, ...}: {
+    configFn = {cfg, ...}: {
       programs.obsidian = {
         enable = true;
         package = pkgs.obsidian;
@@ -137,9 +145,7 @@ in
           ];
         };
 
-        vaults.${settings.vault.name} = {
-          target = settings.vault.target;
-        };
+        inherit (cfg) vaults;
       };
     };
   }
