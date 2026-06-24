@@ -1,193 +1,87 @@
-{
+let
+  mkWidgets = id: disabledOptions:
+    {
+      inherit id;
+      enabled = true;
+    }
+    // builtins.listToAttrs (
+      map (name: {
+        inherit name;
+        value = false;
+      })
+      disabledOptions
+    );
+  mkCenterWidgets = id: width: {
+    inherit id width;
+    enabled = true;
+  };
+in {
   currentThemeName = "dynamic";
-  monoFontFamily = "Maple Mono NF CN ExtraBold";
+  # monoFontFamily = "Maple Mono NF CN ExtraBold";
 
   currentThemeCategory = "dynamic";
   widgetColorMode = "colorful";
   cornerRadius = 32;
-  controlCenterShowMicPercent = false;
+  # controlCenterShowMicPercent = false;
   controlCenterWidgets = [
-    {
-      id = "volumeSlider";
-      enabled = true;
-      width = 50;
-    }
-    {
-      id = "brightnessSlider";
-      enabled = true;
-      width = 50;
-      deviceName = "backlight:amdgpu_bl2";
-    }
-    {
-      id = "wifi";
-      enabled = true;
-      width = 50;
-    }
-    {
-      id = "bluetooth";
-      enabled = true;
-      width = 50;
-    }
-    {
-      id = "audioOutput";
-      enabled = true;
-      width = 50;
-    }
-    {
-      id = "audioInput";
-      enabled = true;
-      width = 50;
-    }
-    {
-      id = "nightMode";
-      enabled = true;
-      width = 50;
-    }
-    {
-      id = "darkMode";
-      enabled = true;
-      width = 50;
-    }
-    {
-      id = "idleInhibitor";
-      enabled = true;
-      width = 50;
-    }
-    {
-      id = "doNotDisturb";
-      enabled = true;
-      width = 50;
-    }
-    {
-      id = "colorPicker";
-      enabled = true;
-      width = 50;
-    }
+    (mkCenterWidgets "volumeSlider" 50)
+    (mkCenterWidgets "brightnessSlider" 50)
+    (mkCenterWidgets "wifi" 50)
+    (mkCenterWidgets "bluetooth" 50)
+    (mkCenterWidgets "audioOutput" 50)
+    (mkCenterWidgets "audioInput" 50)
+    (mkCenterWidgets "nightMode" 25)
+    (mkCenterWidgets "idleInhibitor" 25)
+    (mkCenterWidgets "darkMode" 50)
+    (mkCenterWidgets "doNotDisturb" 50)
+    (mkCenterWidgets "colorPicker" 50)
   ];
   showWorkspaceIndex = true;
 
-  appIdSubstitutions = [
-    {
-      pattern = "Spotify";
-      replacement = "spotify";
-      type = "exact";
-    }
-    {
-      pattern = "beepertexts";
-      replacement = "beeper";
-      type = "exact";
-    }
-    {
-      pattern = "home assistant desktop";
-      replacement = "homeassistant-desktop";
-      type = "exact";
-    }
-    {
-      pattern = "com.transmissionbt.transmission";
-      replacement = "transmission-gtk";
-      type = "contains";
-    }
-    {
-      pattern = "^steam_app_(\\d+)$";
-      replacement = "steam_icon_$1";
-      type = "regex";
-    }
-  ];
-
-  weatherEnabled = false;
-  networkPreference = "wifi";
-
-  fontWeight = 600;
-
-  fadeToLockEnabled = false;
-
-  osdPowerProfileEnabled = false;
+  # weatherEnabled = false;
+  # networkPreference = "wifi";
+  # fontWeight = 600;
+  # fadeToLockEnabled = false;
+  # osdPowerProfileEnabled = false;
 
   barConfigs = [
     {
-      id = "default";
+      id = "mainBar";
       name = "Main Bar";
       enabled = true;
       position = 0;
-      screenPreferences = [
-        "all"
-      ];
-      showOnLastDisplay = false;
+      screenPreferences = ["DP-2" "DP-3"];
+      # showOnLastDisplay = false;
       leftWidgets = [
-        {
-          id = "launcherButton";
-          enabled = true;
-        }
-        {
-          id = "cpuUsage";
-          enabled = true;
-          minimumWidth = false;
-        }
-        {
-          id = "memUsage";
-          enabled = true;
-          minimumWidth = false;
-          showSwap = false;
-        }
-        # {
-        #   id = "network_speed_monitor";
-        #   enabled = true;
-        # }
-        {
-          id = "focusedWindow";
-          enabled = true;
-        }
-        {
-          id = "layout";
-          enabled = true;
-        }
+        (mkWidgets "launcherButton" [])
+        (mkWidgets "cpuUsage" ["minimumWidth"])
+        (mkWidgets "memUsage" [
+          "minimumWidth"
+          "showSwap"
+        ])
+        (mkWidgets "network_speed_monitor" [])
+        (mkWidgets "focusedWindow" [])
+        (mkWidgets "layout" [])
       ];
       centerWidgets = [
-        {
-          id = "workspaceSwitcher";
-          enabled = true;
-        }
-        {
-          id = "runningApps";
-          enabled = true;
-          runningAppsGroupByApp = false;
-          runningAppsCurrentWorkspace = false;
-          runningAppsCurrentMonitor = false;
-        }
-        {
-          id = "clock";
-          enabled = true;
-          clockCompactMode = false;
-        }
+        (mkWidgets "workspaceSwitcher" [])
+        (mkWidgets "runningApps" [
+          "runningAppsGroupByApp"
+          "runningAppsCurrentWorkspace"
+          "runningAppsCurrentMonitor"
+        ])
+        (mkWidgets "clock" ["clockCompactMode"])
       ];
       rightWidgets = [
-        {
-          id = "music";
-          enabled = true;
-        }
-        {
-          id = "systemTray";
-          enabled = true;
-        }
-        {
-          id = "clipboard";
-          enabled = true;
-        }
-        {
-          id = "notificationButton";
-          enabled = true;
-        }
-        {
-          id = "battery";
-          enabled = true;
-        }
-        {
-          id = "controlCenterButton";
-          enabled = true;
-        }
+        (mkWidgets "music" [])
+        (mkWidgets "systemTray" [])
+        (mkWidgets "clipboard" [])
+        (mkWidgets "notificationButton" [])
+        (mkWidgets "battery" [])
+        (mkWidgets "controlCenterButton" [])
       ];
       spacing = 0;
-      innerPadding = 0;
+      innerPadding = -2;
       transparency = 0.8;
       squareCorners = true;
       gothCornersEnabled = true;
@@ -196,50 +90,29 @@
       widgetOutlineEnabled = true;
       widgetOutlineOpacity = 0.19;
       widgetOutlineThickness = 2;
-      fontScale = 1.2;
-      iconScale = 1.2;
-      shadowOpacity = 100;
-      shadowColorMode = "custom";
+      # fontScale = 1.2;
+      # iconScale = 1.2;
+      # shadowOpacity = 100;
+      # shadowColorMode = "custom";
     }
     {
-      id = "bar1776936686449";
-      name = "Bar 2";
+      id = "subBar";
+      name = "Sub Bar";
       enabled = true;
       position = 0;
-      screenPreferences = [
-      ];
+      screenPreferences = ["eDP-2" "eDP-1"];
       showOnLastDisplay = false;
       leftWidgets = [
-        {
-          id = "clock";
-          enabled = true;
-          clockCompactMode = false;
-        }
+        (mkWidgets "workspaceSwitcher" [])
       ];
       centerWidgets = [
-        {
-          id = "music";
-          enabled = true;
-        }
-        {
-          id = "focusedWindow";
-          enabled = true;
-          focusedWindowCompactMode = false;
-        }
-        {
-          id = "workspaceSwitcher";
-          enabled = true;
-        }
+        (mkWidgets "clock" [])
+        (mkWidgets "music" [])
+        (mkWidgets "focusedWindow" [])
       ];
       rightWidgets = [
-        {
-          id = "clipboard";
-          enabled = true;
-        }
-        {
-          id = "notificationButton";
-          enabled = true;
-        }
+        (mkWidgets "clipboard" [])
+        (mkWidgets "notificationButton" [])
       ];
       spacing = 0;
       innerPadding = 0;
@@ -257,9 +130,4 @@
       shadowColorMode = "custom";
     }
   ];
-  launcherPluginVisibility = {
-    "dms_settings_search" = {
-      allowWithoutTrigger = true;
-    };
-  };
 }
