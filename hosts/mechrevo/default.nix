@@ -93,3 +93,4 @@
 # feat(qq): enable qq for mechrevo
 # feat(obsidian): add home-manager configuration
 # feat(dms): add configurable bar profiles
+# Make Obsidian vaults host-specific
