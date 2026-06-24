@@ -80,6 +80,10 @@ in {
         };
 
         desktop = {
+          dms.bars = {
+            mainBar.screenPreferences = ["DP-2" "DP-3"];
+            subBar.screenPreferences = ["eDP-1" "eDP-2"];
+          };
           theme-specialisations = theme;
           obsidian = enabled;
           vscode = enabled;
