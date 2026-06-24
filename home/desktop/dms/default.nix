@@ -16,3 +16,4 @@
 # feat(dms): add plugin command runner
 # feat(dms): simplify dms settings
 # Merge branch 'main' of ssh://codeberg.org/erina/nixos
+# feat(dms): add configurable bar profiles

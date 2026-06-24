@@ -3,3 +3,4 @@
 # feat(stylix): enhance styix theme for nvim and dms
 # feat(dms): enhance dms tyle
 # refactor(dms): simplify settings widgets
+# feat(dms): add configurable bar profiles

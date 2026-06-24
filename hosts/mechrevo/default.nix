@@ -92,3 +92,4 @@
 # home: switch vscode module to vscodium
 # feat(qq): enable qq for mechrevo
 # feat(obsidian): add home-manager configuration
+# feat(dms): add configurable bar profiles
