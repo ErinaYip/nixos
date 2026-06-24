@@ -32,10 +32,14 @@ in {
       # (bind "SUPER + SHIFT + R" ''hl.dsp.layout("colresize -conf")'')
 
       # Screenshot
-      # (bind "Print" ''hl.dsp.exec_cmd([[grim -g "$(slurp)" - | wl-copy]])'')
-      # (bind "SUPER + S" ''hl.dsp.exec_cmd([[grim -g "$(slurp)" - | wl-copy]])'')
+      # (bind "Print" ''hl.dsp.exec_cmd([[grim -g "$(slurp -dw 0)" - | wl-copy]])'')
       # (bind "SUPER + Print" ''hl.dsp.exec_cmd("grim - | wl-copy")'')
-      (bind "SUPER + S" ''hl.dsp.exec_cmd("grim -o $(hyprctl activeworkspace -j | jq -r '.monitor') -t ppm - | satty --filename -")'')
+      # (bind "SUPER + S" ''hl.dsp.exec_cmd([[grim -g "$(slurp -dw 0)" - | wl-copy]])'')
+      # (bind "SUPER + Shift + S" ''hl.dsp.exec_cmd("grim - | wl-copy")'')
+      (bind "SUPER + S" ''hl.dsp.exec_cmd([[hyprshot -m region --clipboard-only --slurp-args "-w 0"]])'')
+      (bind "SUPER + SHIFT + S" ''hl.dsp.exec_cmd([[hyprshot -m window --clipboard-only --slurp-args "-w 0"]])'')
+      (bind "Print" ''hl.dsp.exec_cmd([[hyprshot -m region --clipboard-only --slurp-args "-w 0"]])'')
+      (bind "SUPER + Print" ''hl.dsp.exec_cmd([[hyprshot -m window --clipboard-only --slurp-args "-w 0"]])'')
 
       (bind "SUPER + CTRL + R" ''hl.dsp.exec_cmd("hyprctl reload")'')
       (bind "SUPER + CTRL + E" "hl.dsp.exit()")

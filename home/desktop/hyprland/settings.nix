@@ -1,8 +1,8 @@
 {
   config = {
     general = {
-      gaps_in = 4;
-      gaps_out = 4;
+      gaps_in = 1;
+      gaps_out = 2;
       border_size = 3;
       layout = "master";
       resize_on_border = true;

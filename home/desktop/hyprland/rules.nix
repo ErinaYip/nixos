@@ -17,11 +17,6 @@
       float = true;
     }
     {
-      name = "float-title-satty";
-      match.initial_title = ".*satty.*";
-      float = true;
-    }
-    {
       name = "float-title-images-and-video";
       match.initial_title = ".*图片和视频.*";
       float = true;

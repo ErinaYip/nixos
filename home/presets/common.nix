@@ -23,7 +23,6 @@ with eriniteLib;
           nemo = enabled;
           qq = enabled;
           # qt = enabled;
-          satty = enabled;
           stylix = enabled;
           # theme-specialisations = enabled;
           vscode = enabled;
