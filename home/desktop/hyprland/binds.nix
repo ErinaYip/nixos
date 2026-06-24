@@ -8,3 +8,4 @@
 # Add smart code launcher for kitty
 # feat(vscode): withdraw smart code
 # feat(satty): add satty and apply to hyprland
+# feat(hyprland): delete satty and use my fork of hyprshot to take screen shots
