@@ -91,3 +91,4 @@
 # feat(theme-spicialisation): enhance options
 # home: switch vscode module to vscodium
 # feat(qq): enable qq for mechrevo
+# feat(obsidian): add home-manager configuration
