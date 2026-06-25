@@ -6,6 +6,8 @@
 with eriniteLib; {
   home.packages = with pkgs; [
     wemeet
+
+    materialgram
   ];
   programs.cava = enabled;
 
