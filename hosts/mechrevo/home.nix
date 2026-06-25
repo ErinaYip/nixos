@@ -6,3 +6,4 @@
 # fix(mechrove): rewrite mulitscreen decating for huprland
 # some fix
 # feat(mechrevo): install wemeet
+# feat(mechrevo): switch materialgram to home module
