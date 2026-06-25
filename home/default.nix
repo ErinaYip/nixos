@@ -21,6 +21,9 @@
       stateVersion = lib.mkDefault default.homeStateVersion;
     };
 
-    xdg.enable = lib.mkDefault true;
+    xdg = {
+      enable = true;
+      mimeApps.enable = true;
+    };
   };
 }

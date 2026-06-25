@@ -20,13 +20,18 @@ with eriniteLib;
           fuzzel = enabled;
           # gtk = enabled;
           # matugen = enabled;
-          nemo = enabled;
           qq = enabled;
           # qt = enabled;
           stylix = enabled;
           # theme-specialisations = enabled;
           vscode = enabled;
           wechat = enabled;
+        };
+
+        media = {
+          nemo = enabled;
+          xviewer = enabled;
+          celluloid = enabled;
         };
 
         cli = {

@@ -26,6 +26,8 @@ lib.makeExtensible (final: {
   mkInputPkgb = input: pkg: inputs.${input}.packages.${pkgs.stdenv.hostPlatform.system}.${pkg};
   mkInputPkga = input: final.mkInputPkgb input input;
 
+  mkDefaultApplications = app: mimes: lib.genAttrs mimes (_: app);
+
   recolorScript = args: (import ./recolor args).recolorScript;
 
   themeSpecialisations = import ./theme-specialisations.nix {
