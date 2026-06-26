@@ -12,3 +12,4 @@
 # feat(theme-specialisation); enhance theme specialisations with light color schemas
 # feat(theme-spicialisation): simplify wallpaper path defination
 # feat(theme-spicialisation): enhance options
+# feat(erinite): use the directory path as the module identity

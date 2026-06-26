@@ -5,3 +5,4 @@
 # feat(dms): enhance dms tyle
 # feat(themeSpecialisation): simplify theme switching
 # feat(theme-spicialisation): enhance options
+# feat(erinite): use the directory path as the module identity

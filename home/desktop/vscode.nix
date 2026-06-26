@@ -3,3 +3,4 @@
 # feat(vscode): enhance configurations
 # Add smart code launcher for kitty
 # feat(vscode): withdraw smart code
+# feat(erinite): use the directory path as the module identity

@@ -5,3 +5,4 @@
 # feat: add matugen and stylix presets, update default configurations
 # feat: add config-source module for system configuration backup
 # feat(media): remove media module
+# feat(erinite): use the directory path as the module identity

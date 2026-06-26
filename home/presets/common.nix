@@ -11,3 +11,4 @@
 # feat(satty): add satty and apply to hyprland
 # feat(hyprland): delete satty and use my fork of hyprshot to take screen shots
 # feat(media): add celluloid, nemo and xviwer modules to media category
+# feat(erinite): use the directory path as the module identity

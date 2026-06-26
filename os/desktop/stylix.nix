@@ -4,3 +4,4 @@
 # feat(stylix): set fonts for stylix
 # feat(recolor): enhance recolor script to faster
 # update system
+# feat(erinite): use the directory path as the module identity

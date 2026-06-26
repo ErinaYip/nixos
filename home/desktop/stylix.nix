@@ -10,3 +10,4 @@
 # feat(fuzzel): opacity and blur
 # feat(stylix): enhance styix theme for nvim and dms
 # feat(recolor): enhance recolor script to faster
+# feat(erinite): use the directory path as the module identity

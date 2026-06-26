@@ -80,7 +80,7 @@ Before changing code, an agent should understand these facts:
 - `flake.nix` imports the shared `pkgs` set used by standalone Home Manager,
   including its unfree package allowance.
 - `lib/default.nix` defines `eriniteLib`, including `mkModule`, which is the common wrapper used by most modules.
-- `os/default.nix` and `home/default.nix` import all module files under `os/` and `home/`.
+- `os/default.nix` and `home/default.nix` import all module files under `os/` and `home/`; `mkModule` derives option paths from those file paths.
 - `flake.nix` imports the same host `homeModules` into both `home-manager.users.<username>.imports` and standalone `homeConfigurations`.
 - `hosts/<name>/default.nix` returns `{ osModules, homeModules }`.
 - `os/presets/common.nix` enables baseline system modules, including `system.config-source`, `system.nh`, and `system.nix`.

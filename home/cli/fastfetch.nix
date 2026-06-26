@@ -3,3 +3,4 @@
 # feat: update zsh aliases structure and add nh module to common presets
 # feat(fastfetch): change fastfetch icons
 # fix(fastfetch): terminal key
+# feat(erinite): use the directory path as the module identity
