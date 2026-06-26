@@ -68,6 +68,10 @@
     };
   };
 
+  luaConfigPost = ''
+    Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")
+  '';
+
   keymaps = [
     (mkKeymapd ["n"] "<leader>e" "<cmd>lua Snacks.explorer()<cr>" "[E]xplorer")
     (mkKeymapd ["n"] "<leader>fw" ":lua Snacks.picker.grep()<cr>" "[F]ind content (snacks)")
