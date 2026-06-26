@@ -5,9 +5,8 @@
   ...
 } @ args:
 with eriniteLib; let
-  obsidianAssets = ../../../assets/obsidian;
-  plugins = import ./plugins.nix {inherit pkgs obsidianAssets;};
-  themes = import ./themes.nix {inherit lib obsidianAssets;};
+  plugins = import ./plugins.nix {inherit pkgs;};
+  themes = import ./themes.nix {inherit pkgs;};
 in
   mkModule args {
     opts = {

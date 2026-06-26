@@ -1,10 +1,5 @@
-{
-  pkgs,
-  obsidianAssets,
-}: let
-  readJson = path: builtins.fromJSON (builtins.readFile path);
-  pluginSrc = id: obsidianAssets + "/plugins/${id}";
-
+{pkgs}: let
+  settings = import ./plugin-settings.nix;
   mkPlugin = {
     id,
     repo,
@@ -123,5 +118,5 @@
   };
 in {
   inherit packages;
-  data = id: readJson (pluginSrc id + "/data.json");
+  data = id: settings.${id};
 }
