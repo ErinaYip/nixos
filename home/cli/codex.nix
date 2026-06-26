@@ -20,6 +20,13 @@
     };
   };
   mkProvider = name: base_url: mkProviderWithOpts name base_url {};
+
+  ctf-skills = pkgs.fetchFromGitHub {
+    owner = "ljagiello";
+    repo = "ctf-skills";
+    rev = "1af14f9030fee9da46014a8a3ed61a555b81ab98";
+    sha256 = "sha256-v3JNLpd4JeeFdnXj219kT8BOOh+O7g/hTwaSwyIhubE=";
+  };
 in
   with eriniteLib;
     mkModule args {
@@ -39,6 +46,9 @@ in
           {
             programs.codex = {
               enable = true;
+              skills = {
+                inherit ctf-skills;
+              };
               settings = {
                 model = "gpt-5.5";
                 model_reasoning_effort = "high";
