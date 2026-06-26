@@ -226,8 +226,8 @@ Modules are enabled like this:
 
 ```nix
 with eriniteLib; {
-  erinite.presets.common = enabled;
-  erinite.browsers.firefox = enabled;
+  erinite.os.presets.common = enabled;
+  erinite.home.browsers.firefox = enabled;
 }
 ```
 

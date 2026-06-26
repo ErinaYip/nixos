@@ -94,3 +94,4 @@
 # feat(obsidian): add home-manager configuration
 # feat(dms): add configurable bar profiles
 # Make Obsidian vaults host-specific
+# feat(erinite): move os modules to namespace "os"

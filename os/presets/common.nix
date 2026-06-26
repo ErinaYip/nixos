@@ -6,3 +6,4 @@
 # feat: add config-source module for system configuration backup
 # feat(media): remove media module
 # feat(erinite): use the directory path as the module identity
+# feat(erinite): move os modules to namespace "os"

@@ -9,3 +9,4 @@ docs: update host configuration docs
 docs: sync documentation with recent updates
 fix: add allowunfree for both os and home modules
 feat(erinite): use the directory path as the module identity
+feat(erinite): move os modules to namespace "os"

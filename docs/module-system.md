@@ -7,3 +7,4 @@ refactor: split os and home modules
 docs: sync documentation with recent updates
 fix(codex): migrate provider profiles
 feat(erinite): use the directory path as the module identity
+feat(erinite): move os modules to namespace "os"
