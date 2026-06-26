@@ -1,6 +1,6 @@
 {
   mgr = {
-    ratio = [1 4 3];
+    ratio = [2 3 4];
     sort_by = "natural";
     sort_translit = true;
     sort_sensitive = true;
