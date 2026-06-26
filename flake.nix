@@ -80,3 +80,4 @@
 # feat(dms): add dms screenshot plugin
 # feat(stylix): siwtch to my fork
 # feat(dms): simplify dms settings
+# feat(flake): add nix fmt
