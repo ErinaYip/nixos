@@ -7,9 +7,6 @@
   inherit (builtins) elemAt listToAttrs;
 in
   eriniteLib.mkModule args {
-    category = "system";
-    name = "nix";
-
     configFn = _: {
       system.stateVersion = default.systemStateVersion;
 

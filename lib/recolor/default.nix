@@ -4,12 +4,14 @@
   ...
 } @ args: let
   recolorOptions = args.recolorOptions or {};
-  recolorConfig = {
-    mode = "palette";
-    colors = config.lib.stylix.colors.withHashtag.toList;
-    smooth = true;
-    whitelist = [];
-  } // recolorOptions;
+  recolorConfig =
+    {
+      mode = "palette";
+      colors = config.lib.stylix.colors.withHashtag.toList;
+      smooth = true;
+      whitelist = [];
+    }
+    // recolorOptions;
   basic-colormath = pkgs.python3.pkgs.buildPythonPackage rec {
     pname = "basic-colormath";
     version = "0.5.0";

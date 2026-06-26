@@ -1,9 +1,5 @@
 {eriniteLib, ...} @ args:
 eriniteLib.mkModule args {
-  namespace = ["erinite" "home"];
-  category = "cli";
-  name = "git";
-
   opts = {
     user = {
       name = eriniteLib.mkStrOpt "Demo User" "Git user name.";

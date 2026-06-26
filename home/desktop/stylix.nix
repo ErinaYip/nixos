@@ -24,10 +24,6 @@
 in
   with eriniteLib;
     mkModule args {
-      namespace = ["erinite" "home"];
-      category = "desktop";
-      name = "stylix";
-
       defaultSettings = {
         fonts.sizes = {
           desktop = 12;

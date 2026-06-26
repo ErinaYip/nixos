@@ -1,8 +1,5 @@
 {eriniteLib, ...} @ args:
 eriniteLib.mkModule args {
-  category = "system";
-  name = "i18n";
-
   configFn = _: {
     i18n = {
       defaultLocale = "zh_CN.UTF-8";

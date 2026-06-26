@@ -6,9 +6,6 @@
   ...
 } @ args:
 eriniteLib.mkModule args {
-  category = "system";
-  name = "sddm";
-
   imports = [inputs.silentSDDM.nixosModules.default];
 
   configFn = _: {

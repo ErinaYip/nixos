@@ -4,9 +4,6 @@
   ...
 } @ args:
 eriniteLib.mkModule args {
-  category = "system";
-  name = "fonts";
-
   configFn = _: {
     fonts = {
       enableDefaultPackages = true;

@@ -6,9 +6,6 @@
 } @ args:
 with eriniteLib;
   mkModule args {
-    category = "system";
-    name = "virtualisation";
-
     opts = {
       podman = mkBoolOpt false "Whether to enable podman";
       vbox = mkBoolOpt false "Whether to enable virtual-box";

@@ -5,10 +5,6 @@
 } @ args:
 with eriniteLib;
   mkModule args {
-    namespace = ["erinite" "home"];
-    category = "cli";
-    name = "eza";
-
     configFn = _:
       lib.mkMerge [
         {

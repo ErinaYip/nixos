@@ -5,10 +5,6 @@
 } @ args:
 with eriniteLib;
   mkModule args {
-    namespace = ["erinite" "home"];
-    category = "media";
-    name = "celluloid";
-
     configFn = _: {
       home.packages = with pkgs; [
         celluloid

@@ -56,10 +56,6 @@ with eriniteLib; let
     mkThemePkg;
 in
   mkModule args {
-    namespace = ["erinite" "home"];
-    category = "desktop";
-    name = "obsidian";
-
     opts = {
       vaults =
         mkOpt

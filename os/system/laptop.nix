@@ -1,8 +1,5 @@
 {eriniteLib, ...} @ args:
 eriniteLib.mkModule args {
-  category = "system";
-  name = "laptop";
-
   configFn = _: {
     services = {
       upower.enable = true;

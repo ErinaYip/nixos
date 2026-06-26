@@ -5,9 +5,6 @@
   ...
 } @ args:
 eriniteLib.mkModule args {
-  category = "desktop";
-  name = "obs-studio";
-
   configFn = {...}: {
     environment.systemPackages = [
       (pkgs.wrapOBS {

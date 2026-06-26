@@ -7,10 +7,6 @@ with eriniteLib; let
   bars = import ./bars.nix;
 in
   mkModule args {
-    namespace = ["erinite" "home"];
-    category = "desktop";
-    name = "dms";
-
     opts = {
       session = mkOpt lib.types.attrs {} "Dms session state settings.";
       bars = {

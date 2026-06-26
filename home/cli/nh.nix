@@ -3,10 +3,6 @@
 in
   with eriniteLib;
     mkModule args {
-      namespace = ["erinite" "home"];
-      category = "cli";
-      name = "nh";
-
       configFn = _: {
         erinite.home.cli.zsh.aliases = listToAttrs (
           concatMap (

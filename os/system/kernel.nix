@@ -6,9 +6,6 @@
 } @ args:
 with eriniteLib;
   mkModule args {
-    category = "system";
-    name = "kernel";
-
     opts = {
       sched_ext = mkBoolOpt false "Whether to enable sched_ext";
     };

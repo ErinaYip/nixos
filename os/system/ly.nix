@@ -1,8 +1,5 @@
 {eriniteLib, ...} @ args:
 eriniteLib.mkModule args {
-  category = "system";
-  name = "ly";
-
   configFn = _: {
     services.displayManager.ly = {
       enable = true;

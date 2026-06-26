@@ -8,9 +8,6 @@
 } @ args:
 with eriniteLib;
   mkModule args {
-    category = "system";
-    name = "network";
-
     opts = {
       proxy = mkBoolOpt false "Whether to enable system proxy.";
     };

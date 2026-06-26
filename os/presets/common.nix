@@ -1,9 +1,6 @@
 {eriniteLib, ...} @ args:
 with eriniteLib;
   mkModule args {
-    category = "presets";
-    name = "common";
-
     configFn = _: {
       erinite = {
         system = {

@@ -4,10 +4,6 @@
   ...
 } @ args:
 eriniteLib.mkModule args {
-  namespace = ["erinite" "home"];
-  category = "cli";
-  name = "yazi";
-
   defaultSettings = import ./settings.nix;
 
   configFn = {settings, ...}: {

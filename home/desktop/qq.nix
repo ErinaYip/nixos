@@ -15,10 +15,6 @@
   });
 in
   eriniteLib.mkModule args {
-    namespace = ["erinite" "home"];
-    category = "desktop";
-    name = "qq";
-
     configFn = _: {
       home.packages = [qq];
     };

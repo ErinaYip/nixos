@@ -6,10 +6,6 @@
 } @ args:
 with eriniteLib;
   mkModule args {
-    namespace = ["erinite" "home"];
-    category = "desktop";
-    name = "hyprland";
-
     configFn = _: {
       home.packages = with pkgs; [
         (hyprshot.overrideAttrs (_: {

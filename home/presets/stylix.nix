@@ -1,10 +1,6 @@
 {eriniteLib, ...} @ args:
 with eriniteLib;
   mkModule args {
-    namespace = ["erinite" "home"];
-    category = "presets";
-    name = "stylix";
-
     configFn = _: {
       erinite.home = {
         desktop = {

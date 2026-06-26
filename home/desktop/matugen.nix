@@ -1,9 +1,5 @@
 {eriniteLib, ...} @ args:
 eriniteLib.mkModule args {
-  namespace = ["erinite" "home"];
-  category = "desktop";
-  name = "matugen";
-
   configFn = _: {
     xdg.configFile."matugen/config.toml".text = ''
       [config]

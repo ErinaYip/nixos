@@ -4,10 +4,6 @@
   ...
 } @ args:
 eriniteLib.mkModule args {
-  namespace = ["erinite" "home"];
-  category = "desktop";
-  name = "cursor";
-
   configFn = _: {
     home.pointerCursor = {
       gtk.enable = true;

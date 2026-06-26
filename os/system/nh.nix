@@ -7,9 +7,6 @@
 in
   with eriniteLib;
     mkModule args {
-      category = "system";
-      name = "nh";
-
       opts = {
         flake = mkStrOpt "/home/${default.username}/nixos" "The path to the flake to use";
       };

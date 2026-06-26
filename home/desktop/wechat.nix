@@ -18,10 +18,6 @@
   });
 in
   eriniteLib.mkModule args {
-    namespace = ["erinite" "home"];
-    category = "desktop";
-    name = "wechat";
-
     configFn = _: {
       home.packages = [wechat];
     };

@@ -16,10 +16,6 @@ with eriniteLib; let
   };
 in
   mkModule args {
-    namespace = ["erinite" "home"];
-    category = "desktop";
-    name = "vscode";
-
     configFn = _: {
       home.packages = [
         code

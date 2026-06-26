@@ -1,8 +1,5 @@
 {eriniteLib, ...} @ args:
 eriniteLib.mkModule args {
-  category = "programs";
-  name = "gaming";
-
   configFn = _: {
     programs = {
       gamescope.enable = true;

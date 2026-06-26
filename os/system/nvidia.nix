@@ -5,9 +5,6 @@
   ...
 } @ args:
 eriniteLib.mkModule args {
-  category = "system";
-  name = "nvidia";
-
   opts = {
     prime = {
       enable = eriniteLib.mkBoolOpt false "Enable NVIDIA PRIME Offload.";

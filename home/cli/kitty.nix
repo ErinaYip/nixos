@@ -6,10 +6,6 @@
 } @ args:
 with eriniteLib;
   mkModule args {
-    namespace = ["erinite" "home"];
-    category = "cli";
-    name = "kitty";
-
     configFn = _:
       lib.mkMerge [
         {

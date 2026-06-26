@@ -23,23 +23,18 @@
 in
   with eriniteLib;
     mkModule args {
-      namespace = ["erinite" "home"];
-      category = "cli";
-      name = "codex";
-
       opts = {
         profileFiles = mkAttrOpt lib.types.attrs {} "Codex profile config files.";
         model_providers = mkAttrOpt lib.types.attrs {} "Codex model_providers.";
       };
 
-      configFn = {cfg, ...}:
-        let
-          mutableProfileFiles = lib.mapAttrs' (name: settings:
-            lib.nameValuePair ".codex/${name}.config.toml" {
-              source = tomlFormat.generate "${name}.config.toml" settings;
-            })
-          cfg.profileFiles;
-        in
+      configFn = {cfg, ...}: let
+        mutableProfileFiles = lib.mapAttrs' (name: settings:
+          lib.nameValuePair ".codex/${name}.config.toml" {
+            source = tomlFormat.generate "${name}.config.toml" settings;
+          })
+        cfg.profileFiles;
+      in
         lib.mkMerge [
           {
             programs.codex = {

@@ -4,10 +4,6 @@
   ...
 } @ args:
 eriniteLib.mkModule args {
-  namespace = ["erinite" "home"];
-  category = "cli";
-  name = "starship";
-
   defaultSettings = {
     add_newline = true;
     character = {

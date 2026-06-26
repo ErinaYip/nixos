@@ -1,10 +1,6 @@
 {eriniteLib, ...} @ args:
 with eriniteLib;
   mkModule args {
-    namespace = ["erinite" "home"];
-    category = "cli";
-    name = "ghostty";
-
     configFn = _: {
       programs.ghostty = {
         enable = true;

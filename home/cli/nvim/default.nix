@@ -6,10 +6,6 @@
 } @ args:
 with eriniteLib;
   mkModule args {
-    namespace = ["erinite" "home"];
-    category = "cli";
-    name = "nvim";
-
     configFn = _: let
       mkKeymap = mode: key: action: desc: {
         silent ? true,

@@ -6,10 +6,6 @@
 } @ args:
 with eriniteLib;
   mkModule args {
-    namespace = ["erinite" "home"];
-    category = "cli";
-    name = "fastfetch";
-
     configFn = _: let
       fastfetch-icons = pkgs.fetchFromGitea {
         domain = "codeberg.org";

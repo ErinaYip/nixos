@@ -4,9 +4,6 @@
   ...
 } @ args:
 eriniteLib.mkModule args {
-  category = "system";
-  name = "boot";
-
   opts = {
     engine =
       eriniteLib.mkOpt

@@ -49,15 +49,21 @@ lib.makeExtensible (final: {
       ];
     }).config.settings;
 
-  mkModule = args: {
-    category,
-    name,
-    namespace ? ["erinite"],
-    imports ? [],
-    opts ? {},
-    defaultSettings ? {},
-    configFn,
-  }: let
+  mkModule = args: module: let
+    inferred =
+      args.eriniteModule or (final.moduleInfoFromModule module);
+    spec = inferred // module;
+    namespace = spec.namespace or ["erinite"];
+    category =
+      spec.category
+      or (throw "mkModule requires category; import the module through eriniteLib.modules or set category explicitly.");
+    name =
+      spec.name
+      or (throw "mkModule requires name; import the module through eriniteLib.modules or set name explicitly.");
+    imports = spec.imports or [];
+    opts = spec.opts or {};
+    defaultSettings = spec.defaultSettings or {};
+    configFn = spec.configFn;
     optionPath = namespace ++ [category name];
     cfg = lib.getAttrFromPath optionPath args.config;
     mergedSettings = final.mergeSettings [defaultSettings cfg.settings];
@@ -96,15 +102,55 @@ lib.makeExtensible (final: {
     )
     (builtins.readDir d);
 
-  files = dir: let
-    d = toString dir;
+  moduleFiles = dir: let
     allFiles = lib.collect lib.isString (
       lib.mapAttrsRecursive (path: _: lib.concatStringsSep "/" path)
       (final.getDir dir)
     );
   in
+    lib.filter (f: lib.hasSuffix ".nix" f && f != "default.nix") allFiles;
+
+  moduleRootNamespace = root:
+    ["erinite"] ++ lib.optional (root == "home") "home";
+
+  moduleInfoFromFile = file: let
+    path = lib.splitString "/" (toString file);
+    pathLength = builtins.length path;
+    moduleFile = builtins.elemAt path (pathLength - 1);
+    isDefault = moduleFile == "default.nix";
+  in {
+    namespace =
+      final.moduleRootNamespace
+      (builtins.elemAt path (pathLength
+        - (
+          if isDefault
+          then 4
+          else 3
+        )));
+    category = builtins.elemAt path (pathLength
+      - (
+        if isDefault
+        then 3
+        else 2
+      ));
+    name =
+      if isDefault
+      then builtins.elemAt path (pathLength - 2)
+      else lib.removeSuffix ".nix" moduleFile;
+  };
+
+  moduleInfoFromModule = module: let
+    position = builtins.unsafeGetAttrPos "configFn" module;
+  in
+    if position == null
+    then {}
+    else final.moduleInfoFromFile position.file;
+
+  files = dir: let
+    d = toString dir;
+  in
     map (f: d + "/" + f)
-    (lib.filter (f: lib.hasSuffix ".nix" f && f != "default.nix") allFiles);
+    (final.moduleFiles dir);
 
   modules = dir: final.files dir;
 })

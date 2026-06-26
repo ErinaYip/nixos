@@ -1,8 +1,5 @@
 {eriniteLib, ...} @ args:
 eriniteLib.mkModule args {
-  category = "system";
-  name = "keyd";
-
   configFn = _: {
     services.keyd = {
       enable = true;

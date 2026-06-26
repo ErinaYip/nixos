@@ -9,10 +9,6 @@
 in
   with eriniteLib;
     mkModule args {
-      namespace = ["erinite" "home"];
-      category = "cli";
-      name = "zsh";
-
       opts = {
         aliases = mkAttrOpt lib.types.str {} "Shell aliases to add to zsh.";
       };

@@ -4,10 +4,6 @@
   ...
 } @ args:
 eriniteLib.mkModule args {
-  namespace = ["erinite" "home"];
-  category = "desktop";
-  name = "gtk";
-
   configFn = _: {
     gtk = {
       enable = true;

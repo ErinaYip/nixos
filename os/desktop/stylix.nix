@@ -5,9 +5,6 @@
 } @ args:
 with eriniteLib;
   mkModule args {
-    category = "desktop";
-    name = "stylix";
-
     imports = [inputs.stylix.nixosModules.default];
 
     defaultSettings = {

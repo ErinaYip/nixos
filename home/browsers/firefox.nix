@@ -7,10 +7,6 @@
 } @ args:
 with eriniteLib;
   mkModule args {
-    namespace = ["erinite" "home"];
-    category = "browsers";
-    name = "firefox";
-
     configFn = _: let
       repoRoot = ../../.;
       homeDir = config.home.homeDirectory;

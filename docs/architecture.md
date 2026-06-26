@@ -49,7 +49,7 @@ outputs, refresh rates, rotation, or external monitor detection.
 
 Most modules follow the same pattern:
 
-1. Declare a namespace like `erinite.cli.kitty` or `erinite.system.keyd`.
+1. Use the directory path as the module identity, such as `home/cli/kitty.nix` or `os/system/keyd.nix`.
 2. Offer `enable` and `settings` options.
 3. Merge `defaultSettings` with host overrides.
 4. Emit downstream config only when `enable = true`.

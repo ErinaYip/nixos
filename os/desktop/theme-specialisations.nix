@@ -10,9 +10,6 @@
   inherit (eriniteLib.themeSpecialisations) mkThemeSpecialisationOptions;
 in
   mkModule args {
-    category = "desktop";
-    name = "theme-specialisations";
-
     opts = mkThemeSpecialisationOptions "Wallpapers to turn into theme specialisations.";
 
     configFn = {cfg, ...}: let

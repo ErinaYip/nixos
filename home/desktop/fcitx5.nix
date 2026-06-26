@@ -4,10 +4,6 @@
   ...
 } @ args:
 eriniteLib.mkModule args {
-  namespace = ["erinite" "home"];
-  category = "desktop";
-  name = "fcitx5";
-
   configFn = _: let
     inputMethodEnv = {
       QT_IM_MODULE = "fcitx";

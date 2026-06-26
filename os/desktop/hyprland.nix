@@ -5,9 +5,6 @@
 } @ args:
 with eriniteLib;
   mkModule args {
-    category = "desktop";
-    name = "hyprland";
-
     configFn = {...}: {
       programs.hyprland = {
         enable = true;

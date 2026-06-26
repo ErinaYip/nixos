@@ -9,10 +9,6 @@
   inherit (eriniteLib.themeSpecialisations) mkThemeSpecialisationOptions;
 in
   mkModule args {
-    namespace = ["erinite" "home"];
-    category = "desktop";
-    name = "theme-specialisations";
-
     opts = mkThemeSpecialisationOptions "Wallpapers to turn into Home Manager theme settings.";
 
     configFn = {cfg, ...}: let

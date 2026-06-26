@@ -6,9 +6,6 @@
 } @ args:
 with eriniteLib;
   mkModule args {
-    category = "desktop";
-    name = "streaming";
-
     opts = {
       host = {
         enable = mkBoolOpt false "Whether to enable streaming host.";

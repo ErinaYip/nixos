@@ -12,19 +12,19 @@ The most important helper is `mkModule`.
 
 A typical module provides:
 
-- `category`
-- `name`
+- `configFn`
 - `imports` (optional)
 - `opts` (optional extra options)
 - `defaultSettings` (optional)
-- `configFn`
+- `namespace`, `category`, and `name` only when overriding the path-derived defaults
 
 `mkModule` then:
 
-1. Binds `cfg = config.erinite.<category>.<name>`.
-2. Creates `enable` and `settings` options under that path.
-3. Merges `defaultSettings` with `cfg.settings`.
-4. Calls `configFn` only when the module is enabled.
+1. Infers the option path from the module file path.
+2. Binds `cfg = config.<derived-option-path>`.
+3. Creates `enable` and `settings` options under that path.
+4. Merges `defaultSettings` with `cfg.settings`.
+5. Calls `configFn` only when the module is enabled.
 
 ## Settings Merge Semantics
 
@@ -84,8 +84,14 @@ Hyprland bind generation in `home/desktop/dms/hyprland.nix`.
 - Recursively scans directories
 - Treats a directory with `default.nix` as a single module root
 - Includes `.nix` files except `default.nix`
+- Lets `mkModule` derive module identity from the file path
 
 This is why most directories under `os/` and `home/` do not need a hand-maintained import list.
+It also means modules do not need to repeat their option path:
+
+- `os/system/boot.nix` becomes `erinite.system.boot`
+- `home/desktop/vscode.nix` becomes `erinite.home.desktop.vscode`
+- `home/desktop/dms/default.nix` becomes `erinite.home.desktop.dms`
 
 ## Writing a New Module
 
@@ -95,7 +101,7 @@ Recommended process:
 2. Create a module file using `eriniteLib.mkModule`.
 3. Keep defaults in `defaultSettings` when the module has a settings tree.
 4. Put raw implementation in `configFn`.
-5. Enable it from a host or preset through `erinite.<category>.<name>`.
+5. Enable it from a host or preset through the derived `erinite.*` option path.
 
 Minimal shape:
 
@@ -103,9 +109,6 @@ Minimal shape:
 { lib, ... } @ args:
 
 eriniteLib.mkModule args {
-  category = "cli";
-  name = "example";
-
   defaultSettings = {
     foo = "bar";
   };
