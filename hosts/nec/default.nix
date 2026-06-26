@@ -26,6 +26,7 @@ in {
   ];
 
   homeModules = with eriniteLib; [
+    ./home.nix
     {
       erinite.home = {
         presets = {
@@ -45,11 +46,8 @@ in {
 
         desktop = {
           theme-specialisations = theme;
-          vscode = enabled;
-          qq = enabled;
         };
       };
     }
-    ./home.nix
   ];
 }

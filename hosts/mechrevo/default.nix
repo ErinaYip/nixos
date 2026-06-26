@@ -59,6 +59,7 @@ in {
   ];
 
   homeModules = with eriniteLib; [
+    ./home.nix
     {
       erinite.home = {
         presets = {
@@ -85,19 +86,12 @@ in {
             subBar.screenPreferences = ["eDP-1" "eDP-2"];
           };
           theme-specialisations = theme;
-          obsidian =
-            enabled
-            // {
-              vaults.notes = {
-                target = "Documents/notes";
-              };
-            };
-          vscode = enabled;
-          wechat = enabled;
-          qq = enabled;
+          obsidian = {
+            enable = true;
+            vaults.notes.target = "Documents/notes";
+          };
         };
       };
     }
-    ./home.nix
   ];
 }
