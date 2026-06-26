@@ -112,6 +112,8 @@
 
     hosts = lib.genAttrs hostNames mkHost;
   in {
+    formatter.${system} = inputs.nixpkgs.legacyPackages.x86_64-linux.alejandra;
+
     nixosConfigurations = lib.mapAttrs (_: host: host.nixos) hosts;
 
     homeConfigurations =
