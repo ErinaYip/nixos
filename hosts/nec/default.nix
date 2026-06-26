@@ -20,3 +20,4 @@
 # feat(nec): enable ghostty for nec
 # feat(nec): replace mihomo with flclash for nec
 # feat(erinite): move os modules to namespace "os"
+# chore(hosts): adjust something

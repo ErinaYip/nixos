@@ -95,3 +95,4 @@
 # feat(dms): add configurable bar profiles
 # Make Obsidian vaults host-specific
 # feat(erinite): move os modules to namespace "os"
+# chore(hosts): adjust something
