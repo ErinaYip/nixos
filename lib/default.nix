@@ -111,7 +111,7 @@ lib.makeExtensible (final: {
     lib.filter (f: lib.hasSuffix ".nix" f && f != "default.nix") allFiles;
 
   moduleRootNamespace = root:
-    ["erinite"] ++ lib.optional (root == "home") "home";
+    ["erinite"] ++ lib.optional (root == "os" || root == "home") root;
 
   moduleInfoFromFile = file: let
     path = lib.splitString "/" (toString file);

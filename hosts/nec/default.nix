@@ -6,7 +6,7 @@ in {
     ./hardware-configuration.nix
     ./os.nix
     {
-      erinite = {
+      erinite.os = {
         presets = {
           common = enabled;
           stylix = enabled;

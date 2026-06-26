@@ -89,7 +89,7 @@ Hyprland bind generation in `home/desktop/dms/hyprland.nix`.
 This is why most directories under `os/` and `home/` do not need a hand-maintained import list.
 It also means modules do not need to repeat their option path:
 
-- `os/system/boot.nix` becomes `erinite.system.boot`
+- `os/system/boot.nix` becomes `erinite.os.system.boot`
 - `home/desktop/vscode.nix` becomes `erinite.home.desktop.vscode`
 - `home/desktop/dms/default.nix` becomes `erinite.home.desktop.dms`
 

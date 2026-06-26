@@ -2,7 +2,7 @@
 with eriniteLib;
   mkModule args {
     configFn = _: {
-      erinite = {
+      erinite.os = {
         system = {
           boot = enabled;
           config-source = enabled;

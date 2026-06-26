@@ -35,11 +35,11 @@ The high-level flow is:
    - `default`
    - `eriniteLib`
 6. Standalone `homeConfigurations` imports the same `hostHomeModules` list.
-7. Modules expose options under `erinite.<category>.<name>` or `erinite.home.<category>.<name>`.
+7. Modules expose options under `erinite.os.<category>.<name>` or `erinite.home.<category>.<name>`.
 8. Host modules set values under `erinite.*` and enabled modules emit final NixOS or Home Manager configuration.
 
 Hyprland is an important special case in the current tree. The shared
-`desktop.hyprland` module enables the system package, portal, Home Manager
+`os.desktop.hyprland` module enables the system package, portal, Home Manager
 integration, and Lua config mode. Common binds, rules, animations and base
 settings are composed under `home/desktop/hyprland/`. Host-specific monitor
 and workspace logic stays in host configuration files when it depends on local
@@ -62,6 +62,7 @@ The repository uses both NixOS modules and Home Manager modules:
 
 - System-level settings are emitted directly as NixOS options.
 - User-level settings are emitted directly as Home Manager options.
+- OS modules expose options under `erinite.os`.
 - Home modules expose options under `erinite.home`.
 - `flake.nix` imports the same host `homeModules` into NixOS-integrated Home Manager and standalone `homeConfigurations`.
 - Both NixOS-integrated Home Manager and standalone `homeConfigurations` import the same host Home Manager modules.

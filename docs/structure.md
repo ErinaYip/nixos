@@ -65,7 +65,7 @@ Bridge from NixOS module space into Home Manager module space.
 ### `os/default.nix` and `home/default.nix`
 
 Auto-import the module tree. Module option paths are derived from this tree:
-`os/system/boot.nix` maps to `erinite.system.boot`, while
+`os/system/boot.nix` maps to `erinite.os.system.boot`, while
 `home/desktop/dms/default.nix` maps to `erinite.home.desktop.dms`.
 
 ### `hosts/<name>/default.nix`

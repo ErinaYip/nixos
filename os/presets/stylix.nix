@@ -2,7 +2,7 @@
 with eriniteLib;
   mkModule args {
     configFn = _: {
-      erinite = {
+      erinite.os = {
         desktop = {
           stylix = enabled;
           theme-specialisations = enabled;
