@@ -1,18 +1,11 @@
 {
   pkgs,
-  lib,
-  eriniteLib,
-  ...
-} @ args:
-with eriniteLib; let
-  obsidianAssets = ../../assets/obsidian;
-
+  obsidianAssets,
+}: let
   readJson = path: builtins.fromJSON (builtins.readFile path);
-
   pluginSrc = id: obsidianAssets + "/plugins/${id}";
-  pluginData = id: readJson (pluginSrc id + "/data.json");
 
-  mkObsidianPlugin = {
+  mkPlugin = {
     id,
     repo,
     version,
@@ -43,21 +36,8 @@ with eriniteLib; let
       '';
     };
 
-  mkThemePkg = name:
-    builtins.path {
-      name = "obsidian-theme-${lib.strings.sanitizeDerivationName name}";
-      path = obsidianAssets + "/themes/${name}";
-      filter = path: type:
-        type
-        == "directory"
-        || builtins.elem (baseNameOf path) [
-          "manifest.json"
-          "theme.css"
-        ];
-    };
-
-  pluginPackages = {
-    easy-typing-obsidian = mkObsidianPlugin {
+  packages = {
+    easy-typing-obsidian = mkPlugin {
       id = "easy-typing-obsidian";
       repo = "yaozhuwa/easy-typing-obsidian";
       version = "5.5.15";
@@ -69,7 +49,7 @@ with eriniteLib; let
       };
     };
 
-    editor-width-slider = mkObsidianPlugin {
+    editor-width-slider = mkPlugin {
       id = "editor-width-slider";
       repo = "mugishomp/obsidian-editor-width-slider";
       version = "1.0.5";
@@ -81,7 +61,7 @@ with eriniteLib; let
       };
     };
 
-    novel-word-count = mkObsidianPlugin {
+    novel-word-count = mkPlugin {
       id = "novel-word-count";
       repo = "isaaclyman/novel-word-count-obsidian";
       version = "4.6.0";
@@ -93,7 +73,7 @@ with eriniteLib; let
       };
     };
 
-    obsidian-icon-folder = mkObsidianPlugin {
+    obsidian-icon-folder = mkPlugin {
       id = "obsidian-icon-folder";
       repo = "florianwoelki/obsidian-iconize";
       version = "2.14.7";
@@ -105,7 +85,7 @@ with eriniteLib; let
       };
     };
 
-    obsidian-quiet-outline = mkObsidianPlugin {
+    obsidian-quiet-outline = mkPlugin {
       id = "obsidian-quiet-outline";
       repo = "guopenghui/obsidian-quiet-outline";
       version = "0.5.3";
@@ -117,7 +97,7 @@ with eriniteLib; let
       };
     };
 
-    obsidian-style-settings = mkObsidianPlugin {
+    obsidian-style-settings = mkPlugin {
       id = "obsidian-style-settings";
       repo = "obsidian-community/obsidian-style-settings";
       version = "1.0.9";
@@ -129,7 +109,7 @@ with eriniteLib; let
       };
     };
 
-    quick-explorer = mkObsidianPlugin {
+    quick-explorer = mkPlugin {
       id = "quick-explorer";
       repo = "pjeby/quick-explorer";
       version = "0.2.14";
@@ -141,98 +121,7 @@ with eriniteLib; let
       };
     };
   };
-
-  themePackages =
-    lib.genAttrs ["Blue Topaz"]
-    mkThemePkg;
-in
-  mkModule args {
-    opts = {
-      vaults =
-        mkOpt
-        (lib.types.attrsOf (lib.types.submodule {
-          options = {
-            target = lib.mkOption {
-              type = lib.types.str;
-              description = "Vault path relative to the home directory.";
-            };
-          };
-        }))
-        {}
-        "Obsidian vaults to configure.";
-    };
-
-    configFn = {cfg, ...}: {
-      programs.obsidian = {
-        enable = true;
-        package = pkgs.obsidian;
-
-        defaultSettings = {
-          app = {
-            showLineNumber = true;
-            livePreview = false;
-            spellcheck = false;
-            useTab = false;
-            promptDelete = false;
-            vimMode = false;
-            newLinkFormat = "shortest";
-            alwaysUpdateLinks = true;
-            useMarkdownLinks = false;
-            pdfExportSettings = {
-              includeName = true;
-              pageSize = "A4";
-              landscape = false;
-              margin = "0";
-              downscalePercent = 100;
-            };
-            showInlineTitle = true;
-          };
-
-          appearance = {
-            baseFontSizeAction = true;
-            accentColor = "";
-            nativeMenus = false;
-          };
-
-          communityPlugins = [
-            {
-              pkg = pluginPackages."editor-width-slider";
-              settings = pluginData "editor-width-slider";
-            }
-            {
-              pkg = pluginPackages."obsidian-icon-folder";
-              settings = pluginData "obsidian-icon-folder";
-            }
-            {
-              pkg = pluginPackages."novel-word-count";
-              settings.settings = (pluginData "novel-word-count").settings;
-            }
-            {
-              pkg = pluginPackages."obsidian-style-settings";
-              settings = pluginData "obsidian-style-settings";
-            }
-            {
-              enable = false;
-              pkg = pluginPackages."easy-typing-obsidian";
-              settings = pluginData "easy-typing-obsidian";
-            }
-            {
-              enable = false;
-              pkg = pluginPackages."obsidian-quiet-outline";
-              settings = pluginData "obsidian-quiet-outline";
-            }
-            {
-              enable = false;
-              pkg = pluginPackages."quick-explorer";
-            }
-          ];
-
-          themes = [
-            {pkg = themePackages."Blue Topaz";}
-          ];
-        };
-
-        inherit (cfg) vaults;
-      };
-    };
-  }
+in {
+  inherit packages;
+  data = id: readJson (pluginSrc id + "/data.json");
+}
