@@ -17,7 +17,6 @@ with eriniteLib;
           nix-ld = enabled;
           nix = enabled;
           # nvidia = enabled;
-          # sddm = enabled;
           sound = enabled;
           users = enabled;
           # virtualisation = enabled;
