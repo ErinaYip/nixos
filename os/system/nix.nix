@@ -47,7 +47,7 @@ in
           "https://cache.nixos.org"
         ];
 
-        trusted-users = [default.username];
+        trusted-users = [default.username "root" "@wheel"];
         trusted-public-keys = [
           "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         ];

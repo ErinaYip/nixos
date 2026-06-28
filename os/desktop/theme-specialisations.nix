@@ -25,14 +25,7 @@ in
       buildStylix = _name: wallpaper: {
         inherit (wallpaper) base16Scheme image polarity;
       };
-      buildEtc = name: wallpaper: {
-        "erinite-theme/name".text = name;
-        "erinite-theme/wallpaper".source = wallpaper.image;
-      };
     in {
-      stylix = buildStylix cfg.default defaultWallpaper;
-      environment.etc = buildEtc cfg.default defaultWallpaper;
-
       security.polkit = {
         enable = true;
         extraConfig = ''
@@ -60,21 +53,24 @@ in
         };
       };
 
+      stylix = buildStylix cfg.default defaultWallpaper;
+
       specialisation =
         mapAttrs (name: wallpaper: {
           configuration = {
             stylix = mapAttrs (_: mkForce) (buildStylix name wallpaper);
-            environment.etc =
-              mapAttrs (_: mkForce) (buildEtc name wallpaper)
-              // {"erinite-theme/specialisation".text = mkForce name;};
-            home-manager.users.${default.username}.erinite.home.desktop = {
-              theme-specialisations.default = mkForce name;
-              dms = {
-                session = {
-                  isLightMode = mkForce (wallpaper.polarity == "light");
-                  wallpaperPath = mkForce wallpaper.path;
+            environment.etc."specialisation".text = name;
+            home-manager.users.${default.username} = {
+              xdg.dataFile."home-manager/specialisation".text = name;
+              erinite.home.desktop = {
+                theme-specialisations.default = mkForce name;
+                dms = {
+                  session = {
+                    isLightMode = mkForce (wallpaper.polarity == "light");
+                    wallpaperPath = mkForce wallpaper.path;
+                  };
+                  settings.matugenScheme = mkForce wallpaper.type;
                 };
-                settings.matugenScheme = mkForce wallpaper.type;
               };
             };
           };
