@@ -268,26 +268,6 @@
         "type": "github"
       }
     },
-    "grub2-themes": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1757136219,
-        "narHash": "sha256-tKU+vq34KHu/A2wD7WdgP5A4/RCmSD8hB0TyQAUlixA=",
-        "owner": "vinceliuice",
-        "repo": "grub2-themes",
-        "rev": "80dd04ddf3ba7b284a7b1a5df2b1e95ee2aad606",
-        "type": "github"
-      },
-      "original": {
-        "owner": "vinceliuice",
-        "repo": "grub2-themes",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -400,11 +380,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1781203475,
-        "narHash": "sha256-xZYSKhlFtPTHyWTplInw1jPi3e7sIekAIS7JqvAag5I=",
+        "lastModified": 1782642681,
+        "narHash": "sha256-jvcRQuXFmYPA2Qf27ubIxPZg6W8zKiEXaHgBl6mAXm0=",
         "owner": "horriblename",
         "repo": "hyprgrass",
-        "rev": "51b27422c65ee2636aa3b7664b41f9221295f708",
+        "rev": "230495900cef1a5681bf8f8abf797939d1d64c1b",
         "type": "github"
       },
       "original": {
@@ -430,11 +410,11 @@
         "xdph": "xdph"
       },
       "locked": {
-        "lastModified": 1782635098,
-        "narHash": "sha256-0/PdEhnLw2KAbCYoyYjFh1Orwf8Tlmg7rxYA8k0AX9w=",
+        "lastModified": 1782640197,
+        "narHash": "sha256-/KPaAKGDmVWCw8rr4ZZILg6wXxb9vl8sjkQ7FwWyuEI=",
         "owner": "hyprwm",
         "repo": "Hyprland",
-        "rev": "b8d910d874d07548bf20529b7ad1f02e9b3c8e35",
+        "rev": "28bbe66da7f2fc1f1613677f37511c67731fafd5",
         "type": "github"
       },
       "original": {
@@ -854,7 +834,6 @@
     "root": {
       "inputs": {
         "dms": "dms",
-        "grub2-themes": "grub2-themes",
         "home-manager": "home-manager",
         "hypr-dynamic-cursors": "hypr-dynamic-cursors",
         "hyprgrass": "hyprgrass",
@@ -862,28 +841,7 @@
         "nixpkgs": "nixpkgs_3",
         "nvf": "nvf",
         "oh-my-rime-nix": "oh-my-rime-nix",
-        "silentSDDM": "silentSDDM",
         "stylix": "stylix"
-      }
-    },
-    "silentSDDM": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1782613322,
-        "narHash": "sha256-rDFls2ex7YJn6deFgsZak7VaNFuC3nF32S8DIxn3Egc=",
-        "owner": "uiriansan",
-        "repo": "SilentSDDM",
-        "rev": "3948ebe941c03a32a10a74e9bce10c2e267c888a",
-        "type": "github"
-      },
-      "original": {
-        "owner": "uiriansan",
-        "repo": "SilentSDDM",
-        "type": "github"
       }
     },
     "stylix": {
