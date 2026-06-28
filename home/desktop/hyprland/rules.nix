@@ -15,6 +15,8 @@
       name = "float-title-float";
       match.initial_title = ".*float.*";
       float = true;
+      size = ["60%" "70%"];
+      center = true;
     }
     {
       name = "float-title-images-and-video";
