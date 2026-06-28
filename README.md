@@ -30,8 +30,10 @@ Detailed project documentation lives in [`docs/`](./docs/README.md).
 
 ## Hosts
 
-- `mechrevo`: main machine, NVIDIA PRIME, Podman, Wine, gaming, dynamic dual monitor setup.
-- `nec`: laptop, power management, Windows boot entry, simple Hyprland monitor setup.
+- `mechrevo`: main machine, NVIDIA PRIME, Podman, Wine, gaming, dynamic dual
+  monitor setup.
+- `nec`: laptop, power management, Windows boot entry, simple Hyprland monitor
+  setup.
 
 Hosts are discovered automatically from directories under `hosts/`. Each host
 uses `default.nix` to compose OS and Home Manager modules, `os.nix` for
@@ -60,26 +62,26 @@ Manager configuration.
 - Hyprland desktop with DankMaterialShell.
 - Chinese input with Fcitx5 and Rime.
 - Common CLI tools like zsh, kitty, nvim, yazi, bat, eza and starship.
-- Optional modules for NVIDIA, Podman, VirtualBox, Wine, Steam, streaming, OBS and more.
+- Optional modules for NVIDIA, Podman, VirtualBox, Wine, Steam, streaming, OBS
+  and more.
 
 ## Desktop Setup
 
-| Part           | Choice                          |
-| -------------- | ------------------------------- |
-| Window manager | Hyprland                        |
-| Shell          | zsh                             |
-| Terminal       | kitty                           |
-| Editor         | Nixvim with erina-vim           |
-| Prompt         | starship                        |
-| App launcher   | fuzzel                          |
-| Bar / shell    | DankMaterialShell               |
-| Theming        | matugen, GTK, Qt, Bibata cursor |
-| Input method   | Fcitx5 + Rime                   |
+| Part           | Choice                 |
+| -------------- | ---------------------- |
+| Window manager | Hyprland               |
+| Shell          | zsh                    |
+| Terminal       | kitty                  |
+| Editor         | Nixvim with erina-vim  |
+| Prompt         | starship               |
+| App launcher   | fuzzel                 |
+| Bar / shell    | DankMaterialShell      |
+| Theming        | GTK, Qt, Bibata cursor |
+| Input method   | Fcitx5 + Rime          |
 
 Hyprland is generated through Home Manager's Lua config mode. Shared defaults
 live in `home/desktop/hyprland/`, while host-specific monitor and workspace
-logic lives in each host's configuration. `matugen` also writes a Lua color file
-for Hyprland and loads it from the generated config.
+logic lives in each host's configuration.
 
 ## Screenshots
 
@@ -117,8 +119,8 @@ Notes:
 - `nh` commands are preferred than `sudo nixos-rebuild` commands because they
   have gc enabled.
 - `nh os switch` remains the canonical path for full host updates.
-- `nh home switch` evaluates `home/default.nix` directly, plus the
-  selected host's `home.nix`.
+- `nh home switch` evaluates `home/default.nix` directly, plus the selected
+  host's `home.nix`.
 - Standalone Home Manager uses the shared flake `pkgs` import, including its
   unfree package allowance.
 - Home targets are exposed as `era@mechrevo` and `era@nec`.

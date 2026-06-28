@@ -4,11 +4,13 @@
 
 ### `flake.nix`
 
-Project entry point. Defines inputs, host construction, and the development shell.
+Project entry point. Defines inputs, host construction, and the development
+shell.
 
 ### `lib/`
 
-Holds `eriniteLib`, the helper library used by the module layer. Imported and exposed in `flake.nix` as `eriniteLib`.
+Holds `eriniteLib`, the helper library used by the module layer. Imported and
+exposed in `flake.nix` as `eriniteLib`.
 
 ### `os/` and `home/`
 
@@ -38,10 +40,11 @@ directories are discovered automatically when they contain a `default.nix`.
 
 Current hosts:
 
-- `mechrevo`
-  Main machine. Uses NVIDIA PRIME, Podman, VirtualBox, Wine, gaming modules, OBS Studio, and dynamic Hyprland monitor/workspace logic for internal and external displays.
-- `nec`
-  Laptop. Uses laptop-specific modules, a simple scaled Hyprland monitor setup, and has Codex CLI enabled.
+- `mechrevo` Main machine. Uses NVIDIA PRIME, Podman, VirtualBox, Wine, gaming
+  modules, OBS Studio, and dynamic Hyprland monitor/workspace logic for internal
+  and external displays.
+- `nec` Laptop. Uses laptop-specific modules, a simple scaled Hyprland monitor
+  setup, and has Codex CLI enabled.
 
 ### `docs/`
 
@@ -52,9 +55,8 @@ Repository documentation and agent onboarding material.
 Repository assets and templates used by modules.
 
 Current templates include generated themes for btop, fuzzel, yazi,
-PrismLauncher, cava, and Hyprland Lua colors.
-Browser profile assets also live here, including Chromium bookmarks and
-Firefox extension/profile settings.
+PrismLauncher, cava, and Hyprland Lua colors. Browser profile assets also live
+here, including Chromium bookmarks and Firefox extension/profile settings.
 
 ## Important Files
 
@@ -70,7 +72,8 @@ Auto-import the module tree. Module option paths are derived from this tree:
 
 ### `hosts/<name>/default.nix`
 
-Primary host definition. This is usually the best place to inspect host intent first.
+Primary host definition. This is usually the best place to inspect host intent
+first.
 
 Each file returns an attribute set:
 
@@ -104,19 +107,13 @@ Generated hardware configuration.
 
 If you need to understand or change behavior, start here:
 
-- Shared behavior across hosts:
-  `os/` and `home/` and `lib/default.nix`
-- Home Manager behavior:
-  `home/default.nix` and any module writing to `erinite.home`
-- Hyprland behavior:
-  `home/desktop/hyprland/`, `home/desktop/dms/hyprland.nix`, and host-level
-  `wayland.windowManager.hyprland` overrides
-- Theme generation:
-  `home/desktop/matugen.nix` and `assets/templates/`
-- Runtime source snapshot:
-  `/run/current-system/configuration-source`, provided by
-  `os/system/config-source.nix`
-- Host-only behavior:
-  `hosts/<name>/`
-- Feature enablement defaults:
-  `os/presets/common.nix` and `home/presets/common.nix`
+- Shared behavior across hosts: `os/` and `home/` and `lib/default.nix`
+- Home Manager behavior: `home/default.nix` and any module writing to
+  `erinite.home`
+- Hyprland behavior: `home/desktop/hyprland/`, `home/desktop/dms/hyprland.nix`,
+  and host-level `wayland.windowManager.hyprland` overrides
+- Runtime source snapshot: `/run/current-system/configuration-source`, provided
+  by `os/system/config-source.nix`
+- Host-only behavior: `hosts/<name>/`
+- Feature enablement defaults: `os/presets/common.nix` and
+  `home/presets/common.nix`

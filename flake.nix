@@ -22,10 +22,6 @@
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    matugen = {
-      url = "github:InioX/matugen";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     stylix = {
       url = "github:erinayip/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
