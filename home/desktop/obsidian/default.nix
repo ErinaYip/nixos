@@ -27,7 +27,6 @@ in
     configFn = {cfg, ...}: {
       programs.obsidian = {
         enable = true;
-        package = pkgs.obsidian;
         defaultSettings = import ./settings.nix {inherit plugins themes;};
 
         inherit (cfg) vaults;
