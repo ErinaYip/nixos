@@ -5,11 +5,8 @@
 }:
 with eriniteLib; {
   home.packages = with pkgs; [
-    wemeet
-
     materialgram
   ];
-  programs.cava = enabled;
 
   wayland.windowManager.hyprland.extraConfig = ''
     local eDP = "China Star Optoelectronics Technology Co. Ltd MNG007DA5-4"
