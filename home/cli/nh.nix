@@ -20,7 +20,7 @@ in
           listToAttrs
           (
             (map (mkAlias "os" "") commands)
-            ++ (map (mkAlias "home" " --no-specialisation") commands)
+            ++ (map (mkAlias "home" "") commands)
           );
       };
     }

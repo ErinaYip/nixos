@@ -5,6 +5,7 @@
   eriniteLib,
   ...
 } @ args: let
+  inherit (lib) mapAttrs mkForce;
   inherit (eriniteLib) mkModule;
   inherit (eriniteLib.themeSpecialisations) mkThemeSpecialisationOptions;
 in
@@ -64,5 +65,23 @@ in
         src = inputs.dms + "/quickshell/PLUGINS/WallpaperWatcherDaemon";
         settings.scriptPath = "${themeSwitch}/bin/erinite-theme-switch";
       };
+
+      specialisation =
+        mapAttrs (name: wallpaper: {
+          configuration = {
+            xdg.dataFile."home-manager/specialisation".text = name;
+            erinite.home.desktop = {
+              stylix.settings = mapAttrs (_: mkForce) (buildStylix name wallpaper);
+              dms = {
+                session = {
+                  isLightMode = mkForce (wallpaper.polarity == "light");
+                  wallpaperPath = mkForce wallpaper.path;
+                };
+                settings.matugenScheme = mkForce wallpaper.type;
+              };
+            };
+          };
+        })
+        wallpapers;
     };
   }
