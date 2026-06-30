@@ -3,18 +3,17 @@
   pkgs,
   inputs,
   eriniteLib,
+  config,
   ...
 } @ args: let
   inherit (lib) mapAttrs mkForce;
   inherit (eriniteLib) mkModule;
-  inherit (eriniteLib.themeSpecialisations) mkThemeSpecialisationOptions;
 in
   mkModule args {
-    opts = mkThemeSpecialisationOptions "Wallpapers to turn into Home Manager theme settings.";
-
-    configFn = {cfg, ...}: let
-      inherit (cfg) wallpapers;
-      defaultWallpaper = wallpapers.${cfg.default};
+    configFn = _: let
+      themeName = config.erinite.wallpapers.default;
+      inherit (config.erinite.wallpapers) wallpapers;
+      defaultWallpaper = wallpapers.${themeName};
 
       buildStylix = _name: wallpaper: {
         inherit (wallpaper) base16Scheme image polarity;
@@ -51,7 +50,7 @@ in
       };
     in {
       erinite.home.desktop = {
-        stylix.settings = buildStylix cfg.default defaultWallpaper;
+        stylix.settings = buildStylix themeName defaultWallpaper;
         dms = {
           session = {
             isLightMode = defaultWallpaper.polarity == "light";
@@ -70,6 +69,7 @@ in
         mapAttrs (name: wallpaper: {
           configuration = {
             xdg.dataFile."home-manager/specialisation".text = name;
+            erinite.wallpapers.default = mkForce name;
             erinite.home.desktop = {
               stylix.settings = mapAttrs (_: mkForce) (buildStylix name wallpaper);
               dms = {

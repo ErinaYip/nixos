@@ -3,18 +3,17 @@
   pkgs,
   default,
   eriniteLib,
+  config,
   ...
 } @ args: let
   inherit (lib) mapAttrs mkForce;
   inherit (eriniteLib) mkModule;
-  inherit (eriniteLib.themeSpecialisations) mkThemeSpecialisationOptions;
 in
   mkModule args {
-    opts = mkThemeSpecialisationOptions "Wallpapers to turn into theme specialisations.";
-
-    configFn = {cfg, ...}: let
-      inherit (cfg) wallpapers;
-      defaultWallpaper = wallpapers.${cfg.default};
+    configFn = _: let
+      themeName = config.erinite.wallpapers.default;
+      inherit (config.erinite.wallpapers) wallpapers;
+      defaultWallpaper = wallpapers.${themeName};
 
       switchTheme = pkgs.writeShellScript "erinite-theme-switch-system" ''
         set -eu
@@ -53,17 +52,18 @@ in
         };
       };
 
-      stylix = buildStylix cfg.default defaultWallpaper;
+      stylix = buildStylix themeName defaultWallpaper;
 
       specialisation =
         mapAttrs (name: wallpaper: {
           configuration = {
+            erinite.wallpapers.default = mkForce name;
             stylix = mapAttrs (_: mkForce) (buildStylix name wallpaper);
             environment.etc."specialisation".text = name;
             home-manager.users.${default.username} = {
               xdg.dataFile."home-manager/specialisation".text = name;
+              erinite.wallpapers.default = mkForce name;
               erinite.home.desktop = {
-                theme-specialisations.default = mkForce name;
                 dms = {
                   session = {
                     isLightMode = mkForce (wallpaper.polarity == "light");

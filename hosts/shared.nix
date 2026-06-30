@@ -1,5 +1,4 @@
-{eriniteLib, ...}: let
-  inherit (eriniteLib.themeSpecialisations) mkThemes;
+{...}: let
   wallpapers = {
     "kurogame-olive.png" = {
       url = "https://media-cdn-zspms.kurogame.com/pnswebsite/website2.0/images/1773936000000/6y9pm8iicrjyhd354y-17739965643372.png";
@@ -17,7 +16,7 @@
   };
 
   mkTheme = extraWallpapers:
-    mkThemes {
+    {
       default = "kurogame-olive";
       wallpapers = wallpapers // extraWallpapers;
     };

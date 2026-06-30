@@ -30,11 +30,6 @@ lib.makeExtensible (final: {
 
   recolorScript = args: (import ./recolor args).recolorScript;
 
-  themeSpecialisations = import ./theme-specialisations.nix {
-    inherit lib pkgs;
-    eriniteLib = final;
-  };
-
   mergeSettings = definitions:
     (lib.evalModules {
       modules = [

@@ -7,6 +7,7 @@
 }: {
   imports =
     [
+      ../wallpapers
       inputs.stylix.homeModules.stylix
       inputs.nvf.homeManagerModules.default
       inputs.dms.homeModules.dank-material-shell

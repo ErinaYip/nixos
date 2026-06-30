@@ -15,6 +15,8 @@
     };
   };
 in {
+  wallpapers = theme;
+
   osModules = with eriniteLib; [
     ./hardware-configuration.nix
     ./os.nix
@@ -50,7 +52,6 @@ in {
 
         desktop = {
           obs-studio = enabled;
-          theme-specialisations = theme;
         };
 
         programs.gaming = enabled;
@@ -85,7 +86,6 @@ in {
             mainBar.screenPreferences = ["DP-2" "DP-3"];
             subBar.screenPreferences = ["eDP-1" "eDP-2"];
           };
-          theme-specialisations = theme;
           obsidian = {
             enable = true;
             vaults.notes.target = "Documents/notes";

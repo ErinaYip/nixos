@@ -2,6 +2,8 @@
   shared = import ../shared.nix args;
   inherit (shared) theme;
 in {
+  wallpapers = theme;
+
   osModules = with eriniteLib; [
     ./hardware-configuration.nix
     ./os.nix
@@ -16,10 +18,6 @@ in {
           boot.engine = "grub";
           # network.proxy = true;
           laptop = enabled;
-        };
-
-        desktop = {
-          theme-specialisations = theme;
         };
       };
     }
@@ -45,7 +43,7 @@ in {
         };
 
         desktop = {
-          theme-specialisations = theme;
+          theme-specialisations = enabled;
         };
       };
     }
