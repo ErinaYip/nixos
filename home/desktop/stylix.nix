@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   eriniteLib,
   ...
 } @ args: let
@@ -21,6 +22,9 @@
       recolorScript (args // {recolorOptions.whitelist = telaIconThemeNames;})
       + (oldAttrs.postInstall or "");
   });
+
+  inherit (config.erinite) wallpapers;
+  wallpaper = wallpapers.wallpapers.${wallpapers.default};
 in
   with eriniteLib;
     mkModule args {
@@ -62,6 +66,9 @@ in
         stylix =
           enabled
           // settings
-          // {overlays = disabled;};
+          // {
+            inherit (wallpaper) base16Scheme image polarity;
+            overlays = disabled;
+          };
       };
     }

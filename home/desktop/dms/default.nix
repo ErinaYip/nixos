@@ -1,10 +1,13 @@
 {
   lib,
   eriniteLib,
+  config,
   ...
 } @ args:
 with eriniteLib; let
   bars = import ./bars.nix;
+  inherit (config.erinite) wallpapers;
+  wallpaper = wallpapers.wallpapers.${wallpapers.default};
 in
   mkModule args {
     opts = {
@@ -27,15 +30,22 @@ in
           programs.dank-material-shell = {
             enable = true;
 
+            session =
+              {
+                isLightMode = wallpaper.polarity == "light";
+                wallpaperPath = wallpaper.path;
+              }
+              // cfg.session;
+
             settings =
               settings
               // {
+                matugenScheme = wallpaper.type;
                 barConfigs = [
                   (lib.recursiveUpdate bars.mainBar cfg.bars.mainBar)
                   (lib.recursiveUpdate bars.subBar cfg.bars.subBar)
                 ];
               };
-            inherit (cfg) session;
 
             systemd = {
               enable = true;

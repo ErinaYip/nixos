@@ -2,22 +2,16 @@
   lib,
   pkgs,
   inputs,
-  eriniteLib,
   config,
+  eriniteLib,
   ...
 } @ args: let
-  inherit (lib) mapAttrs mkForce;
+  inherit (lib) mapAttrs;
   inherit (eriniteLib) mkModule;
 in
   mkModule args {
     configFn = _: let
-      themeName = config.erinite.wallpapers.default;
       inherit (config.erinite.wallpapers) wallpapers;
-      defaultWallpaper = wallpapers.${themeName};
-
-      buildStylix = _name: wallpaper: {
-        inherit (wallpaper) base16Scheme image polarity;
-      };
 
       dmsPath = lib.getExe args.config.programs.dank-material-shell.package;
       themeSwitch = pkgs.writeShellApplication {
@@ -49,37 +43,16 @@ in
         '';
       };
     in {
-      erinite.home.desktop = {
-        stylix.settings = buildStylix themeName defaultWallpaper;
-        dms = {
-          session = {
-            isLightMode = defaultWallpaper.polarity == "light";
-            wallpaperPath = defaultWallpaper.path;
-          };
-          settings.matugenScheme = defaultWallpaper.type;
-        };
-      };
-
       programs.dank-material-shell.plugins.wallpaperWatcherDaemon = {
         src = inputs.dms + "/quickshell/PLUGINS/WallpaperWatcherDaemon";
         settings.scriptPath = "${themeSwitch}/bin/erinite-theme-switch";
       };
 
       specialisation =
-        mapAttrs (name: wallpaper: {
+        mapAttrs (name: _wallpaper: {
           configuration = {
             xdg.dataFile."home-manager/specialisation".text = name;
-            erinite.wallpapers.default = mkForce name;
-            erinite.home.desktop = {
-              stylix.settings = mapAttrs (_: mkForce) (buildStylix name wallpaper);
-              dms = {
-                session = {
-                  isLightMode = mkForce (wallpaper.polarity == "light");
-                  wallpaperPath = mkForce wallpaper.path;
-                };
-                settings.matugenScheme = mkForce wallpaper.type;
-              };
-            };
+            erinite.wallpapers.default = name;
           };
         })
         wallpapers;

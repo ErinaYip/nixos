@@ -72,7 +72,7 @@
         inherit inputs lib eriniteLib pkgs;
       };
       hostWallpapersModule = {
-        erinite.wallpapers = host.wallpapers or {};
+        erinite.wallpapers.wallpapers = host.wallpapers or {};
       };
       hostOsModules = host.osModules;
       hostHomeModules = [./home hostWallpapersModule] ++ host.homeModules;

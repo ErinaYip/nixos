@@ -6,24 +6,18 @@
   config,
   ...
 } @ args: let
-  inherit (lib) mapAttrs mkForce;
+  inherit (lib) mapAttrs;
   inherit (eriniteLib) mkModule;
 in
   mkModule args {
     configFn = _: let
-      themeName = config.erinite.wallpapers.default;
       inherit (config.erinite.wallpapers) wallpapers;
-      defaultWallpaper = wallpapers.${themeName};
 
       switchTheme = pkgs.writeShellScript "erinite-theme-switch-system" ''
         set -eu
         theme="''${1:?missing theme name}"
         exec /nix/var/nix/profiles/system/specialisation/$theme/bin/switch-to-configuration switch
       '';
-
-      buildStylix = _name: wallpaper: {
-        inherit (wallpaper) base16Scheme image polarity;
-      };
     in {
       security.polkit = {
         enable = true;
@@ -52,26 +46,14 @@ in
         };
       };
 
-      stylix = buildStylix themeName defaultWallpaper;
-
       specialisation =
-        mapAttrs (name: wallpaper: {
+        mapAttrs (name: _wallpaper: {
           configuration = {
-            erinite.wallpapers.default = mkForce name;
-            stylix = mapAttrs (_: mkForce) (buildStylix name wallpaper);
+            erinite.wallpapers.default = name;
             environment.etc."specialisation".text = name;
             home-manager.users.${default.username} = {
               xdg.dataFile."home-manager/specialisation".text = name;
-              erinite.wallpapers.default = mkForce name;
-              erinite.home.desktop = {
-                dms = {
-                  session = {
-                    isLightMode = mkForce (wallpaper.polarity == "light");
-                    wallpaperPath = mkForce wallpaper.path;
-                  };
-                  settings.matugenScheme = mkForce wallpaper.type;
-                };
-              };
+              erinite.wallpapers.default = name;
             };
           };
         })

@@ -1,6 +1,18 @@
-{eriniteLib, ...} @ args: let
-  shared = import ../shared.nix args;
-  theme = shared.mkTheme {
+{eriniteLib, ...}: {
+  wallpapers = {
+    "kurogame-olive.png" = {
+      url = "https://media-cdn-zspms.kurogame.com/pnswebsite/website2.0/images/1773936000000/6y9pm8iicrjyhd354y-17739965643372.png";
+      hash = "sha256-wdC7ZU7KChFkyQW0B5twnpq4i1nFIovfyNEklSY973I=";
+    };
+    "kurogame-blue-dark.png" = {
+      url = "https://media-cdn-zspms.kurogame.com/pnswebsite/website2.0/images/1773936000000/ogvbi74cjtbp460lif-17739965468193.png";
+      hash = "sha256-Hl/vRLR2V0F3JRrYl0JYjxWN9KVWkFpzaWFojOXHmJQ=";
+    };
+    "kurogame-blue-light.png" = {
+      url = "https://media-cdn-zspms.kurogame.com/pnswebsite/website2.0/images/1773936000000/p4w55y5r9nube7xy4d-177399637338912.png";
+      hash = "sha256-ZuGDUi+W9DOFNdBw8XWFD53YVvXrA7Ybo/ndyjDugBI=";
+      polarity = "light";
+    };
     "kurogame-neon-purple.png" = {
       url = "https://media-cdn-zspms.kurogame.com/pnswebsite/website2.0/images/1770134400000/f8pracrulrwq5570gx-177017628557319.png";
       hash = "sha256-5EGHH5D+VYMopFQTUy4TjPkLs3MN+e4VzBiJEXHiZUM=";
@@ -14,8 +26,6 @@
       hash = "sha256-9PnJsPlaKSd7MyhxaoMLsK0pwtnNph6R0SSKJtshrVY=";
     };
   };
-in {
-  wallpapers = theme;
 
   osModules = with eriniteLib; [
     ./hardware-configuration.nix

@@ -24,9 +24,11 @@ in {
 
     wallpapers = mkOption {
       type = lib.types.attrsOf wallpaperDefinitionModule;
-      default = defaultWallpapers;
+      default = {};
       description = "Wallpaper definitions. The config value is processed with defaults, fetched images, paths, and base16 schemes.";
       apply = mkWallpapers;
     };
   };
+
+  config.erinite.wallpapers.wallpapers = lib.mkDefault defaultWallpapers;
 }
