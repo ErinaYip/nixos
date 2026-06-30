@@ -11,7 +11,7 @@ with eriniteLib;
     };
 
     configFn = {cfg, ...}: {
-      boot.kernelPackages = pkgs.linuxPackages_latest;
+      boot.kernelPackages = pkgs.linuxPackages;
       boot.kernel.sysctl = {
         "fs.inotify.max_user_watches" = 2097152;
         "fs.inotify.max_user_instances" = 1048576;
