@@ -41,6 +41,15 @@ The high-level flow is:
 8. Host modules set values under `erinite.*` and enabled modules emit final
    NixOS or Home Manager configuration.
 
+The shared `wallpapers/` module is imported by both the NixOS and Home Manager
+roots. It defines `erinite.wallpapers.definitions` as the raw wallpaper input,
+adds the default wallpaper, and exposes processed themes at
+`erinite.wallpapers.wallpapers`. Host-specific wallpaper definitions live in
+`hosts/<hostName>/wallpapers.nix`; the host default lists that file once in its
+top-level `imports`, and flake host construction adds those imports to both
+module graphs so OS and Home modules read from their own
+`config.erinite.wallpapers` tree.
+
 Hyprland is an important special case in the current tree. The shared
 `os.desktop.hyprland` module enables the system package, portal, Home Manager
 integration, and Lua config mode. Common binds, rules, animations and base

@@ -71,11 +71,9 @@
       host = import (./. + "/hosts/${hostName}") {
         inherit inputs lib eriniteLib pkgs;
       };
-      hostWallpapersModule = {
-        erinite.wallpapers.wallpapers = host.wallpapers or {};
-      };
-      hostOsModules = host.osModules;
-      hostHomeModules = [./home hostWallpapersModule] ++ host.homeModules;
+      hostImports = host.imports or [];
+      hostOsModules = hostImports ++ host.osModules;
+      hostHomeModules = [./home] ++ hostImports ++ host.homeModules;
 
       nixos = lib.nixosSystem {
         inherit system;
@@ -83,7 +81,6 @@
           [
             ./os
             {home-manager.users.${default.username}.imports = hostHomeModules;}
-            hostWallpapersModule
           ]
           ++ hostOsModules;
         specialArgs = {

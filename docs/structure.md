@@ -99,6 +99,13 @@ module that needs them, for example `os/system/nvidia.nix`. NixOS-side nixpkgs
 policy such as `allowUnfree` lives in `os/system/nix.nix`; standalone Home
 Manager gets the same unfree allowance from the `pkgs` import in `flake.nix`.
 
+### `hosts/<name>/wallpapers.nix`
+
+Optional host wallpaper definitions. The shared `wallpapers/` module imports
+this file through the top-level `imports` returned by `hosts/<name>/default.nix`.
+Hosts set `erinite.wallpapers.definitions` here once, and OS/Home modules
+consume the processed result from `config.erinite.wallpapers.wallpapers`.
+
 ### `hosts/<name>/hardware-configuration.nix`
 
 Generated hardware configuration.
