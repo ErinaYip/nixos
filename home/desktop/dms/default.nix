@@ -32,15 +32,15 @@ in
 
             session =
               {
-                isLightMode = wallpaper.polarity == "light";
-                wallpaperPath = wallpaper.path;
+                isLightMode = lib.mkDefault (wallpaper.polarity == "light");
+                wallpaperPath = lib.mkDefault wallpaper.path;
               }
               // cfg.session;
 
             settings =
               settings
               // {
-                matugenScheme = wallpaper.type;
+                matugenScheme = lib.mkDefault wallpaper.type;
                 barConfigs = [
                   (lib.recursiveUpdate bars.mainBar cfg.bars.mainBar)
                   (lib.recursiveUpdate bars.subBar cfg.bars.subBar)

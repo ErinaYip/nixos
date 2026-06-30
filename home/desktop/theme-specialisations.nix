@@ -4,6 +4,7 @@
   inputs,
   config,
   eriniteLib,
+  isNixosHome ? false,
   ...
 } @ args: let
   inherit (lib) mapAttrs;
@@ -12,6 +13,18 @@ in
   mkModule args {
     configFn = _: let
       inherit (config.erinite.wallpapers) wallpapers;
+
+      buildStylix = _name: wallpaper: {
+        inherit (wallpaper) base16Scheme image polarity;
+      };
+
+      buildDms = wallpaper: {
+        session = {
+          isLightMode = wallpaper.polarity == "light";
+          wallpaperPath = wallpaper.path;
+        };
+        settings.matugenScheme = wallpaper.type;
+      };
 
       dmsPath = lib.getExe args.config.programs.dank-material-shell.package;
       themeSwitch = pkgs.writeShellApplication {
@@ -48,11 +61,13 @@ in
         settings.scriptPath = "${themeSwitch}/bin/erinite-theme-switch";
       };
 
+    } // lib.optionalAttrs (!isNixosHome) {
       specialisation =
-        mapAttrs (name: _wallpaper: {
+        mapAttrs (name: wallpaper: {
           configuration = {
             xdg.dataFile."home-manager/specialisation".text = name;
-            erinite.wallpapers.default = name;
+            stylix = buildStylix name wallpaper;
+            programs.dank-material-shell = buildDms wallpaper;
           };
         })
         wallpapers;

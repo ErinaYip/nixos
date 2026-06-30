@@ -97,6 +97,7 @@
         inherit pkgs;
         extraSpecialArgs = {
           inherit pkgs inputs hostName default eriniteLib;
+          isNixosHome = false;
         };
         modules = hostHomeModules;
       };

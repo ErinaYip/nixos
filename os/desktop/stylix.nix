@@ -1,5 +1,6 @@
 {
   inputs,
+  lib,
   config,
   eriniteLib,
   ...
@@ -27,7 +28,9 @@ in
           enabled
           // settings
           // {
-            inherit (wallpaper) base16Scheme image polarity;
+            base16Scheme = lib.mkDefault wallpaper.base16Scheme;
+            image = lib.mkDefault wallpaper.image;
+            polarity = lib.mkDefault wallpaper.polarity;
             homeManagerIntegration.autoImport = false;
           };
       };

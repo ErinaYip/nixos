@@ -18,6 +18,18 @@ in
         theme="''${1:?missing theme name}"
         exec /nix/var/nix/profiles/system/specialisation/$theme/bin/switch-to-configuration switch
       '';
+
+      buildStylix = _name: wallpaper: {
+        inherit (wallpaper) base16Scheme image polarity;
+      };
+
+      buildDms = wallpaper: {
+        session = {
+          isLightMode = wallpaper.polarity == "light";
+          wallpaperPath = wallpaper.path;
+        };
+        settings.matugenScheme = wallpaper.type;
+      };
     in {
       security.polkit = {
         enable = true;
@@ -47,13 +59,14 @@ in
       };
 
       specialisation =
-        mapAttrs (name: _wallpaper: {
+        mapAttrs (name: wallpaper: {
           configuration = {
-            erinite.wallpapers.default = name;
+            stylix = buildStylix name wallpaper;
             environment.etc."specialisation".text = name;
             home-manager.users.${default.username} = {
               xdg.dataFile."home-manager/specialisation".text = name;
-              erinite.wallpapers.default = name;
+              stylix = buildStylix name wallpaper;
+              programs.dank-material-shell = buildDms wallpaper;
             };
           };
         })
