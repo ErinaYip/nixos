@@ -11,14 +11,21 @@ with eriniteLib; let
 in
   mkModule args {
     opts = {
-      session = mkOpt lib.types.attrs {} "Dms session state settings.";
+      session = mkOpt lib.types.attrs {
+        isLightMode = lib.mkDefault (wallpaper.polarity == "light");
+        wallpaperPath = lib.mkDefault wallpaper.path;
+      } "Dms session state settings.";
       bars = {
         mainBar = mkOpt (lib.types.attrsOf lib.types.anything) {} "Main DMS bar overrides.";
         subBar = mkOpt (lib.types.attrsOf lib.types.anything) {} "Secondary DMS bar overrides.";
       };
     };
 
-    defaultSettings = import ./settings.nix;
+    defaultSettings =
+      (import ./settings.nix)
+      // {
+        matugenScheme = lib.mkDefault wallpaper.type;
+      };
 
     configFn = {
       cfg,
@@ -30,17 +37,11 @@ in
           programs.dank-material-shell = {
             enable = true;
 
-            session =
-              {
-                isLightMode = lib.mkDefault (wallpaper.polarity == "light");
-                wallpaperPath = lib.mkDefault wallpaper.path;
-              }
-              // cfg.session;
+            session = cfg.session;
 
             settings =
               settings
               // {
-                matugenScheme = lib.mkDefault wallpaper.type;
                 barConfigs = [
                   (lib.recursiveUpdate bars.mainBar cfg.bars.mainBar)
                   (lib.recursiveUpdate bars.subBar cfg.bars.subBar)
