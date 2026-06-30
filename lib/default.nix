@@ -5,8 +5,20 @@
   ...
 }:
 lib.makeExtensible (final: {
+  mkDefaultRecursive = value:
+    if lib.isAttrs value && !(lib.isDerivation value) && !(value ? _type)
+    then lib.mapAttrs (_: final.mkDefaultRecursive) value
+    else lib.mkDefault value;
+
   mkOpt = type: default: description:
     lib.mkOption {inherit type default description;};
+
+  mkDefaultOpt = type: default: description:
+    lib.mkOption {
+      inherit type description;
+      default = {};
+      apply = value: final.mergeDefaultSettings default value;
+    };
 
   mkBoolOpt = default: description:
     final.mkOpt lib.types.bool default description;
@@ -44,6 +56,14 @@ lib.makeExtensible (final: {
       ];
     }).config.settings;
 
+  mergeDefaultSettings = defaultSettings: settings:
+    lib.recursiveUpdateUntil
+    (_: lhs: rhs:
+      (lib.isAttrs lhs && (lib.isDerivation lhs || lhs ? _type))
+      || (lib.isAttrs rhs && (lib.isDerivation rhs || rhs ? _type)))
+    (final.mkDefaultRecursive defaultSettings)
+    settings;
+
   mkModule = args: module: let
     inferred =
       args.eriniteModule or (final.moduleInfoFromModule module);
@@ -61,7 +81,6 @@ lib.makeExtensible (final: {
     configFn = spec.configFn;
     optionPath = namespace ++ [category name];
     cfg = lib.getAttrFromPath optionPath args.config;
-    mergedSettings = final.mergeSettings [defaultSettings cfg.settings];
   in {
     inherit imports;
 
@@ -74,7 +93,7 @@ lib.makeExtensible (final: {
     config = args.lib.mkIf cfg.enable (
       configFn {
         inherit cfg;
-        settings = mergedSettings;
+        settings = final.mergeDefaultSettings defaultSettings cfg.settings;
       }
     );
   };

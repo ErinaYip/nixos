@@ -1,5 +1,4 @@
 {
-  lib,
   pkgs,
   config,
   eriniteLib,
@@ -30,6 +29,8 @@ in
   with eriniteLib;
     mkModule args {
       defaultSettings = {
+        inherit (wallpaper) base16Scheme image polarity;
+
         fonts.sizes = {
           desktop = 12;
           applications = 12;
@@ -67,11 +68,6 @@ in
         stylix =
           enabled
           // settings
-          // {
-            base16Scheme = lib.mkDefault wallpaper.base16Scheme;
-            image = lib.mkDefault wallpaper.image;
-            polarity = lib.mkDefault wallpaper.polarity;
-            overlays = disabled;
-          };
+          // {overlays = disabled;};
       };
     }
