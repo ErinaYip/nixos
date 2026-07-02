@@ -28,7 +28,7 @@
     markdown = enabled;
     python = enabled;
     typescript = enabled;
-    astro = enabled;
+    # astro = enabled;
     scss = enabled;
     clang = enabled;
   };
