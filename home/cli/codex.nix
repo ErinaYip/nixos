@@ -51,11 +51,12 @@ in
               };
               settings = {
                 model = "gpt-5.5";
-                model_reasoning_effort = "high";
-                # model_provider = "freemodel";
+                model_reasoning_effort = "xhigh";
                 network_access = true;
+                disable_response_storage = true;
 
                 features = {
+                  goals = true;
                   rmcp_client = true;
                   plan_tool = false;
                   view_image_tool = true;
@@ -95,6 +96,7 @@ in
           (mkProvider "freemodel" "https://api.freemodel.dev/v1")
           (mkProvider "vespervei" "https://api.vespervei.com/v1")
           (mkProviderWithOpts "hua" "https://huablog.xyz/v1" {wire_api = "responses";})
+          (mkProviderWithOpts "sixoner" "https://sub.sixoner.com" {wire_api = "responses";})
           (mkProviderWithOpts "rawchat" "https://rawchat.cn/codex" {wire_api = "responses";})
         ];
     }
