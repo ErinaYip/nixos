@@ -11,11 +11,21 @@
         inherit baseURL;
         apiKey = "{env:${lib.strings.toUpper name}_API_KEY}";
       };
-      models = lib.genAttrs models (x: {name = x;});
+      models = lib.genAttrs models (x: {
+        # name = x;
+        options = {
+          reasoningEffort = "high";
+          textVerbosity = "low";
+          reasoningSummary = "auto";
+        };
+        variants = lib.genAttrs ["high" "xhigh"] (x: {
+          reasoningEffort = x;
+        });
+      });
     };
   };
 
-  mkOpenAIProvider = name: baseURL: (mkProvider name "@ai-sdk/openai" baseURL ["gpt-5.5"]);
+  mkOpenAIProvider = name: baseURL: (mkProvider name "@ai-sdk/openai" baseURL ["gpt-5.5" "gpt-5.4"]);
 
   ctf-skills = pkgs.fetchFromGitHub {
     owner = "ljagiello";
