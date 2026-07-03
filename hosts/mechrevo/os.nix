@@ -1,9 +1,16 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  default,
+  ...
+}: {
   networking.firewall = {
     allowedTCPPorts = [
       25565 # minecraft
     ];
   };
+
+  hardware.i2c.enable = true;
+  users.users.${default.username}.extraGroups = ["i2c"];
 
   environment.systemPackages = with pkgs; [
     vim
@@ -36,6 +43,8 @@
     python312Packages.dirsearch
 
     wavemon
+    ddcutil
+    i2c-tools
 
     # wireshark
     # bottles
