@@ -55,21 +55,22 @@ in
           "$dms" restart >/dev/null 2>&1 || true
         '';
       };
-    in {
-      programs.dank-material-shell.plugins.wallpaperWatcherDaemon = {
-        src = inputs.dms + "/quickshell/PLUGINS/WallpaperWatcherDaemon";
-        settings.scriptPath = "${themeSwitch}/bin/erinite-theme-switch";
+    in
+      {
+        programs.dank-material-shell.plugins.wallpaperWatcherDaemon = {
+          src = inputs.dms + "/quickshell/PLUGINS/WallpaperWatcherDaemon";
+          settings.scriptPath = "${themeSwitch}/bin/erinite-theme-switch";
+        };
+      }
+      // lib.optionalAttrs (!isNixosHome) {
+        specialisation =
+          mapAttrs (name: wallpaper: {
+            configuration = {
+              xdg.dataFile."home-manager/specialisation".text = name;
+              stylix = buildStylix name wallpaper;
+              programs.dank-material-shell = buildDms wallpaper;
+            };
+          })
+          wallpapers;
       };
-
-    } // lib.optionalAttrs (!isNixosHome) {
-      specialisation =
-        mapAttrs (name: wallpaper: {
-          configuration = {
-            xdg.dataFile."home-manager/specialisation".text = name;
-            stylix = buildStylix name wallpaper;
-            programs.dank-material-shell = buildDms wallpaper;
-          };
-        })
-        wallpapers;
-    };
   }
