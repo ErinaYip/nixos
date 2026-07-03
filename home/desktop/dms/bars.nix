@@ -80,6 +80,7 @@ in {
     rightWidgets = [
       (mkWidgets "clipboard" [])
       (mkWidgets "notificationButton" [])
+      (mkWidgets "controlCenterButton" [])
     ];
     spacing = 0;
     innerPadding = 0;
