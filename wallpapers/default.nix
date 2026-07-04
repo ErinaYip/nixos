@@ -1,8 +1,8 @@
 {
   lib,
   pkgs,
-  eriniteLib,
   config,
+  eriniteLib,
   ...
 }: let
   inherit (lib) mkOption;
@@ -35,6 +35,8 @@ in {
     };
   };
 
-  config.erinite.wallpapers.definitions = mkDefaultRecursive defaultWallpaperDefinitions;
-  config.erinite.wallpapers.wallpapers = mkWallpapers config.erinite.wallpapers.definitions;
+  config.erinite.wallpapers = {
+    definitions = mkDefaultRecursive defaultWallpaperDefinitions;
+    wallpapers = mkWallpapers config.erinite.wallpapers.definitions;
+  };
 }
