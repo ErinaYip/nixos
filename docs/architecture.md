@@ -35,6 +35,7 @@ The high-level flow is:
    - `hostName`
    - `default`
    - `eriniteLib`
+   - `pkgsStable`
 6. Standalone `homeConfigurations` imports the same `hostHomeModules` list.
 7. Modules expose options under `erinite.os.<category>.<name>` or
    `erinite.home.<category>.<name>`.
@@ -90,6 +91,9 @@ example, `os/system/nvidia.nix` enables CUDA support alongside the NVIDIA driver
 configuration. General unfree package allowance is configured in both
 entrypoints: `os/system/nix.nix` for NixOS builds, and the shared `pkgs` import
 in `flake.nix` for standalone Home Manager builds such as `nh home switch`.
+`flake.nix` also imports `pkgsStable` from `nixpkgs-stable` with unfree packages
+enabled, so selected modules can use stable packages without moving the whole
+system off unstable.
 
 Stylix's Home Manager module is imported as a shared module, but its Home
 Manager-side overlays are disabled for the same reason.

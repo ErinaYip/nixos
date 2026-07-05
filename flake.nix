@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-26.05";
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -40,12 +41,17 @@
 
   outputs = {
     nixpkgs,
+    nixpkgs-stable,
     home-manager,
     ...
   } @ inputs: let
     system = "x86_64-linux";
     inherit (nixpkgs) lib;
     pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+    };
+    pkgsStable = import nixpkgs-stable {
       inherit system;
       config.allowUnfree = true;
     };
@@ -69,7 +75,7 @@
 
     mkHost = hostName: let
       host = import (./. + "/hosts/${hostName}") {
-        inherit inputs lib eriniteLib pkgs;
+        inherit inputs lib eriniteLib pkgs pkgsStable;
       };
       hostImports = host.imports or [];
       hostOsModules = hostImports ++ host.osModules;
@@ -85,7 +91,7 @@
           ++ hostOsModules;
         specialArgs = {
           inherit inputs hostName default;
-          inherit eriniteLib;
+          inherit eriniteLib pkgsStable;
         };
       };
     in {
@@ -93,7 +99,7 @@
       home = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {
-          inherit pkgs inputs hostName default eriniteLib;
+          inherit pkgs pkgsStable inputs hostName default eriniteLib;
           isNixosHome = false;
         };
         modules = hostHomeModules;

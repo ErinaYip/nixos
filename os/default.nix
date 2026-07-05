@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  pkgsStable,
   default,
   hostName,
   eriniteLib,
@@ -18,7 +19,7 @@
     useUserPackages = true;
 
     extraSpecialArgs = {
-      inherit inputs pkgs hostName default eriniteLib;
+      inherit inputs pkgs pkgsStable hostName default eriniteLib;
       isNixosHome = true;
     };
   };

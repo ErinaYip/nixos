@@ -45,6 +45,8 @@ Before changing code, an agent should understand these facts:
   constructs each host with `mkHost`.
 - `flake.nix` imports the shared `pkgs` set used by standalone Home Manager,
   including its unfree package allowance.
+- `flake.nix` imports `pkgsStable` from `nixpkgs-stable` for modules that need a
+  stable package source, currently Steam.
 - `lib/default.nix` defines `eriniteLib`, including `mkModule`, which is the
   common wrapper used by most modules.
 - `os/default.nix` and `home/default.nix` import all module files under `os/`
