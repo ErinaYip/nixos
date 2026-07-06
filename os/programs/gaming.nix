@@ -1,15 +1,41 @@
-{eriniteLib, ...} @ args:
+{
+  pkgs,
+  eriniteLib,
+  ...
+} @ args:
 eriniteLib.mkModule args {
-  configFn = _: {
+  defaultSettings = {
+    gamescopeSession = {
+      args = [
+        "-f"
+        "--filter"
+        "fsr"
+      ];
+      steamArgs = [
+        "-tenfoot"
+        "-pipewire-dmabuf"
+      ];
+    };
+  };
+
+  configFn = {settings, ...}: {
     programs = {
-      gamescope.enable = true;
       gamemode.enable = true;
+      gamescope = {
+        enable = true;
+        capSysNice = false;
+      };
 
       steam = {
         enable = true;
-        remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-        dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-        localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
+        extraPackages = with pkgs; [
+          mangohud
+          pulseaudio
+        ];
+        gamescopeSession = {
+          enable = true;
+          inherit (settings.gamescopeSession) args steamArgs;
+        };
       };
     };
   };
