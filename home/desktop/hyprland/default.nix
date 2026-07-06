@@ -7,18 +7,16 @@
 with eriniteLib;
   mkModule args {
     configFn = _: {
-      programs.hyprshot = {
-        enable = true;
-        package = with pkgs; (hyprshot.overrideAttrs (_: {
+      home.packages = with pkgs; [
+        (hyprshot.overrideAttrs (_: {
           src = fetchFromGitHub {
             owner = "erinayip";
             repo = "hyprshot";
-            rev = "c2f506b849a24e60b6fe94aec943d913f23b6175";
-            hash = "sha256-wVHCzs/OXaVfl3Trruc3uAxSiz4PLKylslsUTUoyZbE=";
+            rev = "2f2e696cb37e96788222b7a3fb548b8b928b375c";
+            hash = "sha256-0NAL/Dr403gjVFTORldcRGClYATrVeoufqIw0C2TUds=";
           };
-        }));
-        saveLocation = "$HOME/Pictures/Screenshots";
-      };
+        }))
+      ];
 
       wayland.windowManager.hyprland = {
         enable = true;
