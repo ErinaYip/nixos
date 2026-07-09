@@ -9,7 +9,7 @@
 with eriniteLib;
   mkModule args {
     opts = {
-      proxy = mkBoolOpt false "Whether to enable system proxy.";
+      proxyTun = mkBoolOpt false "Whether to allow the user mihomo service to use TUN mode.";
     };
 
     configFn = {cfg, ...}:
@@ -44,19 +44,15 @@ with eriniteLib;
           users.users.${default.username}.extraGroups = ["networkmanager"];
         }
 
-        (lib.mkIf cfg.proxy {
-          services.mihomo = {
-            enable = true;
-            configFile = "/home/era/Downloads/KuKe.yaml";
-            tunMode = true;
-            webui = pkgs.metacubexd;
+        (lib.mkIf cfg.proxyTun {
+          security.wrappers.mihomo = {
+            owner = "root";
+            group = "root";
+            capabilities = "cap_net_admin,cap_net_raw,cap_net_bind_service+ep";
+            source = lib.getExe pkgs.mihomo;
           };
 
-          environment.sessionVariables = {
-            HTTP_PROXY = "http://127.0.0.1:7890";
-            HTTPS_PROXY = "http://127.0.0.1:7890";
-            ALL_PROXY = "http://127.0.0.1:7890";
-          };
+          networking.firewall.checkReversePath = lib.mkDefault "loose";
         })
       ];
   }
