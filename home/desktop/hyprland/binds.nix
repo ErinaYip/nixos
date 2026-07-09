@@ -10,6 +10,21 @@
   };
   bind = mods: dispatcher: bindWithOpts mods dispatcher {};
 
+  makeActiveWindowOpaque = ''
+    function()
+      for _, prop in ipairs({
+        "opacity",
+        "opacity_inactive",
+        "opacity_fullscreen",
+        "opacity_override",
+        "opacity_inactive_override",
+        "opacity_fullscreen_override",
+      }) do
+        hl.dispatch(hl.dsp.window.set_prop({ prop = prop, value = "1" }))
+      end
+    end
+  '';
+
   directionName = {
     h = "left";
     l = "right";
@@ -28,6 +43,7 @@ in {
       (bind "SUPER + Q" "hl.dsp.window.close()")
       (bind "SUPER + A" ''hl.dsp.window.fullscreen({ mode = "maximized" })'')
       (bind "SUPER + F" ''hl.dsp.window.float({ action = "toggle" })'')
+      (bind "SUPER + O" makeActiveWindowOpaque)
       # (bind "SUPER + R" ''hl.dsp.layout("colresize +conf")'')
       # (bind "SUPER + SHIFT + R" ''hl.dsp.layout("colresize -conf")'')
 
