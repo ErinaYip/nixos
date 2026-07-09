@@ -7,16 +7,11 @@
 with eriniteLib;
   mkModule args {
     opts = {
-      configFile = mkOpt (lib.types.nullOr lib.types.str) null "Mihomo configuration file.";
+      configFile = mkStrOpt "${args.config.xdg.configHome}/mihomo/config.yaml" "Mihomo configuration file.";
       proxyPort = mkStrOpt "7890" "Proxy port.";
     };
 
     configFn = {cfg, ...}: let
-      configFile =
-        if cfg.configFile != null
-        then cfg.configFile
-        else "${args.config.xdg.configHome}/mihomo/config.yaml";
-
       http_proxy = "http://127.0.0.1:${cfg.proxyPort}";
       no_proxy = "localhost,127.0.0.1,::1";
       https_proxy = http_proxy;
@@ -34,7 +29,7 @@ with eriniteLib;
         };
       };
 
-      systemd.user.services.mihomo = {
+      systemd.user.services."mihomo" = {
         Unit = {
           Description = "Mihomo daemon, a rule-based proxy in Go";
           Documentation = ["https://wiki.metacubex.one/"];
@@ -42,15 +37,11 @@ with eriniteLib;
         };
 
         Service = {
-          ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p ${args.config.xdg.configHome}/mihomo";
-          ExecStart = lib.concatStringsSep " " (
-            lib.filter (arg: arg != "") [
-              (lib.getExe pkgs.mihomo)
-              "-d ${args.config.xdg.configHome}/mihomo"
-              "-f ${configFile}"
-              "-ext-ui ${pkgs.metacubexd}"
-            ]
-          );
+          ExecStart = lib.concatStringsSep " " [
+            (lib.getExe pkgs.mihomo)
+            "-f ${cfg.configFile}"
+            "-ext-ui ${pkgs.metacubexd}"
+          ];
           Restart = "on-failure";
           RestartSec = 5;
         };

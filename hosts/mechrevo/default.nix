@@ -67,9 +67,9 @@ in {
           };
         };
 
-        system.proxy = {
+        system.mihomo = {
           enable = true;
-          configFile = "/home/era/Downloads/KuKe.yaml";
+          configFile = "/home/era/.config/mihomo/iKuuu_V2.yaml";
         };
 
         desktop = {
