@@ -62,6 +62,7 @@
           "${pkgs.astro-language-server}/bin/astro-ls"
           "--stdio"
         ];
+        init_options.typescript.tsdk = "${pkgs.typescript}/lib/node_modules/typescript/lib";
       };
       "basedpyright" = {
         settings = {
