@@ -8,12 +8,7 @@ with eriniteLib;
   mkModule args {
     opts = {
       configFile = mkOpt (lib.types.nullOr lib.types.str) null "Mihomo configuration file.";
-      httpProxy = mkStrOpt "http://127.0.0.1:7890" "HTTP proxy URL for terminal sessions.";
-      allProxy = mkStrOpt "http://127.0.0.1:7890" "Fallback proxy URL for terminal sessions.";
-      noProxy = mkStrOpt "localhost,127.0.0.1,::1" "Hosts that should bypass the terminal proxy.";
-      webui = mkOpt (lib.types.nullOr lib.types.path) pkgs.metacubexd "Mihomo external UI path.";
-      extraOpts = mkOpt (lib.types.nullOr lib.types.str) null "Extra command line options for mihomo.";
-      tunMode = mkBoolOpt false "Whether to use the system capability wrapper for TUN mode.";
+      proxyPort = mkStrOpt "7890" "Proxy port.";
     };
 
     configFn = {cfg, ...}: let
@@ -21,22 +16,21 @@ with eriniteLib;
         if cfg.configFile != null
         then cfg.configFile
         else "${args.config.xdg.configHome}/mihomo/config.yaml";
-      mihomoBin =
-        if cfg.tunMode
-        then "/run/wrappers/bin/mihomo"
-        else lib.getExe pkgs.mihomo;
+
+      http_proxy = "http://127.0.0.1:${cfg.proxyPort}";
+      no_proxy = "localhost,127.0.0.1,::1";
+      https_proxy = http_proxy;
+      all_proxy = http_proxy;
+
+      HTTP_PROXY = http_proxy;
+      HTTPS_PROXY = https_proxy;
+      ALL_PROXY = all_proxy;
+      NO_PROXY = no_proxy;
     in {
       home = {
         packages = [pkgs.mihomo];
         sessionVariables = {
-          HTTP_PROXY = cfg.httpProxy;
-          HTTPS_PROXY = cfg.httpProxy;
-          ALL_PROXY = cfg.allProxy;
-          NO_PROXY = cfg.noProxy;
-          http_proxy = cfg.httpProxy;
-          https_proxy = cfg.httpProxy;
-          all_proxy = cfg.allProxy;
-          no_proxy = cfg.noProxy;
+          inherit http_proxy https_proxy all_proxy no_proxy HTTPS_PROXY HTTP_PROXY NO_PROXY ALL_PROXY;
         };
       };
 
@@ -51,11 +45,10 @@ with eriniteLib;
           ExecStartPre = "${pkgs.coreutils}/bin/mkdir -p ${args.config.xdg.configHome}/mihomo";
           ExecStart = lib.concatStringsSep " " (
             lib.filter (arg: arg != "") [
-              mihomoBin
+              (lib.getExe pkgs.mihomo)
               "-d ${args.config.xdg.configHome}/mihomo"
               "-f ${configFile}"
-              (lib.optionalString (cfg.webui != null) "-ext-ui ${cfg.webui}")
-              (lib.optionalString (cfg.extraOpts != null) cfg.extraOpts)
+              "-ext-ui ${pkgs.metacubexd}"
             ]
           );
           Restart = "on-failure";

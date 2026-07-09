@@ -18,7 +18,6 @@ in {
           adb = enabled;
           boot.engine = "grub";
           kernel.sched_ext = true;
-          network.proxyTun = true;
           laptop = enabled;
           virtualisation = {
             enable = true;
@@ -71,7 +70,6 @@ in {
         system.proxy = {
           enable = true;
           configFile = "/home/era/Downloads/KuKe.yaml";
-          tunMode = true;
         };
 
         desktop = {
