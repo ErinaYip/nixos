@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   default,
   hostName,
   eriniteLib,
@@ -7,7 +8,11 @@
 } @ args:
 with eriniteLib;
   mkModule args {
-    configFn = _:
+    opts = {
+      proxyTun = mkBoolOpt false "Whether to allow the user mihomo service to use TUN mode.";
+    };
+
+    configFn = {cfg, ...}:
       lib.mkMerge [
         {
           networking = {
@@ -38,5 +43,16 @@ with eriniteLib;
 
           users.users.${default.username}.extraGroups = ["networkmanager"];
         }
+
+        (lib.mkIf cfg.proxyTun {
+          security.wrappers.mihomo = {
+            owner = "root";
+            group = "root";
+            capabilities = "cap_net_admin,cap_net_raw,cap_net_bind_service+ep";
+            source = lib.getExe pkgs.mihomo;
+          };
+
+          networking.firewall.checkReversePath = lib.mkDefault "loose";
+        })
       ];
   }

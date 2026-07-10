@@ -17,8 +17,7 @@ exposed in `flake.nix` as `eriniteLib`.
 Current categories under `os/` and `home/`:
 
 - `system/` for NixOS system services and platform behavior, plus Home
-  Manager-owned user services such as the Mihomo proxy daemon and terminal
-  proxy environment variables
+  Manager-owned user services such as user-session proxy daemons
 - `desktop/` for graphical environment and desktop integration
 - `cli/` for shell and terminal applications
 - `browsers/` for browser modules

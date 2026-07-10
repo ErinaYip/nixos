@@ -119,8 +119,6 @@ The OS preset owns system services such as Nix, nh, config-source, networking,
 fonts, sound, users, keyd, Ly, Hyprland system integration, and LocalSend. The
 Home preset owns user-session applications such as browsers, DMS, Hyprland
 config, Stylix, Zsh, nh aliases, Codex, nvim, yazi, kitty, and other CLI tools.
-User-session proxy behavior follows the Home side: `home/system/proxy.nix` runs
-Mihomo as a user systemd service and exports terminal proxy variables.
 
 Hosts still add their own hardware and behavioral overrides on top of that
 preset.

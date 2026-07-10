@@ -18,6 +18,7 @@ in {
           adb = enabled;
           boot.engine = "grub";
           kernel.sched_ext = true;
+          network.proxyTun = true;
           laptop = enabled;
           virtualisation = {
             enable = true;
@@ -69,7 +70,8 @@ in {
 
         system.mihomo = {
           enable = true;
-          configFile = "/home/era/.config/mihomo/iKuuu_V2.yaml";
+          configFile = "/home/era/Downloads/KuKe.yaml";
+          tunMode = true;
         };
 
         desktop = {
