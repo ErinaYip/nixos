@@ -18,7 +18,7 @@ in {
           adb = enabled;
           boot.engine = "grub";
           kernel.sched_ext = true;
-          network.proxyTun = true;
+          network.proxy = true;
           laptop = enabled;
           virtualisation = {
             enable = true;
@@ -66,12 +66,6 @@ in {
               email = "erinayip@outlook.com";
             };
           };
-        };
-
-        system.mihomo = {
-          enable = true;
-          configFile = "/home/era/Downloads/KuKe.yaml";
-          tunMode = true;
         };
 
         desktop = {
