@@ -18,7 +18,6 @@ in {
           adb = enabled;
           boot.engine = "grub";
           kernel.sched_ext = true;
-          network.proxy = true;
           laptop = enabled;
           virtualisation = {
             enable = true;
@@ -34,6 +33,11 @@ in {
               nvidiaBusId = "PCI:1:0:0";
               amdgpuBusId = "PCI:6:0:0";
             };
+          };
+
+          mihomo = {
+            enable = true;
+            configFile = "/home/era/.config/mihomo/iKuuu_V2.yaml";
           };
         };
 

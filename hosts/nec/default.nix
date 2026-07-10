@@ -15,7 +15,6 @@ in {
 
         system = {
           boot.engine = "grub";
-          # network.proxy = true;
           laptop = enabled;
         };
       };
