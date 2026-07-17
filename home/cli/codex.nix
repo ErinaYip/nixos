@@ -54,7 +54,6 @@ in
                 model_reasoning_effort = "xhigh";
                 network_access = true;
                 disable_response_storage = true;
-                model_instructions_file = ../../assets/codex/gpt5.5-unrestricted.md;
 
                 features = {
                   goals = true;
