@@ -54,6 +54,7 @@ in
                 model_reasoning_effort = "xhigh";
                 network_access = true;
                 disable_response_storage = true;
+                model_instructions_file = ../../assets/codex/gpt-5.6-sol-unrestricted-v5.md;
 
                 features = {
                   goals = true;
