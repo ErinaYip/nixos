@@ -26,7 +26,11 @@
 
     nix = enabled;
     markdown = enabled;
-    python = enabled;
+    python = {
+      enable = true;
+      format.type = ["ruff-fix" "ruff"];
+      lsp.servers = ["basedpyright" "ruff"];
+    };
     typescript = enabled;
     # astro = enabled;
     scss = enabled;
@@ -55,15 +59,15 @@
       "marksman" = {
         filetypes = lib.mkForce ["markdown"];
       };
-      "astro-language-server" = {
-        cmd = lib.mkForce [
-          "env"
-          "NODE_PATH=${pkgs.typescript}/lib/node_modules"
-          "${pkgs.astro-language-server}/bin/astro-ls"
-          "--stdio"
-        ];
-        init_options.typescript.tsdk = "${pkgs.typescript}/lib/node_modules/typescript/lib";
-      };
+      # "astro-language-server" = {
+      #   cmd = lib.mkForce [
+      #     "env"
+      #     "NODE_PATH=${pkgs.typescript}/lib/node_modules"
+      #     "${pkgs.astro-language-server}/bin/astro-ls"
+      #     "--stdio"
+      #   ];
+      #   init_options.typescript.tsdk = "${pkgs.typescript}/lib/node_modules/typescript/lib";
+      # };
       "basedpyright" = {
         settings = {
           basedpyright = {
