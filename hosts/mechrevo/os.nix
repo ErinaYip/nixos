@@ -40,7 +40,6 @@
     exiftool
     zsteg
     zola
-    python312Packages.dirsearch
 
     wavemon
     ddcutil
