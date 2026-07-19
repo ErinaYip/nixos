@@ -61,5 +61,6 @@ in
           }
 
           (mkOpenAIProvider "hua" "https://huablog.xyz/v1")
+          (mkOpenAIProvider "botcf" "https://botcf.com/v1")
         ];
     }
