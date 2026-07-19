@@ -98,5 +98,6 @@ in
           (mkProviderWithOpts "hua" "https://huablog.xyz/v1" {wire_api = "responses";})
           (mkProviderWithOpts "sixoner" "https://sub.sixoner.com" {wire_api = "responses";})
           (mkProviderWithOpts "rawchat" "https://rawchat.cn/codex" {wire_api = "responses";})
+          (mkProviderWithOpts "botcf" "https://botcf.com/v1" {wire_api = "responses";})
         ];
     }
