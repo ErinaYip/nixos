@@ -208,6 +208,15 @@ Codex provider experiments and Git user info.
 Hardware-specific nixpkgs settings live with the module that needs them; for
 example, the NVIDIA module enables CUDA support when it is turned on.
 
+Workflow expectations for agents and contributors:
+
+- Ask for approval before modifying or adding files.
+- Run `git add <path>` after creating a new file or module so Git-backed flake
+  evaluation includes it.
+- Update `docs/` and the root `README.md` alongside every code change.
+- If commits are approved, keep code changes and documentation changes in
+  separate commits.
+
 ## TODO
 
 - Keep OS-only modules under `os/` and Home Manager modules under `home/`.

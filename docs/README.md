@@ -98,6 +98,14 @@ module:
 - When directories, hosts, or ownership boundaries change, update
   `structure.md`.
 - When shared design decisions change, update `architecture.md`.
+- Before modifying or adding any file, get user approval for the intended
+  change.
+- When adding a new file or module, run `git add <path>` so Git-backed flake
+  evaluation includes it.
+- Every code change should be paired with corresponding `docs/` updates and a
+  root `README.md` update in the same task.
+- When the user approves commits, keep code changes and documentation changes in
+  separate commits.
 
 ## TODO
 

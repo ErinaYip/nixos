@@ -53,3 +53,12 @@ for visible desktop or theme changes.
 Before editing, read `docs/README.md`, then the relevant files in `docs/` for
 architecture, module-system, or structure context. Do not overwrite host
 hardware configuration unless explicitly requested.
+
+- Before modifying or adding any file, first ask the user for approval on the
+  intended change and wait for that approval before editing.
+- When adding any new file or module, run `git add <path>` so it is present in
+  the Git index and available to Git-backed flake evaluation.
+- After every code change, update the relevant documentation under `docs/` and
+  the root `README.md` in the same task so the docs stay aligned with the code.
+- If the user approves creating commits, create them without another prompt, but
+  keep code changes and documentation changes in separate commits.
