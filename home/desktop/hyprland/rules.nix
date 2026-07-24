@@ -1,54 +1,32 @@
-{
-  window_rule = [
-    {
-      name = "opaque-fullscreen";
-      match.fullscreen = 1;
-      opacity = "1.0 override 1.0 override";
-    }
-    {
-      name = "opaque-steam-games";
-      match.class = "^(steam_app_.*)$";
-      opacity = "1.0 override 1.0 override";
-    }
+let
+  mkRule = match: properties:
+    {inherit match;} // properties;
+in {
+  window_rule =
+    [
+      (mkRule {class = "^(steam_app_.*)$";} {
+        float = true;
+        opacity = "1.0 override 1.0 override";
+      })
 
-    {
-      name = "float-title-float";
-      match.initial_title = ".*float.*";
-      float = true;
-      size = ["60%" "70%"];
-      center = true;
-    }
-    {
-      name = "float-title-images-and-video";
-      match.initial_title = ".*图片和视频.*";
-      float = true;
-    }
-    {
-      name = "float-title-image-viewer";
-      match.initial_title = ".*图片查看器.*";
-      float = true;
-    }
-    {
-      name = "float-title-video-player";
-      match.initial_title = ".*视频播放器.*";
-      float = true;
-    }
-    {
-      name = "float-title-media-viewer";
-      match.initial_title = ".*媒体查看器.*";
-      float = true;
-    }
-    {
-      name = "float-title-picture-in-picture";
-      match.initial_title = ".*画中画.*";
-      float = true;
-    }
-    {
-      name = "float-title-open-file";
-      match.initial_title = ".*打开文件.*";
-      float = true;
-    }
-  ];
+      (mkRule {fullscreen = 1;} {
+        opacity = "1.0 override 1.0 override";
+      })
+
+      (mkRule {initial_title = ".*float.*";} {
+        float = true;
+        size = ["60%" "70%"];
+        center = true;
+      })
+    ]
+    ++ map (title: mkRule {initial_title = title;} {float = true;}) [
+      ".*图片和视频.*"
+      ".*图片查看器.*"
+      ".*视频播放器.*"
+      ".*媒体查看器.*"
+      ".*画中画.*"
+      ".*打开文件.*"
+    ];
 
   layer_rule = [
     {
