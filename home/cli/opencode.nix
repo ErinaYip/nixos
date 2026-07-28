@@ -17,7 +17,7 @@
           textVerbosity = "low";
           reasoningSummary = "auto";
         };
-        variants = lib.genAttrs ["high" "xhigh"] (x: {
+        variants = lib.genAttrs ["low" "medium" "high" "xhigh"] (x: {
           reasoningEffort = x;
         });
       });
