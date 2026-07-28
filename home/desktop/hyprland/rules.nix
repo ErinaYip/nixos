@@ -26,6 +26,7 @@ in {
       ".*媒体查看器.*"
       ".*画中画.*"
       ".*打开文件.*"
+      "io.github.celluloid_player.Celluloid"
     ];
 
   layer_rule = [
