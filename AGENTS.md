@@ -56,6 +56,10 @@ hardware configuration unless explicitly requested.
 
 - Before modifying or adding any file, first ask the user for approval on the
   intended change and wait for that approval before editing.
+- Never proactively modify `flake.lock`. If `flake.lock` is already changed,
+  treat it as user-initiated and ignore it unless the user explicitly asks you
+  to handle it. Do not include `flake.lock` changes in any commit unless the
+  user explicitly asks for them.
 - When adding any new file or module, run `git add <path>` so it is present in
   the Git index and available to Git-backed flake evaluation.
 - After every code change, update the relevant documentation under `docs/` and
