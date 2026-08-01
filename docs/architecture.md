@@ -102,6 +102,10 @@ and packages, while Home modules configure user-session state through
 `erinite.home`. Host files enable the two sides explicitly through `osModules`
 and `homeModules`.
 
+The `home.desktop.qq` module reuses nixpkgs' QQ packaging logic while overriding
+the x86_64 Linux source URL and hash locally. It also normalizes the desktop
+entry icon so the installed application can resolve it through the icon theme.
+
 ## Current Desktop Flow
 
 The current graphical session is centered on:

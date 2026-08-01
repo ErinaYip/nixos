@@ -62,6 +62,8 @@ Manager configuration.
 - Hyprland desktop with DankMaterialShell.
 - Chinese input with Fcitx5 and Rime.
 - Common CLI tools like zsh, kitty, nvim, yazi, bat, eza and starship.
+- QQ uses the official x86_64 Linux package source overridden by its Home
+  Manager module.
 - Optional modules for NVIDIA, Podman, VirtualBox, Wine, Steam, streaming, OBS
   and more.
 
