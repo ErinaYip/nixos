@@ -208,6 +208,10 @@ Codex provider experiments and Git user info.
 Hardware-specific nixpkgs settings live with the module that needs them; for
 example, the NVIDIA module enables CUDA support when it is turned on.
 
+When enabled, the Mihomo module publishes its local proxy through
+`networking.proxy`, so NixOS session environments and `nix-daemon` use the same
+proxy settings.
+
 Workflow expectations for agents and contributors:
 
 - Ask for approval before modifying or adding files.

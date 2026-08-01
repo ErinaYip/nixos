@@ -90,6 +90,9 @@ example, `os/system/nvidia.nix` enables CUDA support alongside the NVIDIA driver
 configuration. General unfree package allowance is configured in both
 entrypoints: `os/system/nix.nix` for NixOS builds, and the shared `pkgs` import
 in `flake.nix` for standalone Home Manager builds such as `nh home switch`.
+Host proxy configuration is owned by `os/system/mihomo.nix`; when that module is
+enabled, it sets `networking.proxy` so NixOS session environments and
+`nix-daemon` receive the same proxy settings.
 
 Stylix's Home Manager module is imported as a shared module, but its Home
 Manager-side overlays are disabled for the same reason.
