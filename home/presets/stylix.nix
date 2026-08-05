@@ -5,6 +5,7 @@ with eriniteLib;
       erinite.home = {
         desktop = {
           stylix = enabled;
+          matugen = enabled;
           theme-specialisations = enabled;
         };
       };

@@ -27,6 +27,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
+
     dms = {
       url = "github:AvengeMedia/DankMaterialShell/master";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -8,6 +8,7 @@ in {
 
   currentThemeCategory = "dynamic";
   widgetColorMode = "colorful";
+  runDmsMatugenTemplates = false;
   cornerRadius = 32;
   controlCenterWidgets = [
     (mkCenterWidgets "volumeSlider" 50)

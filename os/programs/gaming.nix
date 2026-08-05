@@ -1,5 +1,6 @@
 {
   pkgs,
+  inputs,
   eriniteLib,
   ...
 } @ args:
@@ -19,6 +20,8 @@ eriniteLib.mkModule args {
   };
 
   configFn = {settings, ...}: {
+    nixpkgs.overlays = [inputs.millennium.overlays.default];
+
     programs = {
       gamemode.enable = true;
       gamescope = {
@@ -28,10 +31,11 @@ eriniteLib.mkModule args {
 
       steam = {
         enable = true;
-        extraPackages = with pkgs; [
-          mangohud
-          pulseaudio
-        ];
+        package = pkgs.millennium-steam;
+        # extraPackages = with pkgs; [
+        #   mangohud
+        #   pulseaudio
+        # ];
         gamescopeSession = {
           enable = true;
           inherit (settings.gamescopeSession) args steamArgs;
