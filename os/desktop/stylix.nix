@@ -20,7 +20,11 @@ in
           emoji.name = "Noto Color Emoji";
         };
 
-        targets.kmscon.enable = false;
+        targets = {
+          regreet.enable = false;
+          kmscon.enable = false;
+          grub.useWallpaper = true;
+        };
       };
 
       configFn = {settings, ...}: {
