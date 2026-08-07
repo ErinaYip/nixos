@@ -27,6 +27,12 @@ in
       };
 
       dmsPath = lib.getExe args.config.programs.dank-material-shell.package;
+      dmsRestart = lib.optionalString config.erinite.home.desktop.stylix.recolorIcons ''
+        dms=${lib.escapeShellArg dmsPath}
+
+        sleep 0.5
+        "$dms" restart >/dev/null 2>&1 || true
+      '';
       themeSwitch = pkgs.writeShellApplication {
         name = "erinite-theme-switch";
         runtimeInputs = with pkgs; [coreutils systemd];
@@ -46,13 +52,10 @@ in
             exit 0
           fi
 
-          dms=${lib.escapeShellArg dmsPath}
-
           unit="$(systemd-escape --template=erinite-theme-switch@.service "$choice")"
           systemctl start --no-block "$unit"
 
-          sleep 0.5
-          "$dms" restart >/dev/null 2>&1 || true
+          ${dmsRestart}
         '';
       };
     in
