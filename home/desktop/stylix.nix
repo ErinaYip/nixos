@@ -4,38 +4,11 @@
   eriniteLib,
   ...
 } @ args: let
-  inherit (eriniteLib) mkBoolOpt recolorScript;
-  telaIconThemeNames = ["Tela" "Tela-dark"];
-  telaIconTheme = pkgs.tela-icon-theme.overrideAttrs (oldAttrs: {
-    installPhase = ''
-      runHook preInstall
-
-      patchShebangs install.sh
-      mkdir -p $out/share/icons
-      ./install.sh -d $out/share/icons standard
-      jdupes -l -r $out/share/icons
-
-      runHook postInstall
-    '';
-
-    postInstall =
-      (
-        if config.erinite.home.desktop.stylix.recolorIcons
-        then recolorScript (args // {recolorOptions.whitelist = telaIconThemeNames;})
-        else ""
-      )
-      + (oldAttrs.postInstall or "");
-  });
-
   inherit (config.erinite) wallpapers;
   wallpaper = wallpapers.wallpapers.${wallpapers.default};
 in
   with eriniteLib;
     mkModule args {
-      opts = {
-        recolorIcons = mkBoolOpt false "Whether to recolor the Tela icon theme with the current Stylix palette.";
-      };
-
       defaultSettings = {
         inherit (wallpaper) base16Scheme image polarity;
 
@@ -48,7 +21,7 @@ in
 
         icons = {
           enable = true;
-          package = telaIconTheme;
+          package = pkgs.tela-icon-theme;
           dark = "Tela-dark";
           light = "Tela";
         };

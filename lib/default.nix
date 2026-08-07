@@ -40,8 +40,6 @@ lib.makeExtensible (final: {
 
   mkDefaultApplications = app: mimes: lib.genAttrs mimes (_: app);
 
-  recolorScript = args: (import ./recolor args).recolorScript;
-
   mergeSettings = definitions:
     (lib.evalModules {
       modules = [
