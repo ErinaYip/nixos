@@ -115,10 +115,8 @@ The current graphical session is centered on:
 - DankMaterialShell from the `master` flake input as the shell layer, with
   Hyprland window/layer rules and IPC keybinds.
 - Theme specialisations switch the NixOS system profile from the DMS wallpaper
-  watcher. Icon theme recoloring is disabled by default. Enabling
-  `erinite.home.desktop.stylix.recolorIcons` recolors the Tela icon theme, and
-  the theme specialisation script restarts DMS after switching so those icon
-  changes take effect.
+  watcher. Stylix uses the default `pkgs.tela-icon-theme` package for its icon
+  theme.
 - Fcitx5 + Rime for input method packages and user configuration.
 - Optional Hyprland plugins from inputs, with `hyprgrass` controlled by the
   host-level `grass` option.
