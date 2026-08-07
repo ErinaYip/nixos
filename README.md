@@ -85,6 +85,11 @@ Hyprland is generated through Home Manager's Lua config mode. Shared defaults
 live in `home/desktop/hyprland/`, while host-specific monitor and workspace
 logic lives in each host's configuration.
 
+Theme specialisations are driven by wallpapers. Icon theme recoloring is disabled
+by default. Set `erinite.home.desktop.stylix.recolorIcons = true` to recolor the
+Tela icon theme and restart DMS after a theme switch so those changes take
+effect.
+
 ## Screenshots
 
 | `nec`                         | `mechrevo`                              |
