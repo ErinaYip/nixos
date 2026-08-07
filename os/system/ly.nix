@@ -12,10 +12,9 @@ eriniteLib.mkModule args {
         clear_password = true;
         animation = "dur_file";
         ly_log = "/var/log/ly.log";
-        dur_file_path = "/etc/ly/blackhole.dur";
+        session_log = ".local/state/ly-session.log";
+        dur_file_path = "${../../assets/blackhole-smooth-240x67.dur}";
       };
     };
-
-    environment.etc."ly/blackhole.dur".source = ../../assets/blackhole-smooth-240x67.dur;
   };
 }
