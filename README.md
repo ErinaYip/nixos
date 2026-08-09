@@ -61,7 +61,7 @@ Manager configuration.
 - Modular options under `erinite.*`.
 - Hyprland desktop with DankMaterialShell.
 - Niri configuration through `sodiboo/niri-flake` with native Home Manager
-  settings.
+  settings and OS-side Ly session integration.
 - Chinese input with Fcitx5 and Rime.
 - Common CLI tools like zsh, kitty, nvim, yazi, bat, eza and starship.
 - QQ uses the official x86_64 Linux package source overridden by its Home
@@ -89,7 +89,9 @@ logic lives in each host's configuration.
 
 Niri settings are generated through `sodiboo/niri-flake`. Shared Niri binds and
 rules live in `home/desktop/niri/` using native `programs.niri.settings` action
-and match attributes.
+and match attributes. The OS-side Niri module enables nixpkgs' Niri NixOS module
+with the `sodiboo/niri-flake` package overlay and cache so Ly can list Niri as a
+Wayland session. DMS IPC controls are available through Niri keybindings.
 
 Theme specialisations are driven by wallpapers. Stylix uses the default
 `pkgs.tela-icon-theme` package for the icon theme.

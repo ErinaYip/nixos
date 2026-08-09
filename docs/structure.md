@@ -27,6 +27,9 @@ Recently added system modules:
 
 - `os/system/adb.nix` installs Android platform tools and adds the default user
   to `adbusers`.
+- `os/desktop/niri.nix` enables nixpkgs' Niri NixOS module with the
+  `sodiboo/niri-flake` overlay and cache so Niri is installed system-wide and
+  exposed to Ly through display-manager session data.
 - `os/system/config-source.nix` links the flake source into
   `/run/current-system/configuration-source` and adds the `nixos-source` shell
   alias.
@@ -119,6 +122,8 @@ If you need to understand or change behavior, start here:
   `erinite.home`
 - Hyprland behavior: `home/desktop/hyprland/`, `home/desktop/dms/hyprland.nix`,
   and host-level `wayland.windowManager.hyprland` overrides
+- Niri behavior: `os/desktop/niri.nix` for system/session integration and
+  `home/desktop/niri/` for user settings, binds, and rules
 - Runtime source snapshot: `/run/current-system/configuration-source`, provided
   by `os/system/config-source.nix`
 - Host-only behavior: `hosts/<name>/`
