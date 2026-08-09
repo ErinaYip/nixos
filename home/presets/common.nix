@@ -11,6 +11,7 @@ with eriniteLib;
         desktop = {
           dms = enabled;
           hyprland = enabled;
+          # niri = enabled;
           cursor = enabled;
           fcitx5 = enabled;
           fuzzel = enabled;

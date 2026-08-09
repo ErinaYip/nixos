@@ -24,6 +24,7 @@ with eriniteLib;
 
         desktop = {
           hyprland = enabled;
+          # niri = enabled;
           # obs-studio = enabled;
           # streaming = enabled;
           # stylix = enabled;

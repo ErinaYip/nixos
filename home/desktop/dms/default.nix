@@ -61,5 +61,6 @@ in
         }
 
         (import ./hyprland.nix args)
+        (import ./niri.nix)
       ];
   }

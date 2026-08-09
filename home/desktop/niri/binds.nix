@@ -14,6 +14,7 @@ in {
   binds = builtins.listToAttrs (
     [
       (bind "Mod+Q" "close-window")
+      (bind "Mod+R" "switch-preset-column-width")
       (bind "Mod+A" "maximize-column")
       (bind "Mod+F" "toggle-window-floating")
 

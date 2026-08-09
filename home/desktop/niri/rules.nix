@@ -7,6 +7,24 @@ let
 in {
   window-rules =
     [
+      {
+        draw-border-with-background = false;
+        opacity = 0.9;
+        geometry-corner-radius = let
+          r = 12.0;
+        in {
+          top-left = r;
+          top-right = r;
+          bottom-left = r;
+          bottom-right = r;
+        };
+        clip-to-geometry = true;
+      }
+
+      (mkWindowRule
+        {is-focused = true;}
+        {opacity = 0.95;})
+
       (mkWindowRule
         {app-id = "^(steam_app_.*)$";}
         {

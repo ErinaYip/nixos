@@ -42,6 +42,7 @@ in {
         };
 
         desktop = {
+          niri = enabled;
           obs-studio = enabled;
         };
 
