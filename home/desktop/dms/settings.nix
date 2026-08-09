@@ -24,4 +24,15 @@ in {
     (mkCenterWidgets "colorPicker" 50)
   ];
   showWorkspaceIndex = true;
+
+  wallpaperTransition = "random";
+  includedTransitions = [
+    "fade"
+    "wipe"
+    "disc"
+    "stripes"
+    "iris bloom"
+    "pixelate"
+    "portal"
+  ];
 }
