@@ -73,6 +73,7 @@ in {
         };
 
         desktop = {
+          niri = enabled;
           dms = {
             settings = {
               brightnessDevicePins = {
