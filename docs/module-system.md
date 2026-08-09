@@ -56,6 +56,10 @@ Hyprland settings are currently structured for Lua output instead of traditional
 Hyprland conf strings. Lists such as binds, rules, environment variables,
 curves, animations, monitors, and workspace rules use attribute sets with
 arguments where needed. Raw Lua snippets use `lib.generators.mkLuaInline`.
+Niri settings use the native `sodiboo/niri-flake` Home Manager schema; keybinds
+are `programs.niri.settings.binds` attributes keyed by shortcut names, each
+binding stores its compositor action under `action.<name>`, and rules are
+`window-rules` or `layer-rules` lists with `matches` entries.
 
 ## Common Helpers
 
@@ -71,8 +75,9 @@ Useful helpers in `eriniteLib`:
 Small module-local helper functions are preferred when they clarify repeated
 data shapes. Current examples include alias generation in `os/system/nh.nix`
 and `home/cli/nh.nix`, Nix rebuild alias generation in `os/system/nix.nix` and
-`home/cli/zsh/default.nix`, provider generation in `home/cli/codex.nix`, and
-Hyprland bind generation in `home/desktop/dms/hyprland.nix`.
+`home/cli/zsh/default.nix`, provider generation in `home/cli/codex.nix`,
+Hyprland bind generation in `home/desktop/dms/hyprland.nix`, and Niri bind and
+rule generation in `home/desktop/niri/`.
 
 ## Module Discovery
 

@@ -60,6 +60,8 @@ Manager configuration.
 - Home Manager integration.
 - Modular options under `erinite.*`.
 - Hyprland desktop with DankMaterialShell.
+- Niri configuration through `sodiboo/niri-flake` with native Home Manager
+  settings.
 - Chinese input with Fcitx5 and Rime.
 - Common CLI tools like zsh, kitty, nvim, yazi, bat, eza and starship.
 - QQ uses the official x86_64 Linux package source overridden by its Home
@@ -84,6 +86,10 @@ Manager configuration.
 Hyprland is generated through Home Manager's Lua config mode. Shared defaults
 live in `home/desktop/hyprland/`, while host-specific monitor and workspace
 logic lives in each host's configuration.
+
+Niri settings are generated through `sodiboo/niri-flake`. Shared Niri binds and
+rules live in `home/desktop/niri/` using native `programs.niri.settings` action
+and match attributes.
 
 Theme specialisations are driven by wallpapers. Stylix uses the default
 `pkgs.tela-icon-theme` package for the icon theme.

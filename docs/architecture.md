@@ -57,6 +57,14 @@ settings are composed under `home/desktop/hyprland/`. Host-specific monitor and
 workspace logic stays in host configuration files when it depends on local
 outputs, refresh rates, rotation, or external monitor detection.
 
+Niri configuration is handled separately under `home/desktop/niri/` through
+`sodiboo/niri-flake`'s Home Manager module. Its keybinds use
+`programs.niri.settings.binds` as an attribute set keyed by Niri key names, with
+each entry declaring an `action.<niri-action>` value. Window and layer rules use
+`window-rules` and `layer-rules` lists with `matches` entries. These files use
+Niri-native settings instead of Hyprland Lua dispatcher strings or Hyprland rule
+fields.
+
 ## Design Pattern
 
 Most modules follow the same pattern:
