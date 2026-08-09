@@ -72,7 +72,7 @@ in {
 
     window-rules = [
       (mkWindowRule
-        {app-id = "org.quickshell$";}
+        {app-id = "^org.quickshell$";}
         {open-floating = true;})
     ];
 

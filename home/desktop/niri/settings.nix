@@ -1,6 +1,10 @@
 {
-  # outputs."eDP-1".scale = 2.0;
+  lib,
+  pkgs,
+  ...
+}: {
   prefer-no-csd = true;
+  xwayland-satellite.path = "${lib.getExe pkgs.xwayland-satellite-unstable}";
 
   layout = {
     gaps = 2;

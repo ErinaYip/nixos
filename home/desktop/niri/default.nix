@@ -10,9 +10,9 @@ with eriniteLib;
         enable = true;
 
         settings = lib.mkMerge [
+          (import ./settings.nix args)
           (import ./binds.nix)
           (import ./rules.nix)
-          (import ./settings.nix)
         ];
       };
     };

@@ -15,6 +15,7 @@ in {
     [
       (bind "Mod+Q" "close-window")
       (bind "Mod+R" "switch-preset-column-width")
+      (bind "Mod+Shift+R" "switch-preset-column-width-back")
       (bind "Mod+A" "maximize-column")
       (bind "Mod+F" "toggle-window-floating")
 
