@@ -65,6 +65,23 @@ in {
         };
 
         cli = {
+          kitty.sessions = {
+            easytierfrp.settings = [
+              {layout = "tall";}
+              {cd = "~/Documents/natfrp-nix/";}
+              {launch = ["nix-shell" "-p" "easytier" "--run" "zsh"];}
+              {launch = ["nix" "run" ".#"];}
+              {
+                launch = [
+                  "sudo nix run nixpkgs#easytier"
+                  "--"
+                  "-i 10.126.126.1"
+                  "--network-name easytier"
+                  "--network-secret easytier"
+                ];
+              }
+            ];
+          };
           git = {
             user = {
               name = "ErinaYip";
@@ -85,8 +102,9 @@ in {
               };
             };
             bars = {
-              mainBar.screenPreferences = ["DP-2" "DP-3"];
-              subBar.screenPreferences = ["eDP-1" "eDP-2"];
+              mainBar.screenPreferences = ["all"];
+              # mainBar.screenPreferences = ["DP-2" "DP-3"];
+              # subBar.screenPreferences = ["eDP-1" "eDP-2"];
             };
           };
           obsidian = {

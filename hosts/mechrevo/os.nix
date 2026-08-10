@@ -6,6 +6,7 @@
   networking.firewall = {
     allowedTCPPorts = [
       25565 # minecraft
+      11010 # easytier
     ];
   };
 
