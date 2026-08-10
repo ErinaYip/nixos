@@ -90,8 +90,10 @@ logic lives in each host's configuration.
 Niri settings are generated through `sodiboo/niri-flake`. Shared Niri binds and
 rules live in `home/desktop/niri/` using native `programs.niri.settings` action
 and match attributes. The OS-side Niri module enables nixpkgs' Niri NixOS module
-with the `sodiboo/niri-flake` package overlay and cache so Ly can list Niri as a
-Wayland session. DMS IPC controls are available through Niri keybindings.
+with the `sodiboo/niri-flake` package output and cache so Ly can list Niri as a
+Wayland session. Home-side Niri packages are read directly from the flake input
+so standalone `nh home` does not depend on NixOS overlays. DMS IPC controls are
+available through Niri keybindings.
 
 Theme specialisations are driven by wallpapers. Stylix uses the default
 `pkgs.tela-icon-theme` package for the icon theme.

@@ -28,8 +28,8 @@ Recently added system modules:
 - `os/system/adb.nix` installs Android platform tools and adds the default user
   to `adbusers`.
 - `os/desktop/niri.nix` enables nixpkgs' Niri NixOS module with the
-  `sodiboo/niri-flake` overlay and cache so Niri is installed system-wide and
-  exposed to Ly through display-manager session data.
+  `sodiboo/niri-flake` package output and cache so Niri is installed
+  system-wide and exposed to Ly through display-manager session data.
 - `os/system/config-source.nix` links the flake source into
   `/run/current-system/configuration-source` and adds the `nixos-source` shell
   alias.

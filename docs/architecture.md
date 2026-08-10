@@ -58,11 +58,13 @@ workspace logic stays in host configuration files when it depends on local
 outputs, refresh rates, rotation, or external monitor detection.
 
 Niri is split the same way. The shared `os.desktop.niri` module enables
-nixpkgs' Niri NixOS module with the `sodiboo/niri-flake` package overlay and
+nixpkgs' Niri NixOS module with the `sodiboo/niri-flake` package output and
 binary cache, including the system package, portal support, and
 `services.displayManager.sessionPackages` integration so Ly can list the Niri
 session. Home-side configuration stays under `home/desktop/niri/` through
-`sodiboo/niri-flake`'s Home Manager settings. Its keybinds use
+`sodiboo/niri-flake`'s Home Manager settings and takes Niri-flake packages
+directly from the flake input so standalone `nh home` does not depend on
+NixOS-side overlays. Its keybinds use
 `programs.niri.settings.binds` as an attribute set keyed by Niri key names, with
 each entry declaring an `action.<niri-action>` value. Window and layer rules use
 `window-rules` and `layer-rules` lists with `matches` entries. These files use
