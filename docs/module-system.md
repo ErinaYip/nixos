@@ -52,6 +52,28 @@ definitions can be composed through the normal option tree. Codex profile
 overrides are emitted as `~/.codex/<name>.config.toml` files for the current
 profile loading model.
 
+`home/cli/kitty.nix` exposes `sessions.<name>` so hosts can emit multiple kitty
+startup session files under `~/.config/kitty/<name>.conf`. Each session is an
+attribute set with either `text` for raw kitty session syntax or `settings` for
+structured Nix entries converted to kitty conf lines. Use list entries when
+command order or repeated commands matter:
+
+```nix
+erinite.home.cli.kitty.sessions = {
+  raw.text = ''
+    new_tab editor
+    launch nvim
+  '';
+
+  dev.settings = [
+    {new_tab = "editor";}
+    {launch = ["--cwd" "~/src/project" "nvim"];}
+    {new_tab = "shell";}
+    {launch = ["--cwd" "~/src/project" "zsh"];}
+  ];
+};
+```
+
 Hyprland settings are currently structured for Lua output instead of traditional
 Hyprland conf strings. Lists such as binds, rules, environment variables,
 curves, animations, monitors, and workspace rules use attribute sets with

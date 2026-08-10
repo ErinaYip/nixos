@@ -214,6 +214,26 @@ with eriniteLib; {
 The `common` preset enables the base system, Hyprland desktop, CLI tools and
 LocalSend.
 
+Kitty session presets can be generated under `~/.config/kitty/<name>.conf` and
+started with `kitty --session <name>.conf`. Multiple sessions are defined under
+`erinite.home.cli.kitty.sessions.<name>`:
+
+```nix
+erinite.home.cli.kitty.sessions = {
+  raw.text = ''
+    new_tab editor
+    launch nvim
+  '';
+
+  dev.settings = [
+    {new_tab = "editor";}
+    {launch = ["--cwd" "~/src/project" "nvim"];}
+    {new_tab = "shell";}
+    {launch = ["--cwd" "~/src/project" "zsh"];}
+  ];
+};
+```
+
 ## Notes
 
 This repo is made for my own machines. Some values are hardware or user
