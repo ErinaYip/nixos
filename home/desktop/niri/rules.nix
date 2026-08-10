@@ -41,7 +41,7 @@ in {
         })
 
       (mkWindowRule
-        {app-id = "^io[.]github[.]celluloid_player[.]Celluloid$";}
+        {app-id = "^io.github.celluloid_player.Celluloid$";}
         {open-floating = true;})
     ]
     ++ map (title:
@@ -55,5 +55,6 @@ in {
       ".*画中画.*"
       ".*打开文件.*"
       "好友列表"
+      "朋友圈"
     ];
 }

@@ -17,6 +17,7 @@ in {
       (bind "Mod+R" "switch-preset-column-width")
       (bind "Mod+Shift+R" "switch-preset-column-width-back")
       (bind "Mod+A" "maximize-column")
+      (bind "Mod+Shift+A" "fullscreen-window")
       (bind "Mod+F" "toggle-window-floating")
 
       (bind "Mod+S" "screenshot")
@@ -77,12 +78,12 @@ in {
         {
           key = "K";
           focus = "focus-window-up";
-          move = "move-window-up";
+          move = "move-window-up-or-to-workspace-up";
         }
         {
           key = "J";
           focus = "focus-window-down";
-          move = "move-window-down";
+          move = "move-window-down-or-to-workspace-down";
         }
       ])
   );

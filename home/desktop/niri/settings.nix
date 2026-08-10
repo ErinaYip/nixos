@@ -37,5 +37,13 @@ in {
       repeat-delay = 400;
       repeat-rate = 30;
     };
+
+    warp-mouse-to-focus = {
+      enable = true;
+    };
+
+    focus-follows-mouse = {
+      enable = true;
+    };
   };
 }
