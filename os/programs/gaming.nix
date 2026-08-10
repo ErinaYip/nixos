@@ -5,21 +5,7 @@
   ...
 } @ args:
 eriniteLib.mkModule args {
-  defaultSettings = {
-    gamescopeSession = {
-      args = [
-        "-f"
-        "--filter"
-        "fsr"
-      ];
-      steamArgs = [
-        "-tenfoot"
-        "-pipewire-dmabuf"
-      ];
-    };
-  };
-
-  configFn = {settings, ...}: {
+  configFn = _: {
     nixpkgs.overlays = [inputs.millennium.overlays.default];
 
     programs = {
@@ -32,13 +18,17 @@ eriniteLib.mkModule args {
       steam = {
         enable = true;
         package = pkgs.millennium-steam;
-        # extraPackages = with pkgs; [
-        #   mangohud
-        #   pulseaudio
-        # ];
         gamescopeSession = {
           enable = true;
-          inherit (settings.gamescopeSession) args steamArgs;
+          args = [
+            "-f"
+            "--filter"
+            "fsr"
+          ];
+          steamArgs = [
+            "-tenfoot"
+            "-pipewire-dmabuf"
+          ];
         };
       };
     };
