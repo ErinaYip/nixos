@@ -62,7 +62,7 @@ Before changing code, an agent should understand these facts:
 - `home/desktop/hyprland/` emits structured Lua config, binds, animations,
   window rules, and portal integration.
 - `home/desktop/dms/` contributes DMS-specific Hyprland and Niri rules, binds,
-  hypridle settings, and theming includes.
+  idle and power defaults, and theming includes.
 
 ## Command Aliases
 

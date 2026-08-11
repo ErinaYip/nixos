@@ -59,9 +59,11 @@ Manager configuration.
 - Automatic host discovery from `hosts/<name>/default.nix`.
 - Home Manager integration.
 - Modular options under `erinite.*`.
-- Hyprland desktop with DankMaterialShell.
+- Hyprland and Niri desktop integration with DankMaterialShell.
 - Niri configuration through `sodiboo/niri-flake` with native Home Manager
   settings and OS-side Ly session integration.
+- DMS owns idle detection, lock, suspend, and power menu flow across both
+  compositors.
 - Chinese input with Fcitx5 and Rime.
 - Common CLI tools like zsh, kitty, nvim, yazi, bat, eza and starship.
 - QQ uses the official x86_64 Linux package source overridden by its Home
@@ -73,7 +75,7 @@ Manager configuration.
 
 | Part           | Choice                 |
 | -------------- | ---------------------- |
-| Window manager | Hyprland               |
+| Window manager | Hyprland / Niri        |
 | Shell          | zsh                    |
 | Terminal       | kitty                  |
 | Editor         | Nixvim with erina-vim  |
@@ -93,7 +95,8 @@ and match attributes. The OS-side Niri module enables nixpkgs' Niri NixOS module
 with the `sodiboo/niri-flake` package output and cache so Ly can list Niri as a
 Wayland session. Home-side Niri packages are read directly from the flake input
 so standalone `nh home` does not depend on NixOS overlays. DMS IPC controls are
-available through Niri keybindings.
+available through Niri keybindings, and DMS owns idle, lock, suspend, and power
+menu behavior for both Hyprland and Niri.
 
 Theme specialisations are driven by wallpapers. Stylix uses the default
 `pkgs.tela-icon-theme` package for the icon theme.

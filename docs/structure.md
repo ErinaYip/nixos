@@ -30,6 +30,8 @@ Recently added system modules:
 - `os/desktop/niri.nix` enables nixpkgs' Niri NixOS module with the
   `sodiboo/niri-flake` package output and cache so Niri is installed
   system-wide and exposed to Ly through display-manager session data.
+- `os/system/laptop.nix` owns shared laptop power policy, including UPower,
+  power-profiles-daemon, and logind lid handling.
 - `os/system/config-source.nix` links the flake source into
   `/run/current-system/configuration-source` and adds the `nixos-source` shell
   alias.
@@ -124,6 +126,7 @@ If you need to understand or change behavior, start here:
   and host-level `wayland.windowManager.hyprland` overrides
 - Niri behavior: `os/desktop/niri.nix` for system/session integration and
   `home/desktop/niri/` for user settings, binds, and rules
+- DMS idle and power policy: `home/desktop/dms/` and `os/system/laptop.nix`
 - Runtime source snapshot: `/run/current-system/configuration-source`, provided
   by `os/system/config-source.nix`
 - Host-only behavior: `hosts/<name>/`

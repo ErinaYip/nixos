@@ -55,7 +55,10 @@ Hyprland is an important special case in the current tree. The shared
 integration, and Lua config mode. Common binds, rules, animations and base
 settings are composed under `home/desktop/hyprland/`. Host-specific monitor and
 workspace logic stays in host configuration files when it depends on local
-outputs, refresh rates, rotation, or external monitor detection.
+outputs, refresh rates, rotation, or external monitor detection. DMS owns the
+session idle, lock, suspend, and power menu behavior across both Hyprland and
+Niri, while `os/system/laptop.nix` owns the shared lid policy and power profile
+daemon.
 
 Niri is split the same way. The shared `os.desktop.niri` module enables
 nixpkgs' Niri NixOS module with the `sodiboo/niri-flake` package output and
@@ -70,7 +73,7 @@ each entry declaring an `action.<niri-action>` value. Window and layer rules use
 `window-rules` and `layer-rules` lists with `matches` entries. These files use
 Niri-native settings instead of Hyprland Lua dispatcher strings or Hyprland rule
 fields. When DMS is enabled, `home/desktop/dms/niri.nix` contributes its IPC
-controls as Niri binds.
+controls, including lock and power menu binds, as Niri binds.
 
 ## Design Pattern
 
