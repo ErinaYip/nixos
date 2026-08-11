@@ -39,19 +39,5 @@ with eriniteLib;
         enable = true;
         config.hyprland.preferred = ["hyprland" "gtk"];
       };
-
-      services.hypridle = {
-        enable = true;
-        settings = {
-          general.after_sleep_cmd = "hyprctl dispatch dpms on";
-          listener = [
-            {
-              timeout = 360;
-              on-timeout = "hyprctl dispatch dpms off";
-              on-resume = "hyprctl dispatch dpms on";
-            }
-          ];
-        };
-      };
     };
   }

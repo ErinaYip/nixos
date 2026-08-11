@@ -69,6 +69,7 @@ in {
     # (bind "SUPER + Print" ''hl.dsp.exec_cmd("dms ipc call quickCapture screenshot default")'')
 
     (bind "SUPER + ALT + l" ''hl.dsp.exec_cmd("dms ipc call lock lock")'')
+    (bind "SUPER + x" ''hl.dsp.exec_cmd("dms ipc call powermenu toggle")'')
 
     (bindWithOpts "XF86AudioRaiseVolume" ''hl.dsp.exec_cmd("dms ipc call audio increment 3")'' {
       locked = true;
@@ -91,16 +92,4 @@ in {
       repeating = true;
     })
   ];
-
-  services.hypridle = {
-    settings = {
-      general.lock_cmd = "dms ipc call lock lock";
-      listener = [
-        {
-          timeout = 300;
-          on-timeout = "dms ipc call lock lock";
-        }
-      ];
-    };
-  };
 }

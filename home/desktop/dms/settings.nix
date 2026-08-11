@@ -8,6 +8,24 @@ in {
   currentThemeCategory = "dynamic";
   widgetColorMode = "colorful";
   runDmsMatugenTemplates = false;
+
+  acLockTimeout = 300;
+  acMonitorTimeout = 360;
+  acPostLockMonitorTimeout = 60;
+  acProfileName = "1";
+  acSuspendTimeout = 0;
+  acSuspendBehavior = 0;
+
+  batteryAutoPowerSaver = true;
+  batteryLockTimeout = 180;
+  batteryMonitorTimeout = 240;
+  batteryPostLockMonitorTimeout = 30;
+  batteryProfileName = "0";
+  batterySuspendTimeout = 900;
+  batterySuspendBehavior = 0;
+  lowerDisplayRefreshRateOnBattery = true;
+  lockBeforeSuspend = true;
+
   cornerRadius = 32;
   controlCenterWidgets = [
     (mkCenterWidgets "volumeSlider" 50)

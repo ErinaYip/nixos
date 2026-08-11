@@ -3,7 +3,14 @@ eriniteLib.mkModule args {
   configFn = _: {
     services = {
       upower.enable = true;
-      tuned.enable = true;
+      power-profiles-daemon.enable = true;
+
+      logind.settings.Login = {
+        HandleLidSwitch = "suspend";
+        HandleLidSwitchExternalPower = "suspend";
+        HandleLidSwitchDocked = "ignore";
+        IdleAction = "ignore";
+      };
     };
 
     # services.tlp = {

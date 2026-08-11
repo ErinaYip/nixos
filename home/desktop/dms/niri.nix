@@ -37,6 +37,11 @@ in {
         action.spawn = ["dms" "ipc" "call" "lock" "lock"];
       };
 
+      "Mod+X" = {
+        hotkey-overlay.title = "Power Menu";
+        action.spawn = ["dms" "ipc" "call" "powermenu" "toggle"];
+      };
+
       "XF86AudioRaiseVolume" = {
         allow-when-locked = true;
         action.spawn = ["dms" "ipc" "call" "audio" "increment" "3"];
