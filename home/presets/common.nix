@@ -41,6 +41,7 @@ with eriniteLib;
           eza = enabled;
           fastfetch = enabled;
           git = enabled;
+          herdr = enabled;
           kitty = enabled;
           nh = enabled;
           opencode = enabled;
