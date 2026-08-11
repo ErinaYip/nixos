@@ -167,6 +167,18 @@ Enter dev shell:
 nix develop
 ```
 
+The dev shell provides `alejandra`, `statix`, `deadnix`, and a project-configured
+`nixd` wrapper. The wrapper resolves the repository root from Git and exposes
+flake-aware nixpkgs plus generic NixOS and Home Manager completion sources from
+the flake inputs. It does not read host-specific system or user configurations.
+The dev shell implementation lives in `dev/default.nix`.
+
+Enable direnv for automatic loading:
+
+```bash
+direnv allow
+```
+
 ## Install
 
 Boot from a NixOS installer, connect to the network, then prepare disks and

@@ -5,7 +5,20 @@
 ### `flake.nix`
 
 Project entry point. Defines inputs, host construction, and the development
-shell.
+shell output.
+
+### `dev/`
+
+Holds repository-local development environment definitions. `dev/default.nix`
+builds the default `nix develop` shell with formatting and linting tools plus a
+project-local `nixd` wrapper for flake-aware Nix completion. The wrapper uses
+flake inputs for generic nixpkgs, NixOS, and Home Manager completion sources
+instead of host-specific system or user configurations.
+
+### `.envrc`
+
+Loads the default flake dev shell through direnv and watches `flake.nix` and
+`flake.lock` for environment reloads. Run `direnv allow` after reviewing the file.
 
 ### `lib/`
 

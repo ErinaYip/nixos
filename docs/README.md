@@ -43,6 +43,8 @@ Before changing code, an agent should understand these facts:
 
 - `flake.nix` defines the shared inputs, discovers host directories, and
   constructs each host with `mkHost`.
+- `flake.nix` also exposes `devShells.<system>.default` for repository
+  development tools and imports the shell implementation from `dev/default.nix`.
 - `flake.nix` imports the shared `pkgs` set used by standalone Home Manager,
   including its unfree package allowance.
 - `lib/default.nix` defines `eriniteLib`, including `mkModule`, which is the
@@ -59,6 +61,8 @@ Before changing code, an agent should understand these facts:
 - Host-specific Hyprland monitor and workspace details can also live in
   `hosts/<name>/home.nix` when they are too machine-specific for the shared
   module.
+- `.envrc` loads the default dev shell through direnv; run `direnv allow` after
+  reviewing changes to enable automatic loading.
 - `home/desktop/hyprland/` emits structured Lua config, binds, animations,
   window rules, and portal integration.
 - `home/desktop/dms/` contributes DMS-specific Hyprland and Niri rules, binds,
