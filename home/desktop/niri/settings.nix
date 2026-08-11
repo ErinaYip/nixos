@@ -20,7 +20,13 @@ in {
       proportion = 0.8;
     };
 
-    preset-column-widths = builtins.genList (i: {proportion = (i + 1) * 2.0 / 7.0;}) 3;
+    preset-column-widths = [
+      {proportion = 0.2;}
+      {proportion = 0.4;}
+      {proportion = 0.5;}
+      {proportion = 0.6;}
+      {proportion = 0.8;}
+    ];
 
     border = {
       enable = true;
@@ -38,12 +44,18 @@ in {
       repeat-rate = 30;
     };
 
-    warp-mouse-to-focus = {
-      enable = true;
+    warp-mouse-to-focus.enable = true;
+    focus-follows-mouse.enable = true;
+
+    mouse = {
+      accel-speed = 0.0;
     };
 
-    focus-follows-mouse = {
-      enable = true;
+    touchpad = {
+      tap = true;
+      accel-speed = 0.0;
+      natural-scroll = true;
+      dwt = true;
     };
   };
 }

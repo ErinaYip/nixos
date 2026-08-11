@@ -5,7 +5,6 @@ let
   };
 in {
   currentThemeName = "dynamic";
-
   currentThemeCategory = "dynamic";
   widgetColorMode = "colorful";
   runDmsMatugenTemplates = false;
@@ -24,6 +23,7 @@ in {
     (mkCenterWidgets "colorPicker" 50)
   ];
   showWorkspaceIndex = true;
+  wallpaperFillMode = "Scrolling";
 
   wallpaperTransition = "random";
   includedTransitions = [
