@@ -11,8 +11,8 @@ in {
 
   layout = {
     gaps = 2;
-    struts.left = 16;
-    struts.right = 16;
+    struts.left = 6;
+    struts.right = 6;
     always-center-single-column = true;
     background-color = "transparent";
 
