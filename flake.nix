@@ -73,6 +73,7 @@
       (lib.filterAttrs
         (_: type: type == "directory")
         (builtins.readDir ./hosts));
+    devShell = import ./dev {inherit pkgs system;};
 
     mkHost = hostName: let
       host = import (./. + "/hosts/${hostName}") {
@@ -110,6 +111,8 @@
     hosts = lib.genAttrs hostNames mkHost;
   in {
     formatter.${system} = inputs.nixpkgs.legacyPackages.x86_64-linux.alejandra;
+
+    devShells.${system}.default = devShell;
 
     nixosConfigurations = lib.mapAttrs (_: host: host.nixos) hosts;
 
