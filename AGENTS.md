@@ -56,6 +56,9 @@ hardware configuration unless explicitly requested.
 
 - Before modifying or adding any file, first ask the user for approval on the
   intended change and wait for that approval before editing.
+- Only modify files inside this repository directory. Do not modify files
+  elsewhere on the computer, running services, systemd units, or any other
+  machine state unless the user explicitly approves a specific exception.
 - Never proactively modify `flake.lock`. If `flake.lock` is already changed,
   treat it as user-initiated and ignore it unless the user explicitly asks you
   to handle it. Do not include `flake.lock` changes in any commit unless the
