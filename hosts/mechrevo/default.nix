@@ -93,14 +93,6 @@ in {
         desktop = {
           niri = enabled;
           dms = {
-            settings = {
-              brightnessDevicePins = {
-                "eDP-1" = "backlight:amdgpu_bl2";
-                "eDP-2" = "backlight:amdgpu_bl2";
-                "DP-2" = "ddc:i2c-9";
-                "DP-3" = "ddc:i2c-9";
-              };
-            };
             bars = {
               mainBar.screenPreferences = ["all"];
               # mainBar.screenPreferences = ["DP-2" "DP-3"];

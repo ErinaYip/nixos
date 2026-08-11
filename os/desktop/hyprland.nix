@@ -17,8 +17,6 @@ with eriniteLib;
       environment = {
         systemPackages = with pkgs; [
           wl-clipboard
-          grim
-          slurp
         ];
 
         localBinInPath = true;
