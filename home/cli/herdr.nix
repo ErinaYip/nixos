@@ -9,7 +9,7 @@ eriniteLib.mkModule args {
         };
 
         ui = {
-          toast.delivery = "system";
+          # toast.delivery = "system";
         };
       };
     };

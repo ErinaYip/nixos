@@ -56,6 +56,19 @@
     # nvim-docs-view.enable = isMaximal;
     # presets.harper.enable = isMaximal;
     servers = {
+      "nil" = {
+        root_markers = ["flake.nix" ".git"];
+        settings.nil = {
+          nix = {
+            binary = lib.getExe pkgs.nix;
+            flake = {
+              autoArchive = true;
+              autoEvalInputs = true;
+              nixpkgsInputName = "nixpkgs";
+            };
+          };
+        };
+      };
       "marksman" = {
         filetypes = lib.mkForce ["markdown"];
       };
