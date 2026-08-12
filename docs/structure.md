@@ -36,6 +36,10 @@ Current categories under `os/` and `home/`:
 - `programs/` for optional application stacks
 - `presets/` for grouped enablement
 
+The shared Neovim module lives under `home/cli/nvim/`. It is built through nvf;
+`blink-cmp.nix` owns completion menu behavior, including nvim-cmp-compatible
+completion kind appearance.
+
 Recently added system modules:
 
 - `os/system/adb.nix` installs Android platform tools and adds the default user

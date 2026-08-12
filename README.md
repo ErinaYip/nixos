@@ -66,6 +66,8 @@ Manager configuration.
   compositors.
 - Chinese input with Fcitx5 and Rime.
 - Common CLI tools like zsh, kitty, nvim, yazi, bat, eza and starship.
+- Neovim completion uses blink.cmp with nvim-cmp-compatible completion kind
+  appearance.
 - QQ uses the official x86_64 Linux package source overridden by its Home
   Manager module.
 - Optional modules for NVIDIA, Podman, VirtualBox, Wine, Steam, streaming, OBS
