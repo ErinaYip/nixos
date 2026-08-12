@@ -167,11 +167,11 @@ Enter dev shell:
 nix develop
 ```
 
-The dev shell provides `nil`, `alejandra`, `statix`, and `deadnix` for editing,
+The dev shell provides `nixd`, `alejandra`, `statix`, and `deadnix` for editing,
 formatting, and linting Nix files. Neovim is configured through nvf to pass
-flake-aware `nil` settings, including automatic input evaluation and the
-`nixpkgs` input name used for option completion. The dev shell implementation
-lives in `dev/default.nix`.
+flake-aware `nixd` settings, including `nixos` and `home-manager` option
+sources for the current flake host. The dev shell implementation lives in
+`dev/default.nix`.
 
 Enable direnv for automatic loading:
 
