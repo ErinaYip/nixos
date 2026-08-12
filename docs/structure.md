@@ -10,10 +10,10 @@ shell output.
 ### `dev/`
 
 Holds repository-local development environment definitions. `dev/default.nix`
-builds the default `nix develop` shell with formatting and linting tools plus a
-project-local `nixd` wrapper for flake-aware Nix completion. The wrapper uses
-flake inputs for generic nixpkgs, NixOS, and Home Manager completion sources
-instead of host-specific system or user configurations.
+builds the default `nix develop` shell with `nil`, formatting, and linting
+tools for Nix files. Neovim's nvf configuration passes flake-aware `nil`
+settings so the language server can evaluate flake inputs and use the
+repository's `nixpkgs` input for option completion.
 
 ### `.envrc`
 
