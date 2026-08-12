@@ -6,7 +6,7 @@
   tabline.nvimBufferline = {
     enable = true;
     setupOpts.options = {
-      numbers = "ordinal";
+      numbers = "none";
       indicator = {
         style = "icon";
       };
