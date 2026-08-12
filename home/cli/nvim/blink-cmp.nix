@@ -18,10 +18,10 @@
         "<C-f>" = ["scroll_documentation_down" "fallback"];
       };
 
-      # appearance = {
-      #   nerd_font_variant = "mono";
-      #   use_nvim_cmp_as_default = true;
-      # };
+      appearance = {
+        nerd_font_variant = "mono";
+        use_nvim_cmp_as_default = true;
+      };
 
       completion = {
         keyword.range = "full";
