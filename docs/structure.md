@@ -38,9 +38,11 @@ Current categories under `os/` and `home/`:
 
 The shared Neovim module lives under `home/cli/nvim/`. It is built through nvf;
 `blink-cmp.nix` owns completion menu behavior, including nvim-cmp-compatible
-completion kind appearance. `settings.nix` also owns the Fcitx5 mode-switch
-autocmd that calls `fcitx5-remote` to disable Chinese input outside
-insert-oriented modes and restore it on insert entry when needed.
+completion kind appearance and kind-colored labels. `highlights.nix` owns shared
+completion and symbol kind highlights for blink.cmp, nvim-navic, and
+nvim-navbuddy. `settings.nix` also owns the Fcitx5 mode-switch autocmd that
+calls `fcitx5-remote` to disable Chinese input outside insert-oriented modes and
+restore it on insert entry when needed.
 
 Recently added system modules:
 

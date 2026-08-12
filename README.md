@@ -67,7 +67,7 @@ Manager configuration.
 - Chinese input with Fcitx5 and Rime.
 - Common CLI tools like zsh, kitty, nvim, yazi, bat, eza and starship.
 - Neovim completion uses blink.cmp with nvim-cmp-compatible completion kind
-  appearance.
+  appearance and shared kind coloring for completion labels and symbol UIs.
 - Neovim uses `fcitx5-remote` from the Fcitx5/Rime setup to switch Fcitx5 off
   outside insert-oriented modes and restore it when returning to insert mode.
 - QQ uses the official x86_64 Linux package source overridden by its Home
