@@ -135,7 +135,10 @@ The current graphical session is centered on:
 - Theme specialisations switch the NixOS system profile from the DMS wallpaper
   watcher. Stylix uses the default `pkgs.tela-icon-theme` package for its icon
   theme.
-- Fcitx5 + Rime for input method packages and user configuration.
+- Fcitx5 + Rime for input method packages and user configuration. The
+  Fcitx5/Rime package set provides `fcitx5-remote`, and the Neovim module closes
+  Fcitx5 outside insert-oriented modes before restoring it on insert entry when
+  it was previously active.
 - Optional Hyprland plugins from inputs, with `hyprgrass` controlled by the
   host-level `grass` option.
 
