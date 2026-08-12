@@ -1,7 +1,7 @@
 {pkgs, ...}:
 pkgs.mkShell {
   packages = [
-    pkgs.nil
+    pkgs.nixd
     pkgs.alejandra
     pkgs.deadnix
     pkgs.statix

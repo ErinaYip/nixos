@@ -17,7 +17,10 @@ with eriniteLib;
       mkKeymaps = mode: key: action: mkKeymap mode key action "" {};
       inherit (lib.generators) mkLuaInline;
 
-      arg = {inherit lib pkgs mkLuaInline enabled disabled mkKeymap mkKeymapd mkKeymaps;};
+      arg = {
+        inherit lib pkgs mkLuaInline enabled disabled mkKeymap mkKeymapd mkKeymaps;
+        inherit (args) default hostName;
+      };
     in {
       programs.nvf = {
         enable = true;

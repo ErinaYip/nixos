@@ -2,6 +2,8 @@
   lib,
   pkgs,
   enabled,
+  default,
+  hostName,
   ...
 }: {
   diagnostics = {
@@ -24,7 +26,10 @@
     enableExtraDiagnostics = true;
     enableDAP = true;
 
-    nix = enabled;
+    nix = {
+      enable = true;
+      lsp.servers = ["nixd"];
+    };
     markdown = enabled;
     python = {
       enable = true;
@@ -56,17 +61,27 @@
     # nvim-docs-view.enable = isMaximal;
     # presets.harper.enable = isMaximal;
     servers = {
-      "nil" = {
+      nixd = {
         root_markers = ["flake.nix" ".git"];
-        settings.nil = {
-          nix = {
-            binary = lib.getExe pkgs.nix;
-            flake = {
-              autoArchive = true;
-              autoEvalInputs = true;
-              nixpkgsInputName = "nixpkgs";
-            };
+        settings.nixd = {
+          nixpkgs.expr = ''
+            import (builtins.getFlake (builtins.toString ./.)).inputs.nixpkgs {
+              system = "${default.system}";
+              config.allowUnfree = true;
+            }
+          '';
+
+          options = {
+            nixos.expr = ''
+              (builtins.getFlake (builtins.toString ./.)).nixosConfigurations.${hostName}.options
+            '';
+
+            home-manager.expr = ''
+              (builtins.getFlake (builtins.toString ./.)).homeConfigurations."${default.username}@${hostName}".options
+            '';
           };
+
+          formatting.command = [(lib.getExe pkgs.alejandra)];
         };
       };
       "marksman" = {
