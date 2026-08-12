@@ -1,4 +1,4 @@
-{
+{mkLuaInline, ...}: {
   autocomplete.blink-cmp = {
     enable = true;
     setupOpts = {
@@ -33,6 +33,29 @@
         #   enabled = true;
         #   border = "rounded";
         # };
+        menu.draw.components.label.highlight = mkLuaInline ''
+          function(ctx)
+            local label = ctx.label
+            local label_hl = ctx.deprecated and "BlinkCmpLabelDeprecated" or (ctx.kind_hl or "BlinkCmpLabel")
+            local highlights = {
+              { 0, #label, group = label_hl },
+            }
+
+            if ctx.label_detail then
+              table.insert(highlights, { #label, #label + #ctx.label_detail, group = "BlinkCmpLabelDetail" })
+            end
+
+            if vim.list_contains(ctx.self.treesitter, ctx.source_id) and not ctx.deprecated then
+              vim.list_extend(highlights, require("blink.cmp.completion.windows.render.treesitter").highlight(ctx))
+            end
+
+            for _, idx in ipairs(ctx.label_matched_indices) do
+              table.insert(highlights, { idx, idx + 1, group = "BlinkCmpLabelMatch" })
+            end
+
+            return highlights
+          end
+        '';
         documentation = {
           auto_show = true;
           auto_show_delay_ms = 150;

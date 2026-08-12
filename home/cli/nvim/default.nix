@@ -32,10 +32,11 @@ with eriniteLib;
           (import ./ui.nix arg)
           (import ./lsp.nix arg)
           (import ./kitty-scrollback.nix arg)
+          (import ./blink-cmp.nix arg)
 
+          (import ./highlights.nix)
           (import ./settings.nix)
           (import ./lualine.nix)
-          (import ./blink-cmp.nix)
 
           {
             viAlias = false;
