@@ -37,6 +37,9 @@ in {
       (bindSpawn "Mod+D" "fuzzel")
       (bindSpawn "Mod+E" "nemo")
 
+      (bind "Mod+Shift+WheelScrollUp" "focus-column-left")
+      (bind "Mod+Shift+WheelScrollDown" "focus-column-right")
+
       (bindWith "Mod+WheelScrollUp" "focus-workspace-up" [] {cooldown-ms = 150;})
       (bindWith "Mod+WheelScrollDown" "focus-workspace-down" [] {cooldown-ms = 150;})
       (bind "Mod+P" "focus-workspace-up")
@@ -44,8 +47,6 @@ in {
       (bind "Mod+Minus" "focus-workspace-up")
       (bind "Mod+Equal" "focus-workspace-down")
 
-      (bindWith "Mod+Shift+WheelScrollUp" "move-window-to-workspace-up" [] {cooldown-ms = 150;})
-      (bindWith "Mod+Shift+WheelScrollDown" "move-window-to-workspace-down" [] {cooldown-ms = 150;})
       (bind "Mod+Shift+P" "move-window-to-workspace-up")
       (bind "Mod+Shift+N" "move-window-to-workspace-down")
       (bind "Mod+Shift+Minus" "move-window-to-workspace-up")

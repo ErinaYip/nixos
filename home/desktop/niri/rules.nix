@@ -23,7 +23,7 @@ in {
 
       (mkWindowRule
         {is-focused = true;}
-        {opacity = 0.95;})
+        {opacity = 0.98;})
 
       (mkWindowRule
         {app-id = "^(steam_app_.*)$";}

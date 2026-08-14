@@ -45,7 +45,10 @@ in {
     };
 
     warp-mouse-to-focus.enable = true;
-    focus-follows-mouse.enable = true;
+    focus-follows-mouse = {
+      enable = true;
+      max-scroll-amount = "0%";
+    };
 
     mouse = {
       accel-speed = 0.0;
