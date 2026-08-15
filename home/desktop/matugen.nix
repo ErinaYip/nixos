@@ -10,7 +10,7 @@ eriniteLib.mkModule args {
 
       [templates.prismlauncher]
       input_path = '${../../assets/matugen/prismlauncher.json}'
-      output_path = '~/.local/share/PrismLauncher/themes/Matugen/theme.json'
+      output_path = '~/.local/share/PrismLauncher/themes/Material-Design/theme.json'
     '';
   };
 }
