@@ -31,10 +31,14 @@ in
         ]);
 
       nix.settings = {
+        max-substitution-jobs = 128;
+        http-connections = 128;
+        max-jobs = "auto";
+        cores = 0;
+
         experimental-features = ["nix-command" "flakes" "configurable-impure-env"];
 
         auto-optimise-store = true;
-        max-jobs = 16;
         impure-env = [
           "GOPROXY=https://goproxy.cn,direct"
         ];
