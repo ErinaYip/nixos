@@ -37,7 +37,7 @@
       lsp.servers = ["basedpyright" "ruff"];
     };
     typescript = enabled;
-    # astro = enabled;
+    astro = enabled;
     scss = enabled;
     clang = enabled;
   };
