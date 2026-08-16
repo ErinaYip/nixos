@@ -11,7 +11,8 @@ in
       configFn = _: {
         programs.niri = {
           enable = true;
-          package = niriPackages.niri-unstable;
+          # package = niriPackages.niri-unstable;
+          package = pkgs.niri;
         };
 
         environment = {

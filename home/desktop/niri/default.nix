@@ -1,13 +1,19 @@
 {
   lib,
+  pkgs,
+  inputs,
   eriniteLib,
   ...
 } @ args:
-with eriniteLib;
+with eriniteLib; let
+  niriPackages = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system};
+in
   mkModule args {
     configFn = _: {
       programs.niri = {
         enable = true;
+        # package = niriPackages.niri-unstable;
+        package = pkgs.niri;
 
         settings = lib.mkMerge [
           (import ./settings.nix args)
