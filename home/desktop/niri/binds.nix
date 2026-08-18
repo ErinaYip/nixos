@@ -39,6 +39,8 @@ in {
 
       (bind "Mod+Shift+WheelScrollUp" "focus-column-left")
       (bind "Mod+Shift+WheelScrollDown" "focus-column-right")
+      (bind "Mod+Alt+WheelScrollUp" "move-window-to-workspace-up")
+      (bind "Mod+Alt+WheelScrollDown" "move-window-to-workspace-down")
 
       (bindWith "Mod+WheelScrollUp" "focus-workspace-up" [] {cooldown-ms = 150;})
       (bindWith "Mod+WheelScrollDown" "focus-workspace-down" [] {cooldown-ms = 150;})
