@@ -32,8 +32,8 @@ in {
       (bindSpawn "Mod+T" ["kitty" "--title=float"])
 
       (bindSpawn "Mod+B" "firefox")
-      (bindSpawn "Mod+C" "code")
-      (bindSpawn "Mod+Shift+C" "chromium")
+      # (bindSpawn "Mod+C" "code")
+      (bindSpawn "Mod+C" "chromium")
       (bindSpawn "Mod+D" "fuzzel")
       (bindSpawn "Mod+E" "nemo")
 

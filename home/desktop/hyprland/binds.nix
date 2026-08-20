@@ -69,8 +69,8 @@ in {
       (bind "SUPER + T" ''hl.dsp.exec_cmd("kitty --title=float")'')
 
       (bind "SUPER + B" ''hl.dsp.exec_cmd("firefox")'')
-      (bind "SUPER + C" ''hl.dsp.exec_cmd("code")'')
-      (bind "SUPER + SHIFT + C" ''hl.dsp.exec_cmd("chromium")'')
+      # (bind "SUPER + C" ''hl.dsp.exec_cmd("code")'')
+      (bind "SUPER + C" ''hl.dsp.exec_cmd("chromium")'')
       (bind "SUPER + D" ''hl.dsp.exec_cmd("fuzzel")'')
       (bind "SUPER + E" ''hl.dsp.exec_cmd("nemo")'')
 
