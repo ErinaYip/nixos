@@ -31,7 +31,7 @@ Detailed project documentation lives in [`docs/`](./docs/README.md).
 ## Hosts
 
 - `mechrevo`: main machine, NVIDIA PRIME, Podman, Wine, gaming, dynamic dual
-  monitor setup.
+  monitor setup for Hyprland and Niri.
 - `nec`: laptop, power management, Windows boot entry, simple Hyprland monitor
   setup.
 
@@ -100,7 +100,10 @@ with the `sodiboo/niri-flake` package output and cache so Ly can list Niri as a
 Wayland session. Home-side Niri packages are read directly from the flake input
 so standalone `nh home` does not depend on NixOS overlays. DMS IPC controls are
 available through Niri keybindings, and DMS owns idle, lock, suspend, and power
-menu behavior for both Hyprland and Niri.
+menu behavior for both Hyprland and Niri. On `mechrevo`, Niri matches the laptop
+and external displays by their full descriptions, assigns workspaces 1 and 2 to
+them, and rotates the laptop display at session startup when the external display
+is connected.
 
 Theme specialisations are driven by wallpapers. Stylix uses the default
 `pkgs.tela-icon-theme` package for the icon theme.
@@ -144,7 +147,8 @@ Notes:
 - `nh home switch` evaluates `home/default.nix` directly, plus the selected
   host's `home.nix`.
 - Standalone Home Manager uses the shared flake `pkgs` import, including its
-  unfree package allowance.
+  unfree package allowance and NUR overlay. NixOS-integrated Home Manager uses
+  the same NUR overlay through the host package set.
 - Home targets are exposed as `era@mechrevo` and `era@nec`.
 
 Manual switch:
