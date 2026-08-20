@@ -136,6 +136,10 @@ consume the processed result from `config.erinite.wallpapers.wallpapers`.
 
 Generated hardware configuration.
 
+The flake applies the NUR overlay to both standalone Home Manager's shared
+`pkgs` import and each NixOS host package set. Browser modules can therefore
+use NUR packages from integrated or standalone Home Manager evaluations.
+
 ## Where To Look For Changes
 
 If you need to understand or change behavior, start here:

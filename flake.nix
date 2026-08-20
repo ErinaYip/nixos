@@ -7,6 +7,10 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     hyprland.url = "github:hyprwm/Hyprland";
     hypr-dynamic-cursors = {
@@ -47,6 +51,7 @@
 
   outputs = {
     nixpkgs,
+    nur,
     home-manager,
     ...
   } @ inputs: let
@@ -55,6 +60,7 @@
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
+      overlays = [nur.overlays.default];
     };
     eriniteLib = import ./lib {
       inherit inputs pkgs;
@@ -88,6 +94,7 @@
         modules =
           [
             ./os
+            {nixpkgs.overlays = [nur.overlays.default];}
             {home-manager.users.${default.username}.imports = hostHomeModules;}
           ]
           ++ hostOsModules;
