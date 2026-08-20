@@ -61,4 +61,9 @@ in {
       dwt = true;
     };
   };
+
+  cursor = {
+    theme = "Bibata-Modern-Ice";
+    size = 32;
+  };
 }
