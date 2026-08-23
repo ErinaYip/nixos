@@ -48,9 +48,5 @@
         '';
       };
     };
-    breadcrumbs = {
-      enable = true;
-      navbuddy = enabled;
-    };
   };
 }

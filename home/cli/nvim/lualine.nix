@@ -1,6 +1,12 @@
 {
   statusline.lualine = {
     enable = true;
+
+    integrations.breadcrumbs = {
+      nvim-navic.enable = true;
+      navbuddy.enable = true;
+    };
+
     # theme = "auto";
 
     setupOpts.options = {
