@@ -64,6 +64,6 @@ in {
 
   cursor = {
     theme = "Bibata-Modern-Ice";
-    size = 32;
+    size = 24;
   };
 }
