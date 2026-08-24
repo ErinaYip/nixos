@@ -1,19 +1,21 @@
 {
-  lib,
   pkgs,
   eriniteLib,
   ...
 } @ args:
 eriniteLib.mkModule args {
-  configFn = {...}: {
-    environment.systemPackages = [
-      (pkgs.wrapOBS {
-        plugins = with pkgs.obs-studio-plugins; [
-          wlrobs
-          obs-backgroundremoval
-          obs-pipewire-audio-capture
-        ];
-      })
-    ];
+  configFn = _: {
+    programs.obs-studio = {
+      enable = true;
+      enableVirtualCamera = true;
+
+      plugins = with pkgs.obs-studio-plugins; [
+        wlrobs
+        obs-backgroundremoval
+        obs-pipewire-audio-capture
+        obs-gstreamer
+        obs-vkcapture
+      ];
+    };
   };
 }
