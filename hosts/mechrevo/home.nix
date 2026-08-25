@@ -9,6 +9,7 @@ with eriniteLib; let
 in {
   home.packages = with pkgs; [
     materialgram
+    wemeet
   ];
 
   programs.niri.settings = {
