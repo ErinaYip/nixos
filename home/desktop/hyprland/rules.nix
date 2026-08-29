@@ -34,6 +34,7 @@ in {
       ".*媒体查看器.*"
       ".*画中画.*"
       ".*打开文件.*"
+      ".*提取.*"
 
       "io.github.celluloid_player.Celluloid"
       "好友列表"
