@@ -31,11 +31,11 @@ in {
     ];
     centerWidgets = [
       (mkWidgets "workspaceSwitcher" [])
-      (mkWidgets "runningApps" [
-        "runningAppsGroupByApp"
-        "runningAppsCurrentWorkspace"
-        "runningAppsCurrentMonitor"
-      ])
+      # (mkWidgets "runningApps" [
+      #   "runningAppsGroupByApp"
+      #   "runningAppsCurrentWorkspace"
+      #   "runningAppsCurrentMonitor"
+      # ])
       (mkWidgets "clock" ["clockCompactMode"])
     ];
     rightWidgets = [

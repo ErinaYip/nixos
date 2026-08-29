@@ -9,6 +9,10 @@ in {
   widgetColorMode = "colorful";
   runDmsMatugenTemplates = false;
 
+  showWorkspaceIndex = true;
+  showWorkspaceApps = true;
+  maxWorkspaceIcons = 99;
+
   acLockTimeout = 300;
   acMonitorTimeout = 360;
   acPostLockMonitorTimeout = 60;
@@ -40,7 +44,6 @@ in {
     (mkCenterWidgets "doNotDisturb" 50)
     (mkCenterWidgets "colorPicker" 50)
   ];
-  showWorkspaceIndex = true;
   wallpaperFillMode = "Scrolling";
 
   wallpaperTransition = "random";
