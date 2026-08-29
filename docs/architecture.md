@@ -120,6 +120,15 @@ and packages, while Home modules configure user-session state through
 `erinite.home`. Host files enable the two sides explicitly through `osModules`
 and `homeModules`.
 
+The NVIDIA system module enables the X server for driver support. NixOS's X
+server module adds `pkgs.xterm` to the system package path by default, so the
+NVIDIA module excludes it explicitly. Nemo reads its terminal command from
+`org.cinnamon.desktop.default-applications.terminal`; the Nemo module sets that
+value to Kitty. The Neovim module overrides the upstream `nvim.desktop` entry
+and provides a matching Vim entry with `Terminal=false` and a Kitty command, so
+file-manager Open With actions do not invoke the desktop environment's fallback
+terminal.
+
 The `home.desktop.qq` module reuses nixpkgs' QQ packaging logic while overriding
 the x86_64 Linux source URL and hash locally. It also normalizes the desktop
 entry icon so the installed application can resolve it through the icon theme.

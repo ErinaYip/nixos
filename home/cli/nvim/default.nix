@@ -80,5 +80,27 @@ with eriniteLib;
         EDITOR = "nvim";
         VISUAL = "nvim";
       };
+
+      xdg.desktopEntries = {
+        nvim = {
+          name = "Neovim";
+          genericName = "Text Editor";
+          exec = "kitty -e nvim %F";
+          icon = "nvim";
+          terminal = false;
+          type = "Application";
+          categories = ["Utility" "TextEditor" "Development"];
+        };
+
+        vim = {
+          name = "Vim";
+          genericName = "Text Editor";
+          exec = "kitty -e vim %F";
+          icon = "vim";
+          terminal = false;
+          type = "Application";
+          categories = ["Utility" "TextEditor" "Development"];
+        };
+      };
     };
   }

@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   eriniteLib,
   ...
 } @ args:
@@ -22,6 +23,7 @@ eriniteLib.mkModule args {
 
     services.xserver = {
       enable = true;
+      excludePackages = [pkgs.xterm];
       videoDrivers = ["nvidia"];
     };
 

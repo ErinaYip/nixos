@@ -93,6 +93,12 @@ Hyprland is generated through Home Manager's Lua config mode. Shared defaults
 live in `home/desktop/hyprland/`, while host-specific monitor and workspace
 logic lives in each host's configuration.
 
+The NVIDIA module enables the X server for driver support. Since the X server
+module otherwise adds `xterm` to the system path, it is explicitly excluded
+here. Nemo uses the Cinnamon default-terminal setting. The Neovim and Vim
+desktop entries also launch through Kitty, so Nemo's Open With actions do not
+delegate terminal handling to `xterm`.
+
 Niri settings are generated through `sodiboo/niri-flake`. Shared Niri binds and
 rules live in `home/desktop/niri/` using native `programs.niri.settings` action
 and match attributes. The OS-side Niri module enables nixpkgs' Niri NixOS module
@@ -102,8 +108,8 @@ so standalone `nh home` does not depend on NixOS overlays. DMS IPC controls are
 available through Niri keybindings, and DMS owns idle, lock, suspend, and power
 menu behavior for both Hyprland and Niri. On `mechrevo`, Niri matches the laptop
 and external displays by their full descriptions, assigns workspaces 1 and 2 to
-them, and rotates the laptop display at session startup when the external display
-is connected.
+them, and rotates the laptop display at session startup when the external
+display is connected.
 
 Theme specialisations are driven by wallpapers. Stylix uses the default
 `pkgs.tela-icon-theme` package for the icon theme.
@@ -177,8 +183,8 @@ nix develop
 
 The dev shell provides `nixd`, `alejandra`, `statix`, and `deadnix` for editing,
 formatting, and linting Nix files. Neovim is configured through nvf to pass
-flake-aware `nixd` settings, including `nixos` and `home-manager` option
-sources for the current flake host. The dev shell implementation lives in
+flake-aware `nixd` settings, including `nixos` and `home-manager` option sources
+for the current flake host. The dev shell implementation lives in
 `dev/default.nix`.
 
 Enable direnv for automatic loading:
@@ -280,5 +286,3 @@ Workflow expectations for agents and contributors:
   separate commits.
 
 ## TODO
-
-- Keep OS-only modules under `os/` and Home Manager modules under `home/`.
