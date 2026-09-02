@@ -50,6 +50,8 @@
     # bottles
 
     libreoffice
+
+    distrobox
   ];
 
   environment.sessionVariables = {
