@@ -45,7 +45,15 @@ in
         terminal = false;
         type = "Application";
         categories = ["Development" "IDE"];
-        mimeType = ["text/plain" "inode/directory"];
+      };
+
+      xdg.desktopEntries.codium = {
+        name = "VSCodium";
+        exec = "codium %F";
+        icon = "vscodium";
+        terminal = false;
+        type = "Application";
+        categories = ["Utility" "TextEditor" "Development" "IDE"];
       };
     };
   }
