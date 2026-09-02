@@ -21,11 +21,11 @@ in {
     };
 
     preset-column-widths = [
-      {proportion = 0.2;}
-      {proportion = 0.4;}
-      {proportion = 0.5;}
-      {proportion = 0.6;}
-      {proportion = 0.8;}
+      {proportion = 1. / 4.;}
+      {proportion = 1. / 3.;}
+      {proportion = 2. / 4.;}
+      {proportion = 2. / 3.;}
+      {proportion = 3. / 4.;}
     ];
 
     border = {
@@ -40,8 +40,8 @@ in {
 
   input = {
     keyboard = {
-      repeat-delay = 400;
-      repeat-rate = 30;
+      repeat-delay = 300;
+      repeat-rate = 40;
     };
 
     warp-mouse-to-focus.enable = true;
@@ -52,6 +52,7 @@ in {
 
     mouse = {
       accel-speed = 0.0;
+      accel-profile = "flat";
     };
 
     touchpad = {
