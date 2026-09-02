@@ -127,7 +127,10 @@ NVIDIA module excludes it explicitly. Nemo reads its terminal command from
 value to Kitty. The Neovim module overrides the upstream `nvim.desktop` entry
 and provides a matching Vim entry with `Terminal=false` and a Kitty command, so
 file-manager Open With actions do not invoke the desktop environment's fallback
-terminal.
+terminal. It also sets text MIME defaults to Neovim. Nemo sets
+`inode/directory` to `nemo.desktop`, while the VSCodium module overrides both its
+custom `code.desktop` and upstream `codium.desktop` MIME declarations so Code
+does not become a file or directory handler.
 
 The `home.desktop.qq` module reuses nixpkgs' QQ packaging logic while overriding
 the x86_64 Linux source URL and hash locally. It also normalizes the desktop

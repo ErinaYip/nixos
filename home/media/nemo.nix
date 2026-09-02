@@ -13,7 +13,8 @@ with eriniteLib;
         file-roller
       ];
 
-      dconf.settings."org/cinnamon/desktop/applications/terminal".exec = "kitty";
+      dconf.settings."org/cinnamon/desktop/default-applications/terminal".exec = "${pkgs.kitty}/bin/kitty";
+      xdg.mimeApps.defaultApplications."inode/directory" = "nemo.desktop";
 
       services.udiskie = {
         enable = true;
