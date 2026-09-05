@@ -65,6 +65,7 @@ in {
         };
 
         cli = {
+          pi = enabled;
           kitty.sessions = {
             easytierfrp.settings = [
               {layout = "tall";}
