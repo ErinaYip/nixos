@@ -150,7 +150,9 @@ The current graphical session is centered on:
 - Fcitx5 + Rime for input method packages and user configuration. The
   Fcitx5/Rime package set provides `fcitx5-remote`, and the Neovim module closes
   Fcitx5 outside insert-oriented modes before restoring it on insert entry when
-  it was previously active.
+  it was previously active. WeChat is launched from a custom desktop entry that
+  forces `QT_QPA_PLATFORM=xcb` and injects the traditional Fcitx5 variables so
+  it falls back to XWayland input inside the AppImage sandbox.
 - Optional Hyprland plugins from inputs, with `hyprgrass` controlled by the
   host-level `grass` option.
 

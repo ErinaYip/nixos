@@ -70,6 +70,9 @@ Manager configuration.
   appearance and shared kind coloring for completion labels and symbol UIs.
 - Neovim uses `fcitx5-remote` from the Fcitx5/Rime setup to switch Fcitx5 off
   outside insert-oriented modes and restore it when returning to insert mode.
+- WeChat is launched from a custom desktop entry that forces XWayland and
+  injects `QT_QPA_PLATFORM=xcb` plus the Fcitx5 environment variables so the
+  sandboxed AppImage can still show candidate windows.
 - QQ uses the official x86_64 Linux package source overridden by its Home
   Manager module.
 - Optional modules for NVIDIA, Podman, VirtualBox, Wine, Steam, streaming, OBS
@@ -97,9 +100,11 @@ The NVIDIA module enables the X server for driver support. Since the X server
 module otherwise adds `xterm` to the system path, it is explicitly excluded
 here. Nemo uses the Cinnamon default-terminal setting. The Neovim and Vim
 desktop entries also launch through Kitty, so Nemo's Open With actions do not
-delegate terminal handling to `xterm`. Text files default to Neovim and folders
-default to Nemo; Code and VSCodium remain launchable but no longer advertise
-themselves as file or folder handlers.
+delegate terminal handling to `xterm`. WeChat is pinned to XWayland through a
+custom desktop entry so its input method path stays consistent inside the
+sandbox. Text files default to Neovim and folders default to Nemo; Code and
+VSCodium remain launchable but no longer advertise themselves as file or folder
+handlers.
 
 Niri settings are generated through `sodiboo/niri-flake`. Shared Niri binds and
 rules live in `home/desktop/niri/` using native `programs.niri.settings` action

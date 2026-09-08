@@ -27,17 +27,9 @@
       src = appimageContents;
 
       extraInstallCommands = ''
-        mkdir -p $out/share/applications
         mkdir -p $out/share/icons/hicolor/256x256/apps
 
-        cp ${appimageContents}/wechat.desktop $out/share/applications/
         cp ${appimageContents}/wechat.png $out/share/icons/hicolor/256x256/apps/ || true
-
-        substituteInPlace $out/share/applications/wechat.desktop \
-          --replace-fail "AppRun" "wechat" \
-          --replace-fail \
-            "Name[zh_CN]=微信" \
-            "Name[zh_CN]=wechat"
       '';
 
       meta = {
@@ -50,5 +42,16 @@ in
   eriniteLib.mkModule args {
     configFn = _: {
       home.packages = [wechat];
+
+      xdg.desktopEntries.wechat = {
+        name = "WeChat";
+        genericName = "WeChat";
+        exec = "env WAYLAND_DISPLAY= DISPLAY=:0 QT_QPA_PLATFORM=xcb GTK_IM_MODULE=fcitx QT_IM_MODULE=fcitx XMODIFIERS=@im=fcitx wechat %U";
+        icon = "wechat";
+        terminal = false;
+        type = "Application";
+        categories = ["Network" "InstantMessaging"];
+        comment = "WeChat Desktop";
+      };
     };
   }
