@@ -19,7 +19,6 @@
       };
     };
   };
-  mkProvider = name: base_url: mkProviderWithOpts name base_url {};
 
   ctf-skills = pkgs.fetchFromGitHub {
     owner = "ljagiello";
@@ -95,11 +94,7 @@ in
             '';
           }
 
-          (mkProvider "freemodel" "https://api.freemodel.dev/v1")
-          (mkProvider "vespervei" "https://api.vespervei.com/v1")
           (mkProviderWithOpts "hua" "https://huablog.org/v1" {wire_api = "responses";})
-          (mkProviderWithOpts "sixoner" "https://sub.sixoner.com" {wire_api = "responses";})
-          (mkProviderWithOpts "rawchat" "https://rawchat.cn/codex" {wire_api = "responses";})
           (mkProviderWithOpts "botcf" "https://botcf.com/v1" {wire_api = "responses";})
         ];
     }

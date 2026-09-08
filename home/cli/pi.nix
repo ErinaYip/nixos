@@ -38,6 +38,7 @@ in
 
           models = lib.mkMerge [
             (mkOpenAIProvider "hua" "https://huablog.org/v1")
+            (mkOpenAIProvider "router" "https://anyrouter.top/v1")
           ];
         };
       };
