@@ -44,7 +44,7 @@ in {
     (mkCenterWidgets "doNotDisturb" 50)
     (mkCenterWidgets "colorPicker" 50)
   ];
-  wallpaperFillMode = "Scrolling";
+  # wallpaperFillMode = "Scrolling";
 
   wallpaperTransition = "random";
   includedTransitions = [

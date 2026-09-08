@@ -36,6 +36,7 @@ in {
       ".*打开文件.*"
       ".*提取.*"
 
+      "EmojiFloatWnd"
       "io.github.celluloid_player.Celluloid"
       "好友列表"
     ];
