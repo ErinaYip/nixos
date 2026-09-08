@@ -42,7 +42,8 @@ completion kind appearance and kind-colored labels. `highlights.nix` owns shared
 completion and symbol kind highlights for blink.cmp, nvim-navic, and
 nvim-navbuddy. `settings.nix` also owns the Fcitx5 mode-switch autocmd that
 calls `fcitx5-remote` to disable Chinese input outside insert-oriented modes and
-restore it on insert entry when needed.
+restore it on insert entry when needed. `lualine.nix` uses nvf's explicit
+`_type = "lua-inline"` and `expr` representation for custom lualine components.
 
 Recently added system modules:
 
