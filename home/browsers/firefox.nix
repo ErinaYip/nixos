@@ -47,7 +47,6 @@ with eriniteLib;
             "extensions.autoDisableScopes" = 0;
             "nimbus.rollouts.enabled" = false;
             "geo.enabled" = false;
-            "gfx.webrender.all" = true;
 
             "browser.uiCustomization.state" = builtins.toJSON {
               placements = {
