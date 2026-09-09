@@ -79,6 +79,7 @@ Manager configuration.
   Manager module.
 - Optional modules for NVIDIA, Podman, VirtualBox, Wine, Steam, streaming, OBS
   and more.
+- `mechrevo` enables sched_ext through `scx_lavd`.
 
 ## Desktop Setup
 
@@ -284,6 +285,10 @@ example, the NVIDIA module enables CUDA support when it is turned on.
 When enabled, the Mihomo module publishes its local proxy through
 `networking.proxy`, so NixOS session environments and `nix-daemon` use the same
 proxy settings.
+
+The `mechrevo` host enables sched_ext with the `scx_lavd` scheduler through the
+shared kernel module. `scx_rusty` is not selected because it failed during
+startup with the current kernel and SCX package combination.
 
 Workflow expectations for agents and contributors:
 

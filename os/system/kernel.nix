@@ -20,7 +20,7 @@ with eriniteLib;
 
       services.scx = lib.mkIf cfg.sched_ext {
         enable = true;
-        scheduler = "scx_rusty";
+        scheduler = "scx_lavd";
       };
     };
   }
