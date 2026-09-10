@@ -1,23 +1,11 @@
 {
   lib,
-  pkgs,
   eriniteLib,
   ...
 } @ args:
 with eriniteLib;
   mkModule args {
     configFn = _: {
-      home.packages = with pkgs; [
-        (hyprshot.overrideAttrs (_: {
-          src = fetchFromGitHub {
-            owner = "erinayip";
-            repo = "hyprshot";
-            rev = "2f2e696cb37e96788222b7a3fb548b8b928b375c";
-            hash = "sha256-0NAL/Dr403gjVFTORldcRGClYATrVeoufqIw0C2TUds=";
-          };
-        }))
-      ];
-
       wayland.windowManager.hyprland = {
         enable = true;
         configType = "lua";

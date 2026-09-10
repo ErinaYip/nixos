@@ -53,12 +53,8 @@ in {
       # (bind "SUPER + SHIFT + R" ''hl.dsp.layout("colresize -conf")'')
 
       # Screenshot
-      # (bind "Print" ''hl.dsp.exec_cmd([[grim -g "$(slurp -dw 0)" - | wl-copy]])'')
-      # (bind "SUPER + Print" ''hl.dsp.exec_cmd("grim - | wl-copy")'')
-      # (bind "SUPER + S" ''hl.dsp.exec_cmd([[grim -g "$(slurp -dw 0)" - | wl-copy]])'')
-      # (bind "SUPER + Shift + S" ''hl.dsp.exec_cmd("grim - | wl-copy")'')
-      (bind "SUPER + S" ''hl.dsp.exec_cmd([[hyprshot -m region -z --slurp-args "-w 0"]])'')
-      (bind "SUPER + SHIFT + S" ''hl.dsp.exec_cmd([[hyprshot -m window -z --slurp-args "-w 0"]])'')
+      (bind "SUPER + S" ''hl.dsp.exec_cmd("dms screenshot")'')
+      (bind "SUPER + SHIFT + S" ''hl.dsp.exec_cmd("dms screenshot full")'')
       (bind "Print" ''hl.dsp.exec_cmd([[hyprshot -m region -z --slurp-args "-w 0"]])'')
       (bind "SUPER + Print" ''hl.dsp.exec_cmd([[hyprshot -m window -z --slurp-args "-w 0"]])'')
 
