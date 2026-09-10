@@ -5,7 +5,7 @@ let
     }
     // properties;
 in {
-  programs.niri.settings = {
+  wayland.windowManager.niri.settings = {
     binds = {
       "Mod+Space" = {
         hotkey-overlay.title = "Application Launcher";

@@ -1,19 +1,13 @@
 {
   lib,
-  pkgs,
-  inputs,
   eriniteLib,
   ...
 } @ args:
-with eriniteLib; let
-  niriPackages = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system};
-in
+with eriniteLib;
   mkModule args {
     configFn = _: {
-      programs.niri = {
+      wayland.windowManager.niri = {
         enable = true;
-        # package = niriPackages.niri-unstable;
-        package = pkgs.niri;
 
         settings = lib.mkMerge [
           (import ./settings.nix args)

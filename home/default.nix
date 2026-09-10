@@ -12,8 +12,6 @@
       inputs.nvf.homeManagerModules.default
       inputs.dms.homeModules.dank-material-shell
       inputs.oh-my-rime-nix.homeModules.default
-      inputs.niri.homeModules.niri
-      inputs.niri.homeModules.stylix
     ]
     ++ eriniteLib.modules ./.;
 
