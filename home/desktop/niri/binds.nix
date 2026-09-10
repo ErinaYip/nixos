@@ -1,15 +1,26 @@
 let
-  bindWith = key: action: value: attrs: {
+  bind = key: action: {
     name = key;
-    value =
-      attrs
-      // {
-        action.${action} = value;
-      };
+    value.${action} = {};
   };
 
-  bind = key: action: (bindWith key action [] {});
-  bindSpawn = key: command: (bindWith key "spawn" command {});
+  bindWith = key: action: props: {
+    name = key;
+    value = {
+      _props = props;
+      ${action} = {};
+    };
+  };
+
+  bindActionWith = key: action: props: {
+    name = key;
+    value.${action}._props = props;
+  };
+
+  bindSpawn = key: command: {
+    name = key;
+    value.spawn = command;
+  };
 in {
   binds = builtins.listToAttrs (
     [
@@ -26,7 +37,7 @@ in {
       (bind "Mod+Print" "screenshot-window")
 
       (bindSpawn "Mod+Ctrl+R" ["niri" "msg" "action" "load-config-file"])
-      (bindWith "Mod+Ctrl+E" "quit" {skip-confirmation = true;} {})
+      (bindActionWith "Mod+Ctrl+E" "quit" {skip-confirmation = true;})
 
       (bindSpawn "Mod+Return" "kitty")
       (bindSpawn "Mod+T" ["kitty" "--title=float"])
@@ -42,8 +53,8 @@ in {
       (bind "Mod+Alt+WheelScrollUp" "move-window-to-workspace-up")
       (bind "Mod+Alt+WheelScrollDown" "move-window-to-workspace-down")
 
-      (bindWith "Mod+WheelScrollUp" "focus-workspace-up" [] {cooldown-ms = 150;})
-      (bindWith "Mod+WheelScrollDown" "focus-workspace-down" [] {cooldown-ms = 150;})
+      (bindWith "Mod+WheelScrollUp" "focus-workspace-up" {cooldown-ms = 150;})
+      (bindWith "Mod+WheelScrollDown" "focus-workspace-down" {cooldown-ms = 150;})
       (bind "Mod+P" "focus-workspace-up")
       (bind "Mod+N" "focus-workspace-down")
       (bind "Mod+Minus" "focus-workspace-up")
@@ -59,8 +70,14 @@ in {
           workspace = i + 1;
           key = toString workspace;
         in [
-          (bindWith "Mod+${key}" "focus-workspace" workspace {})
-          (bindWith "Mod+Shift+${key}" "move-window-to-workspace" workspace {})
+          {
+            name = "Mod+${key}";
+            value.focus-workspace = workspace;
+          }
+          {
+            name = "Mod+Shift+${key}";
+            value.move-window-to-workspace = workspace;
+          }
         ]
       )
       9)

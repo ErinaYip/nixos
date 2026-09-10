@@ -1,84 +1,83 @@
-let
-  mkWindowRule = match: properties:
-    {
-      matches = [match];
-    }
-    // properties;
-in {
+{
   wayland.windowManager.niri.settings = {
     binds = {
       "Mod+Space" = {
-        hotkey-overlay.title = "Application Launcher";
-        action.spawn = ["dms" "ipc" "call" "spotlight" "toggle"];
+        _props.hotkey-overlay-title = "Application Launcher";
+        spawn = ["dms" "ipc" "call" "spotlight" "toggle"];
       };
       "Mod+V" = {
-        hotkey-overlay.title = "Clipboard Manager";
-        action.spawn = ["dms" "ipc" "call" "clipboard" "toggle"];
+        _props.hotkey-overlay-title = "Clipboard Manager";
+        spawn = ["dms" "ipc" "call" "clipboard" "toggle"];
       };
       "Mod+M" = {
-        hotkey-overlay.title = "Task Manager";
-        action.spawn = ["dms" "ipc" "call" "processlist" "focusOrToggle"];
+        _props.hotkey-overlay-title = "Task Manager";
+        spawn = ["dms" "ipc" "call" "processlist" "focusOrToggle"];
       };
       "Mod+Comma" = {
-        hotkey-overlay.title = "Settings";
-        action.spawn = ["dms" "ipc" "call" "settings" "focusOrToggle"];
+        _props.hotkey-overlay-title = "Settings";
+        spawn = ["dms" "ipc" "call" "settings" "focusOrToggle"];
       };
       # "Mod+N" = {
-      #   hotkey-overlay.title = "Notification Center";
-      #   action.spawn = ["dms" "ipc" "call" "notifications" "toggle"];
+      #   _props.hotkey-overlay-title = "Notification Center";
+      #   spawn = ["dms" "ipc" "call" "notifications" "toggle"];
       # };
       "Mod+Y" = {
-        hotkey-overlay.title = "Browse Wallpapers";
-        action.spawn = ["dms" "ipc" "call" "dankdash" "wallpaper"];
+        _props.hotkey-overlay-title = "Browse Wallpapers";
+        spawn = ["dms" "ipc" "call" "dankdash" "wallpaper"];
       };
 
       "Mod+Alt+L" = {
-        hotkey-overlay.title = "Lock Screen";
-        action.spawn = ["dms" "ipc" "call" "lock" "lock"];
+        _props.hotkey-overlay-title = "Lock Screen";
+        spawn = ["dms" "ipc" "call" "lock" "lock"];
       };
 
       "Mod+X" = {
-        hotkey-overlay.title = "Power Menu";
-        action.spawn = ["dms" "ipc" "call" "powermenu" "toggle"];
+        _props.hotkey-overlay-title = "Power Menu";
+        spawn = ["dms" "ipc" "call" "powermenu" "toggle"];
       };
 
       "XF86AudioRaiseVolume" = {
-        allow-when-locked = true;
-        action.spawn = ["dms" "ipc" "call" "audio" "increment" "3"];
+        _props.allow-when-locked = true;
+        spawn = ["dms" "ipc" "call" "audio" "increment" "3"];
       };
       "XF86AudioLowerVolume" = {
-        allow-when-locked = true;
-        action.spawn = ["dms" "ipc" "call" "audio" "decrement" "3"];
+        _props.allow-when-locked = true;
+        spawn = ["dms" "ipc" "call" "audio" "decrement" "3"];
       };
       "XF86AudioMute" = {
-        allow-when-locked = true;
-        action.spawn = ["dms" "ipc" "call" "audio" "mute"];
+        _props.allow-when-locked = true;
+        spawn = ["dms" "ipc" "call" "audio" "mute"];
       };
 
       "XF86MonBrightnessUp" = {
-        allow-when-locked = true;
-        action.spawn = ["dms" "ipc" "call" "brightness" "increment" "5" ""];
+        _props.allow-when-locked = true;
+        spawn = ["dms" "ipc" "call" "brightness" "increment" "5" ""];
       };
       "XF86MonBrightnessDown" = {
-        allow-when-locked = true;
-        action.spawn = ["dms" "ipc" "call" "brightness" "decrement" "5" ""];
+        _props.allow-when-locked = true;
+        spawn = ["dms" "ipc" "call" "brightness" "decrement" "5" ""];
       };
     };
 
-    layer-rules = [
-      (mkWindowRule
-        {namespace = "^quickshell$";}
-        {place-within-backdrop = true;})
-
-      (mkWindowRule
-        {namespace = "dms:blurwallpaper";}
-        {place-within-backdrop = true;})
-    ];
-
-    window-rules = [
-      (mkWindowRule
-        {app-id = "^com.danklinux.dms$";}
-        {open-floating = true;})
+    _children = [
+      {
+        layer-rule._children = [
+          {match._props = {namespace = "^quickshell$";};}
+          {place-within-backdrop = true;}
+        ];
+      }
+      {
+        layer-rule._children = [
+          {match._props = {namespace = "dms:blurwallpaper";};}
+          {place-within-backdrop = true;}
+        ];
+      }
+      {
+        window-rule._children = [
+          {match._props = {app-id = "^com.danklinux.dms$";};}
+          {open-floating = true;}
+        ];
+      }
     ];
 
     environment = {

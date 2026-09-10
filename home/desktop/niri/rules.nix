@@ -1,24 +1,22 @@
 let
-  mkWindowRule = match: properties:
-    {
-      matches = [match];
-    }
-    // properties;
+  mkWindowRule = match: properties: {
+    window-rule._children = [
+      {match._props = match;}
+      properties
+    ];
+  };
 in {
-  window-rules =
+  _children =
     [
       {
-        draw-border-with-background = false;
-        opacity = 0.9;
-        geometry-corner-radius = let
-          r = 12.0;
-        in {
-          top-left = r;
-          top-right = r;
-          bottom-left = r;
-          bottom-right = r;
-        };
-        clip-to-geometry = true;
+        window-rule._children = [
+          {
+            draw-border-with-background = false;
+            opacity = 0.9;
+            geometry-corner-radius._args = [12.0 12.0 12.0 12.0];
+            clip-to-geometry = true;
+          }
+        ];
       }
 
       (mkWindowRule

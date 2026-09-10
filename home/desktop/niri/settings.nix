@@ -1,26 +1,18 @@
 {
-  lib,
-  pkgs,
-  inputs,
-  ...
-}: let
-  niriPackages = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system};
-in {
-  prefer-no-csd = true;
-  xwayland-satellite.path = "${lib.getExe niriPackages.xwayland-satellite-unstable}";
+  prefer-no-csd = {};
 
   layout = {
     gaps = 2;
     struts.left = 6;
     struts.right = 6;
-    always-center-single-column = true;
+    always-center-single-column = {};
     background-color = "transparent";
 
     default-column-width = {
       proportion = 0.8;
     };
 
-    preset-column-widths = [
+    preset-column-widths._children = [
       {proportion = 1. / 4.;}
       {proportion = 1. / 3.;}
       {proportion = 2. / 4.;}
@@ -29,7 +21,7 @@ in {
     ];
 
     border = {
-      enable = true;
+      on = {};
       width = 3;
     };
 
@@ -44,10 +36,9 @@ in {
       repeat-rate = 40;
     };
 
-    warp-mouse-to-focus.enable = true;
+    warp-mouse-to-focus = {};
     focus-follows-mouse = {
-      enable = true;
-      max-scroll-amount = "0%";
+      _props.max-scroll-amount = "0%";
     };
 
     mouse = {
@@ -56,15 +47,15 @@ in {
     };
 
     touchpad = {
-      tap = true;
+      tap = {};
       accel-speed = 0.0;
-      natural-scroll = true;
-      dwt = true;
+      natural-scroll = {};
+      dwt = {};
     };
   };
 
   cursor = {
-    theme = "Bibata-Modern-Ice";
-    size = 24;
+    xcursor-theme = "Bibata-Modern-Ice";
+    xcursor-size = 24;
   };
 }
