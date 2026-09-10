@@ -61,19 +61,19 @@ Niri, while `os/system/laptop.nix` owns the shared lid policy and power profile
 daemon.
 
 Niri is split the same way. The shared `os.desktop.niri` module enables
-nixpkgs' Niri NixOS module with the `sodiboo/niri-flake` package output and
-binary cache, including the system package, portal support, and
-`services.displayManager.sessionPackages` integration so Ly can list the Niri
-session. Home-side configuration stays under `home/desktop/niri/` through
-`sodiboo/niri-flake`'s Home Manager settings and takes Niri-flake packages
-directly from the flake input so standalone `nh home` does not depend on
-NixOS-side overlays. Its keybinds use
-`programs.niri.settings.binds` as an attribute set keyed by Niri key names, with
-each entry declaring an `action.<niri-action>` value. Window and layer rules use
-`window-rules` and `layer-rules` lists with `matches` entries. These files use
-Niri-native settings instead of Hyprland Lua dispatcher strings or Hyprland rule
-fields. When DMS is enabled, `home/desktop/dms/niri.nix` contributes its IPC
-controls, including lock and power menu binds, as Niri binds.
+nixpkgs' Niri NixOS module for the system session. Home-side configuration stays
+under `home/desktop/niri/` through Home Manager's native KDL settings.
+Standalone `nh home` uses the same generated settings as the NixOS-integrated
+configuration. Its keybinds use
+`wayland.windowManager.niri.settings` with Home Manager's native KDL
+representation. Repeated nodes use `_children`, node arguments use `_args`,
+named properties use `_props`, and keybind actions are direct child nodes such
+as `spawn` or `focus-column-left`. Window and layer rules are repeated
+`window-rule` and `layer-rule` nodes with `match._props` entries. These files
+use Niri-native settings instead of Hyprland Lua dispatcher strings or
+Hyprland rule fields. When DMS is enabled, `home/desktop/dms/niri.nix`
+contributes its IPC controls, including lock and power menu binds, as Niri
+binds.
 
 ## Design Pattern
 

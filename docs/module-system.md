@@ -78,10 +78,12 @@ Hyprland settings are currently structured for Lua output instead of traditional
 Hyprland conf strings. Lists such as binds, rules, environment variables,
 curves, animations, monitors, and workspace rules use attribute sets with
 arguments where needed. Raw Lua snippets use `lib.generators.mkLuaInline`.
-Niri settings use the native `sodiboo/niri-flake` Home Manager schema; keybinds
-are `programs.niri.settings.binds` attributes keyed by shortcut names, each
-binding stores its compositor action under `action.<name>`, and rules are
-`window-rules` or `layer-rules` lists with `matches` entries.
+Niri settings use Home Manager's native KDL schema under
+`wayland.windowManager.niri.settings`. Leaf flags are `{}`, repeated nodes use
+`_children`, node arguments use `_args`, and named KDL properties use `_props`.
+Keybinds are `binds` attributes keyed by shortcut names, with direct action
+nodes such as `spawn` or `focus-column-left`; rules are repeated
+`window-rule`/`layer-rule` nodes with `match._props` entries.
 
 ## Common Helpers
 

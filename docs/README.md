@@ -66,7 +66,8 @@ Before changing code, an agent should understand these facts:
 - `home/desktop/hyprland/` emits structured Lua config, binds, animations,
   window rules, and portal integration.
 - `home/desktop/dms/` contributes DMS-specific Hyprland and Niri rules, binds,
-  idle and power defaults, and theming includes.
+  idle and power defaults, and theming includes. Its Niri settings use the
+  current Home Manager KDL representation.
 
 ## Command Aliases
 
@@ -108,6 +109,9 @@ module:
   evaluation includes it.
 - Every code change should be paired with corresponding `docs/` updates and a
   root `README.md` update in the same task.
+- Niri settings under `wayland.windowManager.niri.settings` follow Home
+  Manager's KDL encoding: `_children` for repeated nodes, `_args` for node
+  arguments, and `_props` for named KDL properties.
 - When the user approves commits, keep code changes and documentation changes in
   separate commits.
 

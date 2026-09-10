@@ -109,12 +109,11 @@ sandbox. Text files default to Neovim and folders default to Nemo; Code and
 VSCodium remain launchable but no longer advertise themselves as file or folder
 handlers.
 
-Niri settings are generated through `sodiboo/niri-flake`. Shared Niri binds and
-rules live in `home/desktop/niri/` using native `programs.niri.settings` action
-and match attributes. The OS-side Niri module enables nixpkgs' Niri NixOS module
-with the `sodiboo/niri-flake` package output and cache so Ly can list Niri as a
-Wayland session. Home-side Niri packages are read directly from the flake input
-so standalone `nh home` does not depend on NixOS overlays. DMS IPC controls are
+Niri settings are generated through Home Manager's native KDL representation.
+Shared Niri binds and rules live in `home/desktop/niri/` using direct action
+nodes, `_props` for named properties, and `_children`/`_args` for repeated or
+parameterized nodes. The OS-side Niri module enables nixpkgs' Niri NixOS module
+for the system session. DMS IPC controls are
 available through Niri keybindings, and DMS owns idle, lock, suspend, and power
 menu behavior for both Hyprland and Niri. On `mechrevo`, Niri matches the laptop
 and external displays by their full descriptions, assigns workspaces 1 and 2 to

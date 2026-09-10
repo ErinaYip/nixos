@@ -151,7 +151,8 @@ If you need to understand or change behavior, start here:
 - Hyprland behavior: `home/desktop/hyprland/`, `home/desktop/dms/hyprland.nix`,
   and host-level `wayland.windowManager.hyprland` overrides
 - Niri behavior: `os/desktop/niri.nix` for system/session integration and
-  `home/desktop/niri/` for user settings, binds, and rules
+  `home/desktop/niri/` for user settings, binds, and rules. Niri settings use
+  Home Manager's KDL data model, including `_children`, `_args`, and `_props`.
 - DMS idle and power policy: `home/desktop/dms/` and `os/system/laptop.nix`
 - Runtime source snapshot: `/run/current-system/configuration-source`, provided
   by `os/system/config-source.nix`
