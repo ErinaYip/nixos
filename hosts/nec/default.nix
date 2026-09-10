@@ -16,6 +16,11 @@ in {
         system = {
           boot.engine = "grub";
           laptop = enabled;
+
+          mihomo = {
+            enable = true;
+            configFile = "/home/era/.config/mihomo/iKuuu_V2.yaml";
+          };
         };
       };
     }
