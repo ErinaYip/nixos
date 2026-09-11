@@ -23,6 +23,7 @@ eriniteLib.mkModule args {
 
       inherit settings;
       keymap = import ./keymap.nix;
+      theme = import ./theme.nix;
     };
   };
 }
