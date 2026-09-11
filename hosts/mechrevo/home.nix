@@ -40,13 +40,13 @@ in {
       {
         spawn-sh-at-startup._args = [
           ''
-              outputs=$(niri msg outputs) || exit 0
+            outputs=$(niri msg outputs) || exit 0
 
             eDP_output=$(printf '%s\n' "$outputs" | grep -m1 "${eDP}" | sed 's/.*(\(.*\)).*/\1/')
               [ -z "$eDP_output" ] && exit 0
 
             printf '%s\n' "$outputs" | grep -q "${DP}" && rot="90" || rot="normal"
-              niri msg output "$eDP_output" transform "$rot"
+            niri msg output "$eDP_output" transform "$rot"
           ''
         ];
       }

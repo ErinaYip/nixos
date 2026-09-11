@@ -95,9 +95,9 @@ in {
           niri = enabled;
           dms = {
             bars = {
-              mainBar.screenPreferences = ["all"];
-              # mainBar.screenPreferences = ["DP-2" "DP-3"];
-              # subBar.screenPreferences = ["eDP-1" "eDP-2"];
+              # mainBar.screenPreferences = ["all"];
+              mainBar.screenPreferences = ["DP-2" "DP-3"];
+              subBar.screenPreferences = ["eDP-1" "eDP-2"];
             };
           };
           obsidian = {
