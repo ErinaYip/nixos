@@ -157,6 +157,7 @@ in
           {
             erinite.home.cli.zsh.aliases = {
               icat = "kitten icat";
+              ssh = "kitten ssh";
             };
           }
         ];
