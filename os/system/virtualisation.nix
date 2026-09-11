@@ -34,8 +34,8 @@ with eriniteLib;
         (lib.mkIf cfg.vbox {
           virtualisation.virtualbox.host = {
             enable = true;
-            addNetworkInterface = false;
-            enableKvm = true;
+            addNetworkInterface = true;
+            enableKvm = false;
           };
 
           users.extraGroups.vboxusers.members = ["user-with-access-to-virtualbox"];
