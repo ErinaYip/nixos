@@ -32,29 +32,13 @@
     lolcat
     tldr
     jq
-    foremost
-    # binwalk
-    # john
-    ffuf
-    feroxbuster
-    seclists
-    exiftool
-    zsteg
-    zola
 
     wavemon
     ddcutil
     i2c-tools
 
-    # wireshark
-    # bottles
-
     libreoffice
 
     distrobox
   ];
-
-  environment.sessionVariables = {
-    SECLISTS = "${pkgs.seclists}/share/wordlists/seclists";
-  };
 }
