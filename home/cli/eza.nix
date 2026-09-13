@@ -21,6 +21,14 @@ with eriniteLib;
             ];
             git = true;
             icons = "always";
+
+            theme = {
+              filenames = {
+                Applications.icon.glyph = "󰙵";
+                Development.icon.glyph = "";
+                nixos.icon.glyph = "";
+              };
+            };
           };
         }
 
