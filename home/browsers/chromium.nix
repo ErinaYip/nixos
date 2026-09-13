@@ -12,10 +12,5 @@ eriniteLib.mkModule args {
         {id = "pfnededegaaopdmhkdmcofjmoldfiped";} # Proxy SwitchyOmega 3 / ZeroOmega
       ];
     };
-
-    xdg.configFile."chromium/Default/Bookmarks" = {
-      source = ../../assets/browser-profiles/chromium/Bookmarks;
-      force = true;
-    };
   };
 }
