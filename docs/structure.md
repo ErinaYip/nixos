@@ -87,6 +87,10 @@ Current templates include generated themes for btop, fuzzel, yazi,
 PrismLauncher, cava, and Hyprland Lua colors. Browser profile assets also live
 here, including Chromium bookmarks and Firefox extension/profile settings.
 
+`home/browsers/firefox.nix` also installs the `zh-CN` language pack through
+`programs.firefox.languagePacks` and pins `intl.locale.requested` to
+`zh-CN,en-US`, keeping the Chinese UI across updates.
+
 ## Important Files
 
 ### `home/default.nix`

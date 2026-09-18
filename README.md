@@ -289,6 +289,11 @@ When enabled, the Mihomo module publishes its local proxy through
 `networking.proxy`, so NixOS session environments and `nix-daemon` use the same
 proxy settings.
 
+The Firefox module installs the `zh-CN` language pack through
+`programs.firefox.languagePacks` and pins `intl.locale.requested` to
+`zh-CN,en-US`, so the browser keeps its Chinese UI across system updates
+instead of falling back to English.
+
 The `mechrevo` host enables sched_ext with the `scx_lavd` scheduler through the
 shared kernel module. `scx_rusty` is not selected because it failed during
 startup with the current kernel and SCX package combination.
