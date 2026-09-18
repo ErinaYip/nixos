@@ -77,6 +77,8 @@ Manager configuration.
   sandboxed AppImage can still show candidate windows.
 - QQ uses the official x86_64 Linux package source overridden by its Home
   Manager module.
+- Declarative Obsidian setup under `home/desktop/obsidian/`, including
+  community plugins pinned as fixed-output derivations with their settings.
 - Optional modules for NVIDIA, Podman, VirtualBox, Wine, Steam, streaming, OBS
   and more.
 - `mechrevo` enables sched_ext through `scx_lavd`.

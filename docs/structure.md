@@ -160,6 +160,10 @@ If you need to understand or change behavior, start here:
   `home/desktop/niri/` for user settings, binds, and rules. Niri settings use
   Home Manager's KDL data model, including `_children`, `_args`, and `_props`.
 - DMS idle and power policy: `home/desktop/dms/` and `os/system/laptop.nix`
+- Obsidian behavior: `home/desktop/obsidian/`. Community plugins and themes are
+  packaged declaratively as fixed-output derivations in `plugins.nix` and
+  `themes.nix`, while `settings.nix` enables them and `plugin-settings.nix`
+  holds their per-plugin settings.
 - Runtime source snapshot: `/run/current-system/configuration-source`, provided
   by `os/system/config-source.nix`
 - Host-only behavior: `hosts/<name>/`
