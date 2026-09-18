@@ -91,5 +91,13 @@ in {
       locked = true;
       repeating = true;
     })
+    (bindWithOpts "SUPER + XF86AudioRaiseVolume" ''hl.dsp.exec_cmd("dms ipc call brightness increment 5 \'\'")'' {
+      locked = true;
+      repeating = true;
+    })
+    (bindWithOpts "SUPER + XF86AudioLowerVolume" ''hl.dsp.exec_cmd("dms ipc call brightness decrement 5 \'\'")'' {
+      locked = true;
+      repeating = true;
+    })
   ];
 }
