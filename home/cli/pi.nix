@@ -13,7 +13,6 @@
         map (model: {
           id = model;
           reasoning = true;
-          input = ["text" "image"];
         })
         models;
     };
@@ -45,7 +44,6 @@ in
         programs.pi-coding-agent = {
           enable = true;
           configDir = "${config.xdg.configHome}/pi/agent";
-          context = ../../assets/codex/gpt5.5-unrestricted.md;
 
           settings = {
           };
