@@ -30,6 +30,10 @@
 
   communityPlugins = [
     {
+      pkg = plugins.packages."better-export-pdf";
+      settings = plugins.data "better-export-pdf";
+    }
+    {
       pkg = plugins.packages."editor-width-slider";
       settings = plugins.data "editor-width-slider";
     }
@@ -39,25 +43,11 @@
     }
     {
       pkg = plugins.packages."novel-word-count";
-      settings.settings = (plugins.data "novel-word-count").settings;
+      settings = plugins.data "novel-word-count";
     }
     {
       pkg = plugins.packages."obsidian-style-settings";
       settings = plugins.data "obsidian-style-settings";
-    }
-    {
-      enable = false;
-      pkg = plugins.packages."easy-typing-obsidian";
-      settings = plugins.data "easy-typing-obsidian";
-    }
-    {
-      enable = false;
-      pkg = plugins.packages."obsidian-quiet-outline";
-      settings = plugins.data "obsidian-quiet-outline";
-    }
-    {
-      enable = false;
-      pkg = plugins.packages."quick-explorer";
     }
   ];
 

@@ -32,15 +32,15 @@
     };
 
   packages = {
-    easy-typing-obsidian = mkPlugin {
-      id = "easy-typing-obsidian";
-      repo = "yaozhuwa/easy-typing-obsidian";
-      version = "5.5.15";
-      tag = "5.5.15";
+    better-export-pdf = mkPlugin {
+      id = "better-export-pdf";
+      repo = "l1xnan/obsidian-better-export-pdf";
+      version = "2.0.3";
+      tag = "2.0.3";
       hashes = {
-        manifest = "sha256-tXfH9gOO/p54WgiboyQ0pY70ZMUTL71fjIq4jsvEVe8=";
-        main = "sha256-EjAimIEbUsq5zL9/v7MMSRdoLtHqhkCU9nuBddH4beY=";
-        styles = "sha256-asGVbVWNQByECiRYSrASR1OLh+FOCFC9Mh+pXoxw/bQ=";
+        manifest = "sha256-JCDl2CICiRWtMtt1AYfRJPQzOzUS4gPvpRimGQDSxwk=";
+        main = "sha256-PProP13Sko94mrI7sDGI0D5QJ6n1AAN9mxQu9u+s/DA=";
+        styles = "sha256-0qigZwkp+PXw80cdMwgNkVvNPvHiRKzVShh6EIwzfCQ=";
       };
     };
 
@@ -80,18 +80,6 @@
       };
     };
 
-    obsidian-quiet-outline = mkPlugin {
-      id = "obsidian-quiet-outline";
-      repo = "guopenghui/obsidian-quiet-outline";
-      version = "0.5.3";
-      tag = "0.5.3";
-      hashes = {
-        manifest = "sha256-WTWNwFt3FKTlCRjFr5FbFQGZRkB6WArBGx5/bB5u7O8=";
-        main = "sha256-C+bYme44Yop7q8I199ntEUkdQ9cjqSIjhG1uPxkKoaI=";
-        styles = "sha256-G5E5UO5EpKAR2GqVxnY5X7r1aHQOaC4hFPbm2iAb3y4=";
-      };
-    };
-
     obsidian-style-settings = mkPlugin {
       id = "obsidian-style-settings";
       repo = "obsidian-community/obsidian-style-settings";
@@ -101,18 +89,6 @@
         manifest = "sha256-nP/cIM8qoTVIIOAFC2lLD5tXZEbj1dRKNq6LAYflv7g=";
         main = "sha256-GCirqs2rTFV4twWmJcWFswUS+O+tTHz8WhjnDMNVdGg=";
         styles = "sha256-7nk30r5QZTqJzLMK5fBXKyNQfVt/EyjQBScaNjB1v9g=";
-      };
-    };
-
-    quick-explorer = mkPlugin {
-      id = "quick-explorer";
-      repo = "pjeby/quick-explorer";
-      version = "0.2.14";
-      tag = "0.2.14";
-      hashes = {
-        manifest = "sha256-83DtE/jp06WgZYRgg3wFUZ89dK8a6Q7p+SjgZsu2Q88=";
-        main = "sha256-U0UzrvprFCfSOO57gAMpUtycTJbXxqHzHqHIWehm3VA=";
-        styles = "sha256-7S59sDrak6GjX21Ey9jbjnoUFi/ic80xNA/R4qLdAjg=";
       };
     };
   };
