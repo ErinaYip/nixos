@@ -10,10 +10,10 @@ eriniteLib.mkModule args {
       enableVirtualCamera = true;
 
       plugins = with pkgs.obs-studio-plugins; [
-        wlrobs
-        obs-backgroundremoval
-        obs-pipewire-audio-capture
-        obs-gstreamer
+        # wlrobs
+        # obs-pipewire-audio-capture
+        # obs-backgroundremoval
+        # obs-gstreamer
         obs-vkcapture
       ];
     };
