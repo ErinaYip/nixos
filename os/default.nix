@@ -9,6 +9,7 @@
   imports =
     [
       inputs.home-manager.nixosModules.home-manager
+      inputs.denial.nixosModules.denial
       ../wallpapers
     ]
     ++ eriniteLib.modules ./.;

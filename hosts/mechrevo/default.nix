@@ -43,6 +43,7 @@ in {
 
         desktop = {
           niri = enabled;
+          denial = enabled;
           obs-studio = enabled;
         };
 
