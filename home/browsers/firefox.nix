@@ -11,6 +11,10 @@ with eriniteLib;
         enable = true;
         configPath = ".mozilla/firefox";
 
+        # Chinese UI language pack, installed declaratively so the profile
+        # keeps zh-CN after system updates.
+        languagePacks = ["zh-CN"];
+
         profiles."default" = {
           # id = 0;
           isDefault = true;
@@ -34,6 +38,7 @@ with eriniteLib;
           };
 
           settings = {
+            "intl.locale.requested" = "zh-CN,en-US";
             "layout.spellcheckDefault" = 0;
             "media.eme.enabled" = true;
             "browser.download.dir" = "${config.home.homeDirectory}/Downloads";
