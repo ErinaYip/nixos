@@ -46,15 +46,9 @@ in
           {
             programs.opencode = {
               enable = true;
-              skills = {
-                inherit ctf-skills;
-              };
+              skills = {inherit ctf-skills;};
               settings = {
                 autoupdate = false;
-                permission = {
-                  edit = "ask";
-                  bash = "ask";
-                };
                 disabled_providers = ["openai" "gemini" "anthropic"];
               };
             };
