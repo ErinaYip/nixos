@@ -36,9 +36,9 @@
       format.type = ["ruff-fix" "ruff"];
       lsp.servers = ["basedpyright" "ruff"];
     };
-    typescript = enabled;
-    astro = enabled;
-    scss = enabled;
+    # typescript = enabled;
+    # astro = enabled;
+    # scss = enabled;
     clang = enabled;
   };
 
