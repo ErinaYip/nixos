@@ -155,6 +155,8 @@ The current graphical session is centered on:
   it falls back to XWayland input inside the AppImage sandbox.
 - Optional Hyprland plugins from inputs, with `hyprgrass` controlled by the
   host-level `grass` option.
+- Experimental Denial support from the local `denial` flake input, exposed as
+  `erinite.os.desktop.denial` and enabled only on `mechrevo`.
 
 ## Presets
 

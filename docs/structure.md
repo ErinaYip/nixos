@@ -59,6 +59,8 @@ Recently added system modules:
   alias.
 - `os/system/nix.nix` owns Nix settings, NixOS-side unfree package allowance,
   AppImage support, direnv, and `sudo nixos-rebuild` aliases.
+- `os/desktop/denial.nix` wraps the experimental local `denial` flake input
+  (`programs.denial`) and is enabled only on `mechrevo`.
 
 ### `hosts/`
 
