@@ -29,6 +29,7 @@ with eriniteLib;
           nemo = enabled;
           xviewer = enabled;
           celluloid = enabled;
+          wemeet = enabled;
         };
 
         cli = {

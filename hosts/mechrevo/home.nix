@@ -9,7 +9,6 @@ with eriniteLib; let
 in {
   home.packages = with pkgs; [
     materialgram
-    wemeet
   ];
 
   wayland.windowManager.niri.settings = {
