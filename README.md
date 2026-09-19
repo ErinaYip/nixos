@@ -77,6 +77,12 @@ Manager configuration.
   sandboxed AppImage can still show candidate windows.
 - QQ uses the official x86_64 Linux package source overridden by its Home
   Manager module.
+- Tencent Meeting (wemeet) is provided by `home/media/wemeet.nix`, which wraps
+  both the Wayland and XWayland launchers with
+  `__EGL_VENDOR_LIBRARY_FILENAMES` pointing at Mesa's glvnd EGL vendor
+  manifest and rewrites the desktop entry to launch through `wemeet-xwayland`,
+  matching the upstream AUR note for NVIDIA black-screen and desktop
+  bleed-through issues.
 - Declarative Obsidian setup under `home/desktop/obsidian/`, including
   community plugins pinned as fixed-output derivations with their settings.
 - Optional modules for NVIDIA, Podman, VirtualBox, Wine, Steam, streaming, OBS

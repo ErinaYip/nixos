@@ -33,6 +33,7 @@ Current categories under `os/` and `home/`:
 - `desktop/` for graphical environment and desktop integration
 - `cli/` for shell and terminal applications
 - `browsers/` for browser modules
+- `media/` for media viewers and communication apps
 - `programs/` for optional application stacks
 - `presets/` for grouped enablement
 
@@ -57,6 +58,16 @@ Recently added system modules:
 - `os/system/config-source.nix` links the flake source into
   `/run/current-system/configuration-source` and adds the `nixos-source` shell
   alias.
+- `home/media/wemeet.nix` overrides the nixpkgs `wemeet` package so both the
+  Wayland and XWayland launchers export
+  `__EGL_VENDOR_LIBRARY_FILENAMES=${pkgs.mesa}/share/glvnd/egl_vendor.d/50_mesa.json`,
+  and rewrites the installed `wemeetapp.desktop` entry so `Exec` points at
+  `wemeet-xwayland`. The EGL override applies per-process through the existing
+  `makeWrapper` indirection, so it fixes NVIDIA black-screen and desktop
+  bleed-through during Tencent Meeting screen shares without setting the
+  variable globally, while the desktop entry makes the XWayland backend the
+  default launch path. This follows the upstream AUR package advice at
+  <https://aur.archlinux.org/packages/wemeet-bin>.
 - `os/system/nix.nix` owns Nix settings, NixOS-side unfree package allowance,
   AppImage support, direnv, and `sudo nixos-rebuild` aliases.
 - `os/desktop/denial.nix` wraps the experimental local `denial` flake input
