@@ -1,6 +1,5 @@
 {
   lib,
-  pkgs,
   eriniteLib,
   ...
 } @ args:
@@ -11,20 +10,12 @@ with eriniteLib;
         {
           programs.bat = {
             enable = true;
-            extraPackages = with pkgs.bat-extras; [
-              batman
-              batpipe
-              batgrep
-              batdiff
-            ];
           };
         }
 
         {
           erinite.home.cli.zsh.aliases = {
-            cat = "batpipe";
-            less = "bat";
-            man = "batman";
+            cat = "bat";
           };
         }
       ];
