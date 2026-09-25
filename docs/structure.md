@@ -70,6 +70,10 @@ Recently added system modules:
   <https://aur.archlinux.org/packages/wemeet-bin>.
 - `os/system/nix.nix` owns Nix settings, NixOS-side unfree package allowance,
   AppImage support, direnv, and `sudo nixos-rebuild` aliases.
+- `os/system/udisks.nix` enables the system-wide `services.udisks2` daemon. It
+  provides the D-Bus mount service that the user-level `udiskie` auto-mount
+  agent in `home/media/nemo.nix` relies on, so USB drives automount and open in
+  Nemo on hosts that enable the common preset.
 
 ### `hosts/`
 

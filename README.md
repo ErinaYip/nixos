@@ -87,6 +87,9 @@ Manager configuration.
   community plugins pinned as fixed-output derivations with their settings.
 - Optional modules for NVIDIA, Podman, VirtualBox, Wine, Steam, streaming, OBS
   and more.
+- USB auto-mounting: the system-wide udisks2 daemon (`os/system/udisks.nix`)
+  backs the user-level udiskie agent, which automounts drives and opens them in
+  Nemo.
 - `mechrevo` enables sched_ext through `scx_lavd`.
 
 ## Desktop Setup
