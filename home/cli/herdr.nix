@@ -4,6 +4,7 @@ eriniteLib.mkModule args {
     programs.herdr = {
       enable = true;
       settings = {
+        onboarding = false;
         terminal = {
           default_shell = "zsh";
         };
