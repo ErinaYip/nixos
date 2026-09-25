@@ -26,7 +26,10 @@
     "gpt-5.4"
 
     "deepseek-v4-flash"
-    "deepseek-v4.1-flash-expires-on-0910"
+    "deepseek-v4-pro"
+    "glm-5.3"
+    "glm-5.3-flash"
+    "hy4-preview"
   ]);
 
   ctf-skills = pkgs.fetchFromGitHub {
