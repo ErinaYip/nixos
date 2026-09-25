@@ -18,6 +18,7 @@ with eriniteLib;
           nix = enabled;
           # nvidia = enabled;
           sound = enabled;
+          udisks = enabled;
           users = enabled;
           # virtualisation = enabled;
         };
