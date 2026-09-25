@@ -117,23 +117,6 @@
         "type": "github"
       }
     },
-    "denial": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1789660242,
-        "narHash": "sha256-On5B26m+zX0eeeJvAZjVjFd53NVlH5wTOe9eS7vl/eA=",
-        "path": "/home/era/Development/denial",
-        "type": "path"
-      },
-      "original": {
-        "path": "/home/era/Development/denial",
-        "type": "path"
-      }
-    },
     "dms": {
       "inputs": {
         "dank-qml-common": "dank-qml-common",
@@ -913,7 +896,6 @@
     },
     "root": {
       "inputs": {
-        "denial": "denial",
         "dms": "dms",
         "home-manager": "home-manager",
         "hypr-dynamic-cursors": "hypr-dynamic-cursors",
