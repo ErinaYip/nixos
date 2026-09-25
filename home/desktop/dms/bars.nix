@@ -25,7 +25,6 @@ in {
         "minimumWidth"
         "showSwap"
       ])
-      (mkWidgets "network_speed_monitor" [])
       (mkWidgets "focusedWindow" [])
       (mkWidgets "layout" [])
     ];
@@ -41,7 +40,7 @@ in {
     rightWidgets = [
       (mkWidgets "music" [])
       (mkWidgets "systemTray" [])
-      (mkWidgets "clipboard" [])
+      (mkWidgets "network_speed_monitor" [])
       (mkWidgets "notificationButton" [])
       (mkWidgets "battery" [])
       (mkWidgets "controlCenterButton" [])
