@@ -134,7 +134,9 @@ does not become a file or directory handler.
 
 The `home.desktop.qq` module reuses nixpkgs' QQ packaging logic while overriding
 the x86_64 Linux source URL and hash locally. It also normalizes the desktop
-entry icon so the installed application can resolve it through the icon theme.
+entry icon so the installed application can resolve it through the icon theme,
+and forces the Wayland Ozone backend by injecting `--ozone-platform=wayland`
+through the package's `commandLineArgs`.
 
 ## Current Desktop Flow
 

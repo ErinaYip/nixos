@@ -76,7 +76,8 @@ Manager configuration.
   injects `QT_QPA_PLATFORM=xcb` plus the Fcitx5 environment variables so the
   sandboxed AppImage can still show candidate windows.
 - QQ uses the official x86_64 Linux package source overridden by its Home
-  Manager module.
+  Manager module, which also forces the Wayland Ozone backend with
+  `--ozone-platform=wayland`.
 - Tencent Meeting (wemeet) is provided by `home/media/wemeet.nix`, which wraps
   both the Wayland and XWayland launchers with
   `__EGL_VENDOR_LIBRARY_FILENAMES` pointing at Mesa's glvnd EGL vendor
