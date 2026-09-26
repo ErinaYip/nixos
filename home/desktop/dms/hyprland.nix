@@ -13,7 +13,6 @@ in {
   wayland.windowManager.hyprland.settings = {
     window_rule = [
       {
-        name = "float-quickshell";
         match.class = "^(com.danklinux.dms)$";
         float = true;
       }
@@ -21,24 +20,17 @@ in {
 
     layer_rule = [
       {
-        name = "no-anim-dms";
-        match.namespace = "^(dms:bar)$";
-        no_anim = true;
+        match.namespace = "dms:control-center";
+        animation = "slide right";
       }
       {
-        name = "blur-dms-spotlight";
-        match.namespace = "^(dms:spotlight)$";
-        blur = true;
+        match.namespace = "dms:workspace-overview";
+        animation = "slide top";
       }
       {
-        name = "blur-dms-dash";
-        match.namespace = "^(dms:dash)$";
+        match.namespace = "dms:(color-picker|clipboard|spotlight|settings)";
         blur = true;
-      }
-      {
-        name = "blur-dms-dash-background";
-        match.namespace = "^(dms:dash:background)$";
-        blur = true;
+        ignore_alpha = 0;
       }
     ];
 

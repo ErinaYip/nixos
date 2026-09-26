@@ -8,6 +8,7 @@ in {
   currentThemeCategory = "dynamic";
   widgetColorMode = "colorful";
   runDmsMatugenTemplates = false;
+  blurEnabled = true;
 
   showWorkspaceIndex = true;
   showWorkspaceApps = true;
