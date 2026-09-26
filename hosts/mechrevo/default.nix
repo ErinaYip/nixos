@@ -6,7 +6,6 @@ in {
   osModules = [
     ./hardware-configuration.nix
     ./os.nix
-    ./sunshine-host.nix
     {
       erinite.os = {
         presets = {

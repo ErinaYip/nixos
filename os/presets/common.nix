@@ -27,7 +27,6 @@ with eriniteLib;
           hyprland = enabled;
           # niri = enabled;
           # obs-studio = enabled;
-          # streaming = enabled;
           # stylix = enabled;
           # theme-specialisations = enabled;
         };
