@@ -67,9 +67,9 @@ Before changing code, an agent should understand these facts:
   window rules, and portal integration.
 - `home/cli/kitty.nix` disables restoration of Kitty's previous maximized window
   state.
-- `home/desktop/dms/` contributes DMS-specific Hyprland and Niri rules, binds,
-  idle and power defaults, and theming includes. Its Niri settings use the
-  current Home Manager KDL representation.
+- `home/desktop/noctalia.nix` enables Noctalia's upstream Home Manager module,
+  starts its systemd user service, seeds wallpaper-based theming, and adds
+  Hyprland IPC binds and layer/window rules.
 
 ## Command Aliases
 
@@ -111,9 +111,6 @@ module:
   evaluation includes it.
 - Every code change should be paired with corresponding `docs/` updates and a
   root `README.md` update in the same task.
-- Niri settings under `wayland.windowManager.niri.settings` follow Home
-  Manager's KDL encoding: `_children` for repeated nodes, `_args` for node
-  arguments, and `_props` for named KDL properties.
 - When the user approves commits, keep code changes and documentation changes in
   separate commits.
 
