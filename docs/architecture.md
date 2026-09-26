@@ -138,6 +138,10 @@ entry icon so the installed application can resolve it through the icon theme,
 and forces the Wayland Ozone backend by injecting `--ozone-platform=wayland`
 through the package's `commandLineArgs`.
 
+The `home.cli.kitty` module disables Kitty's remembered window size and
+maximized state. This keeps Kitty from restoring a maximized Wayland window
+when switching between Hyprland and Niri sessions.
+
 ## Current Desktop Flow
 
 The current graphical session is centered on:

@@ -65,6 +65,8 @@ Before changing code, an agent should understand these facts:
   reviewing changes to enable automatic loading.
 - `home/desktop/hyprland/` emits structured Lua config, binds, animations,
   window rules, and portal integration.
+- `home/cli/kitty.nix` disables restoration of Kitty's previous maximized window
+  state.
 - `home/desktop/dms/` contributes DMS-specific Hyprland and Niri rules, binds,
   idle and power defaults, and theming includes. Its Niri settings use the
   current Home Manager KDL representation.

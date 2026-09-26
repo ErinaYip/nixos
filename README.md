@@ -65,7 +65,8 @@ Manager configuration.
 - DMS owns idle detection, lock, suspend, and power menu flow across both
   compositors.
 - Chinese input with Fcitx5 and Rime.
-- Common CLI tools like zsh, kitty, nvim, yazi, bat, eza and starship.
+- Common CLI tools like zsh, kitty, nvim, yazi, bat, eza and starship. Kitty
+  does not restore a previously maximized window state.
 - Neovim completion uses blink.cmp with nvim-cmp-compatible completion kind
   appearance and shared kind coloring for completion labels and symbol UIs.
 - Neovim's lualine custom components use nvf's explicit `lua-inline` setup
