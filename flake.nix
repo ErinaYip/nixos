@@ -33,8 +33,8 @@
 
     millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
 
-    dms = {
-      url = "github:AvengeMedia/DankMaterialShell/master";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

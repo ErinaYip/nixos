@@ -10,7 +10,7 @@
       ../wallpapers
       inputs.stylix.homeModules.stylix
       inputs.nvf.homeManagerModules.default
-      inputs.dms.homeModules.dank-material-shell
+      inputs.noctalia.homeModules.default
       inputs.oh-my-rime-nix.homeModules.default
     ]
     ++ eriniteLib.modules ./.;

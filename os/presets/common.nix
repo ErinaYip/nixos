@@ -25,10 +25,8 @@ with eriniteLib;
 
         desktop = {
           hyprland = enabled;
-          # niri = enabled;
           # obs-studio = enabled;
           # stylix = enabled;
-          # theme-specialisations = enabled;
         };
 
         programs = {

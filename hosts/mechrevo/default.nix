@@ -40,10 +40,7 @@ in {
           };
         };
 
-        desktop = {
-          niri = enabled;
-          obs-studio = enabled;
-        };
+        desktop.obs-studio = enabled;
 
         programs.gaming = enabled;
       };
@@ -90,14 +87,6 @@ in {
         };
 
         desktop = {
-          niri = enabled;
-          dms = {
-            bars = {
-              # mainBar.screenPreferences = ["all"];
-              mainBar.screenPreferences = ["DP-2" "DP-3"];
-              subBar.screenPreferences = ["eDP-1" "eDP-2"];
-            };
-          };
           obsidian = {
             enable = true;
             vaults.notes.target = "Documents/notes";
