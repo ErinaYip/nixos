@@ -114,6 +114,7 @@ in
                 mouse_hide_wait = "-1.0";
                 window_padding_width = 0;
                 hide_window_decorations = "yes";
+                remember_window_size = false;
                 font_family = "MapleMono NF CN";
                 cursor_shape = "beam";
                 cursor_trail = 1;
