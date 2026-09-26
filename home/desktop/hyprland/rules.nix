@@ -43,7 +43,6 @@ in {
 
   layer_rule = [
     {
-      name = "blur-launcher";
       match.namespace = "^(launcher)$";
       blur = true;
     }
