@@ -63,9 +63,13 @@ combines the declarative settings files. `settings.nix` contains the default
 wallpaper and wallpaper-derived palette; `bars.nix` contains the bar layout;
 `hyprland.nix` contributes Noctalia IPC binds and Hyprland rules. Noctalia
 handles the bar, launcher, clipboard, wallpaper, lock screen, session actions,
-volume, brightness, and screenshots,
-while `os/system/laptop.nix` retains the shared lid policy and power-profile
-services.
+volume, brightness, and screenshots. `home/desktop/theme-specialisations.nix`
+uses the `wallpaper_changed` hook to map the wallpaper name to a safe systemd
+instance token and request the matching NixOS wallpaper specialisation;
+`os/desktop/theme-specialisations.nix` defines those specialisations and
+updates system and Home Manager Stylix settings. The specialisation activation
+service is authorized for members of the `wheel` group, while
+`os/system/laptop.nix` retains the shared lid policy and power-profile services.
 
 ## Design Pattern
 
@@ -141,9 +145,11 @@ The current graphical session is centered on:
   `configType = "lua"`.
 - Noctalia Shell from its flake input, managed by Home Manager and a systemd
   user service, with Hyprland window/layer rules and IPC keybinds.
-- Noctalia derives its shell palette from the configured default wallpaper.
-  Stylix independently themes applications with `pkgs.tela-icon-theme`; there
-  are no wallpaper-driven NixOS or Home Manager specialisations.
+- Noctalia applies selected wallpapers and invokes its configured
+  `wallpaper_changed` hook after a persisted wallpaper change. The hook maps
+  generated wallpaper paths to NixOS specialisations, which update Stylix and
+  Noctalia's configured default wallpaper. Stylix themes applications with
+  `pkgs.tela-icon-theme`.
 - Fcitx5 + Rime for input method packages and user configuration. The
   Fcitx5/Rime package set provides `fcitx5-remote`, and the Neovim module closes
   Fcitx5 outside insert-oriented modes before restoring it on insert entry when

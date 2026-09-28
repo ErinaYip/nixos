@@ -70,6 +70,10 @@ Before changing code, an agent should understand these facts:
 - `home/desktop/noctalia/default.nix` enables Noctalia's upstream Home Manager
   module and combines `settings.nix` with `bars.nix`. `hyprland.nix` owns the
   Noctalia Hyprland IPC binds and layer/window rules.
+- The Noctalia `wallpaper_changed` hook in
+  `home/desktop/theme-specialisations.nix` maps a safe systemd instance token
+  to the matching NixOS wallpaper specialisation, defined in
+  `os/desktop/theme-specialisations.nix`.
 
 ## Command Aliases
 

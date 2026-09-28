@@ -125,7 +125,9 @@ and adds Hyprland IPC binds and window/layer rules. `settings.nix` holds shell,
 widget, lock screen, and wallpaper-derived settings; `bars.nix` holds the bar
 layout. Stylix remains
 responsible for application theming and uses `pkgs.tela-icon-theme`; wallpaper
-selection no longer creates NixOS or Home Manager theme specialisations.
+selection triggers a `wallpaper_changed` hook that maps the wallpaper name to
+a safe systemd specialisation instance, updating Stylix and Noctalia's
+configured wallpaper.
 
 ## Screenshots
 

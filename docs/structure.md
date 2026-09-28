@@ -54,6 +54,11 @@ Recently added system modules:
   Manager module. `default.nix` combines the settings files, `bars.nix` owns
   the bar, `settings.nix` owns shell and wallpaper settings, and `hyprland.nix`
   owns IPC binds and Hyprland surface rules.
+- `home/desktop/theme-specialisations.nix` maps Noctalia's persisted
+  `wallpaper_changed` hook to a safe systemd instance token for the matching
+  NixOS specialisation. `os/desktop/theme-specialisations.nix` builds those
+  specialisations with matching system and Home Manager Stylix settings and a
+  `wheel`-authorized systemd activation service.
 - `os/system/laptop.nix` owns shared laptop power policy, including UPower,
   power-profiles-daemon, and logind lid handling.
 - `os/system/config-source.nix` links the flake source into
@@ -174,6 +179,9 @@ If you need to understand or change behavior, start here:
   package/service enablement and settings composition, `settings.nix` for
   wallpaper and shell settings, `bars.nix` for the bar, and `hyprland.nix` for
   IPC binds and Hyprland surface rules
+- Wallpaper-driven theme switching: `home/desktop/theme-specialisations.nix`
+  for the hook and `os/desktop/theme-specialisations.nix` for NixOS
+  specialisations
 - Laptop lid and power-profile policy: `os/system/laptop.nix`
 - Obsidian behavior: `home/desktop/obsidian/`. Community plugins and themes are
   packaged declaratively as fixed-output derivations in `plugins.nix` and
