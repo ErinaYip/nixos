@@ -36,12 +36,6 @@ in {
       # (bind "SUPER + R" ''hl.dsp.layout("colresize +conf")'')
       # (bind "SUPER + SHIFT + R" ''hl.dsp.layout("colresize -conf")'')
 
-      # Screenshot
-      (bind "SUPER + S" ''hl.dsp.exec_cmd("noctalia msg screenshot-region")'')
-      (bind "SUPER + SHIFT + S" ''hl.dsp.exec_cmd("noctalia msg screenshot-fullscreen")'')
-      (bind "Print" ''hl.dsp.exec_cmd([[hyprshot -m region -z --slurp-args "-w 0"]])'')
-      (bind "SUPER + Print" ''hl.dsp.exec_cmd([[hyprshot -m window -z --slurp-args "-w 0"]])'')
-
       (bind "SUPER + CTRL + R" ''hl.dsp.exec_cmd("hyprctl reload")'')
       (bind "SUPER + CTRL + E" "hl.dsp.exit()")
 

@@ -39,6 +39,9 @@ in {
       (bind "SUPER + TAB" "window-switcher")
       (bind "SUPER + ALT + L" "session lock")
       (bind "SUPER + X" "panel-toggle session")
+      (bind "SUPER + S" "screenshot-region")
+      (bind "SUPER + SHIFT + S" "screenshot-fullscreen")
+      (bind "SUPER + W" "annotate")
 
       (bindWithOpts "XF86AudioRaiseVolume" "volume-up" {
         locked = true;

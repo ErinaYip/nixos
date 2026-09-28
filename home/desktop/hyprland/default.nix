@@ -8,7 +8,8 @@ with eriniteLib;
     configFn = _: {
       wayland.windowManager.hyprland = {
         enable = true;
-        configType = "lua";
+        package = null;
+        portalPackage = null;
         systemd.enable = false;
         settings = lib.mkMerge [
           (import ./binds.nix {inherit lib;})
@@ -17,15 +18,9 @@ with eriniteLib;
           (import ./dynamic-cursors.nix)
         ];
 
-        package = mkInputPkga "hyprland";
         plugins = [
           (mkInputPkga "hypr-dynamic-cursors")
         ];
-      };
-
-      xdg.portal = {
-        enable = true;
-        config.hyprland.preferred = ["hyprland" "gtk"];
       };
     };
   }

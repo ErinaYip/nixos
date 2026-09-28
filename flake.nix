@@ -17,11 +17,8 @@
       url = "github:VirtCode/hypr-dynamic-cursors";
       inputs.hyprland.follows = "hyprland";
     };
-    hyprgrass = {
-      url = "github:horriblename/hyprgrass";
-      inputs.hyprland.follows = "hyprland";
-    };
 
+    noctalia.url = "github:noctalia-dev/noctalia/cachix";
     nvf = {
       url = "github:notashelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -32,11 +29,6 @@
     };
 
     millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
-
-    noctalia = {
-      url = "github:noctalia-dev/noctalia/cachix";
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     oh-my-rime-nix = {
       url = "git+https://codeberg.org/erina/oh-my-rime-nix.git";
