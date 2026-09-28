@@ -34,8 +34,8 @@
     millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
 
     noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:noctalia-dev/noctalia/cachix";
+      # inputs.nixpkgs.follows = "nixpkgs";
     };
 
     oh-my-rime-nix = {

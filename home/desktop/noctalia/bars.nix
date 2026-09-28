@@ -10,6 +10,7 @@
     radius_top_right = 0;
 
     start = [
+      "launcher"
       "group:performance"
       "group:network"
       "active_window"
@@ -93,11 +94,15 @@
       anchor = true;
     };
 
+    launcher = {
+      glyph = "menu-2";
+    };
+
     taskbar = {
       group_by_workspace = true;
       group_single_icon_per_app = true;
-      workspace_label_placement = "inside";
       icon_scale = 2.0;
+      workspace_label_placement = "corner";
     };
 
     media = {

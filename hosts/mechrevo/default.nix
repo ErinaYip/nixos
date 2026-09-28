@@ -95,7 +95,9 @@ in {
             settings = {
               shell.avatar_path = "/home/era/Pictures/avatar_withBG.png";
               bar.main.monitor."eDP-1".enabled = false;
+              bar.main.monitor."eDP-2".enabled = false;
               bar.sub.monitor."eDP-1".enabled = true;
+              bar.sub.monitor."eDP-2".enabled = true;
             };
           };
           obsidian = {

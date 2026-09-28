@@ -15,7 +15,7 @@
 
   wallpaper = {
     enabled = true;
-    default.path = wallpaper.path;
+    # default.path = wallpaper.path;
     directory = dirOf wallpaper.path;
   };
 
