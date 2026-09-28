@@ -50,8 +50,10 @@ Recently added system modules:
 
 - `os/system/adb.nix` installs Android platform tools and adds the default user
   to `adbusers`.
-- `home/desktop/noctalia.nix` configures Noctalia Shell through its upstream
-  Home Manager module and integrates its IPC and surfaces with Hyprland.
+- `home/desktop/noctalia/` configures Noctalia Shell through its upstream Home
+  Manager module. `default.nix` combines the settings files, `bars.nix` owns
+  the bar, `settings.nix` owns shell and wallpaper settings, and `hyprland.nix`
+  owns IPC binds and Hyprland surface rules.
 - `os/system/laptop.nix` owns shared laptop power policy, including UPower,
   power-profiles-daemon, and logind lid handling.
 - `os/system/config-source.nix` links the flake source into
@@ -113,7 +115,7 @@ Bridge from NixOS module space into Home Manager module space.
 
 Auto-import the module tree. Module option paths are derived from this tree:
 `os/system/boot.nix` maps to `erinite.os.system.boot`, while
-`home/desktop/noctalia.nix` maps to `erinite.home.desktop.noctalia`.
+`home/desktop/noctalia/default.nix` maps to `erinite.home.desktop.noctalia`.
 
 ### `hosts/<name>/default.nix`
 
@@ -168,9 +170,10 @@ If you need to understand or change behavior, start here:
   `erinite.home`
 - Hyprland behavior: `home/desktop/hyprland/` and host-level
   `wayland.windowManager.hyprland` overrides
-- Noctalia shell behavior: `home/desktop/noctalia.nix` for package/service
-  enablement, wallpaper-based theming, shell IPC binds, and Hyprland surface
-  rules
+- Noctalia shell behavior: `home/desktop/noctalia/default.nix` for
+  package/service enablement and settings composition, `settings.nix` for
+  wallpaper and shell settings, `bars.nix` for the bar, and `hyprland.nix` for
+  IPC binds and Hyprland surface rules
 - Laptop lid and power-profile policy: `os/system/laptop.nix`
 - Obsidian behavior: `home/desktop/obsidian/`. Community plugins and themes are
   packaged declaratively as fixed-output derivations in `plugins.nix` and

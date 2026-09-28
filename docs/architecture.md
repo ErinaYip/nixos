@@ -58,10 +58,12 @@ workspace logic stays in host configuration files when it depends on local
 outputs, refresh rates, rotation, or external monitor detection.
 
 Noctalia supplies the shell layer through its upstream Home Manager module.
-`home/desktop/noctalia.nix` enables its systemd user service, seeds the default
-wallpaper and wallpaper-derived palette, and contributes Noctalia IPC binds and
-recommended Hyprland rules. Noctalia handles the bar, launcher, clipboard,
-wallpaper, lock screen, session actions, volume, brightness, and screenshots,
+`home/desktop/noctalia/default.nix` enables its systemd user service and
+combines the declarative settings files. `settings.nix` contains the default
+wallpaper and wallpaper-derived palette; `bars.nix` contains the bar layout;
+`hyprland.nix` contributes Noctalia IPC binds and Hyprland rules. Noctalia
+handles the bar, launcher, clipboard, wallpaper, lock screen, session actions,
+volume, brightness, and screenshots,
 while `os/system/laptop.nix` retains the shared lid policy and power-profile
 services.
 

@@ -97,7 +97,7 @@ Small module-local helper functions are preferred when they clarify repeated
 data shapes. Current examples include alias generation in `os/system/nh.nix`
 and `home/cli/nh.nix`, Nix rebuild alias generation in `os/system/nix.nix` and
 `home/cli/zsh/default.nix`, provider generation in `home/cli/codex.nix`,
-Noctalia IPC bind generation in `home/desktop/noctalia.nix`.
+Noctalia IPC bind generation in `home/desktop/noctalia/hyprland.nix`.
 
 ## Module Discovery
 
@@ -116,7 +116,7 @@ It also means modules do not need to repeat their option path:
 
 - `os/system/boot.nix` becomes `erinite.os.system.boot`
 - `home/desktop/vscode.nix` becomes `erinite.home.desktop.vscode`
-- `home/desktop/noctalia.nix` becomes `erinite.home.desktop.noctalia`
+- `home/desktop/noctalia/default.nix` becomes `erinite.home.desktop.noctalia`
 
 ## Writing a New Module
 

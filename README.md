@@ -120,9 +120,10 @@ VSCodium remain launchable but no longer advertise themselves as file or folder
 handlers.
 
 Noctalia is installed through its upstream Home Manager module. The shared
-`home/desktop/noctalia.nix` module starts it as a systemd user service, seeds its
-wallpaper and wallpaper-derived palette from the repository's default wallpaper,
-and adds Hyprland IPC binds and recommended window/layer rules. Stylix remains
+`home/desktop/noctalia/default.nix` module starts it as a systemd user service
+and adds Hyprland IPC binds and window/layer rules. `settings.nix` holds shell,
+widget, lock screen, and wallpaper-derived settings; `bars.nix` holds the bar
+layout. Stylix remains
 responsible for application theming and uses `pkgs.tela-icon-theme`; wallpaper
 selection no longer creates NixOS or Home Manager theme specialisations.
 

@@ -67,9 +67,9 @@ Before changing code, an agent should understand these facts:
   window rules, and portal integration.
 - `home/cli/kitty.nix` disables restoration of Kitty's previous maximized window
   state.
-- `home/desktop/noctalia.nix` enables Noctalia's upstream Home Manager module,
-  starts its systemd user service, seeds wallpaper-based theming, and adds
-  Hyprland IPC binds and layer/window rules.
+- `home/desktop/noctalia/default.nix` enables Noctalia's upstream Home Manager
+  module and combines `settings.nix` with `bars.nix`. `hyprland.nix` owns the
+  Noctalia Hyprland IPC binds and layer/window rules.
 
 ## Command Aliases
 

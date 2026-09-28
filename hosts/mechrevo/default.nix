@@ -87,6 +87,13 @@ in {
         };
 
         desktop = {
+          noctalia = {
+            settings = {
+              shell.avatar_path = "/home/era/Pictures/avatar_withBG.png";
+              bar.main.monitor."eDP-1".enabled = false;
+              bar.sub.monitor."eDP-1".enabled = true;
+            };
+          };
           obsidian = {
             enable = true;
             vaults.notes.target = "Documents/notes";
