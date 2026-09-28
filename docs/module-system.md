@@ -78,12 +78,9 @@ Hyprland settings are currently structured for Lua output instead of traditional
 Hyprland conf strings. Lists such as binds, rules, environment variables,
 curves, animations, monitors, and workspace rules use attribute sets with
 arguments where needed. Raw Lua snippets use `lib.generators.mkLuaInline`.
-Niri settings use Home Manager's native KDL schema under
-`wayland.windowManager.niri.settings`. Leaf flags are `{}`, repeated nodes use
-`_children`, node arguments use `_args`, and named KDL properties use `_props`.
-Keybinds are `binds` attributes keyed by shortcut names, with direct action
-nodes such as `spawn` or `focus-column-left`; rules are repeated
-`window-rule`/`layer-rule` nodes with `match._props` entries.
+Noctalia integration follows the same representation for IPC binds and
+window/layer rules while its own settings are emitted through the upstream
+`programs.noctalia` Home Manager module.
 
 ## Common Helpers
 
@@ -100,8 +97,7 @@ Small module-local helper functions are preferred when they clarify repeated
 data shapes. Current examples include alias generation in `os/system/nh.nix`
 and `home/cli/nh.nix`, Nix rebuild alias generation in `os/system/nix.nix` and
 `home/cli/zsh/default.nix`, provider generation in `home/cli/codex.nix`,
-Hyprland bind generation in `home/desktop/dms/hyprland.nix`, and Niri bind and
-rule generation in `home/desktop/niri/`.
+Noctalia IPC bind generation in `home/desktop/noctalia/hyprland.nix`.
 
 ## Module Discovery
 
@@ -120,7 +116,7 @@ It also means modules do not need to repeat their option path:
 
 - `os/system/boot.nix` becomes `erinite.os.system.boot`
 - `home/desktop/vscode.nix` becomes `erinite.home.desktop.vscode`
-- `home/desktop/dms/default.nix` becomes `erinite.home.desktop.dms`
+- `home/desktop/noctalia/default.nix` becomes `erinite.home.desktop.noctalia`
 
 ## Writing a New Module
 

@@ -23,7 +23,7 @@
   languages = {
     enableFormat = true;
     enableTreesitter = true;
-    enableExtraDiagnostics = true;
+    enableExtraDiagnostics = false;
     enableDAP = true;
 
     nix = {
@@ -31,6 +31,9 @@
       lsp.servers = ["nixd"];
     };
     markdown = enabled;
+    toml = enabled;
+    yaml = enabled;
+    json = enabled;
     python = {
       enable = true;
       format.type = ["ruff-fix" "ruff"];

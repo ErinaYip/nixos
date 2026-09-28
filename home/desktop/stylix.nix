@@ -37,7 +37,7 @@ in
 
         targets = {
           # nvf = disabled;
-          dank-material-shell = disabled;
+          noctalia = disabled;
           firefox = {
             profileNames = ["default"];
             colorTheme.enable = true;

@@ -55,25 +55,17 @@ Hyprland is an important special case in the current tree. The shared
 integration, and Lua config mode. Common binds, rules, animations and base
 settings are composed under `home/desktop/hyprland/`. Host-specific monitor and
 workspace logic stays in host configuration files when it depends on local
-outputs, refresh rates, rotation, or external monitor detection. DMS owns the
-session idle, lock, suspend, and power menu behavior across both Hyprland and
-Niri, while `os/system/laptop.nix` owns the shared lid policy and power profile
-daemon.
+outputs, refresh rates, rotation, or external monitor detection.
 
-Niri is split the same way. The shared `os.desktop.niri` module enables
-nixpkgs' Niri NixOS module for the system session. Home-side configuration stays
-under `home/desktop/niri/` through Home Manager's native KDL settings.
-Standalone `nh home` uses the same generated settings as the NixOS-integrated
-configuration. Its keybinds use
-`wayland.windowManager.niri.settings` with Home Manager's native KDL
-representation. Repeated nodes use `_children`, node arguments use `_args`,
-named properties use `_props`, and keybind actions are direct child nodes such
-as `spawn` or `focus-column-left`. Window and layer rules are repeated
-`window-rule` and `layer-rule` nodes with `match._props` entries. These files
-use Niri-native settings instead of Hyprland Lua dispatcher strings or
-Hyprland rule fields. When DMS is enabled, `home/desktop/dms/niri.nix`
-contributes its IPC controls, including lock and power menu binds, as Niri
-binds.
+Noctalia supplies the shell layer through its upstream Home Manager module.
+`home/desktop/noctalia/default.nix` enables its systemd user service and
+combines the declarative settings files. `settings.nix` contains the default
+wallpaper and wallpaper-derived palette; `bars.nix` contains the bar layout;
+`hyprland.nix` contributes Noctalia IPC binds and Hyprland rules. Noctalia
+handles the bar, launcher, clipboard, wallpaper, lock screen, session actions,
+volume, brightness, and screenshots,
+while `os/system/laptop.nix` retains the shared lid policy and power-profile
+services.
 
 ## Design Pattern
 
@@ -139,8 +131,7 @@ and forces the Wayland Ozone backend by injecting `--ozone-platform=wayland`
 through the package's `commandLineArgs`.
 
 The `home.cli.kitty` module disables Kitty's remembered window size and
-maximized state. This keeps Kitty from restoring a maximized Wayland window
-when switching between Hyprland and Niri sessions.
+maximized state so new Hyprland windows do not inherit stale maximized state.
 
 ## Current Desktop Flow
 
@@ -148,11 +139,11 @@ The current graphical session is centered on:
 
 - Hyprland from the flake input, with UWSM enabled and Home Manager using
   `configType = "lua"`.
-- DankMaterialShell from the `master` flake input as the shell layer, with
-  Hyprland window/layer rules and IPC keybinds.
-- Theme specialisations switch the NixOS system profile from the DMS wallpaper
-  watcher. Stylix uses the default `pkgs.tela-icon-theme` package for its icon
-  theme.
+- Noctalia Shell from its flake input, managed by Home Manager and a systemd
+  user service, with Hyprland window/layer rules and IPC keybinds.
+- Noctalia derives its shell palette from the configured default wallpaper.
+  Stylix independently themes applications with `pkgs.tela-icon-theme`; there
+  are no wallpaper-driven NixOS or Home Manager specialisations.
 - Fcitx5 + Rime for input method packages and user configuration. The
   Fcitx5/Rime package set provides `fcitx5-remote`, and the Neovim module closes
   Fcitx5 outside insert-oriented modes before restoring it on insert entry when
@@ -168,8 +159,9 @@ The current graphical session is centered on:
 They enable the baseline desktop, CLI, and system stack used by current hosts.
 The OS preset owns system services such as Nix, nh, config-source, networking,
 fonts, sound, users, keyd, Ly, Hyprland system integration, and LocalSend. The
-Home preset owns user-session applications such as browsers, DMS, Hyprland
-config, Stylix, Zsh, nh aliases, Codex, nvim, yazi, kitty, and other CLI tools.
+Home preset owns user-session applications such as browsers, Noctalia,
+Hyprland config, Stylix, Zsh, nh aliases, Codex, nvim, yazi, kitty, and other
+CLI tools.
 
 Hosts still add their own hardware and behavioral overrides on top of that
 preset.

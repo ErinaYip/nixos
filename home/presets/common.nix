@@ -9,9 +9,8 @@ with eriniteLib;
         };
 
         desktop = {
-          dms = enabled;
           hyprland = enabled;
-          # niri = enabled;
+          noctalia = enabled;
           cursor = enabled;
           fcitx5 = enabled;
           fuzzel = enabled;
@@ -20,7 +19,6 @@ with eriniteLib;
           qq = enabled;
           # qt = enabled;
           stylix = enabled;
-          # theme-specialisations = enabled;
           vscode = enabled;
           wechat = enabled;
         };
@@ -29,7 +27,7 @@ with eriniteLib;
           nemo = enabled;
           xviewer = enabled;
           celluloid = enabled;
-          wemeet = enabled;
+          # wemeet = enabled;
         };
 
         cli = {

@@ -30,8 +30,8 @@ Detailed project documentation lives in [`docs/`](./docs/README.md).
 
 ## Hosts
 
-- `mechrevo`: main machine, NVIDIA PRIME, Podman, Wine, gaming, dynamic dual
-  monitor setup for Hyprland and Niri.
+- `mechrevo`: main machine, NVIDIA PRIME, Podman, Wine, gaming, and a dynamic
+  dual-monitor Hyprland setup.
 - `nec`: laptop, power management, Windows boot entry, simple Hyprland monitor
   setup.
 
@@ -59,11 +59,9 @@ Manager configuration.
 - Automatic host discovery from `hosts/<name>/default.nix`.
 - Home Manager integration.
 - Modular options under `erinite.*`.
-- Hyprland and Niri desktop integration with DankMaterialShell.
-- Niri configuration through `sodiboo/niri-flake` with native Home Manager
-  settings and OS-side Ly session integration.
-- DMS owns idle detection, lock, suspend, and power menu flow across both
-  compositors.
+- Hyprland desktop integration with Noctalia Shell.
+- Noctalia provides the bar, launcher, clipboard, wallpaper, lock screen,
+  session menu, media controls, brightness controls, and screenshots.
 - Chinese input with Fcitx5 and Rime.
 - Common CLI tools like zsh, kitty, nvim, yazi, bat, eza and starship. Kitty
   does not restore a previously maximized window state.
@@ -87,8 +85,7 @@ Manager configuration.
   bleed-through issues.
 - Declarative Obsidian setup under `home/desktop/obsidian/`, including
   community plugins pinned as fixed-output derivations with their settings.
-- Optional modules for NVIDIA, Podman, VirtualBox, Wine, Steam, streaming, OBS
-  and more.
+- Optional modules for NVIDIA, Podman, VirtualBox, Wine, Steam, OBS, and more.
 - USB auto-mounting: the system-wide udisks2 daemon (`os/system/udisks.nix`)
   backs the user-level udiskie agent, which automounts drives and opens them in
   Nemo.
@@ -98,14 +95,14 @@ Manager configuration.
 
 | Part           | Choice                 |
 | -------------- | ---------------------- |
-| Window manager | Hyprland / Niri        |
+| Window manager | Hyprland               |
 | Shell          | zsh                    |
 | Terminal       | kitty                  |
 | Editor         | Nixvim with erina-vim  |
 | Prompt         | starship               |
-| App launcher   | fuzzel                 |
-| Bar / shell    | DankMaterialShell      |
-| Theming        | GTK, Qt, Bibata cursor |
+| App launcher   | Noctalia               |
+| Bar / shell    | Noctalia Shell         |
+| Theming        | Stylix, Noctalia       |
 | Input method   | Fcitx5 + Rime          |
 
 Hyprland is generated through Home Manager's Lua config mode. Shared defaults
@@ -122,19 +119,13 @@ sandbox. Text files default to Neovim and folders default to Nemo; Code and
 VSCodium remain launchable but no longer advertise themselves as file or folder
 handlers.
 
-Niri settings are generated through Home Manager's native KDL representation.
-Shared Niri binds and rules live in `home/desktop/niri/` using direct action
-nodes, `_props` for named properties, and `_children`/`_args` for repeated or
-parameterized nodes. The OS-side Niri module enables nixpkgs' Niri NixOS module
-for the system session. DMS IPC controls are
-available through Niri keybindings, and DMS owns idle, lock, suspend, and power
-menu behavior for both Hyprland and Niri. On `mechrevo`, Niri matches the laptop
-and external displays by their full descriptions, assigns workspaces 1 and 2 to
-them, and rotates the laptop display at session startup when the external
-display is connected.
-
-Theme specialisations are driven by wallpapers. Stylix uses the default
-`pkgs.tela-icon-theme` package for the icon theme.
+Noctalia is installed through its upstream Home Manager module. The shared
+`home/desktop/noctalia/default.nix` module starts it as a systemd user service
+and adds Hyprland IPC binds and window/layer rules. `settings.nix` holds shell,
+widget, lock screen, and wallpaper-derived settings; `bars.nix` holds the bar
+layout. Stylix remains
+responsible for application theming and uses `pkgs.tela-icon-theme`; wallpaper
+selection no longer creates NixOS or Home Manager theme specialisations.
 
 ## Screenshots
 

@@ -5,7 +5,6 @@ with eriniteLib;
       erinite.os = {
         desktop = {
           stylix = enabled;
-          theme-specialisations = enabled;
         };
       };
     };

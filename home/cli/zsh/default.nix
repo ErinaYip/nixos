@@ -39,7 +39,6 @@ in
             ${builtins.readFile ./init.zsh}
             ${builtins.readFile ./fzf-settings.zsh}
             ${builtins.readFile ./fzf.zsh}
-            ${builtins.readFile ./niri.zsh}
           '';
         };
       };

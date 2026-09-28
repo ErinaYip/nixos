@@ -44,10 +44,6 @@ in {
             };
           };
         };
-
-        desktop = {
-          theme-specialisations = enabled;
-        };
       };
     }
   ];

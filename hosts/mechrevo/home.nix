@@ -11,47 +11,6 @@ in {
     materialgram
   ];
 
-  wayland.windowManager.niri.settings = {
-    _children = [
-      {
-        output = {
-          _args = [eDP];
-          mode._args = ["2560x1600@180.000"];
-          position._props = {
-            x = 1920;
-            y = 0;
-          };
-          scale = 1.6;
-        };
-      }
-      {
-        output = {
-          _args = [DP];
-          mode._args = ["1920x1080@260.000"];
-          position._props = {
-            x = 0;
-            y = 0;
-          };
-          scale = 1;
-        };
-      }
-
-      {
-        spawn-sh-at-startup._args = [
-          ''
-            outputs=$(niri msg outputs) || exit 0
-
-            eDP_output=$(printf '%s\n' "$outputs" | grep -m1 "${eDP}" | sed 's/.*(\(.*\)).*/\1/')
-              [ -z "$eDP_output" ] && exit 0
-
-            printf '%s\n' "$outputs" | grep -q "${DP}" && rot="90" || rot="normal"
-            niri msg output "$eDP_output" transform "$rot"
-          ''
-        ];
-      }
-    ];
-  };
-
   wayland.windowManager.hyprland.extraConfig = ''
     local eDP = "${eDP}"
     local DP  = "${DP}"
