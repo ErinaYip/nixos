@@ -86,6 +86,10 @@ in {
           };
         };
 
+        media = {
+          wemeet = enabled;
+        };
+
         desktop = {
           noctalia = {
             settings = {
