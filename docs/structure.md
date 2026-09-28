@@ -106,9 +106,10 @@ Current templates include generated themes for btop, fuzzel, yazi,
 PrismLauncher, cava, and Hyprland Lua colors. Browser profile assets also live
 here, including Chromium bookmarks and Firefox extension/profile settings.
 
-`home/browsers/firefox.nix` also installs the `zh-CN` language pack through
+`home/browsers/firefox/default.nix` installs the `zh-CN` language pack through
 `programs.firefox.languagePacks` and pins `intl.locale.requested` to
-`zh-CN,en-US`, keeping the Chinese UI across updates.
+`zh-CN,en-US`, keeping the Chinese UI across updates. Its extension packages
+are supplied by the sibling `extensions.nix` module.
 
 ## Important Files
 
@@ -162,9 +163,10 @@ consume the processed result from `config.erinite.wallpapers.wallpapers`.
 
 Generated hardware configuration.
 
-The flake applies the NUR overlay to both standalone Home Manager's shared
-`pkgs` import and each NixOS host package set. Browser modules can therefore
-use NUR packages from integrated or standalone Home Manager evaluations.
+Firefox extension packages are defined in
+`home/browsers/firefox/extensions.nix`. That module uses nixpkgs'
+`pkgs.fetchFirefoxAddon` with fixed Mozilla Add-ons URLs, extension IDs, and
+hashes, so the flake does not need a direct NUR input.
 
 ## Where To Look For Changes
 

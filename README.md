@@ -168,8 +168,8 @@ Notes:
 - `nh home switch` evaluates `home/default.nix` directly, plus the selected
   host's `home.nix`.
 - Standalone Home Manager uses the shared flake `pkgs` import, including its
-  unfree package allowance and NUR overlay. NixOS-integrated Home Manager uses
-  the same NUR overlay through the host package set.
+  unfree package allowance. Firefox extensions are fetched directly from
+  Mozilla Add-ons through `pkgs.fetchFirefoxAddon`.
 - Home targets are exposed as `era@mechrevo` and `era@nec`.
 
 Manual switch:
@@ -294,7 +294,9 @@ proxy settings.
 The Firefox module installs the `zh-CN` language pack through
 `programs.firefox.languagePacks` and pins `intl.locale.requested` to
 `zh-CN,en-US`, so the browser keeps its Chinese UI across system updates
-instead of falling back to English.
+instead of falling back to English. Its four declaratively installed
+extensions are defined in `home/browsers/firefox/extensions.nix` and fetched
+from Mozilla Add-ons with fixed hashes.
 
 The `mechrevo` host enables sched_ext with the `scx_lavd` scheduler through the
 shared kernel module. `scx_rusty` is not selected because it failed during

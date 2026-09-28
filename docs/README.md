@@ -53,6 +53,8 @@ Before changing code, an agent should understand these facts:
   and `home/`; `mkModule` derives option paths from those file paths.
 - `flake.nix` imports the same host `homeModules` into both
   `home-manager.users.<username>.imports` and standalone `homeConfigurations`.
+- Firefox extensions are fetched by `home/browsers/firefox/extensions.nix`
+  through nixpkgs' `fetchFirefoxAddon`; the root flake has no direct NUR input.
 - `hosts/<name>/default.nix` returns `{ osModules, homeModules }`.
 - `os/presets/common.nix` enables baseline system modules, including
   `os.system.config-source`, `os.system.nh`, and `os.system.nix`.
