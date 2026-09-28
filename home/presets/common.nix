@@ -19,6 +19,7 @@ with eriniteLib;
           qq = enabled;
           # qt = enabled;
           stylix = enabled;
+          theme-specialisations = enabled;
           vscode = enabled;
           wechat = enabled;
         };
