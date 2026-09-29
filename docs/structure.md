@@ -104,12 +104,15 @@ Repository assets and templates used by modules.
 
 Current templates include generated themes for btop, fuzzel, yazi,
 PrismLauncher, cava, and Hyprland Lua colors. Browser profile assets also live
-here, including Chromium bookmarks and Firefox extension/profile settings.
+here, including Chromium bookmarks. Firefox extension policies are kept in
+`home/browsers/firefox/extensions.nix`.
 
 `home/browsers/firefox/default.nix` installs the `zh-CN` language pack through
 `programs.firefox.languagePacks` and pins `intl.locale.requested` to
-`zh-CN,en-US`, keeping the Chinese UI across updates. Its extension packages
-are supplied by the sibling `extensions.nix` module.
+`zh-CN,en-US`, keeping the Chinese UI across updates. Its extensions and their
+settings are supplied by the sibling `extensions.nix` module. Search engines are
+configured separately in `search.nix`, including MyNixOS (`@mn`) and GitHub
+code search (`@gh`).
 
 ## Important Files
 
@@ -163,10 +166,9 @@ consume the processed result from `config.erinite.wallpapers.wallpapers`.
 
 Generated hardware configuration.
 
-Firefox extension packages are defined in
-`home/browsers/firefox/extensions.nix`. That module uses nixpkgs'
-`pkgs.fetchFirefoxAddon` with fixed Mozilla Add-ons URLs, extension IDs, and
-hashes, so the flake does not need a direct NUR input.
+Firefox extensions and their settings are defined in
+`home/browsers/firefox/extensions.nix` using Mozilla Add-ons `latest.xpi` URLs,
+Firefox `ExtensionSettings`, and `3rdparty.Extensions` policies.
 
 ## Where To Look For Changes
 

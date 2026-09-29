@@ -295,8 +295,10 @@ The Firefox module installs the `zh-CN` language pack through
 `programs.firefox.languagePacks` and pins `intl.locale.requested` to
 `zh-CN,en-US`, so the browser keeps its Chinese UI across system updates
 instead of falling back to English. Its four declaratively installed
-extensions are defined in `home/browsers/firefox/extensions.nix` and fetched
-from Mozilla Add-ons with fixed hashes.
+extensions and their settings are defined together in
+`home/browsers/firefox/extensions.nix` using Firefox policies. Search engines
+are maintained in `home/browsers/firefox/search.nix`, with MyNixOS (`@mn`) and
+GitHub code search (`@gh`) available as aliases.
 
 The `mechrevo` host enables sched_ext with the `scx_lavd` scheduler through the
 shared kernel module. `scx_rusty` is not selected because it failed during
