@@ -13,6 +13,8 @@
       "launcher"
       "group:performance"
       "group:network"
+      "network"
+      "bluetooth"
       "active_window"
     ];
 
@@ -27,8 +29,6 @@
       "tray"
       "notifications"
       "clipboard"
-      "network"
-      "bluetooth"
       "volume"
       "brightness"
       "battery"
