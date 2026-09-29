@@ -34,7 +34,10 @@ with eriniteLib;
                   right = 0;
                 };
               };
-              display.separator = " ";
+              display = {
+                separator = " ";
+                disableLinewrap = true;
+              };
               modules = [
                 {
                   key = "╭───────────────╮";
