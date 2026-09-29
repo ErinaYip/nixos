@@ -1,40 +1,32 @@
-{pkgs}: let
-  fetchAddon = {
-    name,
-    addonId,
-    url,
-    hash,
-  }:
-    pkgs.fetchFirefoxAddon {
-      inherit name url hash;
-      fixedExtid = addonId;
-    };
+let
+  moz = name: "https://addons.mozilla.org/firefox/downloads/latest/${name}/latest.xpi";
+
+  mkExtension = name: {
+    install_url = moz name;
+    installation_mode = "force_installed";
+    updates_disabled = true;
+  };
 in {
-  zeroomega = fetchAddon {
-    name = "zeroomega-3.5.2";
-    addonId = "suziwen1@gmail.com";
-    url = "https://addons.mozilla.org/firefox/downloads/file/5017630/zeroomega-3.5.2.xpi";
-    hash = "sha256-plCYt2vK61MrpqrxA8ObPeCg2aT32IVeO6h/tAUuAe8=";
+  ExtensionSettings = {
+    "*".installation_mode = "blocked";
+
+    "suziwen1@gmail.com" = mkExtension "zeroomega";
+    "addon@celeus.cn" = mkExtension "bewlycat";
+    "uBlock0@raymondhill.net" = mkExtension "ublock-origin";
+    "authenticator@mymindstorm" = mkExtension "authenticator";
+    "{8e515334-52b5-4cc5-b4e8-675d50af677d}" = mkExtension "scriptcat";
+    "addon@darkreader.org" = mkExtension "darkreader";
   };
 
-  ublock-origin = fetchAddon {
-    name = "ublock-origin-1.75.0";
-    addonId = "uBlock0@raymondhill.net";
-    url = "https://addons.mozilla.org/firefox/downloads/file/5034826/ublock_origin-1.75.0.xpi";
-    hash = "sha256-W3RBWGBFY3BkS9gPFhJehlsObDVrtd/PuEBpln6qUoc=";
-  };
+  "3rdparty".Extensions = {
+    "addon@darkreader.org".settings = {
+      enabled = true;
+      enabledByDefault = true;
 
-  auth-helper = fetchAddon {
-    name = "auth-helper-8.0.2";
-    addonId = "authenticator@mymindstorm";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4353166/auth_helper-8.0.2.xpi";
-    hash = "sha256-26uRlHI330yFl/6hsA3OBc9/rqJ3Ij8sUQkPkUiBKmI=";
-  };
-
-  darkreader = fetchAddon {
-    name = "darkreader-4.9.133";
-    addonId = "addon@darkreader.org";
-    url = "https://addons.mozilla.org/firefox/downloads/file/5055786/darkreader-4.9.133.xpi";
-    hash = "sha256-6wbFCW12FhbH8dlUwRUkykv/T+cikETcH84oiowIU6s=";
+      detectDarkTheme = true;
+      enableContextMenus = false;
+      enableForPDF = true;
+      enableForProtectedPages = true;
+    };
   };
 }
