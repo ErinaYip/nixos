@@ -36,23 +36,22 @@ in
         max-jobs = "auto";
         cores = 0;
 
-        experimental-features = ["nix-command" "flakes" "configurable-impure-env"];
+        experimental-features = ["nix-command" "flakes"];
 
         auto-optimise-store = true;
-        impure-env = [
-          "GOPROXY=https://goproxy.cn,direct"
-        ];
         substituters = [
           "https://mirrors.ustc.edu.cn/nix-channels/store"
           "https://mirror.nju.edu.cn/nix-channels/store"
           "https://mirrors.cernet.edu.cn/nix-channels/store"
           "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
           "https://nix-community.cachix.org"
+          "https://noctalia.cachix.org"
           "https://cache.nixos.org"
         ];
 
         trusted-users = [default.username "root" "@wheel"];
         trusted-public-keys = [
+          "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
           "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         ];
       };
