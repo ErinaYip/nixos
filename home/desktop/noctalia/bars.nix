@@ -13,6 +13,8 @@
       "launcher"
       "group:performance"
       "group:network"
+      "network"
+      "bluetooth"
       "active_window"
     ];
 
@@ -27,8 +29,6 @@
       "tray"
       "notifications"
       "clipboard"
-      "network"
-      "bluetooth"
       "volume"
       "brightness"
       "battery"
@@ -89,7 +89,7 @@
 
   widget = {
     clock = {
-      format = "{:%H:%M  %m月%d日}";
+      format = "{:%H:%M :%a :%m:%d}";
       actions.left = "panel-toggle control-center home";
       anchor = true;
     };

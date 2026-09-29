@@ -44,6 +44,20 @@ in {
             };
           };
         };
+        desktop = {
+          noctalia = {
+            settings = {
+              bar.main.position = "left";
+
+              widget = {
+                ram.show_value = false;
+                cpu.show_value = false;
+                network_tx.show_value = false;
+                network_rx.show_value = false;
+              };
+            };
+          };
+        };
       };
     }
   ];

@@ -12,7 +12,7 @@ eriniteLib.mkModule args {
         LC_NUMERIC = "zh_CN.UTF-8";
         LC_PAPER = "zh_CN.UTF-8";
         LC_TELEPHONE = "zh_CN.UTF-8";
-        LC_TIME = "zh_CN.UTF-8";
+        LC_TIME = "en_US.UTF-8";
       };
       supportedLocales = ["zh_CN.UTF-8/UTF-8" "en_US.UTF-8/UTF-8"];
     };
