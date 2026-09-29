@@ -64,7 +64,7 @@ with eriniteLib;
                   type = "kernel";
                 }
                 {
-                  key = "│ {#35}󰏖 generations {#keys}│";
+                  key = "│ {#35}󰏖 gens        {#keys}│";
                   type = "command";
                   text = "readlink /nix/var/nix/profiles/system | cut -d- -f2";
                 }
@@ -89,6 +89,11 @@ with eriniteLib;
                   type = "wmtheme";
                 }
                 {
+                  key = "│ {#34}󰓸 specs       {#keys}│";
+                  type = "command";
+                  text = "cat /etc/specialisation";
+                }
+                {
                   key = "│ {#35}󰇄 theme       {#keys}│";
                   type = "theme";
                 }
@@ -105,7 +110,7 @@ with eriniteLib;
                   type = "font";
                 }
                 {
-                  key = "│ {#34} Termfont    {#keys}│";
+                  key = "│ {#34} termfont    {#keys}│";
                   type = "terminalfont";
                 }
                 {
