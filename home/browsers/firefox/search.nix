@@ -43,5 +43,9 @@ in {
       template = "https://github.com/search?q={searchTerms}&type=code";
       iconUrl = "https://github.com/favicon.ico";
     };
+
+    perplexity.metaData.hidden = true;
+    baidu.metaData.hidden = true;
+    wikipedia-zh-CN.metaData.hidden = true;
   };
 }

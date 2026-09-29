@@ -8,8 +8,6 @@ let
   };
 in {
   ExtensionSettings = {
-    "*".installation_mode = "blocked";
-
     "suziwen1@gmail.com" = mkExtension "zeroomega";
     "addon@celeus.cn" = mkExtension "bewlycat";
     "uBlock0@raymondhill.net" = mkExtension "ublock-origin";
