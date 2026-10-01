@@ -90,6 +90,9 @@ Manager configuration.
   backs the user-level udiskie agent, which automounts drives and opens them in
   Nemo.
 - `mechrevo` enables sched_ext through `scx_lavd`.
+- `mechrevo` enables the kernel Zswap compressed swap cache through
+  `os/system/zswap.nix`, keeping compressed pages in RAM ahead of the
+  `/var/lib/swapfile` backing store.
 
 ## Desktop Setup
 

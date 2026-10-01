@@ -61,6 +61,11 @@ Recently added system modules:
   `wheel`-authorized systemd activation service.
 - `os/system/laptop.nix` owns shared laptop power policy, including UPower,
   power-profiles-daemon, and logind lid handling.
+- `os/system/zswap.nix` enables the kernel Zswap compressed swap cache for the
+  `/var/lib/swapfile` backing store. It uses the `zstd` compressor, the
+  `zsmalloc` zpool, and a 50% pool cap so compressed pages stay in RAM instead
+  of being written to the NVMe swapfile. It is mutually exclusive with the
+  in-kernel `zramSwap` module.
 - `os/system/config-source.nix` links the flake source into
   `/run/current-system/configuration-source` and adds the `nixos-source` shell
   alias.
