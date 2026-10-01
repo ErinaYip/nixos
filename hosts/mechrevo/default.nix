@@ -18,6 +18,7 @@ in {
           boot.engine = "grub";
           kernel.sched_ext = true;
           laptop = enabled;
+          zswap = enabled;
           virtualisation = {
             enable = true;
             podman = true;
@@ -37,6 +38,7 @@ in {
           mihomo = {
             enable = true;
             configFile = "/home/era/.config/mihomo/iKuuu_V2.yaml";
+            # configFile = "/home/era/.config/mihomo/LA_Reality.yaml";
           };
         };
 
