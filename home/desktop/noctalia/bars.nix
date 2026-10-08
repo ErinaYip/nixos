@@ -14,13 +14,12 @@
       "group:performance"
       "group:network"
       "network"
-      "bluetooth"
-      "active_window"
     ];
 
     center = [
       "taskbar"
       "clock"
+      "active_window"
       "media"
       "audio_visualizer"
     ];
@@ -29,6 +28,7 @@
       "tray"
       "notifications"
       "clipboard"
+      "bluetooth"
       "volume"
       "brightness"
       "battery"
