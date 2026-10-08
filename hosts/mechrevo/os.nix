@@ -40,5 +40,7 @@
     libreoffice
 
     distrobox
+
+    ollama-cuda
   ];
 }

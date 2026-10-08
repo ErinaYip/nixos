@@ -22,11 +22,8 @@
     "gpt-5.6-sol"
     "gpt-5.6-terra"
 
-    "grok-4.6"
-    "grok-4.7"
-
-    "deepseek-v4-flash"
-    "deepseek-v4-pro"
+    "deepseek-v4.1-flash"
+    "deepseek-v4.1-pro"
   ]);
 
   ctf-skills = pkgs.fetchFromGitHub {
@@ -51,6 +48,26 @@ in
           models = lib.mkMerge [
             (mkOpenAIProvider "hua" "https://huablog.org/v1")
             (mkOpenAIProvider "router" "https://anyrouter.top/v1")
+            {
+              providers.ollama = {
+                baseUrl = "http://127.0.0.1:11434/v1";
+                api = "openai-completions";
+                apiKey = "ollama";
+                compat = {
+                  supportsDeveloperRole = false;
+                  supportsReasoningEffort = false;
+                };
+                models = [
+                  {id = "qwen3.5:9b";}
+                  {
+                    id = "qwen3.5:9b-agent";
+                    name = "Qwen3.5 9B Agent";
+                    contextWindow = 32768;
+                    maxTokens = 8192;
+                  }
+                ];
+              };
+            }
           ];
         };
       };
