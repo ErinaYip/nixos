@@ -65,8 +65,10 @@ wallpaper and wallpaper-derived palette; `bars.nix` contains the bar layout;
 handles the bar, launcher, clipboard, wallpaper, lock screen, session actions,
 volume, brightness, and screenshots. `home/desktop/theme-specialisations.nix`
 uses the `wallpaper_changed` hook to map the wallpaper name to a safe systemd
-instance token and request the matching NixOS wallpaper specialisation;
-`os/desktop/theme-specialisations.nix` defines those specialisations and
+instance token and request the matching NixOS wallpaper specialisation. It
+also declares matching Home Manager `specialisation.<name>.configuration`
+entries, including the persisted marker read by standalone `nh home switch`;
+`os/desktop/theme-specialisations.nix` defines the system specialisations and
 updates system and Home Manager Stylix settings. The specialisation activation
 service is authorized for members of the `wheel` group, while
 `os/system/laptop.nix` retains the shared lid policy and power-profile services.

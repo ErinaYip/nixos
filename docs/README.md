@@ -76,7 +76,10 @@ Before changing code, an agent should understand these facts:
 - The Noctalia `wallpaper_changed` hook in
   `home/desktop/theme-specialisations.nix` maps a safe systemd instance token
   to the matching NixOS wallpaper specialisation, defined in
-  `os/desktop/theme-specialisations.nix`.
+  `os/desktop/theme-specialisations.nix`. The same module declares Home
+  Manager `specialisation.<name>.configuration` entries, so standalone `nh
+  home switch` can activate the persisted specialisation from
+  `~/.local/share/home-manager/specialisation`.
 
 ## Command Aliases
 

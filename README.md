@@ -163,6 +163,11 @@ Home-only switch:
 nh home switch .
 ```
 
+Wallpaper themes are declared as both NixOS and Home Manager
+specialisations. Home Manager writes the active name to
+`~/.local/share/home-manager/specialisation`, which `nh home switch` uses to
+select the matching activation package.
+
 Notes:
 
 - `nh` commands are preferred than `sudo nixos-rebuild` commands because they

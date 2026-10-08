@@ -36,5 +36,13 @@ in
       };
     in {
       programs.noctalia.settings.hooks.wallpaper_changed = lib.getExe wallpaperSwitch;
+
+      specialisation =
+        lib.mapAttrs (name: wallpaper: {
+          configuration = {
+            xdg.dataFile."home-manager/specialisation".text = name;
+          };
+        })
+        wallpapers;
     };
   }
