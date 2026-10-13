@@ -5,6 +5,7 @@
     integrations.breadcrumbs = {
       nvim-navic.enable = true;
       navbuddy.enable = true;
+      location = "winbar";
     };
 
     setupOpts = {
