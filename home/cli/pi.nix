@@ -21,6 +21,13 @@
   mkOpenAIProvider = name: baseUrl: (mkProvider name "openai-completions" baseUrl [
     "gpt-5.6-sol"
     "gpt-5.6-terra"
+    "gpt-6-luna"
+    "gpt-6-sol"
+    "gpt-6-astra"
+    "gpt-6.1-sol"
+
+    "grok-4.6"
+    "grok-4.7"
 
     "deepseek-v4.1-flash"
     "deepseek-v4.1-pro"
