@@ -14,6 +14,7 @@
       "group:performance"
       "group:network"
       "network"
+      "audio_visualizer"
     ];
 
     center = [
@@ -21,7 +22,6 @@
       "clock"
       "active_window"
       "media"
-      "audio_visualizer"
     ];
 
     end = [
