@@ -19,6 +19,9 @@
   };
 
   mkOpenAIProvider = name: baseUrl: (mkProvider name "openai-completions" baseUrl [
+    "deepseek-v4.1-flash"
+    "deepseek-v4-pro"
+
     "gpt-5.6-sol"
     "gpt-5.6-terra"
     "gpt-6-luna"
@@ -28,9 +31,6 @@
 
     "grok-4.6"
     "grok-4.7"
-
-    "deepseek-v4.1-flash"
-    "deepseek-v4.1-pro"
   ]);
 
   ctf-skills = pkgs.fetchFromGitHub {
