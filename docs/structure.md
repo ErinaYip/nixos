@@ -101,7 +101,8 @@ Current hosts:
 
 - `mechrevo` Main machine. Uses NVIDIA PRIME, Podman, VirtualBox, Wine, gaming
   modules, OBS Studio, and dynamic Hyprland monitor/workspace logic for internal
-  and external displays.
+  and external displays. It also sets `environment.etc.hosts.enable = false`, so
+  `/etc/hosts` is not managed by the system configuration.
 - `nec` Laptop. Uses laptop-specific modules, a simple scaled Hyprland monitor
   setup, and has Codex CLI enabled.
 

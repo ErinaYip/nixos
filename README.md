@@ -90,6 +90,9 @@ Manager configuration.
   backs the user-level udiskie agent, which automounts drives and opens them in
   Nemo.
 - `mechrevo` enables sched_ext through `scx_lavd`.
+- `mechrevo` opts out of the NixOS-managed `/etc/hosts` through
+  `environment.etc.hosts.enable = false`, leaving the file to be managed
+  outside the flake.
 - `mechrevo` enables the kernel Zswap compressed swap cache through
   `os/system/zswap.nix`, keeping compressed pages in RAM ahead of the
   `/var/lib/swapfile` backing store.
