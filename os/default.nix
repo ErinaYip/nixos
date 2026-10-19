@@ -19,6 +19,7 @@
 
     extraSpecialArgs = {
       inherit inputs pkgs hostName default eriniteLib;
+      isNixosHome = true;
     };
   };
 }

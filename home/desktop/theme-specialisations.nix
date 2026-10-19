@@ -3,6 +3,7 @@
   pkgs,
   config,
   eriniteLib,
+  isNixosHome ? false,
   ...
 } @ args: let
   inherit (eriniteLib) mkModule;
@@ -34,15 +35,21 @@ in
           systemctl start --no-block "erinite-theme-switch@$token.service"
         '';
       };
-    in {
-      programs.noctalia.settings.hooks.wallpaper_changed = lib.getExe wallpaperSwitch;
-
-      specialisation =
-        lib.mapAttrs (name: wallpaper: {
-          configuration = {
-            xdg.dataFile."home-manager/specialisation".text = name;
-          };
-        })
-        wallpapers;
-    };
+    in
+      {
+        programs.noctalia.settings.hooks.wallpaper_changed = lib.getExe wallpaperSwitch;
+      }
+      // lib.optionalAttrs (!isNixosHome) {
+        specialisation =
+          lib.mapAttrs (name: wallpaper: {
+            configuration = {
+              xdg.dataFile."home-manager/specialisation".text = name;
+              erinite.wallpapers.default = lib.mkForce name;
+              stylix = {
+                inherit (wallpaper) base16Scheme image polarity;
+              };
+            };
+          })
+          wallpapers;
+      };
   }
