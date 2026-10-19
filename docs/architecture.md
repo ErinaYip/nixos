@@ -60,7 +60,8 @@ outputs, refresh rates, rotation, or external monitor detection.
 Noctalia supplies the shell layer through its upstream Home Manager module.
 `home/desktop/noctalia/default.nix` enables its systemd user service and
 combines the declarative settings files. `settings.nix` contains the default
-wallpaper and wallpaper-derived palette; `bars.nix` contains the bar layout;
+wallpaper, its wallpaper-derived palette, and the screenshot directory under
+the XDG pictures directory; `bars.nix` contains the bar layout and sizing;
 `hyprland.nix` contributes Noctalia IPC binds and Hyprland rules. Noctalia
 handles the bar, launcher, clipboard, wallpaper, lock screen, session actions,
 volume, brightness, and screenshots. `home/desktop/theme-specialisations.nix`

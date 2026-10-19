@@ -52,8 +52,9 @@ Recently added system modules:
   to `adbusers`.
 - `home/desktop/noctalia/` configures Noctalia Shell through its upstream Home
   Manager module. `default.nix` combines the settings files, `bars.nix` owns
-  the bar, `settings.nix` owns shell and wallpaper settings, and `hyprland.nix`
-  owns IPC binds and Hyprland surface rules.
+  the bar layout together with its size metrics, `settings.nix` owns shell,
+  screenshot directory, and wallpaper settings, and `hyprland.nix` owns IPC
+  binds and Hyprland surface rules.
 - `home/desktop/theme-specialisations.nix` maps Noctalia's persisted
   `wallpaper_changed` hook to a safe systemd instance token for the matching
   NixOS specialisation. It declares matching Home Manager specialisations only
