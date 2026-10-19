@@ -13,6 +13,8 @@
   hardware.i2c.enable = true;
   users.users.${default.username}.extraGroups = ["i2c"];
 
+  environment.etc.hosts.enable = false;
+
   environment.systemPackages = with pkgs; [
     vim
     wget
