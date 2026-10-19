@@ -5,9 +5,11 @@
     color = "primary";
     icon_color = "secondary";
     margin_ends = 0;
-    radius = 80;
+    radius = 12;
     radius_top_left = 0;
     radius_top_right = 0;
+    scale = 0.8;
+    thickness = 32;
 
     start = [
       "launcher"
@@ -89,7 +91,7 @@
 
   widget = {
     clock = {
-      format = "{:%H:%M :%a :%m:%d}";
+      format = "{:%H:%M :%a}";
       actions.left = "panel-toggle control-center home";
       anchor = true;
     };

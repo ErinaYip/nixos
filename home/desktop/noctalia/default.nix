@@ -15,7 +15,7 @@ in
             enable = true;
             systemd.enable = true;
             settings = lib.mkMerge [
-              (import ./settings.nix {inherit wallpaper;})
+              (import ./settings.nix {inherit wallpaper config;})
               (import ./bars.nix)
               settings
             ];

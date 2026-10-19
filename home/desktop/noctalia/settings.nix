@@ -1,8 +1,12 @@
-{wallpaper}: {
+{
+  config,
+  wallpaper,
+}: {
   shell = {
     app_icon_color = "primary";
     corner_radius_scale = 2.0;
     panel.transparency_mode = "soft";
+    screenshot.directory = "${config.xdg.userDirs.pictures}/Screenshots";
   };
 
   theme = {
