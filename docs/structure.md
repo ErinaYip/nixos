@@ -56,11 +56,14 @@ Recently added system modules:
   owns IPC binds and Hyprland surface rules.
 - `home/desktop/theme-specialisations.nix` maps Noctalia's persisted
   `wallpaper_changed` hook to a safe systemd instance token for the matching
-  NixOS specialisation and declares matching Home Manager specialisations,
-  including the marker under `~/.local/share/home-manager/specialisation`
-  consumed by standalone `nh home switch`. `os/desktop/theme-specialisations.nix`
-  builds the system specialisations with matching system and Home Manager
-  Stylix settings and a `wheel`-authorized systemd activation service.
+  NixOS specialisation. It declares matching Home Manager specialisations only
+  for standalone Home Manager, including the marker under
+  `~/.local/share/home-manager/specialisation` consumed by `nh home switch`;
+  NixOS-integrated Home Manager suppresses them through the `isNixosHome`
+  module argument to avoid nested specialisation conflicts.
+  `os/desktop/theme-specialisations.nix` builds the system specialisations with
+  matching system and Home Manager Stylix settings and a `wheel`-authorized
+  systemd activation service.
 - `os/system/laptop.nix` owns shared laptop power policy, including UPower,
   power-profiles-daemon, and logind lid handling.
 - `os/system/zswap.nix` enables the kernel Zswap compressed swap cache for the

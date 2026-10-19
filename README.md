@@ -163,8 +163,11 @@ Home-only switch:
 nh home switch .
 ```
 
-Wallpaper themes are declared as both NixOS and Home Manager
-specialisations. Home Manager writes the active name to
+Wallpaper themes are declared as NixOS specialisations for full system
+switches and as Home Manager specialisations for standalone `nh home switch`.
+The Home Manager module disables its nested specialisations when it is imported
+through NixOS, avoiding conflicts between the two specialisation layers. The
+standalone profile writes the active name to
 `~/.local/share/home-manager/specialisation`, which `nh home switch` uses to
 select the matching activation package.
 
