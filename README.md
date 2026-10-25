@@ -62,7 +62,10 @@ Manager configuration.
 - Hyprland desktop integration with Noctalia Shell.
 - Noctalia provides the bar, launcher, clipboard, wallpaper, lock screen,
   session menu, media controls, brightness controls, and screenshots.
-- Chinese input with Fcitx5 and Rime.
+- Chinese input with Fcitx5 and Rime. The candidate window uses Stylix's theme
+  with locally patched panel artwork, because fcitx5 5.1.22 started dropping
+  zero-sized nine-slice tiles and blanked out Stylix's original 30x30 art.
+  See `docs/architecture.md` for details.
 - Common CLI tools like zsh, kitty, nvim, yazi, bat, eza and starship. Kitty
   does not restore a previously maximized window state.
 - Neovim completion uses blink.cmp with nvim-cmp-compatible completion kind

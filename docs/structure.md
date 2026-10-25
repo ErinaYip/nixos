@@ -115,9 +115,11 @@ Repository documentation and agent onboarding material.
 Repository assets and templates used by modules.
 
 Current templates include generated themes for btop, fuzzel, yazi,
-PrismLauncher, cava, and Hyprland Lua colors. Browser profile assets also live
-here, including Chromium bookmarks. Firefox extension policies are kept in
-`home/browsers/firefox/extensions.nix`.
+PrismLauncher, cava, and Hyprland Lua colors. `assets/fcitx5/` holds the
+Stylix-compatible Fcitx5 panel and highlight artwork used to work around
+fcitx5's nine-slice regression described in `architecture.md`. Browser profile
+assets also live here, including Chromium bookmarks. Firefox extension policies
+are kept in `home/browsers/firefox/extensions.nix`.
 
 `home/browsers/firefox/default.nix` installs the `zh-CN` language pack through
 `programs.firefox.languagePacks` and pins `intl.locale.requested` to

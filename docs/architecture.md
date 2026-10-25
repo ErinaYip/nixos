@@ -163,6 +163,16 @@ The current graphical session is centered on:
   it was previously active. WeChat is launched from a custom desktop entry that
   forces `QT_QPA_PLATFORM=xcb` and injects the traditional Fcitx5 variables so
   it falls back to XWayland input inside the AppImage sandbox.
+- `home/desktop/fcitx5.nix` overrides Stylix's Fcitx5 panel and highlight images
+  with the corrected copies in `assets/fcitx5/`. fcitx5 5.1.22 rewrote
+  nine-slice painting (fcitx5#1615) and now discards any tile whose width or
+  height is zero, so Stylix's 30x30 artwork with 15px margins collapsed every
+  centre tile and rendered the candidate window fully transparent. The local
+  copies are the same artwork enlarged to 31x31 with a matching `0 0 62 62`
+  viewBox, which keeps a one pixel stretch strip on both axes. The images are
+  still rendered through `config.lib.stylix.colors`, so wallpaper specialisations
+  keep recolouring them. This override can be dropped once
+  nix-community/stylix#2503 ships in the pinned Stylix revision.
 - The `hypr-dynamic-cursors` Hyprland plugin from its Hyprland-following flake
   input, configured through `home/desktop/hyprland/dynamic-cursors.nix`.
 
