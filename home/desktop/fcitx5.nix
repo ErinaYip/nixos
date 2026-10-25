@@ -1,4 +1,6 @@
 {
+  lib,
+  config,
   pkgs,
   eriniteLib,
   ...
@@ -87,6 +89,26 @@ eriniteLib.mkModule args {
         "translator/contextual_suggestions" = true;
         "translator/max_homophones" = 7;
         "translator/max_homographs" = 7;
+      };
+    };
+
+    # Stylix's own 30x30 panel/highlight artwork collapses under the nine-slice
+    # rewrite in fcitx5 5.1.22 (fcitx5#1615): with 15px margins the centre tiles
+    # evaluate to zero width/height and get dropped, which leaves the candidate
+    # window fully transparent. assets/fcitx5/ holds the same artwork enlarged to
+    # 31x31 with a matching viewBox so a one pixel strip survives. Colours are
+    # still rendered from the active palette, so wallpaper switching keeps
+    # working. Drop this override once nix-community/stylix#2503 is released.
+    i18n.inputMethod.fcitx5.themes = lib.mkIf config.stylix.enable {
+      stylix = {
+        panelImage = lib.mkForce (config.lib.stylix.colors {
+          template = ../../assets/fcitx5/panel.svg;
+          extension = ".svg";
+        });
+        highlightImage = lib.mkForce (config.lib.stylix.colors {
+          template = ../../assets/fcitx5/highlight.svg;
+          extension = ".svg";
+        });
       };
     };
 
