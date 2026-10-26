@@ -52,6 +52,8 @@ in {
       (bind "SUPER + mouse_down" ''hl.dsp.focus({ workspace = "r+1" })'')
       (bind "SUPER + P" ''hl.dsp.focus({ workspace = "r-1" })'')
       (bind "SUPER + N" ''hl.dsp.focus({ workspace = "r+1" })'')
+      (bind "SUPER + I" ''hl.dsp.focus({ workspace = "r-1" })'')
+      (bind "SUPER + U" ''hl.dsp.focus({ workspace = "r+1" })'')
       (bind "SUPER + minus" ''hl.dsp.focus({ workspace = "r-1" })'')
       (bind "SUPER + equal" ''hl.dsp.focus({ workspace = "r+1" })'')
 
@@ -59,6 +61,8 @@ in {
       (bind "SUPER + SHIFT + mouse_down" ''hl.dsp.window.move({ workspace = "r+1" })'')
       (bind "SUPER + SHIFT + P" ''hl.dsp.window.move({ workspace = "r-1" })'')
       (bind "SUPER + SHIFT + N" ''hl.dsp.window.move({ workspace = "r+1" })'')
+      (bind "SUPER + SHIFT + I" ''hl.dsp.window.move({ workspace = "r-1" })'')
+      (bind "SUPER + SHIFT + U" ''hl.dsp.window.move({ workspace = "r+1" })'')
       (bind "SUPER + SHIFT + minus" ''hl.dsp.window.move({ workspace = "r-1" })'')
       (bind "SUPER + SHIFT + equal" ''hl.dsp.window.move({ workspace = "r+1" })'')
     ]
