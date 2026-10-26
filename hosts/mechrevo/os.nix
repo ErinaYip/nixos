@@ -35,6 +35,9 @@
     tldr
     jq
 
+    file
+    checksec
+
     wavemon
     ddcutil
     i2c-tools
