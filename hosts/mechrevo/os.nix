@@ -16,35 +16,25 @@
   environment.etc.hosts.enable = false;
 
   environment.systemPackages = with pkgs; [
-    vim
     wget
-
+    file
     zip
     unzip
     nodejs
     pnpm
     gcc
-    gdb
     openjdk
     php
     python3
     uv
-
-    cowsay
-    lolcat
     tldr
     jq
-
-    file
-    checksec
 
     wavemon
     ddcutil
     i2c-tools
 
     libreoffice
-
-    distrobox
 
     ollama-cuda
   ];
