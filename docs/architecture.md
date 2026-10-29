@@ -174,7 +174,9 @@ The current graphical session is centered on:
   keep recolouring them. This override can be dropped once
   nix-community/stylix#2503 ships in the pinned Stylix revision.
 - The `hypr-dynamic-cursors` Hyprland plugin from its Hyprland-following flake
-  input, configured through `home/desktop/hyprland/dynamic-cursors.nix`.
+  input, configured through `home/desktop/hyprland/dynamic-cursors.nix`. The
+  cursor uses the `tilt` mode, so the cursor shape leans with movement instead
+  of rotating, and cursor shaking stays disabled.
 
 ## Presets
 
