@@ -51,6 +51,7 @@ in {
 
   homeModules = [
     ./home.nix
+    ./ida.nix
     {
       erinite.home = {
         presets = {
