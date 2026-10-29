@@ -102,7 +102,10 @@ Current hosts:
 - `mechrevo` Main machine. Uses NVIDIA PRIME, Podman, VirtualBox, Wine, gaming
   modules, OBS Studio, and dynamic Hyprland monitor/workspace logic for internal
   and external displays. It also sets `environment.etc.hosts.enable = false`, so
-  `/etc/hosts` is not managed by the system configuration.
+  `/etc/hosts` is not managed by the system configuration. Its host-only
+  `ida.nix` module wraps the manually installed IDA Pro 9.3 under
+  `/home/era/Applications/ida-pro-9.3` into an `ida` command plus an
+  `IDA Pro 9.3` desktop entry, described below.
 - `nec` Laptop. Uses laptop-specific modules, a simple scaled Hyprland monitor
   setup, and has Codex CLI enabled.
 
@@ -175,6 +178,30 @@ Optional host wallpaper definitions. The shared `wallpapers/` module imports
 this file through the top-level `imports` returned by `hosts/<name>/default.nix`.
 Hosts set `erinite.wallpapers.definitions` here once, and OS/Home modules
 consume the processed result from `config.erinite.wallpapers.wallpapers`.
+
+### `hosts/mechrevo/ida.nix`
+
+Host-only Home Manager module that makes a manually installed IDA Pro 9.3 usable
+without vendoring it into the Nix store.
+
+- The installation directory is referenced at runtime through the
+  `installDir` let-binding (`/home/era/Applications/ida-pro-9.3`); the 250 MB of
+  commercial binaries and the hexlic file are never copied into
+  `/nix/store`. Updating IDA means replacing that directory only.
+- `pkgs.writeShellApplication` builds an `ida` wrapper that exports
+  `LD_LIBRARY_PATH` with the system libraries IDA does not bundle (libGL,
+  libstdc++, libxcb family, Wayland, fontconfig, OpenSSL, and friends),
+  points `QT_PLUGIN_PATH`/`QT_QPA_PLATFORM_PLUGIN_PATH` at the bundled Qt 6
+  plugins, and then `exec`s `$installDir/ida` with all arguments forwarded.
+- The wrapper re-runs `idapyswitch --force-path` against the pinned
+  `python312` with `requests` and `rpyc` on every launch, so IDAPython keeps
+  working after a Nix garbage collection or Python update. `idapyswitch` only
+  rewrites `Python3TargetDLL` in `~/.idapro/ida.reg`.
+- A `xdg.desktopEntries.ida-pro` entry launches the same wrapper with `%f` and
+  uses the shipped `appico.png` as its icon.
+- The wrapper relies on `/lib64/ld-linux-x86-64.so.2` being provided by
+  `programs.nix-ld`, which `os/presets/common.nix` enables through
+  `os/system/nix-ld.nix`.
 
 ### `hosts/<name>/hardware-configuration.nix`
 

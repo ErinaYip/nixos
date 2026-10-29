@@ -86,6 +86,12 @@ Manager configuration.
   manifest and rewrites the desktop entry to launch through `wemeet-xwayland`,
   matching the upstream AUR note for NVIDIA black-screen and desktop
   bleed-through issues.
+- IDA Pro 9.3 is packaged for `mechrevo` by the host-only
+  `hosts/mechrevo/ida.nix` module. It keeps the commercial installation in
+  `/home/era/Applications/ida-pro-9.3` and generates an `ida` wrapper command
+  that supplies the missing system libraries, the bundled Qt 6 plugin paths,
+  and the pinned `python312` `libpython` for IDAPython, plus an `IDA Pro 9.3`
+  desktop entry.
 - Declarative Obsidian setup under `home/desktop/obsidian/`, including
   community plugins pinned as fixed-output derivations with their settings.
 - Optional modules for NVIDIA, Podman, VirtualBox, Wine, Steam, OBS, and more.
