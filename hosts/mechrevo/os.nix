@@ -18,6 +18,7 @@
   environment.systemPackages = with pkgs; [
     wget
     file
+    gdb
     zip
     unzip
     nodejs
