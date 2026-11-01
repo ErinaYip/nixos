@@ -46,6 +46,17 @@ calls `fcitx5-remote` to disable Chinese input outside insert-oriented modes and
 restore it on insert entry when needed. `lualine.nix` uses nvf's explicit
 `_type = "lua-inline"` and `expr` representation for custom lualine components.
 
+`home/cli/pi.nix` writes Pi Coding Agent's `models.json` through a local
+`mkProvider` helper. It takes `name`, `api`, `baseUrl`, `models`, and the
+optional `apiKey`, `modelDefaults`, and `extra` arguments, so providers differ
+only by data: `apiKey` defaults to the `$<NAME>_API_KEY` environment variable,
+`extra` carries provider-level settings such as `compat`, `modelDefaults` holds
+parameters shared by every model of the provider, and each `models` element is
+either a plain id string or an attrset of per-model parameters. The `hua` and
+`router` providers share `mkOpenAIProvider`, while `hua-cc` uses
+`anthropic-messages` with Anthropic-specific `compat` flags and `ollama` keeps
+local models without `reasoning` through `modelDefaults = { }`.
+
 Recently added system modules:
 
 - `os/system/adb.nix` installs Android platform tools and adds the default user

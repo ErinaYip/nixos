@@ -74,6 +74,11 @@ Manager configuration.
   representation.
 - Neovim uses `fcitx5-remote` from the Fcitx5/Rime setup to switch Fcitx5 off
   outside insert-oriented modes and restore it when returning to insert mode.
+- Pi Coding Agent and opencode providers are generated from small helpers
+  instead of hand-written JSON. `home/cli/pi.nix` builds `models.json` through
+  `mkProvider`, which takes per-provider `api`, `baseUrl`, `compat`, and
+  `modelDefaults` plus per-model parameters such as `input`, `contextWindow`,
+  `maxTokens`, and `compat`, and defaults its API key to `$<NAME>_API_KEY`.
 - WeChat is launched from a custom desktop entry that forces XWayland and
   injects `QT_QPA_PLATFORM=xcb` plus the Fcitx5 environment variables so the
   sandboxed AppImage can still show candidate windows.

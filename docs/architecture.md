@@ -144,6 +144,19 @@ through the package's `commandLineArgs`.
 The `home.cli.kitty` module disables Kitty's remembered window size and
 maximized state so new Hyprland windows do not inherit stale maximized state.
 
+The `home.cli.pi` and `home.cli.opencode` modules write custom model providers
+instead of hand-writing every entry. `home/cli/pi.nix` builds its `models.json`
+entries through `mkProvider`, which takes `name`, `api`, `baseUrl`, `models`,
+plus optional `apiKey`, `modelDefaults`, and `extra`. `apiKey` defaults to the
+`$<NAME>_API_KEY` environment variable, `extra` carries provider-level settings
+such as `compat`, and `modelDefaults` holds parameters shared by every model of
+that provider (defaulting to `reasoning = true`). Each `models` element is either
+a plain id string or an attrset of per-model parameters, so a single provider can
+mix bare ids with models that need `name`, `input`, `contextWindow`, `maxTokens`,
+`compat`, or `samplingParams`. Provider keys therefore never embed secrets, and
+new per-model options are added by extending the attrset rather than duplicating
+the provider block.
+
 ## Current Desktop Flow
 
 The current graphical session is centered on:
