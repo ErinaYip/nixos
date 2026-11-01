@@ -53,7 +53,7 @@ only by data: `apiKey` defaults to the `$<NAME>_API_KEY` environment variable,
 `extra` carries provider-level settings such as `compat`, `modelDefaults` holds
 parameters shared by every model of the provider, and each `models` element is
 either a plain id string or an attrset of per-model parameters. The `hua` and
-`router` providers share `mkOpenAIProvider`, while `hua-cc` uses
+`router` providers share `mkOpenAIProvider`, while `hua_cc` uses
 `anthropic-messages` with Anthropic-specific `compat` flags and `ollama` keeps
 local models without `reasoning` through `modelDefaults = { }`.
 
