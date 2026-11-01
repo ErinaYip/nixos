@@ -54,6 +54,7 @@
     enabled = false;
     capsule = true;
     background_opacity = 0.9;
+    scale = 0.8;
     color = "primary";
     icon_color = "secondary";
 
