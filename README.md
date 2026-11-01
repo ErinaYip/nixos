@@ -131,7 +131,9 @@ logic lives in each host's configuration.
 
 The NVIDIA module enables the X server for driver support. Since the X server
 module otherwise adds `xterm` to the system path, it is explicitly excluded
-here. Nemo uses the Cinnamon default-terminal setting. The Neovim and Vim
+here. Nemo uses the Cinnamon default-terminal setting and a custom
+`nemo.desktop` entry that launches `nemo-with-extensions`, and its sidebar
+bookmarks are generated from the home directory. The Neovim and Vim
 desktop entries also launch through Kitty, so Nemo's Open With actions do not
 delegate terminal handling to `xterm`. WeChat is pinned to XWayland through a
 custom desktop entry so its input method path stays consistent inside the

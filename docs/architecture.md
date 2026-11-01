@@ -125,15 +125,21 @@ and `homeModules`.
 
 The NVIDIA system module enables the X server for driver support. NixOS's X
 server module adds `pkgs.xterm` to the system package path by default, so the
-NVIDIA module excludes it explicitly. Nemo reads its terminal command from
-`org.cinnamon.desktop.default-applications.terminal`; the Nemo module sets that
-value to Kitty. The Neovim module overrides the upstream `nvim.desktop` entry
-and provides a matching Vim entry with `Terminal=false` and a Kitty command, so
+NVIDIA module excludes it explicitly. Nemo reads its terminal command from the
+Cinnamon `org.cinnamon.desktop.applications.terminal` schema (`dconf` path
+`org/cinnamon/desktop/applications/terminal`), which the Nemo module points at
+`kitty`. The Neovim module overrides the upstream `nvim.desktop` entry and
+provides a matching Vim entry with `Terminal=false` and a Kitty command, so
 file-manager Open With actions do not invoke the desktop environment's fallback
-terminal. It also sets text MIME defaults to Neovim. Nemo sets
-`inode/directory` to `nemo.desktop`, while the VSCodium module overrides both its
-custom `code.desktop` and upstream `codium.desktop` MIME declarations so Code
-does not become a file or directory handler.
+terminal. It also sets text MIME defaults to Neovim. The Nemo module also
+overrides the upstream `nemo.desktop` entry so it launches
+`nemo-with-extensions`, claims both `inode/directory` and
+`application/x-gnome-saved-search`, enables `can-change-accels` so its keyboard
+shortcuts stay editable, and writes `~/.config/gtk-3.0/bookmarks` from
+`config.home.homeDirectory` so the sidebar lists the standard home directories.
+The VSCodium module overrides both its custom `code.desktop` and upstream
+`codium.desktop` MIME declarations so Code does not become a file or directory
+handler.
 
 The `home.desktop.qq` module reuses nixpkgs' QQ packaging logic while overriding
 the x86_64 Linux source URL and hash locally. It also normalizes the desktop
