@@ -73,7 +73,7 @@ in
             (mkOpenAIProvider "hua" "https://huablog.org/v1")
             (mkOpenAIProvider "router" "https://anyrouter.top/v1")
             (mkProvider {
-              name = "hua-cc";
+              name = "hua_cc";
               api = "anthropic-messages";
               baseUrl = "https://huablog.org/";
               models = [
