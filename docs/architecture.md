@@ -141,11 +141,10 @@ The VSCodium module overrides both its custom `code.desktop` and upstream
 `codium.desktop` MIME declarations so Code does not become a file or directory
 handler.
 
-The `home.desktop.qq` module reuses nixpkgs' QQ packaging logic while overriding
-the x86_64 Linux source URL and hash locally. It also normalizes the desktop
-entry icon so the installed application can resolve it through the icon theme,
-and forces the Wayland Ozone backend by injecting `--ozone-platform=wayland`
-through the package's `commandLineArgs`.
+The `home.desktop.qq` module enables the `linuxqq-wayland-fix` flake input's
+Home Manager module (`programs.linuxqq-wayland-fix`), which packages QQ and
+forces the Wayland Ozone backend. The flake input is imported in
+`home/default.nix` and declared in `flake.nix`.
 
 The `home.cli.kitty` module disables Kitty's remembered window size and
 maximized state so new Hyprland windows do not inherit stale maximized state.
