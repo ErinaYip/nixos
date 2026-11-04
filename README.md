@@ -58,6 +58,10 @@ Manager configuration.
 - NixOS flake with multiple hosts.
 - Automatic host discovery from `hosts/<name>/default.nix`.
 - Home Manager integration.
+- Selectable bootloader engine through `erinite.os.system.boot.engine`
+  (`systemd-boot`, `grub`, or `limine`). Limine keeps a bounded number of
+  generations (`limine.maxGenerations`) so its ESP copies of kernels and initrd
+  stay in check.
 - Modular options under `erinite.*`.
 - Hyprland desktop integration with Noctalia Shell.
 - Noctalia provides the bar, launcher, clipboard, wallpaper, lock screen,
