@@ -29,6 +29,11 @@
       url = "git+https://codeberg.org/erina/oh-my-rime-nix.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    linuxqq-wayland-fix = {
+      url = "github:SHORiN-KiWATA/linuxqq-wayland-fix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {

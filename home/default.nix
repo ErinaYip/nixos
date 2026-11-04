@@ -12,6 +12,7 @@
       inputs.nvf.homeManagerModules.default
       inputs.noctalia.homeModules.default
       inputs.oh-my-rime-nix.homeModules.default
+      inputs.linuxqq-wayland-fix.homeModules.default
     ]
     ++ eriniteLib.modules ./.;
 
