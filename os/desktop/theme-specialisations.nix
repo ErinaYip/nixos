@@ -20,28 +20,21 @@ in
         exec /nix/var/nix/profiles/system/specialisation/$theme/bin/switch-to-configuration switch
       '';
 
-      # Limine's installer always defaults to the newest generation's `Default`
-      # entry, so a specialisation switched to at runtime would be forgotten on
-      # reboot. Point `default_entry` at the toplevel that is being installed
-      # instead, which is what GRUB and systemd-boot effectively do.
-      limineDefaultEntry = pkgs.writeScript "limine-default-entry" ''
-        #!${pkgs.python3.interpreter}
-        ${builtins.readFile ../../lib/limine-default-entry.py}
-      '';
+      buildStylix = _name: wallpaper: {
+        inherit (wallpaper) base16Scheme image polarity;
+      };
 
       limineConfPath =
         if config.boot.loader.limine.efiSupport
         then "${config.boot.loader.efi.efiSysMountPoint}/limine/limine.conf"
         else "/boot/limine/limine.conf";
 
-      buildStylix = _name: wallpaper: {
-        inherit (wallpaper) base16Scheme image polarity;
-      };
-    in {
-      boot.loader.limine.extraInstallCommands = lib.mkIf (config.erinite.os.system.boot.engine == "limine") ''
-        ${limineDefaultEntry} ${lib.escapeShellArg limineConfPath} "''${1:-}"
-      '';
+      limineEntry = name: 4 + lib.count (other: other < name) (lib.attrNames wallpapers);
 
+      selectLimineEntry = name: ''
+        ${lib.getExe pkgs.gnused} -i 's|^default_entry: .*|default_entry: ${toString (limineEntry name)}|' ${limineConfPath}
+      '';
+    in {
       security.polkit = {
         enable = true;
         extraConfig = ''
@@ -73,6 +66,7 @@ in
       specialisation =
         mapAttrs (name: wallpaper: {
           configuration = {
+            boot.loader.limine.extraInstallCommands = selectLimineEntry name;
             environment.etc."specialisation".text = name;
             stylix = buildStylix name wallpaper;
             home-manager.users.${default.username} = {
