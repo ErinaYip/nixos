@@ -47,6 +47,10 @@ Without recursive merging, host overrides can accidentally replace an entire nes
 Modules can also expose extra options through `opts`. For example,
 `home/cli/zsh/default.nix` exposes an `aliases` attribute set so other Home
 modules can contribute aliases without writing directly to `programs.zsh`, and
+it concatenates its init files in the order `fzf-settings.zsh`, `fzf.zsh`, then
+`init.zsh` so the fzf bindings are in place before the shared init runs. Zoxide
+is initialised by Home Manager's `programs.zoxide` shell integration, so
+`init.zsh` does not source `zoxide init` a second time.
 `home/cli/codex.nix` exposes `profileFiles` and `model_providers` so provider
 definitions can be composed through the normal option tree. Codex profile
 overrides are emitted as `~/.codex/<name>.config.toml` files for the current
