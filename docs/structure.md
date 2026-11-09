@@ -75,10 +75,10 @@ Recently added system modules:
   module argument to avoid nested specialisation conflicts.
   `os/desktop/theme-specialisations.nix` builds the system specialisations with
   matching system and Home Manager Stylix settings and a `wheel`-authorized
-  systemd activation service. It also rewrites `default_entry` in `limine.conf`
-  through `boot.loader.limine.extraInstallCommands`, so the Limine menu
-  preselects the installed specialisation instead of always the newest
-  generation's `Default` entry.
+  systemd activation service. It also replaces the body of the `Default` entry
+  in `limine.conf` through `boot.loader.limine.extraInstallCommands`, so the
+  Limine default entry boots the installed specialisation instead of the newest
+  generation's unthemed system.
 - `os/system/laptop.nix` owns shared laptop power policy, including UPower,
   power-profiles-daemon, and logind lid handling.
 - `os/system/zswap.nix` enables the kernel Zswap compressed swap cache for the
@@ -244,8 +244,8 @@ If you need to understand or change behavior, start here:
 - Bootloader engine selection: `os/system/boot.nix` for
   `erinite.os.system.boot.engine`
 - Limine default boot entry: `os/desktop/theme-specialisations.nix`, which
-  rewrites `default_entry` after install so a selected theme specialisation
-  stays the default entry
+  replaces the body of the `Default` entry after install so a selected theme
+  specialisation stays the default boot entry
 - Laptop lid and power-profile policy: `os/system/laptop.nix`
 - Obsidian behavior: `home/desktop/obsidian/`. Community plugins and themes are
   packaged declaratively as fixed-output derivations in `plugins.nix` and

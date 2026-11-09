@@ -60,8 +60,8 @@ Before changing code, an agent should understand these facts:
 - `os/presets/common.nix` enables baseline system modules, including
   `os.system.config-source`, `os.system.nh`, and `os.system.nix`.
 - `os/system/boot.nix` selects the bootloader engine.
-  `os/desktop/theme-specialisations.nix` preselects the installed theme
-  specialisation in the Limine boot menu by rewriting `default_entry` in
+  `os/desktop/theme-specialisations.nix` makes the Limine `Default` entry boot
+  the installed theme specialisation by replacing that entry's body in
   `limine.conf` from `boot.loader.limine.extraInstallCommands`.
 - `home/presets/common.nix` enables baseline user modules, including the Zsh
   alias aggregator and CLI tools.

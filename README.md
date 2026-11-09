@@ -193,10 +193,10 @@ standalone profile writes the active name to
 `~/.local/share/home-manager/specialisation`, which `nh home switch` uses to
 select the matching activation package. Switching a theme also updates the boot
 menu: Limine always preselects the newest generation's `Default` entry, so
-`os/desktop/theme-specialisations.nix` rewrites `default_entry` in the generated
-`limine.conf` from `boot.loader.limine.extraInstallCommands`. A theme chosen at
-runtime therefore survives the next reboot from the default entry, like it did
-with GRUB and systemd-boot.
+`os/desktop/theme-specialisations.nix` replaces the body of that entry with the
+body of the theme entry through `boot.loader.limine.extraInstallCommands`. A
+theme chosen at runtime therefore survives the next reboot from the `Default`
+entry, like it did with GRUB and systemd-boot.
 
 Notes:
 
