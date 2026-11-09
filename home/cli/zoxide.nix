@@ -4,7 +4,7 @@ eriniteLib.mkModule args {
     programs.zoxide = {
       enable = true;
       options = [
-        "--cmd z"
+        # "--cmd z"
       ];
       enableBashIntegration = true;
       enableFishIntegration = true;

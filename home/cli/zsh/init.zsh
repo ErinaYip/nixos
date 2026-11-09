@@ -2,7 +2,7 @@ bindkey -e
 autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey '^e' edit-command-line
-bindkey '^z' undo 
+bindkey '^z' undo
 
 alias -g C='| wl-copy'
 alias -g NE='2>/dev/null'
@@ -22,6 +22,5 @@ zstyle ':completion:*' cache-path ~/.cache/zsh
 zstyle ':completion:*' verbose true
 
 eval "$(direnv hook zsh)"
-eval "$(zoxide init zsh)"
 
 any-nix-shell zsh --info-right | source /dev/stdin

@@ -36,9 +36,9 @@ in
             // cfg.aliases;
 
           initContent = ''
-            ${builtins.readFile ./init.zsh}
             ${builtins.readFile ./fzf-settings.zsh}
             ${builtins.readFile ./fzf.zsh}
+            ${builtins.readFile ./init.zsh}
           '';
         };
       };
