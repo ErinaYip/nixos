@@ -24,6 +24,7 @@ in
           regreet.enable = false;
           kmscon.enable = false;
           grub.useWallpaper = true;
+          limine.colors.enable = false;
         };
       };
 
