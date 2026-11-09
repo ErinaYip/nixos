@@ -60,10 +60,9 @@ Before changing code, an agent should understand these facts:
 - `os/presets/common.nix` enables baseline system modules, including
   `os.system.config-source`, `os.system.nh`, and `os.system.nix`.
 - `os/system/boot.nix` selects the bootloader engine.
-  `os/desktop/theme-specialisations.nix` wires `lib/limine-default-entry.py` into
-  `boot.loader.limine.extraInstallCommands` so the Limine boot menu preselects
-  the toplevel that was just installed, which keeps a chosen specialisation as
-  the default entry.
+  `os/desktop/theme-specialisations.nix` preselects the installed theme
+  specialisation in the Limine boot menu by rewriting `default_entry` in
+  `limine.conf` from `boot.loader.limine.extraInstallCommands`.
 - `home/presets/common.nix` enables baseline user modules, including the Zsh
   alias aggregator and CLI tools.
 - Host-specific Hyprland monitor and workspace details can also live in

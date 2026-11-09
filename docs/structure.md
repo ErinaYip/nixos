@@ -23,10 +23,7 @@ Loads the default flake dev shell through direnv and watches `flake.nix` and
 ### `lib/`
 
 Holds `eriniteLib`, the helper library used by the module layer. Imported and
-exposed in `flake.nix` as `eriniteLib`. `limine-default-entry.py` is not part of
-`eriniteLib` itself: it is a post-install helper wrapped by
-`os/desktop/theme-specialisations.nix`, which rewrites `default_entry` in the
-generated `limine.conf` so the boot menu preselects the toplevel being installed.
+exposed in `flake.nix` as `eriniteLib`.
 
 ### `os/` and `home/`
 
@@ -78,9 +75,10 @@ Recently added system modules:
   module argument to avoid nested specialisation conflicts.
   `os/desktop/theme-specialisations.nix` builds the system specialisations with
   matching system and Home Manager Stylix settings and a `wheel`-authorized
-  systemd activation service. It also wires `lib/limine-default-entry.py` into
-  `boot.loader.limine.extraInstallCommands` so the Limine menu preselects the
-  installed toplevel instead of always the newest generation's `Default` entry.
+  systemd activation service. It also rewrites `default_entry` in `limine.conf`
+  through `boot.loader.limine.extraInstallCommands`, so the Limine menu
+  preselects the installed specialisation instead of always the newest
+  generation's `Default` entry.
 - `os/system/laptop.nix` owns shared laptop power policy, including UPower,
   power-profiles-daemon, and logind lid handling.
 - `os/system/zswap.nix` enables the kernel Zswap compressed swap cache for the
@@ -245,9 +243,9 @@ If you need to understand or change behavior, start here:
   specialisations
 - Bootloader engine selection: `os/system/boot.nix` for
   `erinite.os.system.boot.engine`
-- Limine default boot entry: `os/desktop/theme-specialisations.nix` wiring and
-  `lib/limine-default-entry.py`, which rewrites `default_entry` after install so
-  a selected theme specialisation stays the default entry
+- Limine default boot entry: `os/desktop/theme-specialisations.nix`, which
+  rewrites `default_entry` after install so a selected theme specialisation
+  stays the default entry
 - Laptop lid and power-profile policy: `os/system/laptop.nix`
 - Obsidian behavior: `home/desktop/obsidian/`. Community plugins and themes are
   packaged declaratively as fixed-output derivations in `plugins.nix` and

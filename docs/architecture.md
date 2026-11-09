@@ -74,23 +74,23 @@ so they are not nested inside every NixOS specialisation. The standalone
 entries include the persisted marker read from
 `~/.local/share/home-manager/specialisation`. `os/desktop/theme-specialisations.nix`
 defines the system specialisations and updates system and Home Manager Stylix
-settings, and it keeps the active theme specialisation as the default boot entry
-on Limine through `lib/limine-default-entry.py`. The specialisation activation
-service is authorized for members of the
+settings. The specialisation activation service is authorized for members of the
 `wheel` group, while
 `os/system/laptop.nix` retains the shared lid policy and power-profile services.
 
-The selected specialisation also has to survive a reboot, which depends on the
-bootloader engine. NixOS passes the toplevel being installed to the bootloader
-installer, and GRUB and systemd-boot derive the default menu entry from it, so a
-runtime `switch` into a specialisation becomes the default entry. Limine's
-installer ignores that argument and always writes `default_entry: 3`, the
-`Default` child of the newest generation. `os/desktop/theme-specialisations.nix`
-therefore appends `lib/limine-default-entry.py` through
-`boot.loader.limine.extraInstallCommands`: it runs after `limine.conf` has been
-generated and rewrites `default_entry` to the first entry whose `cmdline` boots
-the installed toplevel. Limine numbering follows config order with submenus
-included, and the script leaves the config untouched when no entry matches.
+The selected specialisation also has to survive a reboot. GRUB and systemd-boot
+derive the default menu entry from the toplevel that NixOS hands to the
+bootloader installer, so a runtime `switch` into a specialisation becomes the
+default entry. Limine's installer ignores that toplevel and always writes
+`default_entry: 3`, the `Default` child of the newest generation.
+`os/desktop/theme-specialisations.nix` therefore appends a `sed` call through
+`boot.loader.limine.extraInstallCommands`, which runs after `limine.conf` has
+been generated. Limine numbers menu entries in config order with submenus
+included: the profile menu is entry 1, the newest generation menu is entry 2, its
+`Default` child is entry 3, and the specialisations follow in name order. The
+module computes `4 + <specialisations sorting before this one>` at evaluation
+time and rewrites `default_entry` to that index, so a plain system install keeps
+the installer's own `default_entry`.
 
 ## Design Pattern
 

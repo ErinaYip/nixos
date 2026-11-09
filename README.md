@@ -61,9 +61,7 @@ Manager configuration.
 - Selectable bootloader engine through `erinite.os.system.boot.engine`
   (`systemd-boot`, `grub`, or `limine`). Limine keeps a bounded number of
   generations (`limine.maxGenerations`) so its ESP copies of kernels and initrd
-  stay in check. Limine also rewrites `default_entry` after every install so the
-  boot menu preselects the system that was just installed, which keeps a
-  selected specialisation as the default entry like GRUB and systemd-boot do.
+  stay in check.
 - Modular options under `erinite.*`.
 - Hyprland desktop integration with Noctalia Shell.
 - Noctalia provides the bar, launcher, clipboard, wallpaper, lock screen,
@@ -193,13 +191,12 @@ The Home Manager module disables its nested specialisations when it is imported
 through NixOS, avoiding conflicts between the two specialisation layers. The
 standalone profile writes the active name to
 `~/.local/share/home-manager/specialisation`, which `nh home switch` uses to
-select the matching activation package. On the system side the selected
-theme specialisation also stays preselected in the boot menu: the Limine engine
-runs `lib/limine-default-entry.py` from
-`boot.loader.limine.extraInstallCommands` in
-`os/desktop/theme-specialisations.nix` and rewrites `default_entry` to the
-entry that boots the toplevel being installed, so switching a theme survives a
-reboot just like it did with GRUB and systemd-boot.
+select the matching activation package. Switching a theme also updates the boot
+menu: Limine always preselects the newest generation's `Default` entry, so
+`os/desktop/theme-specialisations.nix` rewrites `default_entry` in the generated
+`limine.conf` from `boot.loader.limine.extraInstallCommands`. A theme chosen at
+runtime therefore survives the next reboot from the default entry, like it did
+with GRUB and systemd-boot.
 
 Notes:
 
