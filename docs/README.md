@@ -125,8 +125,10 @@ module:
   change.
 - When adding a new file or module, run `git add <path>` so Git-backed flake
   evaluation includes it.
-- Every code change should be paired with corresponding `docs/` updates and a
-  root `README.md` update in the same task.
+- Only document substantial changes (large-scope, fundamental, or
+  library/shared-helper changes) in `docs/` and the root `README.md`.
+  Module-internal configuration tweaks and other small changes do not need
+  documentation updates.
 - When the user approves commits, keep code changes and documentation changes in
   separate commits.
 

@@ -65,7 +65,9 @@ hardware configuration unless explicitly requested.
   user explicitly asks for them.
 - When adding any new file or module, run `git add <path>` so it is present in
   the Git index and available to Git-backed flake evaluation.
-- After every code change, update the relevant documentation under `docs/` and
-  the root `README.md` in the same task so the docs stay aligned with the code.
+- Only document substantial changes (large-scope, fundamental, or
+  library/shared-helper changes) under `docs/` and the root `README.md`.
+  Module-internal configuration tweaks and other small changes do not need
+  documentation updates.
 - If the user approves creating commits, create them without another prompt, but
   keep code changes and documentation changes in separate commits.
