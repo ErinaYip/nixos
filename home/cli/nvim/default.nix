@@ -30,6 +30,7 @@ with eriniteLib;
           (import ./bufferline.nix arg)
           (import ./keymaps.nix arg)
           (import ./ui.nix arg)
+          (import ./toggles.nix arg)
           (import ./lsp.nix arg)
           (import ./kitty-scrollback.nix arg)
           (import ./blink-cmp.nix arg)
@@ -60,7 +61,17 @@ with eriniteLib;
             autopairs.nvim-autopairs = enabled;
 
             binds = {
-              whichKey = enabled;
+              whichKey = {
+                enable = true;
+                register = {
+                  "<leader>u" = "UI Toggles";
+                  "<leader>e" = "Explorer";
+                  "<leader>f" = "Find";
+                  "<leader>q" = "Quit";
+                  "<leader>t" = "Terminal";
+                  "<leader>r" = "Run";
+                };
+              };
               cheatsheet = enabled;
             };
 
