@@ -24,12 +24,14 @@
     nodejs
     pnpm
     gcc
-    openjdk
     php
     python3
     uv
     tldr
     jq
+
+    openjdk
+    (zulu8.override {enableJavaFX = true;})
 
     wavemon
     ddcutil
