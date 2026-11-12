@@ -46,16 +46,16 @@ with eriniteLib;
 
             visuals = {
               nvim-web-devicons = enabled;
-              fidget-nvim = enabled;
+              # fidget-nvim = enabled;
               nvim-cursorline = {
                 enable = true;
                 setupOpts = {
                   cursorline.enable = true;
+                  cursorline.timeout = 500;
                   cursorword.enable = true;
                   disable_filetypes = ["snacks_dashboard"];
                 };
               };
-              indent-blankline = enabled;
             };
 
             autopairs.nvim-autopairs = enabled;

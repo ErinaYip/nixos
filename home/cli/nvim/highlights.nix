@@ -93,6 +93,13 @@
           "Navbuddy" .. kind,
         })
       end
+
+      local line_fg = get_fg({"Normal"})
+      if line_fg ~= nil then
+        local ok_cl, cursorline = pcall(vim.api.nvim_get_hl, 0, {name = "CursorLine", link = false})
+        local bg = ok_cl and cursorline.bg or nil
+        vim.api.nvim_set_hl(0, "CursorLineNr", {fg = line_fg, bg = bg, bold = true})
+      end
     end
 
     apply_kind_highlights()

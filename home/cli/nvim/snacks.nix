@@ -8,6 +8,7 @@
       };
 
       bigfile.enabled = true;
+      indent.enabled = true;
 
       dashboard = {
         sections = [
@@ -32,7 +33,7 @@
               icon = " ";
               key = "h";
               desc = "Find history";
-              action = "lua Snacks.picker.recent()";
+              action = ":lua Snacks.picker.recent()";
             }
             {
               icon = " ";
@@ -69,7 +70,7 @@
   };
 
   keymaps = [
-    (mkKeymapd ["n"] "<leader>e" "<cmd>lua Snacks.explorer()<cr>" "[E]xplorer")
+    (mkKeymapd ["n"] "<leader>e" ":lua Snacks.explorer()<cr>" "[E]xplorer")
     (mkKeymapd ["n"] "<leader>fw" ":lua Snacks.picker.grep()<cr>" "[F]ind content (snacks)")
     (mkKeymapd ["n"] "<leader>ff" ":lua Snacks.picker.smart()<cr>" "[F]ind file smartly (snacks)")
     (mkKeymapd ["n"] "<leader> " ":lua Snacks.picker.smart()<cr>" "[F]ind file smartly (snacks)")

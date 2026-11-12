@@ -12,9 +12,8 @@
   };
 
   keymaps = [
-    # (mkKeymapd ["n"] "<leader>bp" "<cmd>BufferLineTogglePin<cr>" "[B]uffer [P]in")
-    # (mkKeymapd ["n"] "<leader>bP" "<cmd>BufferLineGroupClose ungrouped<cr>" "[B]uffer delete non-pinned")
     (mkKeymapd ["n"] "<leader>bd" "<cmd>bd<cr>" "[B]uffer [D]elete")
+    (mkKeymapd ["n"] "<leader>ba" "<cmd>lua Snacks.bufdelete.all()<cr>" "[B]uffer close [A]ll")
     (mkKeymapd ["n"] "<leader>br" "<cmd>BufferLineCloseRight<cr>" "[B]uffer close [R]ight")
     (mkKeymapd ["n"] "<leader>bl" "<cmd>BufferLineCloseLeft<cr>" "[B]uffer close [L]eft")
     (mkKeymapd ["n"] "<leader>bo" "<cmd>BufferLineCloseOthers<cr>" "[B]uffer close [O]thers")
