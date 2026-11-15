@@ -15,7 +15,6 @@ with eriniteLib;
           fcitx5 = enabled;
           fuzzel = enabled;
           # gtk = enabled;
-          # matugen = enabled;
           qq = enabled;
           # qt = enabled;
           stylix = enabled;

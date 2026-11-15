@@ -1,13 +1,6 @@
-{
-  pkgs,
-  inputs,
-  eriniteLib,
-  ...
-} @ args:
+{eriniteLib, ...} @ args:
 eriniteLib.mkModule args {
   configFn = _: {
-    nixpkgs.overlays = [inputs.millennium.overlays.default];
-
     programs = {
       gamemode.enable = true;
       gamescope = {
@@ -17,7 +10,6 @@ eriniteLib.mkModule args {
 
       steam = {
         enable = true;
-        package = pkgs.millennium-steam;
         gamescopeSession = {
           enable = true;
           args = [

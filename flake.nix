@@ -23,8 +23,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    millennium.url = "github:SteamClientHomebrew/Millennium?dir=packages/nix";
-
     oh-my-rime-nix = {
       url = "git+https://codeberg.org/erina/oh-my-rime-nix.git";
       inputs.nixpkgs.follows = "nixpkgs";
