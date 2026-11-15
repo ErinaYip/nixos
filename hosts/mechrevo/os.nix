@@ -19,6 +19,7 @@
     wget
     file
     gdb
+    xxd
     zip
     unzip
     nodejs
