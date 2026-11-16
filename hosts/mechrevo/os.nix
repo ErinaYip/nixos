@@ -39,7 +39,5 @@
     i2c-tools
 
     libreoffice
-
-    ollama-cuda
   ];
 }

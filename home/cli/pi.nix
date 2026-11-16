@@ -73,25 +73,6 @@ in
             (mkOpenAIProvider "hua" "https://huablog.org/v1")
             (mkOpenAIProvider "router" "https://anyrouter.top/v1")
             (mkProvider {
-              name = "hua_cc";
-              api = "anthropic-messages";
-              baseUrl = "https://huablog.org/";
-              models = [
-                {
-                  id = "claude-opus-5-5";
-                  input = ["text" "image"];
-                  contextWindow = 200000;
-                  maxTokens = 128000;
-                  compat = {
-                    cacheControlFormat = "anthropic";
-                    sendSessionAffinityHeaders = true;
-                    forceAdaptiveThinking = true;
-                    allowEmptySignature = true;
-                  };
-                }
-              ];
-            })
-            (mkProvider {
               name = "ollama";
               api = "openai-completions";
               baseUrl = "http://127.0.0.1:11434/v1";
@@ -103,10 +84,9 @@ in
                 supportsReasoningEffort = false;
               };
               models = [
-                "qwen3.5:9b"
                 {
-                  id = "qwen3.5:9b-agent";
-                  name = "Qwen3.5 9B Agent";
+                  id = "qwen3.5:9b-unc";
+                  name = "Qwen3.5 9B Abliterated (local)";
                   contextWindow = 32768;
                   maxTokens = 8192;
                 }

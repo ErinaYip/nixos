@@ -1,10 +1,27 @@
 {pkgs, ...}: let
   eDP = "China Star Optoelectronics Technology Co. Ltd MNG007DA5-4";
   DP = "HKC OVERSEAS LIMITED X5 0000000000001";
+
+  env = {
+    # Required for quantized KV cache below.
+    OLLAMA_FLASH_ATTENTION = "1";
+    # Halves KV cache; 32k context costs ~0.5GiB instead of ~1.0GiB.
+    OLLAMA_KV_CACHE_TYPE = "q8_0";
+    OLLAMA_CONTEXT_LENGTH = "32768";
+    # Parallel slots would multiply the KV cache and overflow VRAM.
+    OLLAMA_NUM_PARALLEL = "1";
+    OLLAMA_MAX_LOADED_MODELS = "1";
+    # Avoid reloading the model, cold loads are slow with 14GiB of RAM.
+    OLLAMA_KEEP_ALIVE = "30m";
+  };
 in {
   home.packages = with pkgs; [
     # materialgram
+    ollama-cuda
   ];
+
+  home.sessionVariables = env;
+  systemd.user.sessionVariables = env;
 
   wayland.windowManager.hyprland.extraConfig = ''
     local eDP = "${eDP}"
