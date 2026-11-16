@@ -11,8 +11,8 @@ with eriniteLib;
         domain = "codeberg.org";
         owner = "erina";
         repo = "eps-pgr";
-        rev = "0.0.2";
-        sha256 = "sha256-+u+cG45ThBacSPP6oE+AFPZTV35Y4zE8RLfSqZMsATg=";
+        rev = "0.0.3";
+        sha256 = "sha256-5yHhxA6+ANF5Fv46PspviWHRcPSp/x1ZVKDIpdVQqpw=";
       };
     in
       lib.mkMerge [
