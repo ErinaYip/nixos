@@ -78,7 +78,7 @@ Manager configuration.
   representation.
 - Neovim uses `fcitx5-remote` from the Fcitx5/Rime setup to switch Fcitx5 off
   outside insert-oriented modes and restore it when returning to insert mode.
-- Pi Coding Agent and opencode providers are generated from small helpers
+- Pi Coding Agent providers are generated from small helpers
   instead of hand-written JSON. `home/cli/pi.nix` builds `models.json` through
   `mkProvider`, which takes per-provider `api`, `baseUrl`, `compat`, and
   `modelDefaults` plus per-model parameters such as `input`, `contextWindow`,
@@ -191,12 +191,7 @@ The Home Manager module disables its nested specialisations when it is imported
 through NixOS, avoiding conflicts between the two specialisation layers. The
 standalone profile writes the active name to
 `~/.local/share/home-manager/specialisation`, which `nh home switch` uses to
-select the matching activation package. Switching a theme also updates the boot
-menu: Limine always preselects the newest generation's `Default` entry, so
-`os/desktop/theme-specialisations.nix` replaces the body of that entry with the
-body of the theme entry through `boot.loader.limine.extraInstallCommands`. A
-theme chosen at runtime therefore survives the next reboot from the `Default`
-entry, like it did with GRUB and systemd-boot.
+select the matching activation package.
 
 Notes:
 

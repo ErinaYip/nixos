@@ -81,22 +81,9 @@ settings. The specialisation activation service is authorized for members of the
 The selected specialisation also has to survive a reboot. GRUB and systemd-boot
 derive the default menu entry from the toplevel that NixOS hands to the
 bootloader installer, so a runtime `switch` into a specialisation becomes the
-default entry. Limine's installer ignores that toplevel and always writes
-`default_entry: 3`, the `Default` child of the newest generation, which holds the
-plain toplevel of that generation.
-`os/desktop/theme-specialisations.nix` therefore runs `gawk` through
-`boot.loader.limine.extraInstallCommands`, which executes after `limine.conf` has
-been generated. It copies the body of the `///<theme>` entry into the `///Default`
-entry, leaving the header, the entry order, and `default_entry: 3` untouched, so
-the default entry itself boots the theme; `vt.default_*` is the only field that
-changes, because a specialisation shares the kernel and initrd of its generation.
-A plain system install writes no such hook, so the installer's own `default_entry`
-and unthemed `Default` body are kept.
-
-nixpkgs has no `boot.loader.limine.default` option yet. The upstream pull request
-`NixOS/nixpkgs#569250` adds a stable top-level `NixOS` entry built from the
-toplevel handed to the installer and sets `default_entry: 1` to it, which is the
-GRUB behaviour; once it lands this hook can be dropped.
+default entry. Limine's installer instead ignores that toplevel and always writes
+`default_entry: 3`, the `Default` child of the newest generation, so with Limine
+a runtime theme switch is not reflected in the default boot entry.
 
 ## Design Pattern
 
@@ -169,7 +156,7 @@ forces the Wayland Ozone backend. The flake input is imported in
 The `home.cli.kitty` module disables Kitty's remembered window size and
 maximized state so new Hyprland windows do not inherit stale maximized state.
 
-The `home.cli.pi` and `home.cli.opencode` modules write custom model providers
+The `home.cli.pi` module writes custom model providers
 instead of hand-writing every entry. `home/cli/pi.nix` builds its `models.json`
 entries through `mkProvider`, which takes `name`, `api`, `baseUrl`, `models`,
 plus optional `apiKey`, `modelDefaults`, and `extra`. `apiKey` defaults to the
