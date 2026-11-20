@@ -42,7 +42,6 @@ with eriniteLib;
           herdr = enabled;
           kitty = enabled;
           nh = enabled;
-          opencode = enabled;
           pi = enabled;
           starship = enabled;
           zoxide = enabled;

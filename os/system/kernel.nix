@@ -18,9 +18,12 @@ with eriniteLib;
         "fs.inotify.max_queued_events" = 65536;
       };
 
-      services.scx = lib.mkIf cfg.sched_ext {
+      services.scx-loader = lib.mkIf cfg.sched_ext {
         enable = true;
-        scheduler = "scx_lavd";
+        config = {
+          default_sched = "scx_lavd";
+          default_mode = "Auto";
+        };
       };
     };
   }

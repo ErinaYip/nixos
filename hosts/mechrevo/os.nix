@@ -32,7 +32,6 @@
     jq
 
     openjdk
-    (zulu8.override {enableJavaFX = true;})
 
     wavemon
     ddcutil
