@@ -1,5 +1,5 @@
 {pkgs}: {
-  packages."Blue Topaz" = pkgs.stdenvNoCC.mkDerivation {
+  "Blue Topaz" = pkgs.stdenvNoCC.mkDerivation {
     pname = "obsidian-theme-blue-topaz";
     version = "2026060802";
 

@@ -1,0 +1,108 @@
+.theme-dark {
+  /* ---------- 1. 基础背景 / 层级 ---------- */
+  --background-primary: var(--color-base-00);
+  --background-primary-alt: var(--color-base-20);
+  --background-secondary: var(--color-base-20);
+  --background-secondary-alt: var(--color-base-20);
+
+  --background-modifier-border: var(--color-base-30);
+  --background-modifier-border-hr: var(--color-base-30);
+  --background-modifier-border-asymm: var(--color-base-30);
+  --background-modifier-border-checkbox: var(--color-base-60);
+  --background-modifier-border-1: var(--color-base-30);
+  --background-modifier-form-field: var(--color-base-20);
+  --background-modifier-form-field-highlighted: var(--color-base-25);
+
+  --panel-border-color: var(--color-base-30);
+  --tab-outline-color: var(--color-base-05);
+  --background-search-result: var(--color-base-20);
+  --search-result-background: var(--color-base-20);
+  --background-leaf-resize-handle: var(--color-base-30);
+  --background-popover: var(--color-base-20);
+
+  /* 半透明表面，统一从 Stylix 色阶派生 */
+  --background-code: color-mix(in srgb, var(--color-base-05) 60%, transparent);
+  --background-code-2: color-mix(in srgb, var(--color-base-30) 70%, transparent);
+  --background-blockquote: color-mix(in srgb, var(--color-base-60) 12%, transparent);
+  --scrollbar-thumb-bg: color-mix(in srgb, var(--color-base-40) 55%, transparent);
+  --scrollbar-active-thumb-bg: color-mix(in srgb, var(--color-base-50) 65%, transparent);
+  --interactive-normal: var(--color-base-20);
+  --interactive-hover: var(--color-base-30);
+  --background-4-sliding-pane: color-mix(in srgb, var(--color-base-20) 93%, transparent);
+
+  /* ---------- 2. 文本 ---------- */
+  --text-normal: var(--color-base-100);
+  --text-muted: var(--color-base-60);
+  --text-faint: var(--color-base-50);
+  --text-folder-file: color-mix(in srgb, var(--color-base-100) 82%, var(--color-base-60));
+  --text-folder-file-icon: var(--color-accent);
+  --text-highlight: var(--color-base-100);
+  --text-selection: color-mix(in srgb, var(--color-accent) 35%, transparent);
+
+  --search-text: var(--color-base-100);
+  --folder-title: var(--color-base-100);
+  --tag-text: var(--color-base-100);
+  --accent-strong: var(--color-base-100);
+  --accent-em: var(--color-accent);
+  --code-normal: var(--color-base-100);
+  --graph-text-color: var(--color-base-60);
+  --embed-color: color-mix(in srgb, var(--color-accent) 6%, transparent);
+
+  --divider-color: var(--color-base-00);
+
+  /* ---------- 3. 强调色：蓝色 → Stylix base0E ---------- */
+  /* 当前 base0E = #afcc8e = hsl(88, 38%, 68%) */
+  --accent-h: 88;
+  --accent-s: 38%;
+  --accent-l: 68%;
+
+  --interactive-accent: var(--color-accent);
+  --interactive-accent-hsl: 88, 38%, 68%;
+  --interactive-accent-rgb: rgb(175, 204, 142);
+  --interactive-accent-hover: var(--color-accent-2);
+  --color-accent-2: color-mix(in srgb, var(--color-accent) 80%, white);
+
+  --text-accent: var(--color-accent);
+  --text-accent-hover: var(--color-accent-2);
+  --text-on-accent: var(--color-base-00);
+  --theme-color: var(--interactive-accent);
+  --tag-background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  --tag-background-hover: color-mix(in srgb, var(--color-accent) 18%, transparent);
+
+  /* 用真实 accent 生成透明度层级，避免 accent 换色后残留旧 HSL */
+  --theme-color-translucent-06: color-mix(in srgb, var(--color-accent) 60%, transparent);
+  --theme-color-translucent-04: color-mix(in srgb, var(--color-accent) 40%, transparent);
+  --theme-color-translucent-02: color-mix(in srgb, var(--color-accent) 20%, transparent);
+  --theme-color-translucent-015: color-mix(in srgb, var(--color-accent) 15%, transparent);
+  --theme-color-translucent-01: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  --theme-color-translucent-005: color-mix(in srgb, var(--color-accent) 5%, transparent);
+  --theme-color-translucent-001: color-mix(in srgb, var(--color-accent) 1%, transparent);
+
+  /* ---------- 4. 主题里残留的蓝色 UI 部件 ---------- */
+  --background-transparent-blue: color-mix(in srgb, var(--color-accent) 40%, transparent);
+  --color-view-header-gradient-2: color-mix(in srgb, var(--color-accent) 30%, transparent);
+  --background-waves-color: color-mix(in srgb, var(--color-accent) 55%, transparent);
+  --search-result-file-matched-bg: color-mix(in srgb, var(--color-accent) 30%, var(--color-base-20));
+  --text-search-highlight-bg: color-mix(in srgb, var(--color-accent) 60%, var(--color-base-20));
+
+  --list-ol-block-color: color-mix(in srgb, var(--color-accent) 70%, transparent);
+  --list-ol-hover: var(--color-accent);
+  --checkbox-color-0: var(--color-accent);
+
+  --table-hover-raw-color: color-mix(in srgb, var(--color-accent) 8%, transparent);
+  --table-hover-color: color-mix(in srgb, var(--color-accent) 12%, transparent);
+  --table-hover-thead-color: color-mix(in srgb, var(--color-accent) 18%, var(--color-base-20));
+  --table-border-color: color-mix(in srgb, var(--color-accent) 20%, transparent);
+
+  /* Bases 表格里同样固定写死的 accent HSL，也改为跟随实际 accent */
+  --bases-table-header-background-hover: color-mix(in srgb, var(--color-accent) 15%, transparent);
+  --bases-table-stripe-color: color-mix(in srgb, var(--color-accent) 6%, transparent);
+  --bases-table-row-background-hover: color-mix(in srgb, var(--color-accent) 15%, transparent);
+  --bases-list-separator-color: color-mix(in srgb, var(--color-accent) 75%, transparent);
+
+  --mermaid-active-task-color: var(--color-accent);
+  --mermaid-seq-dia-color: color-mix(in srgb, var(--color-accent) 65%, var(--color-base-20));
+  --day-planner-item-hover: color-mix(in srgb, var(--color-accent) 35%, var(--color-base-20));
+  --background-titlebar-inner: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  --sliding-panes-header-color: color-mix(in srgb, var(--color-accent) 80%, transparent);
+}
