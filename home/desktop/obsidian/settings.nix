@@ -3,16 +3,19 @@
   themes,
 }: {
   app = {
-    showLineNumber = true;
-    livePreview = false;
-    spellcheck = false;
-    useTab = false;
-    promptDelete = false;
-    vimMode = false;
-    newLinkFormat = "shortest";
     alwaysUpdateLinks = true;
-    useMarkdownLinks = false;
+    livePreview = false;
+    newLinkFormat = "shortest";
+    promptDelete = false;
     showInlineTitle = true;
+    showLineNumber = true;
+    spellcheck = false;
+    useMarkdownLinks = false;
+    useTab = false;
+    vimMode = false;
+    attachmentFolderPath = "images";
+    trashOption = "local";
+    deleteUnlinkedAttachments = "always";
   };
 
   appearance = {
@@ -27,7 +30,8 @@
       settings = {
         prevConfig = {
           scale = 80;
-          displayHeader = false;
+          displayHeader = true;
+          showTitle = false;
         };
       };
     }
